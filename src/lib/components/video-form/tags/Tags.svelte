@@ -10,6 +10,7 @@
 	const MAX_TAG_LENGTH = 50;
 
 	let { tags }: { tags: string[] } = $props();
+	let tagsValue = $state(Array.from(tags));
 
 	$effect.pre(() => {
 		videoForm.setTags(tags);
@@ -17,21 +18,21 @@
 
 	const onTagAdded = (tag: string): void => {
 		if (tag.length < MIN_TAG_LENGTH || tag.length > MAX_TAG_LENGTH) {
-			tags.pop();
+			tagsValue.pop();
 			return;
 		}
 
-		if (tags.length > MAX_TAGS) {
+		if (tagsValue.length > MAX_TAGS) {
 			if ($videoForm.tags.length > MAX_TAGS) {
 				$videoForm.tags.pop();
 			}
-			tags = Array.from($videoForm.tags);
+			tagsValue = Array.from($videoForm.tags);
 
 			toasts.error(getTranslation('videoForm.errors.maxTags'));
 			return;
 		}
 
-		videoForm.setTags(tags);
+		videoForm.setTags(tagsValue);
 	};
 
 	const onTagRemoved = (_: string, tags: string[]): void => {
@@ -42,7 +43,7 @@
 <div>
 	<Tags
 		placeholder={getTranslation('upload.tagsPlaceholder')}
-		bind:tags
+		bind:tags={tagsValue}
 		onlyUnique={true}
 		{onTagAdded}
 		{onTagRemoved}
