@@ -1,8 +1,8 @@
 <script lang="ts">
 	import HeartRating from '$lib/components/common/HeartRating.svelte';
 	import type { Video } from '$lib/models/Video';
+	import { getTranslation } from '$lib/translations';
 	import { getDurationString, getFormattedDate, onClickInternalLink } from '$lib/utils/utils';
-	import { getTranslation } from '../../../../translations';
 	import UploaderLink from '../../common/UploaderLink.svelte';
 
 	let {

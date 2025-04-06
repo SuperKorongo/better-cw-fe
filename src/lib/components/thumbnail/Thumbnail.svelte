@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { getEmpty as getEmptyVideo, type Video } from '$lib/models/Video';
+	import { getTranslation } from '$lib/translations';
 	import {
 		getDurationString,
 		getFormattedPrice,
@@ -7,7 +8,6 @@
 		getPlaceholderImageSrc
 	} from '$lib/utils/utils';
 	import { onMount } from 'svelte';
-	import { getTranslation } from '../../../translations';
 	import HeartRating from '../common/HeartRating.svelte';
 	import UploaderLink from '../common/UploaderLink.svelte';
 	import { eventFunctions } from './thumbnail';

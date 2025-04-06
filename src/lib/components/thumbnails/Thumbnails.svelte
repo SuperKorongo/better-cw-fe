@@ -4,10 +4,10 @@
 
 	import type { Pagination } from '$lib/models/Pagination';
 	import type { Video } from '$lib/models/Video';
+	import { getTranslation } from '$lib/translations';
 	import { loading } from '../../../stores/loading/store';
 	import { orderBy } from '../../../stores/order_by/store';
 	import { search } from '../../../stores/search/store';
-	import { getTranslation } from '../../../translations';
 	import Thumbnail from '../thumbnail/Thumbnail.svelte';
 	import { events } from './events';
 	import OrderBy from './OrderBy.svelte';

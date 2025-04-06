@@ -1,9 +1,9 @@
 <script lang="ts">
 	import Button, { Label } from '@smui/button';
 
+	import { getTranslation } from '$lib/translations';
 	import { cart } from '../../../stores/cart/store';
 	import { currency } from '../../../stores/currency/store';
-	import { getTranslation } from '../../../translations';
 	import GlowingText from '../common/GlowingText.svelte';
 
 	const getTotalFormatted = (): string => {

@@ -1,7 +1,7 @@
 <script lang="ts">
+	import { getTranslation } from '$lib/translations';
 	import { Rating, Star } from 'flowbite-svelte';
 	import { onMount } from 'svelte';
-	import { getTranslation } from '../../../translations';
 
 	let {
 		size = 25,

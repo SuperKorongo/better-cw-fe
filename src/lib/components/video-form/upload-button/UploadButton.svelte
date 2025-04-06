@@ -4,11 +4,11 @@
 	import type { Video } from '$lib/models/Video';
 	import { patch } from '$lib/services/admin/videos';
 	import { upload } from '$lib/services/videos';
+	import { getTranslation } from '$lib/translations';
 	import Button from '@smui/button';
 	import type { ApiError } from '../../../../errors/apiError';
 	import { loading } from '../../../../stores/loading/store';
 	import { videoForm } from '../../../../stores/video-form/store';
-	import { getTranslation } from '../../../../translations';
 	import { patchThumbnails } from './patchThumbnails';
 
 	let { type, video }: { type: 'upload' | 'patch'; video?: Video } = $props();

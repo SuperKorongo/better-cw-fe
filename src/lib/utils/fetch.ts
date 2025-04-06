@@ -1,7 +1,7 @@
 import { goto } from '$app/navigation';
 import * as toasts from '$lib/components/toasts/toasts';
+import { getTranslation } from '$lib/translations';
 import { user } from '../../stores/user/store';
-import { getTranslation } from '../../translations';
 
 export const fetchWrapper = (fetchFunc: typeof window.fetch) => {
 	const handle401 = (response: Response): Response => {

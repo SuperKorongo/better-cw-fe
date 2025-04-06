@@ -1,4 +1,4 @@
-import { getTranslation } from '../../../translations';
+import { getTranslation } from '$lib/translations';
 
 export const ORDER_BYS = [
 	{

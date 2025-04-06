@@ -16,7 +16,12 @@
 			"active": "Active",
 			"rowsPerPage": "Videos per page",
 			"of": "of",
-			"editedSuccessfully": "Video data changed successfully 🚀🚀"
+			"editedSuccessfully": "Video data changed successfully 🚀🚀",
+			"noVideos": {
+				"title": "Start earning with your videos!",
+				"description": "You haven't uploaded any videos yet. Start sharing your content and earn money in BTC for every purchase.",
+				"cta": "Upload your first video"
+			}
 		}
 	},
 	"cart": {

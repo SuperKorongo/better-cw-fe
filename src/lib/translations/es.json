@@ -1,22 +1,27 @@
 {
 	"admin": {
-		"onlyRegistered": "Sección solo para usuarios registrados",
+		"onlyRegistered": "Regístrate o inicia sesión antes de entrar en la sección de administración",
 		"menu": {
 			"profile": "Perfil",
-			"myVideos": "Mis vídeos",
+			"myVideos": "Mis videos",
 			"disputes": "Disputas",
-			"purchases": "Mis compras",
+			"purchases": "Compras",
 			"withdraw": "Retirar"
 		},
 		"myVideos": {
 			"title": "Título",
 			"price": "Precio",
-			"uploadedAt": "Fecha de subida",
+			"uploadedAt": "Subido el",
 			"moneyGeneratedInBTC": "Dinero generado en BTC (Bruto)",
-			"active": "Activado",
-			"rowsPerPage": "Vídeos por página",
+			"active": "Activo",
+			"rowsPerPage": "Videos por página",
 			"of": "de",
-			"editedSuccessfully": "El vídeo se ha modificado correctamente 🚀🚀"
+			"editedSuccessfully": "Datos del video cambiados con éxito 🚀🚀",
+			"noVideos": {
+				"title": "¡Empieza a ganar con tus videos!",
+				"description": "Aún no has subido ningún video. Empieza a compartir tu contenido y gana dinero en BTC por cada compra.",
+				"cta": "Sube tu primer video"
+			}
 		}
 	},
 	"cart": {

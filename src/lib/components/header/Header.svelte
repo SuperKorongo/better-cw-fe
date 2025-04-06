@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getTranslation } from '../../../translations';
+	import { getTranslation } from '$lib/translations';
 	import GlowingText from '../common/GlowingText.svelte';
 
 	let {

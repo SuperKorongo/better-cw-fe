@@ -1,9 +1,9 @@
 <script lang="ts">
 	import * as toasts from '$lib/components/toasts/toasts';
+	import { getTranslation } from '$lib/translations';
 	// @ts-expect-error - Missing TS declarations.
 	import Tags from 'svelte-tags-input';
 	import { videoForm } from '../../../../stores/video-form/store';
-	import { getTranslation } from '../../../../translations';
 
 	const MAX_TAGS = 30;
 	const MIN_TAG_LENGTH = 2;

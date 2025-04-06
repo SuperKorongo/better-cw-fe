@@ -3,9 +3,9 @@ import { DEFAULT_PAGINATION } from '$lib/models/Pagination';
 import type { Video } from '$lib/models/Video';
 import { getVideosBy, USERS_ENDPOINT } from '$lib/services/videos';
 import type { PageLoadEvent } from '../../$types';
+import { getTranslation } from '../../../lib/translations';
 import { getOrderBy } from '../../../stores/order_by/store';
 import { getFromUrl as getSearchFromURL } from '../../../stores/search/store';
-import { getTranslation } from '../../../translations';
 
 export const prerender = false;
 

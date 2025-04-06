@@ -1,10 +1,10 @@
 import { DEFAULT_PAGINATION, type OrderBy, type Pagination } from '$lib/models/Pagination';
 import type { Video } from '$lib/models/Video';
+import { getTranslation } from '$lib/translations';
 import { isVideoDisplayRoute } from '$lib/utils/utils';
 import { get } from 'svelte/store';
 import { loading } from '../../../stores/loading/store';
 import { search } from '../../../stores/search/store';
-import { getTranslation } from '../../../translations';
 import * as toasts from '../toasts/toasts';
 
 const VIDEOS_TO_LOAD_ON_SCROLL = 10;

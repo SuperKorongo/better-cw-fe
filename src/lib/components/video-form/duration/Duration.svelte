@@ -1,7 +1,7 @@
 <script lang="ts">
+	import { getTranslation } from '$lib/translations';
 	import Textfield from '@smui/textfield';
 	import { videoForm } from '../../../../stores/video-form/store';
-	import { getTranslation } from '../../../../translations';
 
 	const INPUT_WIDTH = '170px';
 

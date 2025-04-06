@@ -2,7 +2,7 @@ import * as toasts from '$lib/components/toasts/toasts';
 import { getEmpty as getEmptyVideo, type Video } from '$lib/models/Video';
 import { getVideoByUUID } from '$lib/services/videos';
 import type { PageLoadEvent } from '../../$types';
-import { getTranslation } from '../../../translations';
+import { getTranslation } from '../../../lib/translations';
 
 export const prerender = false;
 

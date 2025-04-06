@@ -3,6 +3,7 @@
 		type PaginatedResponse,
 		type Pagination as PaginationType
 	} from '$lib/models/Pagination';
+	import { getTranslation } from '$lib/translations';
 	import {
 		mdiArrowCollapseLeft,
 		mdiArrowCollapseRight,
@@ -12,7 +13,6 @@
 	import { Label, Pagination } from '@smui/data-table';
 	import IconButton, { Icon } from '@smui/icon-button';
 	import Select, { Option } from '@smui/select';
-	import { getTranslation } from '../../../translations';
 
 	let {
 		rowsPerPageOptions,

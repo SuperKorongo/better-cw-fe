@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import type { OrderBy } from '$lib/models/Pagination';
+	import { getTranslation } from '$lib/translations';
 	import { getSearchAndOrderQueryParams } from '$lib/utils/utils';
 	import Select, { Option } from '@smui/select';
 	import { onMount } from 'svelte';
 	import { orderBy } from '../../../stores/order_by/store';
-	import { getTranslation } from '../../../translations';
 	import { ORDER_BYS } from './order_bys';
 
 	let mounted: boolean = $state(false);

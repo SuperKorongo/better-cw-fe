@@ -1,7 +1,7 @@
 <script lang="ts">
+	import { getTranslation } from '$lib/translations';
 	import { onClickInternalLink } from '$lib/utils/utils';
 	import { user } from '../../../stores/user/store';
-	import { getTranslation } from '../../../translations';
 </script>
 
 <section>

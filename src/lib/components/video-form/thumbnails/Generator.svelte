@@ -1,10 +1,10 @@
 <script lang="ts">
 	import * as toasts from '$lib/components/toasts/toasts';
+	import { getTranslation } from '$lib/translations';
 	import { EMPTY_IMAGE_SRC } from '$lib/utils/utils';
 	import Button from '@smui/button';
 	import { onMount } from 'svelte';
 	import { loading } from '../../../../stores/loading/store';
-	import { getTranslation } from '../../../../translations';
 
 	let {
 		thumbnailImages,
