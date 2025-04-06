@@ -4,16 +4,10 @@
 	import { user } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
 	import { onClickInternalLink } from '$lib/utils/utils';
+	import { mdiAccount, mdiCart, mdiCash, mdiEmail, mdiHome, mdiInformation, mdiTag } from '@mdi/js';
 	import { onMount } from 'svelte';
 	import { swipe } from 'svelte-gestures';
 	import GlowingText from '../common/GlowingText.svelte';
-	import CartIcon from '../icons/CartIcon.svelte';
-	import ContactIcon from '../icons/ContactIcon.svelte';
-	import DollarSignIcon from '../icons/DollarSignIcon.svelte';
-	import HomeIcon from '../icons/HomeIcon.svelte';
-	import InfoIcon from '../icons/InfoIcon.svelte';
-	import PriceTagIcon from '../icons/PriceTagIcon.svelte';
-	import ProfileIcon from '../icons/ProfileIcon.svelte';
 	import CloseButton from './CloseButton.svelte';
 	import Languages from './Languages.svelte';
 	import UserSection from './UserSection.svelte';
@@ -34,10 +28,25 @@
 	<main>
 		<Languages />
 		<CloseButton onClick={onClose} />
+
 		<section class="main-section">
+			{#if $user.data !== null}
+				<div class="profile-section">
+					<div>
+						<svg viewBox="0 0 24 24" width="24" height="24">
+							<path d={mdiAccount} fill="currentColor" />
+						</svg>
+					</div>
+					<a onclick={onClickInternalLink} data-sveltekit-preload-data="tap" href="/admin/profile">
+						{getTranslation('menu.profile')}
+					</a>
+				</div>
+			{/if}
 			<div>
 				<div>
-					<HomeIcon />
+					<svg viewBox="0 0 24 24" width="24" height="24">
+						<path d={mdiHome} fill="currentColor" />
+					</svg>
 				</div>
 				<a onclick={onClickInternalLink} data-sveltekit-preload-data="tap" href="/">
 					{getTranslation('menu.home')}
@@ -45,7 +54,9 @@
 			</div>
 			<div>
 				<div>
-					<CartIcon />
+					<svg viewBox="0 0 24 24" width="24" height="24">
+						<path d={mdiCart} fill="currentColor" />
+					</svg>
 				</div>
 				<div>
 					<a onclick={onClickInternalLink} data-sveltekit-preload-data="tap" href="/cart">
@@ -61,15 +72,9 @@
 			{#if $user.data !== null}
 				<div>
 					<div>
-						<ProfileIcon />
-					</div>
-					<a onclick={onClickInternalLink} data-sveltekit-preload-data="tap" href="/admin/profile">
-						{getTranslation('menu.profile')}
-					</a>
-				</div>
-				<div>
-					<div>
-						<PriceTagIcon />
+						<svg viewBox="0 0 24 24" width="24" height="24">
+							<path d={mdiTag} fill="currentColor" />
+						</svg>
 					</div>
 					<a
 						onclick={onClickInternalLink}
@@ -82,7 +87,9 @@
 			{/if}
 			<div>
 				<div>
-					<InfoIcon />
+					<svg viewBox="0 0 24 24" width="24" height="24">
+						<path d={mdiInformation} fill="currentColor" />
+					</svg>
 				</div>
 				<a onclick={onClickInternalLink} data-sveltekit-preload-data="tap" href="/about-us">
 					{getTranslation('menu.aboutUs')}
@@ -90,7 +97,9 @@
 			</div>
 			<div>
 				<div>
-					<ContactIcon />
+					<svg viewBox="0 0 24 24" width="24" height="24">
+						<path d={mdiEmail} fill="currentColor" />
+					</svg>
 				</div>
 				<a onclick={onClickInternalLink} data-sveltekit-preload-data="tap" href="/contact-us">
 					{getTranslation('menu.contactUs')}
@@ -98,7 +107,9 @@
 			</div>
 			<div>
 				<div>
-					<DollarSignIcon />
+					<svg viewBox="0 0 24 24" width="24" height="24">
+						<path d={mdiCash} fill="currentColor" />
+					</svg>
 				</div>
 				<a onclick={onClickInternalLink} data-sveltekit-preload-data="tap" href="/upload">
 					<GlowingText text={getTranslation('menu.uploadVideos')} />
@@ -135,6 +146,30 @@
 	}
 	.main-section > div a {
 		margin-left: 15px;
+	}
+
+	.profile-section {
+		display: flex;
+		align-items: center;
+		padding-bottom: 20px;
+		margin-bottom: 20px;
+		border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+	}
+
+	.profile-section a {
+		margin-left: 15px;
+	}
+
+	.profile-section svg {
+		color: white;
+		width: 24px;
+		height: 24px;
+	}
+
+	.main-section svg {
+		color: white;
+		width: 24px;
+		height: 24px;
 	}
 
 	.cart-items {
@@ -193,6 +228,10 @@
 		.main-section > div {
 			margin-bottom: 30px;
 		}
+		.profile-section {
+			padding-bottom: 15px;
+			margin-bottom: 15px;
+		}
 	}
 	@media (min-width: 900px) {
 		aside {
@@ -205,6 +244,10 @@
 		}
 		.main-section > div {
 			margin-bottom: 45px;
+		}
+		.profile-section {
+			padding-bottom: 20px;
+			margin-bottom: 20px;
 		}
 	}
 </style>
