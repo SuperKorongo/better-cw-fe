@@ -27,7 +27,7 @@
 	<div class="balance-info">
 		<span class="label">{getTranslation('admin.balance.label')}:</span>
 		<span class="amount">
-			{balance ? balance.balanceInBTC.toFixed(8) : '-'} BTC
+			{balance ? balance.balanceInBTC : '-'} BTC
 		</span>
 	</div>
 	<a onclick={onClickInternalLink} data-sveltekit-preload-data="hover" href="/admin/withdraw">
