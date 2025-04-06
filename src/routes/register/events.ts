@@ -49,7 +49,13 @@ export const onClickRegisterButton = async (
 		userStore.setData(user);
 		toasts.success(getTranslation('signInForm.welcome'));
 		menu.forceOpenAfterNavigate(true);
-		goto('/');
+
+		// Check if there's a previous page in history
+		if (document.referrer && document.referrer !== window.location.href) {
+			history.back();
+		} else {
+			goto('/');
+		}
 	} catch (e: unknown) {
 		const apiError = e as ApiError;
 

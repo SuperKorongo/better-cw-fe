@@ -26,7 +26,13 @@ export const onClickLoginButton = async (getEmail: () => string, getPassword: ()
 		const user = await login(getEmail(), getPassword());
 		userStore.setData(user);
 		toasts.success(getTranslation('signInForm.welcome'));
-		goto('/');
+
+		// Check if there's a previous page in history
+		if (document.referrer && document.referrer !== window.location.href) {
+			history.back();
+		} else {
+			goto('/');
+		}
 	} catch (e: unknown) {
 		const apiError = e as ApiError;
 
