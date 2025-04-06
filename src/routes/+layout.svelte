@@ -81,9 +81,6 @@
 
 <style>
 	main :global(*) {
-		--navbar-height: 50px;
-	}
-	section {
-		padding-top: calc(var(--navbar-height) + 40px);
+		--navbar-height: 60px;
 	}
 </style>

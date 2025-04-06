@@ -27,6 +27,7 @@
 		margin-bottom: 30px;
 	}
 	h1 {
+		padding-top: calc(var(--navbar-height) + 40px);
 		font: 900 clamp(0.875em, 7.25vw, 2.5em) sans-serif;
 		text-align: center;
 		text-transform: uppercase;

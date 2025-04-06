@@ -70,8 +70,4 @@
 		color: white;
 		font-weight: bold;
 	}
-
-	:global(.smui-button) {
-		margin: 0;
-	}
 </style>

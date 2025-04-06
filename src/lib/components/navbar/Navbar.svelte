@@ -32,20 +32,21 @@
 	}
 
 	.home-container {
-		padding-top: 10px;
+		padding-top: 15px;
 		float: left;
 		width: 60px;
 		margin-left: 10px;
 	}
 	.hamburger-menu-container {
 		float: right;
-		padding-top: 7px;
+		padding-top: 14px;
 		margin-right: 20px;
 		width: 35px;
 		cursor: pointer;
 		overflow-y: hidden;
 	}
 	.search-container {
+		padding-top: 4px;
 		position: absolute;
 		text-align: center;
 		height: var(--navbar-height);
