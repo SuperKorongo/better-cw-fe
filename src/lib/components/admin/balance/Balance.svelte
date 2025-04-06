@@ -48,6 +48,10 @@
 		background: linear-gradient(45deg, #40c4ff, #a23cff);
 		color: white;
 		margin-bottom: 20px;
+		position: sticky;
+		top: var(--navbar-height);
+		z-index: 100;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	}
 
 	.balance-info {
