@@ -37,7 +37,10 @@
 		"videoDuration": "Video duration",
 		"remove": "Remove from cart",
 		"total": "Total",
-		"proceed": "Proceed to payment"
+		"proceed": "Proceed to payment",
+		"loginRequired": "Please login or register to proceed with the payment",
+		"login": "Login",
+		"register": "Register"
 	},
 	"common": {
 		"errors": {

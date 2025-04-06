@@ -3,7 +3,9 @@
 
 	import { cart } from '$lib/stores/cart/store';
 	import { currency } from '$lib/stores/currency/store';
+	import { user } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
+	import { onClickInternalLink } from '$lib/utils/utils';
 	import GlowingText from '../common/GlowingText.svelte';
 
 	const getTotalFormatted = (): string => {
@@ -22,11 +24,29 @@
 				<GlowingText text={getTotalFormatted()} />
 			</span>
 		</div>
-		<div class="payment-button">
-			<Button variant="raised" color="secondary">
-				<Label>{getTranslation('cart.proceed')}</Label>
-			</Button>
-		</div>
+		{#if $user.data !== null}
+			<div class="payment-button">
+				<Button variant="raised" color="secondary">
+					<Label>{getTranslation('cart.proceed')}</Label>
+				</Button>
+			</div>
+		{:else}
+			<div class="auth-cta">
+				<p>{getTranslation('cart.loginRequired')}</p>
+				<div class="auth-buttons">
+					<a onclick={onClickInternalLink} data-sveltekit-preload-data="tap" href="/sign-in">
+						<Button variant="outlined" color="secondary">
+							<Label>{getTranslation('cart.login')}</Label>
+						</Button>
+					</a>
+					<a onclick={onClickInternalLink} data-sveltekit-preload-data="tap" href="/register">
+						<Button variant="outlined" color="secondary">
+							<Label>{getTranslation('cart.register')}</Label>
+						</Button>
+					</a>
+				</div>
+			</div>
+		{/if}
 	</footer>
 {/key}
 
@@ -44,5 +64,22 @@
 
 	.payment-button {
 		margin-top: 10px;
+	}
+
+	.auth-cta {
+		margin-top: 20px;
+		text-align: center;
+	}
+
+	.auth-cta p {
+		margin-bottom: 15px;
+		font-size: 18px;
+		color: #666;
+	}
+
+	.auth-buttons {
+		display: flex;
+		gap: 10px;
+		justify-content: center;
 	}
 </style>
