@@ -1,0 +1,89 @@
+<script lang="ts">
+	import { page } from '$app/state';
+	import LoadingBar from '$lib/components/common/LoadingBar.svelte';
+	import Navbar from '$lib/components/navbar/Navbar.svelte';
+	import { onMount } from 'svelte';
+	import { cart } from '../stores/cart/store';
+	import { search } from '../stores/search/store';
+
+	import { afterNavigate } from '$app/navigation';
+	import { onClose as closeMenu } from '$lib/components/menu/events';
+	import Menu from '$lib/components/menu/Menu.svelte';
+	import ToastsContainer from '$lib/components/toasts/ToastsContainer.svelte';
+	import Video from '$lib/components/video/Video.svelte';
+	import { initLoggedInUser } from '$lib/services/users';
+	import { language } from '../stores/language/store';
+	import { menu } from '../stores/menu/store';
+	import './styles.css';
+
+	let { children } = $props();
+
+	afterNavigate(() => {
+		if ($menu.forceOpenAfterNavigate) {
+			menu.setVisibility(true);
+			menu.forceOpenAfterNavigate(false);
+		} else {
+			closeMenu();
+		}
+		document.body.style.overflowY = 'scroll';
+		document.body.scrollTop = -9999999;
+	});
+
+	let mounted: boolean = $state(false);
+	onMount(() => {
+		mounted = true;
+		cart.init();
+		search.init();
+
+		window.addEventListener('popstate', (e) => {
+			if ((e.target as Window).location.pathname.includes('/videos/')) {
+				document.location.href = '/';
+			}
+		});
+
+		initLoggedInUser();
+	});
+
+	$effect.pre(language.init);
+</script>
+
+<svelte:head>
+	<title>TODO</title>
+	<meta name="description" content="TODO - Description" />
+</svelte:head>
+
+{#key mounted}
+	{#if mounted}
+		<ToastsContainer />
+	{/if}
+{/key}
+
+{#key $language}
+	<main>
+		<LoadingBar />
+		<Navbar />
+		<section>
+			{#key page.state}
+				{#if page.state.selectedVideo}
+					<Video video={page.state.selectedVideo} />
+				{/if}
+			{/key}
+
+			{#key $menu.isVisible}
+				{#if $menu.isVisible && !page.state.selectedVideo}
+					<Menu />
+				{/if}
+			{/key}
+			{@render children()}
+		</section>
+	</main>
+{/key}
+
+<style>
+	main :global(*) {
+		--navbar-height: 50px;
+	}
+	section {
+		padding-top: calc(var(--navbar-height) + 40px);
+	}
+</style>

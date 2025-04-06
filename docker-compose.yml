@@ -1,0 +1,20 @@
+services:
+  nginx:
+    restart: always
+    image: store-frontend-nginx
+    container_name: store-frontend-nginx
+    ports:
+      - '80:80'
+      - '443:443'
+    depends_on:
+      - frontend
+
+  frontend:
+    restart: always
+    image: store-frontend
+    working_dir: /store-fe
+    volumes:
+      - ./:/store-fe
+    ports:
+      - '3000:3000'
+    command: bash -c "pm2 start build/index.js && tail -f /dev/null"

@@ -1,0 +1,155 @@
+{
+	"admin": {
+		"onlyRegistered": "Register or login before entering the admin section",
+		"menu": {
+			"profile": "Profile",
+			"myVideos": "My videos",
+			"disputes": "Disputes",
+			"purchases": "Purchases",
+			"withdraw": "Withdraw"
+		},
+		"myVideos": {
+			"title": "Title",
+			"price": "Price",
+			"uploadedAt": "Uploaded at",
+			"moneyGeneratedInBTC": "Money generated in BTC (Gross)",
+			"active": "Active",
+			"rowsPerPage": "Videos per page",
+			"of": "of",
+			"editedSuccessfully": "Video data changed successfully 🚀🚀"
+		}
+	},
+	"cart": {
+		"empty": "Cart is empty 😔",
+		"browseVideos": "Go to main page",
+		"videoDuration": "Video duration",
+		"remove": "Remove from cart",
+		"total": "Total",
+		"proceed": "Proceed to payment"
+	},
+	"common": {
+		"errors": {
+			"generic": "An error occurred",
+			"tooManyRequests": "You are too fast! Please slow down and try again later"
+		},
+		"noMoreVideos": "There are no more videos to show",
+		"orderBy": {
+			"label": "Order by",
+			"uploadedAtAsc": "Upload date (oldest first)",
+			"uploadedAtDesc": "Upload date (newest first)",
+			"priceAsc": "Price (lower to higher)",
+			"priceDesc": "Price (higher to lower)",
+			"ratingAsc": "Rating (worst first)",
+			"ratingDesc": "Rating (best first)",
+			"totalRatingsAsc": "Total ratings (least ratings first)",
+			"totalRatingsDesc": "Total ratings (most ratings first)"
+		}
+	},
+	"headers": {
+		"browsing": "Browsing videos ",
+		"member": "uploaded by",
+		"model": "featuring",
+		"tag": "tagged with"
+	},
+	"homepage": {
+		"videoBy": "Video by",
+		"loadMore": "Load more videos"
+	},
+	"menu": {
+		"home": "Home",
+		"cart": "Cart",
+		"aboutUs": "About us",
+		"contactUs": "Contact us",
+		"uploadVideos": "Upload videos",
+		"signIn": "Sign In",
+		"register": "Register",
+		"profile": "My Account",
+		"purchases": "Purchases",
+		"logout": "Sign Out"
+	},
+	"search": {
+		"placeholder": "Search videos"
+	},
+	"signInForm": {
+		"welcome": "Welcome!",
+		"title": "TODO: Some nice title and subtitle",
+		"loginButtonLabel": "Sign In",
+		"email": "Email",
+		"password": "Password",
+		"errors": {
+			"invalidCredentials": "Invalid email or password",
+			"serverError": "Internal server error - Please try again later",
+			"emptyEmail": "Please enter a valid email",
+			"invalidPassword": "Password needs to be at least 8 characters long"
+		}
+	},
+	"signUpForm": {
+		"title": "TODO: Some nice title and subtitle",
+		"registerButtonLabel": "Register",
+		"username": "Username",
+		"email": "Email",
+		"password": "Password",
+		"repeatPassword": "Repeat password",
+		"errors": {
+			"passwordsDontMatch": "The passwords don't match",
+			"usernameAlreadyExists": "Username already exists",
+			"invalidUsername": "Username needs to be at least 3 characters long",
+			"usernameOnlyAlphanumeric": "Only alphanumeric characters allowed for the username"
+		}
+	},
+	"upload": {
+		"title": "Upload videos and earn money",
+		"signInFirst": "Only registered users can upload videos",
+		"signIn": "Sign in",
+		"register": "Register",
+		"generateThumbnails": "Generate thumbnails automatically",
+		"changeThumbnail": "Change tumbnail",
+		"addThumbnail": "Add thumbnail",
+		"errors": {
+			"cantGenerateThumbnails": "We couldn't automatically generate the thumbnails - Please manually upload at least 1 thumbnail",
+			"atLeastOneThumbnail": "Please upload at least 1 thumbnail",
+			"maxTags": "Maximum 30 tags",
+			"emptyTitle": "Please specify the video title",
+			"emptyDownloadLink": "Please add the mega.nz download link",
+			"missingThumbnail": "Please add at least one thumbnail",
+			"emptyPrice": "Please specify the price",
+			"emptyDuration": "Please specify the video duration",
+			"genericServerError": "Server error - Please try again later",
+			"linkAlreadyUsed": "Download link is already assigned to another video",
+			"maxPrice": "Maximum price per video is 1.000.000 USD",
+			"tooBig": "Thumbnail size cannot exceed 1MB"
+		},
+		"successfulUpload": "Video uploaded successfully 🚀🚀",
+		"thumbnails": "Thumbnails (at least 1 required)",
+		"tags": "Tags",
+		"tagsPlaceholder": "Max 30 tags - Hit 'enter' after every tag",
+		"titleAndDescription": "Title and description",
+		"titleLabel": "Title",
+		"descriptionLabel": "Description (optional)",
+		"price": "Price in USD",
+		"downloadLink": "Download link from mega.nz",
+		"downloadLinkInstructionsLabel": "Download instructions (for example in case the file is protected with a password, specify it here)",
+		"downloadLinkInstructionsShortLabel": "Download instructions (optional)",
+		"duration": "Duration",
+		"model": "Model name (optional)",
+		"modelDescription": "Specify the name of the model that appears on the video. If more than one model appears, you can specify other models as tags",
+		"hours": "hours",
+		"minutes": "minutes",
+		"seconds": "seconds",
+		"disclaimer": "New videos can take up to 1 hour to show up on main page and search results",
+		"uploadButton": "Upload video",
+		"editButton": "Edit video",
+		"editDisclaimer": "Video modifications can take up to 1 hour to be applied on main page and search results"
+	},
+	"video": {
+		"addToCart": "Add to cart",
+		"alreadyInCart": "Video added in cart",
+		"gotoCart": "Go to cart",
+		"uploadedAt": "Uploaded at",
+		"uploadedBy": "Uploaded by",
+		"videoRating": "Video rating",
+		"modelName": "Model name",
+		"duration": "Duration",
+		"totalRatings": "total ratings"
+	}
+}

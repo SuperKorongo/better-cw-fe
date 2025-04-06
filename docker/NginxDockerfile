@@ -1,0 +1,27 @@
+FROM nginx:bookworm
+
+# Certbot
+RUN apt update && \
+    apt install python3 python3-venv libaugeas0 -y && \
+    python3 -m venv /opt/certbot/ && \
+    /opt/certbot/bin/pip install --upgrade pip && \
+    /opt/certbot/bin/pip install certbot && \
+    ln -s /opt/certbot/bin/certbot /usr/bin/certbot && \
+    apt install python3-certbot-nginx -y 
+
+# Bots blocker
+RUN apt install wget -y && \
+    wget https://raw.githubusercontent.com/mitchellkrogza/nginx-ultimate-bad-bot-blocker/master/install-ngxblocker -O /usr/local/sbin/install-ngxblocker && \
+    chmod +x /usr/local/sbin/install-ngxblocker && \
+    cd /usr/local/sbin && ./install-ngxblocker -x && \
+    chmod +x /usr/local/sbin/setup-ngxblocker && \
+    chmod +x /usr/local/sbin/update-ngxblocker
+
+# Update bots blocker conf files periodically
+RUN apt install cron -y && \
+    echo "00 22 * * * /usr/local/sbin/update-ngxblocker -n" >> /var/spool/cron/crontabs/root
+
+# Copy nginx configuration
+COPY nginx/nginx.conf /etc/nginx/nginx.conf
+COPY nginx/localhost.crt /etc/nginx/localhost.crt
+COPY nginx/localhost.key /etc/nginx/localhost.key

@@ -1,0 +1,155 @@
+{
+	"admin": {
+		"onlyRegistered": "Sección solo para usuarios registrados",
+		"menu": {
+			"profile": "Perfil",
+			"myVideos": "Mis vídeos",
+			"disputes": "Disputas",
+			"purchases": "Mis compras",
+			"withdraw": "Retirar"
+		},
+		"myVideos": {
+			"title": "Título",
+			"price": "Precio",
+			"uploadedAt": "Fecha de subida",
+			"moneyGeneratedInBTC": "Dinero generado en BTC (Bruto)",
+			"active": "Activado",
+			"rowsPerPage": "Vídeos por página",
+			"of": "de",
+			"editedSuccessfully": "El vídeo se ha modificado correctamente 🚀🚀"
+		}
+	},
+	"cart": {
+		"empty": "El carrito está vacío 😔",
+		"browseVideos": "Ir a la página principal",
+		"videoDuration": "Duración del vídeo",
+		"remove": "Eliminar del carrito",
+		"total": "Total",
+		"proceed": "Proceder al pago"
+	},
+	"common": {
+		"errors": {
+			"generic": "Ha ocurrido un error",
+			"tooManyRequests": "¡Vas muy rápido! Por favor espera un poco y vuelve a intentarlo"
+		},
+		"noMoreVideos": "No hay más vídeos que mostrar",
+		"orderBy": {
+			"label": "Ordenar por",
+			"uploadedAtAsc": "Fecha de subida (antiguos primero)",
+			"uploadedAtDesc": "Fecha de subida (nuevos primero)",
+			"priceAsc": "Precio (de menor a mayor)",
+			"priceDesc": "Price (de mayor a menor)",
+			"ratingAsc": "Valoración (de peor a mejor)",
+			"ratingDesc": "Valoración (de mejor a peor)",
+			"totalRatingsAsc": "Valoraciones totales (menos valoraciones primero)",
+			"totalRatingsDesc": "Valoraciones totales (más valoraciones primero)"
+		}
+	},
+	"headers": {
+		"browsing": "Viendo videos ",
+		"member": "subidos por",
+		"model": "de la modelo",
+		"tag": "etiquetados con"
+	},
+	"homepage": {
+		"videoBy": "Video por",
+		"loadMore": "Cargar más vídeos"
+	},
+	"menu": {
+		"home": "Home",
+		"cart": "Carrito",
+		"aboutUs": "Sobre nosotros",
+		"contactUs": "Contáctanos",
+		"uploadVideos": "Subir videos",
+		"signIn": "Iniciar sesión",
+		"register": "Registrarse",
+		"profile": "Mi Cuenta",
+		"purchases": "Mis Compras",
+		"logout": "Desconectar"
+	},
+	"search": {
+		"placeholder": "Buscar videos"
+	},
+	"signInForm": {
+		"welcome": "¡Bienvenido!",
+		"title": "TODO: Some nice title and subtitle",
+		"loginButtonLabel": "Iniciar sesión",
+		"email": "Email",
+		"password": "Contraseña",
+		"errors": {
+			"invalidCredentials": "El email o la contraseña no son correctos",
+			"serverError": "Error del servidor - Por favor inténtalo más tarde",
+			"emptyEmail": "Introduce en email válido",
+			"invalidPassword": "La contraseña debe tener al menos 8 caracteres"
+		}
+	},
+	"signUpForm": {
+		"title": "TODO: Some nice title and subtitle",
+		"registerButtonLabel": "Registrarse",
+		"username": "Nombre de usuario",
+		"email": "Email",
+		"password": "Contraseña",
+		"repeatPassword": "Repite la contraseña",
+		"errors": {
+			"passwordsDontMatch": "Las contraseñas no coinciden",
+			"usernameAlreadyExists": "El nombre de usuario ya existe",
+			"invalidUsername": "El nombre de usuario debe tener al menos 3 caracteres",
+			"usernameOnlyAlphanumeric": "Solamente se permiten caracteres alfanuméricos para el nombre de usuario"
+		}
+	},
+	"upload": {
+		"title": "Sube vídeos y gana dinero",
+		"signInFirst": "Solamente usuarios registrados pueden subir vídeos",
+		"signIn": "Iniciar sesión",
+		"register": "Registrarse",
+		"generateThumbnails": "Generar miniaturas automáticamente",
+		"changeThumbnail": "Cambiar miniatura",
+		"addThumbnail": "Añadir miniatura",
+		"errors": {
+			"cantGenerateThumbnails": "Hubo un error al generar las miniaturas - Por favor sube manualmente al menos 1 miniatura",
+			"atLeastOneThumbnail": "El vídeo debe tener al menos una miniatura",
+			"maxTags": "Máximo 30 etiquetas",
+			"emptyTitle": "Por favor especifica el título del vídeo",
+			"emptyDownloadLink": "Por favor añade el link de descarga de mega.nz",
+			"missingThumbnail": "Por favor sube al menos una miniatura",
+			"emptyPrice": "Por favor especifica el precio",
+			"emptyDuration": "Por favor especifica la duración del vídeo",
+			"genericServerError": "Error del servidor - por favor inténtalo de nuevo más tarde",
+			"linkAlreadyUsed": "El link de descarga ya está asignado a otro vídeo",
+			"maxPrice": "El precio máximo por vídeo es de 1.000.000 USD",
+			"tooBig": "El tamaño de la miniatura no debe exceder 1MB"
+		},
+		"successfulUpload": "El vídeo se ha subido correctamente 🚀🚀",
+		"thumbnails": "Miniaturas (se require al menos una)",
+		"tags": "Etiquetas",
+		"tagsPlaceholder": "Máximo 30 etiquetas - Dale a 'Enter' al escribir cada etiqueta",
+		"titleAndDescription": "Título y descripción",
+		"titleLabel": "Título",
+		"descriptionLabel": "Descripción (opcional)",
+		"price": "Precio en USD",
+		"downloadLink": "Link de descarga de mega.nz",
+		"downloadLinkInstructionsLabel": "Instrucciones de descarga (por ejemplo si el archivo está protegido con una contraseña, especifícala aquí)",
+		"downloadLinkInstructionsShortLabel": "Instrucciones de descarga (opcional)",
+		"duration": "Duración",
+		"model": "Nombre de la modelo (opcional)",
+		"modelDescription": "Especifica el nombre de la modelo que aparece en el video. Si aparece más de una modelo, puedes especificar otras modelos como etiquetas",
+		"hours": "horas",
+		"minutes": "minutos",
+		"seconds": "segundos",
+		"disclaimer": "Videos nuevos pueden tardar hasta 1 hora en aparecer en la página principal y en los resultados de búsqueda",
+		"uploadButton": "Subir vídeo",
+		"editButton": "Editar vídeo",
+		"editDisclaimer": "Las modificaciones pueden tardar hasta 1 hora en ser aplicadas en la página principal y en los resultados de búsqueda"
+	},
+	"video": {
+		"addToCart": "Añadir al carrito",
+		"alreadyInCart": "Vídeo en carrito",
+		"gotoCart": "Ir al carrito",
+		"uploadedAt": "Fecha de subida",
+		"uploadedBy": "Subido por",
+		"videoRating": "Video rating",
+		"modelName": "Modelo",
+		"duration": "Duración",
+		"totalRatings": "valoraciones totales"
+	}
+}

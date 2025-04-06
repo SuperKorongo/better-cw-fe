@@ -1,0 +1,57 @@
+{
+	"name": "store",
+	"version": "1.0.0",
+	"scripts": {
+		"update-everything-to-latest-versions": "npx npm-check-updates -u; npm install --verbose",
+		"pre-build": "npm install; npm run copy-static; npm run lint; npm run ts-check",
+		"dev": "npm run pre-build; vite dev --host",
+		"build": "npm run pre-build; vite build",
+		"copy-static": "cp ./node_modules/svelte-material-ui/bare.css ./static/svelte-material-ui.css",
+		"preview": "npm run build; vite preview --host",
+		"ts-check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"ts-check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"lint": "prettier --check . && ./node_modules/.bin/eslint .",
+		"format": "prettier --write ."
+	},
+	"devDependencies": {
+		"@fontsource/fira-mono": "^5.2.5",
+		"@mdi/js": "^7.4.47",
+		"@smui/button": "^8.0.0-beta.3",
+		"@smui/data-table": "^8.0.0-beta.3",
+		"@smui/icon-button": "^8.0.0-beta.3",
+		"@smui/switch": "^8.0.0-beta.3",
+		"@smui/textfield": "^8.0.0-beta.3",
+		"@sveltejs/adapter-auto": "^5.0.0",
+		"@sveltejs/adapter-node": "^5.2.12",
+		"@sveltejs/kit": "^2.20.2",
+		"@sveltejs/vite-plugin-svelte": "^5.0.3",
+		"@types/eslint": "^9.6.1",
+		"@types/uuid": "^10.0.0",
+		"@zerodevx/svelte-toast": "^0.9.6",
+		"eslint": "^9.23.0",
+		"eslint-config-prettier": "^10.1.1",
+		"eslint-plugin-svelte": "^3.4.0",
+		"flowbite": "^3.1.2",
+		"flowbite-svelte": "^0.48.4",
+		"globals": "^16.0.0",
+		"prettier": "^3.5.3",
+		"prettier-plugin-svelte": "^3.3.3",
+		"svelte": "^5.25.3",
+		"svelte-check": "^4.1.5",
+		"typescript": "^5.8.2",
+		"typescript-eslint": "^8.28.0",
+		"vite": "^6.2.3"
+	},
+	"type": "module",
+	"dependencies": {
+		"svelte-carousel": "^1.0.25",
+		"svelte-gestures": "^5.1.3",
+		"svelte-material-ui": "^8.0.0-beta.3",
+		"svelte-tags-input": "^6.0.2"
+	},
+	"overrides": {
+		"@sveltejs/kit": {
+			"cookie": "^1.0.2"
+		}
+	}
+}
