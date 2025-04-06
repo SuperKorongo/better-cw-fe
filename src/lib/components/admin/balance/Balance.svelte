@@ -70,4 +70,16 @@
 		color: white;
 		font-weight: bold;
 	}
+
+	@media (max-width: 768px) {
+		.balance-container {
+			flex-direction: column;
+			gap: 15px;
+			text-align: center;
+		}
+
+		.balance-info {
+			justify-content: center;
+		}
+	}
 </style>
