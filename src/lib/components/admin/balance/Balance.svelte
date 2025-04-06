@@ -24,19 +24,15 @@
 </script>
 
 <div class="balance-container">
-	{#if balance}
-		<div class="balance-info">
-			<span class="label">{getTranslation('admin.balance.label')}:</span>
-			<span class="amount">
-				{balance.balanceInBTC.toFixed(8)} BTC
-			</span>
-		</div>
-		<a onclick={onClickInternalLink} data-sveltekit-preload-data="hover" href="/admin/withdraw">
-			<Button variant="raised" color="primary">{getTranslation('admin.balance.withdraw')}</Button>
-		</a>
-	{:else if error}
-		<div class="error">{error}</div>
-	{/if}
+	<div class="balance-info">
+		<span class="label">{getTranslation('admin.balance.label')}:</span>
+		<span class="amount">
+			{balance ? balance.balanceInBTC.toFixed(8) : '-'} BTC
+		</span>
+	</div>
+	<a onclick={onClickInternalLink} data-sveltekit-preload-data="hover" href="/admin/withdraw">
+		<Button variant="raised" color="primary">{getTranslation('admin.balance.withdraw')}</Button>
+	</a>
 </div>
 
 <style>
@@ -68,11 +64,6 @@
 		font-size: 1.2em;
 		font-weight: bold;
 		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-	}
-
-	.error {
-		color: white;
-		font-weight: bold;
 	}
 
 	@media (max-width: 768px) {
