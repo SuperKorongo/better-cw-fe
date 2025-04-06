@@ -2,8 +2,8 @@
 	import Textfield from '@smui/textfield';
 	import HelperText from '@smui/textfield/helper-text';
 
+	import { videoForm } from '$lib/stores/video-form/store';
 	import { getTranslation } from '$lib/translations';
-	import { videoForm } from '../../../../stores/video-form/store';
 
 	let { name }: { name: string } = $props();
 

@@ -1,7 +1,7 @@
 <script lang="ts">
+	import { loading } from '$lib/stores/loading/store';
 	import { cubicOut } from 'svelte/easing';
 	import { Tween } from 'svelte/motion';
-	import { loading } from '../../../stores/loading/store';
 
 	const progress = new Tween(0, { easing: cubicOut });
 	const opacity = new Tween(0, { easing: cubicOut });

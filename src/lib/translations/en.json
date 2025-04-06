@@ -22,6 +22,13 @@
 				"description": "You haven't uploaded any videos yet. Start sharing your content and earn money in BTC for every purchase.",
 				"cta": "Upload your first video"
 			}
+		},
+		"balance": {
+			"label": "Your Balance",
+			"withdraw": "Withdraw",
+			"errors": {
+				"fetchError": "Could not fetch your balance. Please try again later."
+			}
 		}
 	},
 	"cart": {

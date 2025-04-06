@@ -22,6 +22,13 @@
 				"description": "Non hai ancora caricato nessun video. Inizia a condividere i tuoi contenuti e guadagna in BTC per ogni acquisto.",
 				"cta": "Carica il tuo primo video"
 			}
+		},
+		"balance": {
+			"label": "Il Tuo Saldo",
+			"withdraw": "Preleva",
+			"errors": {
+				"fetchError": "Impossibile recuperare il tuo saldo. Per favore riprova più tardi."
+			}
 		}
 	},
 	"cart": {

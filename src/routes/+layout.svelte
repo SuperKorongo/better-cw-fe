@@ -2,9 +2,9 @@
 	import { page } from '$app/state';
 	import LoadingBar from '$lib/components/common/LoadingBar.svelte';
 	import Navbar from '$lib/components/navbar/Navbar.svelte';
+	import { cart } from '$lib/stores/cart/store';
+	import { search } from '$lib/stores/search/store';
 	import { onMount } from 'svelte';
-	import { cart } from '../stores/cart/store';
-	import { search } from '../stores/search/store';
 
 	import { afterNavigate } from '$app/navigation';
 	import { onClose as closeMenu } from '$lib/components/menu/events';
@@ -12,8 +12,8 @@
 	import ToastsContainer from '$lib/components/toasts/ToastsContainer.svelte';
 	import Video from '$lib/components/video/Video.svelte';
 	import { initLoggedInUser } from '$lib/services/users';
-	import { language } from '../stores/language/store';
-	import { menu } from '../stores/menu/store';
+	import { language } from '$lib/stores/language/store';
+	import { menu } from '$lib/stores/menu/store';
 	import './styles.css';
 
 	let { children } = $props();

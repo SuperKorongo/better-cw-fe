@@ -4,7 +4,7 @@
 	import type { Pagination } from '$lib/models/Pagination';
 
 	import { getHomepageVideos } from '$lib/services/videos';
-	import { search } from '../stores/search/store';
+	import { search } from '$lib/stores/search/store';
 	import type { Data } from './+page';
 
 	let {

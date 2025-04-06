@@ -1,11 +1,11 @@
 <script lang="ts">
+	import { cart } from '$lib/stores/cart/store';
+	import { menu } from '$lib/stores/menu/store';
+	import { user } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
 	import { onClickInternalLink } from '$lib/utils/utils';
 	import { onMount } from 'svelte';
 	import { swipe } from 'svelte-gestures';
-	import { cart } from '../../../stores/cart/store';
-	import { menu } from '../../../stores/menu/store';
-	import { user } from '../../../stores/user/store';
 	import GlowingText from '../common/GlowingText.svelte';
 	import CartIcon from '../icons/CartIcon.svelte';
 	import ContactIcon from '../icons/ContactIcon.svelte';

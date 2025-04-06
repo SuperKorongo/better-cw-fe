@@ -2,9 +2,9 @@ import * as toasts from '$lib/components/toasts/toasts';
 import { DEFAULT_PAGINATION } from '$lib/models/Pagination';
 import type { Video } from '$lib/models/Video';
 import { getHomepageVideos } from '$lib/services/videos';
-import { getTranslation } from '../lib/translations';
-import { getOrderBy } from '../stores/order_by/store';
-import { getFromUrl as getSearchFromURL } from '../stores/search/store';
+import { getOrderBy } from '$lib/stores/order_by/store';
+import { getFromUrl as getSearchFromURL } from '$lib/stores/search/store';
+import { getTranslation } from '$lib/translations';
 import type { PageLoadEvent } from './$types';
 
 export const prerender = false;

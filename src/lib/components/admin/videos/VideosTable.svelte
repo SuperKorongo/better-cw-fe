@@ -9,12 +9,12 @@
 	} from '$lib/models/Pagination';
 	import type { AdminListVideo } from '$lib/models/Video';
 	import { patch } from '$lib/services/admin/videos';
+	import { loading } from '$lib/stores/loading/store';
+	import { user } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
 	import { getFormattedDate, getFormattedPrice } from '$lib/utils/utils';
 	import DataTable, { Body, Cell, Head, Row } from '@smui/data-table';
 	import Switch from '@smui/switch';
-	import { loading } from '../../../../stores/loading/store';
-	import { user } from '../../../../stores/user/store';
 	import { allowedRowsPerPage, tableHeader } from './data';
 
 	let {

@@ -5,9 +5,9 @@
 	import VideoForm from '$lib/components/video-form/VideoForm.svelte';
 	import { getEmpty } from '$lib/models/Video';
 	import { getUserVideoByUUID, type AdminVideo } from '$lib/services/admin/videos';
+	import { loading } from '$lib/stores/loading/store';
 	import { getTranslation } from '$lib/translations';
 	import { onMount } from 'svelte';
-	import { loading } from '../../../../stores/loading/store';
 
 	let video: AdminVideo = $state({
 		...getEmpty(),

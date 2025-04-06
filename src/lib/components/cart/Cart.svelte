@@ -3,6 +3,7 @@
 	import Button, { Label } from '@smui/button';
 
 	import type { Video } from '$lib/models/Video';
+	import { cart } from '$lib/stores/cart/store';
 	import { getTranslation } from '$lib/translations';
 	import {
 		getDurationString,
@@ -12,7 +13,6 @@
 		onClickInternalLink
 	} from '$lib/utils/utils';
 	import { onMount } from 'svelte';
-	import { cart } from '../../../stores/cart/store';
 	import Summary from './Summary.svelte';
 
 	let mounted: boolean = false;

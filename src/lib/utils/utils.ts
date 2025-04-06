@@ -2,10 +2,10 @@ import { goto, pushState } from '$app/navigation';
 import { page } from '$app/state';
 import { PUBLIC_THUMBNAIL_IMAGES_URL } from '$env/static/public';
 import type { Video } from '$lib/models/Video';
+import { loading } from '$lib/stores/loading/store';
+import { ORDER_BY_QUERY_PARAM, orderBy } from '$lib/stores/order_by/store';
+import { search, SEARCH_QUERY_PARAM } from '$lib/stores/search/store';
 import { get } from 'svelte/store';
-import { loading } from '../../stores/loading/store';
-import { ORDER_BY_QUERY_PARAM, orderBy } from '../../stores/order_by/store';
-import { search, SEARCH_QUERY_PARAM } from '../../stores/search/store';
 
 export const MOBILE_BREAKPOINT_PX = 900;
 

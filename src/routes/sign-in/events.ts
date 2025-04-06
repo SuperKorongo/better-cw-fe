@@ -1,11 +1,11 @@
 import { goto } from '$app/navigation';
 import * as toasts from '$lib/components/toasts/toasts';
 import { login } from '$lib/services/users';
+import { loading } from '$lib/stores/loading/store';
+import { user as userStore } from '$lib/stores/user/store';
+import { getTranslation } from '$lib/translations';
 import { get } from 'svelte/store';
 import type { ApiError } from '../../errors/apiError';
-import { getTranslation } from '../../lib/translations';
-import { loading } from '../../stores/loading/store';
-import { user as userStore } from '../../stores/user/store';
 
 export const onClickLoginButton = async (getEmail: () => string, getPassword: () => string) => {
 	if (get(loading).value) {

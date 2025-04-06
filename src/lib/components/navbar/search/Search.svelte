@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { search } from '$lib/stores/search/store';
 	import { getTranslation } from '$lib/translations';
 	import {
 		enterKeyCheck,
 		getSearchAndOrderQueryParams,
 		isVideoDisplayRoute
 	} from '$lib/utils/utils';
-	import { search } from '../../../../stores/search/store';
 	import SearchIcon from './SearchIcon.svelte';
 
 	let searchInput: HTMLInputElement;

@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import { defaultLanguage, setLanguage, translations, type Language } from '../../lib/translations';
+import { defaultLanguage, setLanguage, translations, type Language } from '../../translations';
 
 const LOCAL_STORAGE_KEY = 'language';
 

@@ -1,8 +1,8 @@
 import type { Video } from '$lib/models/Video';
 import { deleteThumbnail, replaceThumbnail } from '$lib/services/admin/videos';
 import { uploadThumbnail } from '$lib/services/videos';
+import { videoForm } from '$lib/stores/video-form/store';
 import { get } from 'svelte/store';
-import { videoForm } from '../../../../stores/video-form/store';
 
 const replacedIndexes: number[] = [];
 

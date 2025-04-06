@@ -9,9 +9,9 @@
 	} from '$lib/models/Pagination';
 	import type { AdminListVideo } from '$lib/models/Video';
 	import { getUserVideos } from '$lib/services/admin/videos';
+	import { loading } from '$lib/stores/loading/store';
+	import { user } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
-	import { loading } from '../../../stores/loading/store';
-	import { user } from '../../../stores/user/store';
 
 	let data: PaginatedResponse<AdminListVideo> | null = $state(null);
 	let pagination: PaginationType = $state({

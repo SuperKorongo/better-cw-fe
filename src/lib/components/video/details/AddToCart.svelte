@@ -1,10 +1,10 @@
 <script lang="ts">
 	import GlowingText from '$lib/components/common/GlowingText.svelte';
 	import type { Video } from '$lib/models/Video';
+	import { cart } from '$lib/stores/cart/store';
 	import { getTranslation } from '$lib/translations';
 	import { getFormattedPrice, onClickInternalLink } from '$lib/utils/utils';
 	import Button, { Label } from '@smui/button';
-	import { cart } from '../../../../stores/cart/store';
 
 	let {
 		video

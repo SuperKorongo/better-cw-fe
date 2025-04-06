@@ -1,6 +1,6 @@
+import { menu } from '$lib/stores/menu/store';
 import type { SwipeCustomEvent } from 'svelte-gestures';
 import { get } from 'svelte/store';
-import { menu } from '../../../stores/menu/store';
 
 export const onClose = async () => {
 	const container = get(menu).container;

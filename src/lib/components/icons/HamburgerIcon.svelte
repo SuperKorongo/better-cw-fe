@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { menu } from '../../../stores/menu/store';
+	import { menu } from '$lib/stores/menu/store';
 
 	const onClick = () => {
 		menu.setVisibility(!$menu.isVisible);

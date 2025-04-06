@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { loading } from '$lib/stores/loading/store';
+	import { user as userStore } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
 	import { enterKeyCheck } from '$lib/utils/utils';
-	import { loading } from '../../stores/loading/store';
-	import { user as userStore } from '../../stores/user/store';
 	import { onClickRegisterButton } from './events';
 
 	let username: string = $state('');

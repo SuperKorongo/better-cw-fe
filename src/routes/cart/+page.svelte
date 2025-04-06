@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Cart from '$lib/components/cart/Cart.svelte';
+	import { loading } from '$lib/stores/loading/store';
 	import { onMount } from 'svelte';
-	import { loading } from '../../stores/loading/store';
 
 	onMount(() => loading.set(false));
 </script>

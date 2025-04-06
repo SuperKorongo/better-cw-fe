@@ -4,8 +4,8 @@
 	import HelperText from '@smui/textfield/helper-text';
 
 	import { MEGA_PREFIX } from '$lib/services/videos';
+	import { videoForm } from '$lib/stores/video-form/store';
 	import { getTranslation } from '$lib/translations';
-	import { videoForm } from '../../../../stores/video-form/store';
 
 	const MAX_LENGTH: number = 255;
 

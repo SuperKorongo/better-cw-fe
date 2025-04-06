@@ -1,10 +1,10 @@
 <script lang="ts">
 	import Landscape from '$lib/components/icons/Landscape.svelte';
 	import * as toasts from '$lib/components/toasts/toasts';
+	import { videoForm } from '$lib/stores/video-form/store';
 	import { getTranslation } from '$lib/translations';
 	import { EMPTY_IMAGE_SRC } from '$lib/utils/utils';
 	import { onMount } from 'svelte';
-	import { videoForm } from '../../../../stores/video-form/store';
 	import Generator from './Generator.svelte';
 
 	let { images, amountOfThumbnails }: { images: HTMLImageElement[]; amountOfThumbnails: number } =

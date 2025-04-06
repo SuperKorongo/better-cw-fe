@@ -7,9 +7,9 @@
 	import type { Pagination } from '$lib/models/Pagination';
 	import { type Video as VideoType } from '$lib/models/Video';
 	import { getVideosBy, USERS_ENDPOINT } from '$lib/services/videos';
+	import { search } from '$lib/stores/search/store';
 	import { getTranslation } from '$lib/translations';
 	import { onMount } from 'svelte';
-	import { search } from '../../../stores/search/store';
 	import type { Data } from './+page';
 
 	let {

@@ -2,11 +2,11 @@
 	import GlowingText from '$lib/components/common/GlowingText.svelte';
 	import Upload from '$lib/components/video-form/VideoForm.svelte';
 	import { getEmpty } from '$lib/models/Video';
+	import { loading } from '$lib/stores/loading/store';
+	import { user } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
 	import { onClickInternalLink } from '$lib/utils/utils';
 	import Button from '@smui/button';
-	import { loading } from '../../stores/loading/store';
-	import { user } from '../../stores/user/store';
 
 	$effect(() => {
 		if ($user.ready) {

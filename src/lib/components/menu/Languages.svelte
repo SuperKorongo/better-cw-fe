@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { language as languageStore } from '$lib/stores/language/store';
 	import { type Language } from '$lib/translations';
-	import { language as languageStore } from '../../../stores/language/store';
 	import SpanishFlag from '../icons/flags/SpanishFlag.svelte';
 	import UkFlag from '../icons/flags/UKFlag.svelte';
 

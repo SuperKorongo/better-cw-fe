@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { videoForm } from '$lib/stores/video-form/store';
 	import Textfield from '@smui/textfield';
-	import { videoForm } from '../../../../stores/video-form/store';
 
 	let { price }: { price: string } = $props();
 	let isValid: boolean = $state(true);

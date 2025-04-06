@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type { AdminVideo } from '$lib/services/admin/videos';
+	import { videoForm } from '$lib/stores/video-form/store';
 	import { getTranslation } from '$lib/translations';
 	import { EMPTY_IMAGE_SRC, getImageSrc } from '$lib/utils/utils';
-	import { videoForm } from '../../../stores/video-form/store';
 	import DownloadLink from './download-link/DownloadLink.svelte';
 	import Duration from './duration/Duration.svelte';
 	import Model from './model/Model.svelte';

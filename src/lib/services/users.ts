@@ -1,8 +1,8 @@
 import { PUBLIC_STORE_API_URL } from '$env/static/public';
 import type { User } from '$lib/models/User';
+import { user } from '$lib/stores/user/store';
 import { fetchWrapper } from '$lib/utils/fetch';
 import { apiError } from '../../errors/apiError';
-import { user } from '../../stores/user/store';
 
 export const login = async (email: string, password: string): Promise<User> => {
 	const response = await fetchWrapper(window.fetch)(`${PUBLIC_STORE_API_URL}/api/v1/login`, {

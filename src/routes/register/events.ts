@@ -1,12 +1,12 @@
 import { goto } from '$app/navigation';
 import * as toasts from '$lib/components/toasts/toasts';
 import { register } from '$lib/services/users';
+import { loading } from '$lib/stores/loading/store';
+import { menu } from '$lib/stores/menu/store';
+import { user as userStore } from '$lib/stores/user/store';
+import { getTranslation } from '$lib/translations';
 import { get } from 'svelte/store';
 import type { ApiError } from '../../errors/apiError';
-import { getTranslation } from '../../lib/translations';
-import { loading } from '../../stores/loading/store';
-import { menu } from '../../stores/menu/store';
-import { user as userStore } from '../../stores/user/store';
 
 export const onClickRegisterButton = async (
 	getUsername: () => string,

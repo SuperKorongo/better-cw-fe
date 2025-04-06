@@ -1,9 +1,9 @@
 <script lang="ts">
+	import { videoForm } from '$lib/stores/video-form/store';
 	import { getTranslation } from '$lib/translations';
 	import Textfield from '@smui/textfield';
 	import CharacterCounter from '@smui/textfield/character-counter';
 	import { onMount } from 'svelte';
-	import { videoForm } from '../../../../stores/video-form/store';
 
 	const MAX_TITLE_LENGTH: number = 255;
 	const MAX_DESCRIPTION_LENGTH: number = 500;
