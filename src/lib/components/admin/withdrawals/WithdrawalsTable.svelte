@@ -154,7 +154,6 @@
 
 	th {
 		background-color: #fdfdfd;
-		cursor: pointer;
 	}
 
 	tr:nth-child(even) {

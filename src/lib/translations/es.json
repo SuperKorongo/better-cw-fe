@@ -24,7 +24,7 @@
 			}
 		},
 		"balance": {
-			"label": "Tu Saldo",
+			"label": "Saldo neto",
 			"withdraw": "Retirar",
 			"errors": {
 				"fetchError": "No se pudo obtener tu saldo. Por favor, inténtalo de nuevo más tarde."
@@ -168,7 +168,7 @@
 		"totalRatings": "valoraciones totales"
 	},
 	"withdraw": {
-		"title": "Retirar Fondos",
+		"title": "Retirar fondos",
 		"btcAddress": "Dirección BTC",
 		"amount": "Cantidad",
 		"withdrawButton": "Retirar",

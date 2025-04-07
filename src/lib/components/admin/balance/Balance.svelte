@@ -30,7 +30,7 @@
 	<div class="balance-info">
 		<span class="label">{getTranslation('admin.balance.label')}:</span>
 		<span class="amount">
-			{balance ? balance.balanceInBTC : '-'} BTC
+			~{balance ? balance.balanceInBTC : ''} BTC
 		</span>
 	</div>
 

@@ -113,12 +113,27 @@
 		max-width: 500px;
 		margin: 0 auto 40px;
 		padding: 20px;
-		background-color: #f5f5f5;
+		background: linear-gradient(135deg, #f6f8ff 0%, #f0f4ff 50%, #e8f0ff 100%);
 		border-radius: 8px;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		position: relative;
+		overflow: hidden;
+	}
+
+	.withdraw-form::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 4px;
+		background: linear-gradient(90deg, #3cff3f88, #00c1be);
 	}
 
 	.form-group {
 		margin-bottom: 20px;
+		position: relative;
+		z-index: 1;
 	}
 
 	label {

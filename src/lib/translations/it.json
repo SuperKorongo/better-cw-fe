@@ -24,7 +24,7 @@
 			}
 		},
 		"balance": {
-			"label": "Il Tuo Saldo",
+			"label": "Saldo netto",
 			"withdraw": "Preleva",
 			"errors": {
 				"fetchError": "Impossibile recuperare il tuo saldo. Per favore riprova più tardi."
@@ -168,7 +168,7 @@
 		"totalRatings": "valutazioni totali"
 	},
 	"withdraw": {
-		"title": "Preleva Fondi",
+		"title": "Preleva fondi",
 		"btcAddress": "Indirizzo BTC",
 		"amount": "Importo",
 		"withdrawButton": "Preleva",

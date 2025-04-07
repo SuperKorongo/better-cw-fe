@@ -24,7 +24,7 @@
 			}
 		},
 		"balance": {
-			"label": "Your Balance",
+			"label": "Net balance",
 			"withdraw": "Withdraw",
 			"errors": {
 				"fetchError": "Could not fetch your balance. Please try again later."
@@ -168,7 +168,7 @@
 		"totalRatings": "total ratings"
 	},
 	"withdraw": {
-		"title": "Withdraw Funds",
+		"title": "Withdraw funds",
 		"btcAddress": "BTC Address",
 		"amount": "Amount",
 		"withdrawButton": "Withdraw",
