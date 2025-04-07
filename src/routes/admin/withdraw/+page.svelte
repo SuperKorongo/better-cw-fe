@@ -4,6 +4,7 @@
 	import { createWithdrawal } from '$lib/services/admin/withdrawals';
 	import { loading } from '$lib/stores/loading/store';
 	import { getTranslation } from '$lib/translations';
+	import { getAddressInfo } from 'bitcoin-address-validation';
 	import { onMount } from 'svelte';
 
 	let btcAddress: string = $state('');
@@ -14,14 +15,17 @@
 	});
 
 	function validateBTCAddress(address: string): boolean {
-		// Basic validation - in a real app, you'd want to use a proper BTC address validator
-		return (
-			/^[13][a-km-zA-HJ-NP-Z1-9]{25,34}$/.test(address) ||
-			/^bc1[ac-hj-np-z02-9]{11,71}$/.test(address)
-		);
+		try {
+			const info = getAddressInfo(address);
+			return info.network === 'mainnet';
+		} catch (error) {
+			return false;
+		}
 	}
 
 	async function handleWithdraw() {
+		if ($loading.value) return;
+
 		if (!validateBTCAddress(btcAddress)) {
 			toasts.error(getTranslation('withdraw.errors.invalidAddress'));
 			return;
@@ -72,7 +76,7 @@
 			/>
 		</div>
 
-		<button on:click={handleWithdraw} class="withdraw-button">
+		<button onclick={handleWithdraw} class="withdraw-button">
 			{getTranslation('withdraw.withdrawButton')}
 		</button>
 	</div>
