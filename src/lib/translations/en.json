@@ -199,6 +199,11 @@
 			"failed": "Failed",
 			"processed": "Processed",
 			"pending": "Pending"
+		},
+		"pagination": {
+			"previous": "Previous",
+			"next": "Next",
+			"pageOf": "Page {0} of {1}"
 		}
 	}
 }

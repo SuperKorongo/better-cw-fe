@@ -99,14 +99,18 @@
 
 	<div class="pagination">
 		<button disabled={meta.page === 1} onclick={() => handlePageChange(meta.page - 1)}>
-			Previous
+			{getTranslation('withdraw.pagination.previous')}
 		</button>
-		<span>Page {meta.page} of {meta.totalPages}</span>
+		<span>
+			{getTranslation('withdraw.pagination.pageOf')
+				.replace('{0}', meta.page.toString())
+				.replace('{1}', meta.totalPages.toString())}
+		</span>
 		<button
 			disabled={meta.page === meta.totalPages}
 			onclick={() => handlePageChange(meta.page + 1)}
 		>
-			Next
+			{getTranslation('withdraw.pagination.next')}
 		</button>
 	</div>
 </div>
