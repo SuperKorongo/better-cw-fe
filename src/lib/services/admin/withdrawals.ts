@@ -41,6 +41,7 @@ export const createWithdrawal = async (address: string, amount: number): Promise
 	const response = await fetchWrapper(window.fetch)(`${PUBLIC_STORE_API_URL}/api/v1/withdrawals`, {
 		method: 'PUT',
 		body: JSON.stringify({
+			estimatedArrivalInBlocks: 10,
 			coin: 'BTC',
 			address,
 			amount
