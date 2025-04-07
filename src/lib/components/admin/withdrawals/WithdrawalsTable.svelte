@@ -43,12 +43,12 @@
 
 	function getStatus(withdrawal: Withdrawal): string {
 		if (withdrawal.failureReason) {
-			return 'Failed';
+			return getTranslation('withdraw.status.failed');
 		}
 		if (withdrawal.processedAtTimestamp) {
-			return 'Processed';
+			return getTranslation('withdraw.status.processed');
 		}
-		return 'Pending';
+		return getTranslation('withdraw.status.pending');
 	}
 </script>
 
@@ -56,48 +56,42 @@
 	<table>
 		<thead>
 			<tr>
-				<th>{getTranslation('withdraw.table.id')}</th>
 				<th>{getTranslation('withdraw.table.uuid')}</th>
-				<th>{getTranslation('withdraw.table.coin')}</th>
+				<th>{getTranslation('withdraw.table.createdAt')}</th>
 				<th>{getTranslation('withdraw.table.amount')}</th>
 				<th>{getTranslation('withdraw.table.transaction')}</th>
 				<th>{getTranslation('withdraw.table.fee')}</th>
-				<th>{getTranslation('withdraw.table.createdAt')}</th>
 				<th>{getTranslation('withdraw.table.processedAt')}</th>
 				<th>{getTranslation('withdraw.table.status')}</th>
-				<th>{getTranslation('withdraw.table.failureReason')}</th>
 			</tr>
 		</thead>
 		<tbody>
 			{#each withdrawals as withdrawal}
 				<tr>
-					<td>{withdrawal.id}</td>
 					<td>{withdrawal.uuid}</td>
-					<td>{withdrawal.coin}</td>
+					<td>{getFormattedDate(withdrawal.createdAtTimestamp)}</td>
 					<td>{withdrawal.amount}</td>
 					<td>{withdrawal.blockchainTransaction || '-'}</td>
 					<td>{withdrawal.blockchainFee}</td>
-					<td>{getFormattedDate(withdrawal.createdAtTimestamp)}</td>
 					<td
 						>{withdrawal.processedAtTimestamp
 							? getFormattedDate(withdrawal.processedAtTimestamp)
 							: '-'}</td
 					>
 					<td>{getStatus(withdrawal)}</td>
-					<td>{withdrawal.failureReason || '-'}</td>
 				</tr>
 			{/each}
 		</tbody>
 	</table>
 
 	<div class="pagination">
-		<button disabled={meta.page === 1} on:click={() => handlePageChange(meta.page - 1)}>
+		<button disabled={meta.page === 1} onclick={() => handlePageChange(meta.page - 1)}>
 			Previous
 		</button>
 		<span>Page {meta.page} of {meta.totalPages}</span>
 		<button
 			disabled={meta.page === meta.totalPages}
-			on:click={() => handlePageChange(meta.page + 1)}
+			onclick={() => handlePageChange(meta.page + 1)}
 		>
 			Next
 		</button>

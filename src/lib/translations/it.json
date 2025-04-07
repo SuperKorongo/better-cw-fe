@@ -190,6 +190,11 @@
 			"insufficientFunds": "Fondi insufficienti",
 			"serverError": "Errore durante l'elaborazione del prelievo"
 		},
-		"success": "Richiesta di prelievo inviata con successo"
+		"success": "Richiesta di prelievo inviata con successo",
+		"status": {
+			"failed": "Fallito",
+			"processed": "Elaborato",
+			"pending": "In attesa"
+		}
 	}
 }

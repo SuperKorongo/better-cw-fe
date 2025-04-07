@@ -190,6 +190,11 @@
 			"insufficientFunds": "Fondos insuficientes",
 			"serverError": "Error al procesar la retirada"
 		},
-		"success": "Solicitud de retirada enviada con éxito"
+		"success": "Solicitud de retirada enviada con éxito",
+		"status": {
+			"failed": "Fallido",
+			"processed": "Procesado",
+			"pending": "Pendiente"
+		}
 	}
 }

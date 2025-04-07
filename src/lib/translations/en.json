@@ -190,6 +190,11 @@
 			"insufficientFunds": "Insufficient funds",
 			"serverError": "Error processing withdrawal"
 		},
-		"success": "Withdrawal request submitted successfully"
+		"success": "Withdrawal request submitted successfully",
+		"status": {
+			"failed": "Failed",
+			"processed": "Processed",
+			"pending": "Pending"
+		}
 	}
 }
