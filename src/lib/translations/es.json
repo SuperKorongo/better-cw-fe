@@ -166,5 +166,30 @@
 		"modelName": "Modelo",
 		"duration": "Duración",
 		"totalRatings": "valoraciones totales"
+	},
+	"withdraw": {
+		"title": "Retirar Fondos",
+		"btcAddress": "Dirección BTC",
+		"amount": "Cantidad",
+		"withdrawButton": "Retirar",
+		"table": {
+			"id": "ID",
+			"uuid": "UUID",
+			"coin": "Moneda",
+			"amount": "Cantidad",
+			"transaction": "Transacción",
+			"fee": "Comisión",
+			"createdAt": "Fecha de Creación",
+			"processedAt": "Fecha de Procesamiento",
+			"status": "Estado",
+			"failureReason": "Motivo del Fallo"
+		},
+		"errors": {
+			"invalidAddress": "Dirección BTC inválida",
+			"invalidAmount": "Cantidad inválida",
+			"insufficientFunds": "Fondos insuficientes",
+			"serverError": "Error al procesar la retirada"
+		},
+		"success": "Solicitud de retirada enviada con éxito"
 	}
 }

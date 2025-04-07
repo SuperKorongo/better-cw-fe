@@ -166,5 +166,30 @@
 		"modelName": "Nome del modello",
 		"duration": "Durata",
 		"totalRatings": "valutazioni totali"
+	},
+	"withdraw": {
+		"title": "Preleva Fondi",
+		"btcAddress": "Indirizzo BTC",
+		"amount": "Importo",
+		"withdrawButton": "Preleva",
+		"table": {
+			"id": "ID",
+			"uuid": "UUID",
+			"coin": "Moneta",
+			"amount": "Importo",
+			"transaction": "Transazione",
+			"fee": "Commissione",
+			"createdAt": "Data di Creazione",
+			"processedAt": "Data di Elaborazione",
+			"status": "Stato",
+			"failureReason": "Motivo del Fallimento"
+		},
+		"errors": {
+			"invalidAddress": "Indirizzo BTC non valido",
+			"invalidAmount": "Importo non valido",
+			"insufficientFunds": "Fondi insufficienti",
+			"serverError": "Errore durante l'elaborazione del prelievo"
+		},
+		"success": "Richiesta di prelievo inviata con successo"
 	}
 }

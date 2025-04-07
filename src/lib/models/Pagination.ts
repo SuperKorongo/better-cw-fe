@@ -14,7 +14,8 @@ export type OrderBy = {
 		| 'rating'
 		| 'total_ratings'
 		| 'title'
-		| 'money_generated_in_btc';
+		| 'money_generated_in_btc'
+		| 'created_at';
 	direction: 'asc' | 'desc';
 };
 export type Pagination = {

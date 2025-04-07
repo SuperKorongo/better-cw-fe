@@ -1,6 +1,9 @@
 import type { Pagination } from '$lib/models/Pagination';
 
-export const getQueryParams = ({ limit, offset, orderBy }: Pagination, search: string): string => {
+export const getQueryParams = (
+	{ limit, offset, orderBy }: Pagination,
+	search: string = ''
+): string => {
 	const urlSearchParams: Record<string, string> = {
 		limit: limit.toString(),
 		offset: offset.toString()

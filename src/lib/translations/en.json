@@ -166,5 +166,30 @@
 		"modelName": "Model name",
 		"duration": "Duration",
 		"totalRatings": "total ratings"
+	},
+	"withdraw": {
+		"title": "Withdraw Funds",
+		"btcAddress": "BTC Address",
+		"amount": "Amount",
+		"withdrawButton": "Withdraw",
+		"table": {
+			"id": "ID",
+			"uuid": "UUID",
+			"coin": "Coin",
+			"amount": "Amount",
+			"transaction": "Transaction",
+			"fee": "Fee",
+			"createdAt": "Created At",
+			"processedAt": "Processed At",
+			"status": "Status",
+			"failureReason": "Failure Reason"
+		},
+		"errors": {
+			"invalidAddress": "Invalid BTC address",
+			"invalidAmount": "Invalid amount",
+			"insufficientFunds": "Insufficient funds",
+			"serverError": "Error processing withdrawal"
+		},
+		"success": "Withdrawal request submitted successfully"
 	}
 }
