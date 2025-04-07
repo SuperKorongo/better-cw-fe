@@ -60,7 +60,7 @@
 				type="text"
 				id="btc-address"
 				bind:value={btcAddress}
-				placeholder="Enter your BTC address"
+				placeholder={getTranslation('withdraw.placeholders.btcAddress')}
 			/>
 		</div>
 
@@ -72,7 +72,7 @@
 				bind:value={amount}
 				step="0.00000001"
 				min="0"
-				placeholder="Enter amount to withdraw"
+				placeholder={getTranslation('withdraw.placeholders.amount')}
 			/>
 		</div>
 

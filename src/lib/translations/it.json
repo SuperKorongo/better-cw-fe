@@ -172,6 +172,10 @@
 		"btcAddress": "Indirizzo BTC",
 		"amount": "Importo",
 		"withdrawButton": "Preleva",
+		"placeholders": {
+			"btcAddress": "Inserisci il tuo indirizzo BTC",
+			"amount": "Inserisci l'importo da prelevare"
+		},
 		"table": {
 			"id": "ID",
 			"uuid": "UUID",

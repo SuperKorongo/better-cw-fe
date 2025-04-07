@@ -122,12 +122,12 @@
 		cursor: pointer;
 	}
 
-	th:hover {
-		background-color: #e0e0e0;
+	tr:nth-child(even) {
+		background-color: #fbfdfa;
 	}
 
 	tr:hover {
-		background-color: #f5f5f5;
+		background-color: #f0f0f0;
 	}
 
 	.pagination {

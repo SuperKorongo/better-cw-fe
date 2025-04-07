@@ -172,6 +172,10 @@
 		"btcAddress": "Dirección BTC",
 		"amount": "Cantidad",
 		"withdrawButton": "Retirar",
+		"placeholders": {
+			"btcAddress": "Introduce tu dirección BTC",
+			"amount": "Introduce la cantidad a retirar"
+		},
 		"table": {
 			"id": "ID",
 			"uuid": "UUID",
