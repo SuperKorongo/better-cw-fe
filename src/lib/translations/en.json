@@ -178,7 +178,7 @@
 			"coin": "Coin",
 			"amount": "Amount",
 			"transaction": "Transaction",
-			"fee": "Fee",
+			"fee": "Blockchain fee",
 			"createdAt": "Created At",
 			"processedAt": "Processed At",
 			"status": "Status",

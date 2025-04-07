@@ -2,6 +2,7 @@
 	import type { Pagination } from '$lib/models/Pagination';
 	import type { Withdrawal, WithdrawalsResponse } from '$lib/services/admin/withdrawals';
 	import { getWithdrawals } from '$lib/services/admin/withdrawals';
+	import { getTranslation } from '$lib/translations';
 	import { getFormattedDate } from '$lib/utils/utils';
 	import { onMount } from 'svelte';
 
@@ -55,16 +56,16 @@
 	<table>
 		<thead>
 			<tr>
-				<th>ID</th>
-				<th>UUID</th>
-				<th>Coin</th>
-				<th>Amount</th>
-				<th>Transaction</th>
-				<th>Fee</th>
-				<th>Created At</th>
-				<th>Processed At</th>
-				<th>Status</th>
-				<th>Failure Reason</th>
+				<th>{getTranslation('withdraw.table.id')}</th>
+				<th>{getTranslation('withdraw.table.uuid')}</th>
+				<th>{getTranslation('withdraw.table.coin')}</th>
+				<th>{getTranslation('withdraw.table.amount')}</th>
+				<th>{getTranslation('withdraw.table.transaction')}</th>
+				<th>{getTranslation('withdraw.table.fee')}</th>
+				<th>{getTranslation('withdraw.table.createdAt')}</th>
+				<th>{getTranslation('withdraw.table.processedAt')}</th>
+				<th>{getTranslation('withdraw.table.status')}</th>
+				<th>{getTranslation('withdraw.table.failureReason')}</th>
 			</tr>
 		</thead>
 		<tbody>

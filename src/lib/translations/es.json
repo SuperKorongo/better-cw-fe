@@ -178,7 +178,7 @@
 			"coin": "Moneda",
 			"amount": "Cantidad",
 			"transaction": "Transacción",
-			"fee": "Comisión",
+			"fee": "Tasa de blockchain",
 			"createdAt": "Fecha de Creación",
 			"processedAt": "Fecha de Procesamiento",
 			"status": "Estado",

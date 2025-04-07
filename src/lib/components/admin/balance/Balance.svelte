@@ -3,6 +3,7 @@
 	import * as toasts from '$lib/components/toasts/toasts';
 	import { getBalance } from '$lib/services/admin/balance';
 	import { loading } from '$lib/stores/loading/store';
+	import { user } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
 	import { onClickInternalLink } from '$lib/utils/utils';
 	import Button from '@smui/button';
@@ -15,6 +16,7 @@
 		try {
 			loading.set(true);
 			balance = await getBalance();
+			user.setBalance(balance.balanceInBTC);
 		} catch (e) {
 			error = getTranslation('admin.balance.errors.fetchError');
 			toasts.error(error);

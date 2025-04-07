@@ -3,21 +3,28 @@ import { writable } from 'svelte/store';
 
 type Data = {
 	data: User | null;
+	balance: number | null;
 	ready: boolean;
 };
 
 export const user = (() => {
 	const { subscribe, update } = writable<Data>({
 		data: null,
+		balance: null,
 		ready: false
 	});
 
 	return {
 		subscribe,
 
-		setData: (data: Data['data']) =>
-			update(() => {
-				return { data, ready: true };
+		setData: (user: Data['data']) =>
+			update((d: Data) => {
+				return { ...d, data: user, ready: true };
+			}),
+
+		setBalance: (balance: Data['balance']) =>
+			update((d: Data) => {
+				return { ...d, balance };
 			})
 	};
 })();
