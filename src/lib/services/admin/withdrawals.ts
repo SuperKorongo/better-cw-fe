@@ -37,14 +37,14 @@ export const getWithdrawals = async (pagination: Pagination): Promise<Withdrawal
 	return response.json();
 };
 
-export const createWithdrawal = async (address: string, amount: number): Promise<void> => {
+export const createWithdrawal = async (address: string, netAmount: number): Promise<void> => {
 	const response = await fetchWrapper(window.fetch)(`${PUBLIC_STORE_API_URL}/api/v1/withdrawals`, {
 		method: 'PUT',
 		body: JSON.stringify({
 			estimatedArrivalInBlocks: 10,
 			coin: 'BTC',
 			address,
-			amount
+			netAmount
 		})
 	});
 

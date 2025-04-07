@@ -3,7 +3,8 @@ import { fetchWrapper } from '$lib/utils/fetch';
 import { apiError } from '../../../errors/apiError';
 
 export type Balance = {
-	balanceInBTC: number;
+	netBalanceInBTC: number;
+	grossBalanceInBTC: number;
 };
 
 export const getBalance = async (): Promise<Balance> => {

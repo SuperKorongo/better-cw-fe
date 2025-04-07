@@ -1,9 +1,10 @@
 import type { User } from '$lib/models/User';
+import type { Balance } from '$lib/services/admin/balance';
 import { writable } from 'svelte/store';
 
 type Data = {
 	data: User | null;
-	balance: number | null;
+	balance: Balance | null;
 	ready: boolean;
 };
 

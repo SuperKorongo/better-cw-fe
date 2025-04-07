@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import * as toasts from '$lib/components/toasts/toasts';
-	import { getBalance } from '$lib/services/admin/balance';
+	import { getBalance, type Balance } from '$lib/services/admin/balance';
 	import { loading } from '$lib/stores/loading/store';
 	import { user } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
@@ -9,14 +9,14 @@
 	import Button from '@smui/button';
 	import { onMount } from 'svelte';
 
-	let balance: { balanceInBTC: number } | null = $state(null);
+	let balance: Balance | null = $state(null);
 	let error: string | null = $state(null);
 
 	onMount(async () => {
 		try {
 			loading.set(true);
 			balance = await getBalance();
-			user.setBalance(balance.balanceInBTC);
+			user.setBalance(balance);
 		} catch (e) {
 			error = getTranslation('admin.balance.errors.fetchError');
 			toasts.error(error);
@@ -30,7 +30,7 @@
 	<div class="balance-info">
 		<span class="label">{getTranslation('admin.balance.label')}:</span>
 		<span class="amount">
-			~{balance ? balance.balanceInBTC : ''} BTC
+			~{balance ? balance.netBalanceInBTC : ''} BTC
 		</span>
 	</div>
 

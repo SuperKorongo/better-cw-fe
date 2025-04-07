@@ -32,7 +32,7 @@
 			return;
 		}
 
-		if (amount <= 0 || amount > $user.balance!) {
+		if (amount <= 0 || amount > $user.balance!.netBalanceInBTC) {
 			toasts.error(getTranslation('withdraw.errors.invalidAmount'));
 			return;
 		}
@@ -52,51 +52,53 @@
 </script>
 
 <main>
-	<h1>{getTranslation('withdraw.title')}</h1>
+	{#if $user.balance !== null}
+		<h1>{getTranslation('withdraw.title')}</h1>
 
-	<div class="withdraw-form">
-		<div class="form-group">
-			<label for="btc-address">{getTranslation('withdraw.btcAddress')}</label>
-			<input
-				type="text"
-				id="btc-address"
-				bind:value={btcAddress}
-				placeholder={getTranslation('withdraw.placeholders.btcAddress')}
-			/>
-		</div>
-
-		<div class="form-group">
-			<label for="amount">{getTranslation('withdraw.amount')}</label>
-			<div class="amount-input-container">
+		<div class="withdraw-form">
+			<div class="form-group">
+				<label for="btc-address">{getTranslation('withdraw.btcAddress')}</label>
 				<input
-					type="number"
-					id="amount"
-					bind:value={amount}
-					step="0.00000001"
-					min="0"
-					max={$user.balance || 0}
-					placeholder={getTranslation('withdraw.placeholders.amount')}
+					type="text"
+					id="btc-address"
+					bind:value={btcAddress}
+					placeholder={getTranslation('withdraw.placeholders.btcAddress')}
 				/>
-				<button
-					type="button"
-					class="max-button"
-					onclick={() => (amount = $user.balance || 0)}
-					title={getTranslation('withdraw.maxAmount')}
-				>
-					Max
-				</button>
 			</div>
-			{#if amount > ($user.balance || 0)}
-				<p class="error-message">{getTranslation('withdraw.errors.insufficientFunds')}</p>
-			{/if}
+
+			<div class="form-group">
+				<label for="amount">{getTranslation('withdraw.amount')}</label>
+				<div class="amount-input-container">
+					<input
+						type="number"
+						id="amount"
+						bind:value={amount}
+						step="0.00000001"
+						min="0"
+						max={$user.balance!.netBalanceInBTC || 0}
+						placeholder={getTranslation('withdraw.placeholders.amount')}
+					/>
+					<button
+						type="button"
+						class="max-button"
+						onclick={() => (amount = $user.balance!.netBalanceInBTC || 0)}
+						title={getTranslation('withdraw.maxAmount')}
+					>
+						Max
+					</button>
+				</div>
+				{#if amount > ($user.balance!.netBalanceInBTC || 0)}
+					<p class="error-message">{getTranslation('withdraw.errors.insufficientFunds')}</p>
+				{/if}
+			</div>
+
+			<button onclick={handleWithdraw} class="withdraw-button">
+				{getTranslation('withdraw.withdrawButton')}
+			</button>
 		</div>
 
-		<button onclick={handleWithdraw} class="withdraw-button">
-			{getTranslation('withdraw.withdrawButton')}
-		</button>
-	</div>
-
-	<WithdrawalsTable />
+		<WithdrawalsTable />
+	{/if}
 </main>
 
 <style>
