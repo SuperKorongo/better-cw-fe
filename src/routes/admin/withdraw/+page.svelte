@@ -80,7 +80,7 @@
 				<button
 					type="button"
 					class="max-button"
-					on:click={() => (amount = $user.balance || 0)}
+					onclick={() => (amount = $user.balance || 0)}
 					title={getTranslation('withdraw.maxAmount')}
 				>
 					Max
@@ -91,7 +91,7 @@
 			{/if}
 		</div>
 
-		<button on:click={handleWithdraw} class="withdraw-button">
+		<button onclick={handleWithdraw} class="withdraw-button">
 			{getTranslation('withdraw.withdrawButton')}
 		</button>
 	</div>
@@ -128,7 +128,7 @@
 	}
 
 	input {
-		width: 100%;
+		width: calc(100% - 20px);
 		padding: 10px;
 		border: 1px solid #ddd;
 		border-radius: 4px;
