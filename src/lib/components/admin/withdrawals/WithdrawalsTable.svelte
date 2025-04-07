@@ -53,72 +53,90 @@
 </script>
 
 <div class="table-container">
-	<table>
-		<thead>
-			<tr>
-				<th>{getTranslation('withdraw.table.uuid')}</th>
-				<th>{getTranslation('withdraw.table.createdAt')}</th>
-				<th>{getTranslation('withdraw.table.amount')}</th>
-				<th>{getTranslation('withdraw.table.transaction')}</th>
-				<th>{getTranslation('withdraw.table.fee')}</th>
-				<th>{getTranslation('withdraw.table.processedAt')}</th>
-				<th>{getTranslation('withdraw.table.status')}</th>
-			</tr>
-		</thead>
-		<tbody>
-			{#each withdrawals as withdrawal}
+	<h2 class="table-title">{getTranslation('withdraw.table.title')}</h2>
+	{#if withdrawals.length === 0}
+		<p class="empty-message">{getTranslation('withdraw.table.empty')}</p>
+	{:else}
+		<table>
+			<thead>
 				<tr>
-					<td>{withdrawal.uuid}</td>
-					<td>{getFormattedDate(withdrawal.createdAtTimestamp)}</td>
-					<td>{withdrawal.amount}</td>
-					<td>
-						{#if withdrawal.blockchainTransaction}
-							<a
-								href="https://mempool.space/tx/{withdrawal.blockchainTransaction}"
-								target="_blank"
-								rel="noopener noreferrer"
-								class="transaction-link"
-							>
-								{withdrawal.blockchainTransaction}
-							</a>
-						{:else}
-							-
-						{/if}
-					</td>
-					<td>{withdrawal.blockchainFee}</td>
-					<td
-						>{withdrawal.processedAtTimestamp
-							? getFormattedDate(withdrawal.processedAtTimestamp)
-							: '-'}</td
-					>
-					<td>{getStatus(withdrawal)}</td>
+					<th>{getTranslation('withdraw.table.uuid')}</th>
+					<th>{getTranslation('withdraw.table.createdAt')}</th>
+					<th>{getTranslation('withdraw.table.amount')}</th>
+					<th>{getTranslation('withdraw.table.transaction')}</th>
+					<th>{getTranslation('withdraw.table.fee')}</th>
+					<th>{getTranslation('withdraw.table.processedAt')}</th>
+					<th>{getTranslation('withdraw.table.status')}</th>
 				</tr>
-			{/each}
-		</tbody>
-	</table>
+			</thead>
+			<tbody>
+				{#each withdrawals as withdrawal}
+					<tr>
+						<td>{withdrawal.uuid}</td>
+						<td>{getFormattedDate(withdrawal.createdAtTimestamp)}</td>
+						<td>{withdrawal.amount}</td>
+						<td>
+							{#if withdrawal.blockchainTransaction}
+								<a
+									href="https://mempool.space/tx/{withdrawal.blockchainTransaction}"
+									target="_blank"
+									rel="noopener noreferrer"
+									class="transaction-link"
+								>
+									{withdrawal.blockchainTransaction}
+								</a>
+							{:else}
+								-
+							{/if}
+						</td>
+						<td>{withdrawal.blockchainFee}</td>
+						<td
+							>{withdrawal.processedAtTimestamp
+								? getFormattedDate(withdrawal.processedAtTimestamp)
+								: '-'}</td
+						>
+						<td class="status {getStatus(withdrawal).toLowerCase()}">{getStatus(withdrawal)}</td>
+					</tr>
+				{/each}
+			</tbody>
+		</table>
 
-	<div class="pagination">
-		<button disabled={meta.page === 1} onclick={() => handlePageChange(meta.page - 1)}>
-			{getTranslation('withdraw.pagination.previous')}
-		</button>
-		<span>
-			{getTranslation('withdraw.pagination.pageOf')
-				.replace('{0}', meta.page.toString())
-				.replace('{1}', meta.totalPages.toString())}
-		</span>
-		<button
-			disabled={meta.page === meta.totalPages}
-			onclick={() => handlePageChange(meta.page + 1)}
-		>
-			{getTranslation('withdraw.pagination.next')}
-		</button>
-	</div>
+		<div class="pagination">
+			<button disabled={meta.page === 1} onclick={() => handlePageChange(meta.page - 1)}>
+				{getTranslation('withdraw.pagination.previous')}
+			</button>
+			<span>
+				{getTranslation('withdraw.pagination.pageOf')
+					.replace('{0}', meta.page.toString())
+					.replace('{1}', meta.totalPages.toString())}
+			</span>
+			<button
+				disabled={meta.page === meta.totalPages}
+				onclick={() => handlePageChange(meta.page + 1)}
+			>
+				{getTranslation('withdraw.pagination.next')}
+			</button>
+		</div>
+	{/if}
 </div>
 
 <style>
 	.table-container {
 		width: 100%;
 		overflow-x: auto;
+	}
+
+	.table-title {
+		margin-bottom: 20px;
+		font-size: 1.5rem;
+		color: #333;
+	}
+
+	.empty-message {
+		text-align: center;
+		padding: 40px;
+		color: #666;
+		font-size: 1.1rem;
 	}
 
 	table {
@@ -135,7 +153,7 @@
 	}
 
 	th {
-		background-color: #f5f5f5;
+		background-color: #fdfdfd;
 		cursor: pointer;
 	}
 

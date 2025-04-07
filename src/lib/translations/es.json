@@ -186,7 +186,9 @@
 			"createdAt": "Fecha de Creación",
 			"processedAt": "Fecha de Procesamiento",
 			"status": "Estado",
-			"failureReason": "Motivo del Fallo"
+			"failureReason": "Motivo del Fallo",
+			"title": "Historial de Retiradas",
+			"empty": "No se encontraron retiradas"
 		},
 		"errors": {
 			"invalidAddress": "Dirección BTC inválida",

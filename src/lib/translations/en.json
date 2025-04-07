@@ -186,7 +186,9 @@
 			"createdAt": "Created At",
 			"processedAt": "Processed At",
 			"status": "Status",
-			"failureReason": "Failure Reason"
+			"failureReason": "Failure Reason",
+			"title": "Withdrawals History",
+			"empty": "No withdrawals found"
 		},
 		"errors": {
 			"invalidAddress": "Invalid BTC address",

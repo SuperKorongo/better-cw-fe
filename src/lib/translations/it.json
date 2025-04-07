@@ -186,7 +186,9 @@
 			"createdAt": "Data di Creazione",
 			"processedAt": "Data di Elaborazione",
 			"status": "Stato",
-			"failureReason": "Motivo del Fallimento"
+			"failureReason": "Motivo del Fallimento",
+			"title": "Cronologia Prelievi",
+			"empty": "Nessun prelievo trovato"
 		},
 		"errors": {
 			"invalidAddress": "Indirizzo BTC non valido",
