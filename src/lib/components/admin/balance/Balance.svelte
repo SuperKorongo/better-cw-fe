@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from '$app/state';
 	import * as toasts from '$lib/components/toasts/toasts';
 	import { getBalance } from '$lib/services/admin/balance';
 	import { loading } from '$lib/stores/loading/store';
@@ -10,6 +11,7 @@
 	let balance: { balanceInBTC: number } | null = $state(null);
 	let error: string | null = $state(null);
 
+	console.log(page.route.id);
 	onMount(async () => {
 		try {
 			loading.set(true);
@@ -23,17 +25,19 @@
 	});
 </script>
 
-<div class="balance-container">
-	<div class="balance-info">
-		<span class="label">{getTranslation('admin.balance.label')}:</span>
-		<span class="amount">
-			{balance ? balance.balanceInBTC : '-'} BTC
-		</span>
+{#if page.route.id !== '/admin/withdraw'}
+	<div class="balance-container">
+		<div class="balance-info">
+			<span class="label">{getTranslation('admin.balance.label')}:</span>
+			<span class="amount">
+				{balance ? balance.balanceInBTC : '-'} BTC
+			</span>
+		</div>
+		<a onclick={onClickInternalLink} data-sveltekit-preload-data="hover" href="/admin/withdraw">
+			<Button variant="raised" color="primary">{getTranslation('admin.balance.withdraw')}</Button>
+		</a>
 	</div>
-	<a onclick={onClickInternalLink} data-sveltekit-preload-data="hover" href="/admin/withdraw">
-		<Button variant="raised" color="primary">{getTranslation('admin.balance.withdraw')}</Button>
-	</a>
-</div>
+{/if}
 
 <style>
 	.balance-container {
