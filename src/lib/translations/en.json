@@ -206,6 +206,7 @@
 			"previous": "Previous",
 			"next": "Next",
 			"pageOf": "Page {0} of {1}"
-		}
+		},
+		"maxAmount": "Set amount to your full balance"
 	}
 }

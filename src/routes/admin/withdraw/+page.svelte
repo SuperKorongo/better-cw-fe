@@ -1,10 +1,12 @@
 <script lang="ts">
+	import { getAddressInfo } from 'bitcoin-address-validation';
+
 	import WithdrawalsTable from '$lib/components/admin/withdrawals/WithdrawalsTable.svelte';
 	import * as toasts from '$lib/components/toasts/toasts';
 	import { createWithdrawal } from '$lib/services/admin/withdrawals';
 	import { loading } from '$lib/stores/loading/store';
+	import { user } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
-	import { getAddressInfo } from 'bitcoin-address-validation';
 	import { onMount } from 'svelte';
 
 	let btcAddress: string = $state('');
@@ -25,13 +27,12 @@
 
 	async function handleWithdraw() {
 		if ($loading.value) return;
-
 		if (!validateBTCAddress(btcAddress)) {
 			toasts.error(getTranslation('withdraw.errors.invalidAddress'));
 			return;
 		}
 
-		if (amount <= 0) {
+		if (amount <= 0 || amount > $user.balance!) {
 			toasts.error(getTranslation('withdraw.errors.invalidAmount'));
 			return;
 		}
@@ -66,17 +67,31 @@
 
 		<div class="form-group">
 			<label for="amount">{getTranslation('withdraw.amount')}</label>
-			<input
-				type="number"
-				id="amount"
-				bind:value={amount}
-				step="0.00000001"
-				min="0"
-				placeholder={getTranslation('withdraw.placeholders.amount')}
-			/>
+			<div class="amount-input-container">
+				<input
+					type="number"
+					id="amount"
+					bind:value={amount}
+					step="0.00000001"
+					min="0"
+					max={$user.balance || 0}
+					placeholder={getTranslation('withdraw.placeholders.amount')}
+				/>
+				<button
+					type="button"
+					class="max-button"
+					on:click={() => (amount = $user.balance || 0)}
+					title={getTranslation('withdraw.maxAmount')}
+				>
+					Max
+				</button>
+			</div>
+			{#if amount > ($user.balance || 0)}
+				<p class="error-message">{getTranslation('withdraw.errors.insufficientFunds')}</p>
+			{/if}
 		</div>
 
-		<button onclick={handleWithdraw} class="withdraw-button">
+		<button on:click={handleWithdraw} class="withdraw-button">
 			{getTranslation('withdraw.withdrawButton')}
 		</button>
 	</div>
@@ -120,6 +135,33 @@
 		font-size: 16px;
 	}
 
+	.amount-input-container {
+		position: relative;
+		display: flex;
+		align-items: center;
+	}
+
+	.max-button {
+		position: absolute;
+		right: 8px;
+		padding: 4px 8px;
+		background: linear-gradient(45deg, #40c4ff, #a23cff);
+		color: white;
+		border: none;
+		border-radius: 4px;
+		font-size: 12px;
+		cursor: pointer;
+		transition: opacity 0.3s;
+	}
+
+	.max-button:hover {
+		opacity: 0.9;
+	}
+
+	input[type='number'] {
+		padding-right: 50px; /* Make room for the Max button */
+	}
+
 	.withdraw-button {
 		width: 100%;
 		padding: 12px;
@@ -136,5 +178,15 @@
 
 	.withdraw-button:hover {
 		opacity: 0.9;
+	}
+
+	.error-message {
+		color: #c62828;
+		font-size: 14px;
+		margin-top: 4px;
+	}
+
+	input:invalid {
+		border-color: #c62828;
 	}
 </style>

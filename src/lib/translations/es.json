@@ -206,6 +206,7 @@
 			"previous": "Anterior",
 			"next": "Siguiente",
 			"pageOf": "Página {0} de {1}"
-		}
+		},
+		"maxAmount": "Establecer el importe a tu saldo completo"
 	}
 }
