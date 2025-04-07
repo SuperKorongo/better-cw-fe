@@ -71,7 +71,20 @@
 					<td>{withdrawal.uuid}</td>
 					<td>{getFormattedDate(withdrawal.createdAtTimestamp)}</td>
 					<td>{withdrawal.amount}</td>
-					<td>{withdrawal.blockchainTransaction || '-'}</td>
+					<td>
+						{#if withdrawal.blockchainTransaction}
+							<a
+								href="https://mempool.space/tx/{withdrawal.blockchainTransaction}"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="transaction-link"
+							>
+								{withdrawal.blockchainTransaction}
+							</a>
+						{:else}
+							-
+						{/if}
+					</td>
 					<td>{withdrawal.blockchainFee}</td>
 					<td
 						>{withdrawal.processedAtTimestamp
@@ -128,6 +141,16 @@
 
 	tr:hover {
 		background-color: #f0f0f0;
+	}
+
+	.transaction-link {
+		color: #40c4ff;
+		text-decoration: none;
+		word-break: break-all;
+	}
+
+	.transaction-link:hover {
+		text-decoration: underline;
 	}
 
 	.pagination {
