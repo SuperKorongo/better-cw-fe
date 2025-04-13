@@ -119,8 +119,11 @@ export const uploadThumbnail = async (videoUUID: string, blob: Blob | null): Pro
 	const formData = new FormData();
 	formData.append('thumbnail', blob);
 
-	await fetchWrapper(window.fetch)(`${PUBLIC_STORE_API_URL}/api/v1/videos/${videoUUID}/thumbnail`, {
-		method: 'PUT',
-		body: formData
-	});
+	await fetchWrapper(window.fetch)(
+		`${PUBLIC_STORE_API_URL}/api/v1/thumbnails/${videoUUID}/thumbnail`,
+		{
+			method: 'PUT',
+			body: formData
+		}
+	);
 };

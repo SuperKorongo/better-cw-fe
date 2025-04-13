@@ -77,7 +77,7 @@ export const replaceThumbnail = async (
 	formData.append('thumbnail', blob);
 
 	await fetchWrapper(window.fetch)(
-		`${PUBLIC_STORE_API_URL}/api/v1/videos/${videoUUID}/thumbnail/${thumbnailPosition}`,
+		`${PUBLIC_STORE_API_URL}/api/v1/thumbnails/${videoUUID}/thumbnail/${thumbnailPosition}`,
 		{
 			method: 'PATCH',
 			body: formData
@@ -90,7 +90,7 @@ export const deleteThumbnail = async (
 	thumbnailPosition: number
 ): Promise<void> => {
 	await fetchWrapper(window.fetch)(
-		`${PUBLIC_STORE_API_URL}/api/v1/videos/${videoUUID}/thumbnail/${thumbnailPosition}`,
+		`${PUBLIC_STORE_API_URL}/api/v1/thumbnails/${videoUUID}/thumbnail/${thumbnailPosition}`,
 		{
 			method: 'DELETE'
 		}
