@@ -83,7 +83,7 @@ export const upload = async (data: VideoData): Promise<string> => {
 	}
 	delete uploadVideoRequest['blobs'];
 
-	const response = await fetchWrapper(window.fetch)(`${PUBLIC_STORE_API_URL}/api/v1/videos`, {
+	const response = await fetchWrapper(window.fetch)(`${PUBLIC_STORE_API_URL}/api/v1/videos/`, {
 		method: 'PUT',
 		body: JSON.stringify({ videos: [uploadVideoRequest] })
 	});
