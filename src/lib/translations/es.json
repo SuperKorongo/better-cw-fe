@@ -127,7 +127,7 @@
 			"emptyTitle": "Por favor especifica el título del vídeo",
 			"emptyDownloadLink": "Por favor añade el link de descarga de mega.nz",
 			"missingThumbnail": "Por favor sube al menos una miniatura",
-			"emptyPrice": "Por favor especifica el precio",
+			"emptyPrice": "Por favor especifica el precio (mínimo 99 céntimos)",
 			"emptyDuration": "Por favor especifica la duración del vídeo",
 			"genericServerError": "Error del servidor - por favor inténtalo de nuevo más tarde",
 			"linkAlreadyUsed": "El link de descarga ya está asignado a otro vídeo",

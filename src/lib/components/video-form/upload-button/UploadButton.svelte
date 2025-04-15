@@ -42,7 +42,7 @@
 			return;
 		}
 
-		if ($videoForm.priceInCentsOfDollar <= 0) {
+		if ($videoForm.priceInCentsOfDollar <= 99) {
 			toasts.error(getTranslation('upload.errors.emptyPrice'));
 			return;
 		}
