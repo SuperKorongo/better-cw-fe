@@ -50,7 +50,7 @@ export const logout = async (): Promise<void> => {
 
 export const initLoggedInUser = async (): Promise<void> => {
 	try {
-		const response = await fetchWrapper(window.fetch)(`${PUBLIC_STORE_API_URL}/api/v1/me`);
+		const response = await fetchWrapper(window.fetch)(`${PUBLIC_STORE_API_URL}/api/v1/me/`);
 
 		if (!response.ok) {
 			user.setData(null);
