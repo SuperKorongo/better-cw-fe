@@ -1,9 +1,9 @@
 <script lang="ts">
 </script>
 
-<svg xmlns="http://www.w3.org/2000/svg" width="38" height="27">
-	<rect width="38" height="27" fill="#c60b1e" />
-	<rect width="38" height="12" fill="#ffc400" y="7" />
+<svg width="30" height="20" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+	<rect width="60" height="40" fill="#AA151B" />
+	<rect y="13.33" width="60" height="13.33" fill="#F1BF00" />
 </svg>
 
 <style>
