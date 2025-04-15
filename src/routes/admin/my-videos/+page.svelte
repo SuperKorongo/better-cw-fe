@@ -36,6 +36,7 @@
 
 <section>
 	{#if $user.data !== null && data !== null && data.data.length > 0}
+		<span class="table-info">{getTranslation('admin.myVideos.info')}</span>
 		<VideosTable
 			{data}
 			{pagination}
@@ -52,5 +53,12 @@
 <style>
 	section {
 		padding: 30px 50px;
+	}
+	.table-info {
+		color: #888;
+		font-size: 13px;
+		display: block;
+		margin-bottom: 10px;
+		text-align: right;
 	}
 </style>

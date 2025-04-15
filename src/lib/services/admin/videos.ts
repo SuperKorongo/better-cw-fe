@@ -1,7 +1,9 @@
 import { PUBLIC_STORE_API_URL } from '$env/static/public';
 import type { PaginatedResponse, Pagination } from '$lib/models/Pagination';
+import { cache } from '$lib/stores/cache/store';
 import type { Data as VideoData } from '$lib/stores/video-form/store';
 import { fetchWrapper } from '$lib/utils/fetch';
+import { get } from 'svelte/store';
 import { apiError } from '../../../errors/apiError';
 import type { PageLoadEvent } from '../../../routes/$types';
 import type { AdminListVideo, Video } from '../../models/Video';
@@ -14,7 +16,7 @@ export const getUserVideos = async (
 	search: string
 ): Promise<PaginatedResponse<AdminListVideo>> => {
 	const response = await fetchWrapper(fetch)(
-		`${PUBLIC_STORE_API_URL}/api/v1/videos/mine/?${getQueryParams(pagination, search)}`
+		`${PUBLIC_STORE_API_URL}/api/v1/videos/mine/?${getQueryParams(pagination, search, get(cache).myVideos)}`
 	);
 
 	if (!response.ok) {
@@ -33,7 +35,10 @@ export const getUserVideoByUUID = async (
 	fetch: PageLoadEvent['fetch'],
 	uuid: string
 ): Promise<AdminVideo> => {
-	const response = await fetchWrapper(fetch)(`${PUBLIC_STORE_API_URL}/api/v1/videos/mine/${uuid}`);
+	const cacheParam = get(cache).myVideos;
+	const response = await fetchWrapper(fetch)(
+		`${PUBLIC_STORE_API_URL}/api/v1/videos/mine/${uuid}${cacheParam ? `?cache=${cacheParam}` : ``}`
+	);
 
 	if (!response.ok) {
 		throw apiError(response);

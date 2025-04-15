@@ -9,6 +9,7 @@
 			"withdraw": "Withdraw"
 		},
 		"myVideos": {
+			"info": "Money generated per video can take up to 1 day to update",
 			"title": "Title",
 			"price": "Price",
 			"uploadedAt": "Uploaded at",

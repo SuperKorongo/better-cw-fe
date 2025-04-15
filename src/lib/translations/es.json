@@ -9,6 +9,7 @@
 			"withdraw": "Retirar"
 		},
 		"myVideos": {
+			"info": "El dinero generado por vídeo puede tardar hasta 1 día en actualizarse",
 			"title": "Título",
 			"price": "Precio",
 			"uploadedAt": "Subido el",

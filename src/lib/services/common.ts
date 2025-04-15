@@ -2,7 +2,8 @@ import type { Pagination } from '$lib/models/Pagination';
 
 export const getQueryParams = (
 	{ limit, offset, orderBy }: Pagination,
-	search: string = ''
+	search: string = '',
+	cacheBypass: number | null = null
 ): string => {
 	const urlSearchParams: Record<string, string> = {
 		limit: limit.toString(),
@@ -13,6 +14,9 @@ export const getQueryParams = (
 	}
 	if (search) {
 		urlSearchParams['text'] = search;
+	}
+	if (cacheBypass) {
+		urlSearchParams['cache'] = cacheBypass.toString();
 	}
 
 	return new URLSearchParams(urlSearchParams).toString();
