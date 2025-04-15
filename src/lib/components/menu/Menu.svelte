@@ -4,7 +4,7 @@
 	import { user } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
 	import { onClickInternalLink } from '$lib/utils/utils';
-	import { mdiAccount, mdiCart, mdiCash, mdiEmail, mdiHome, mdiInformation, mdiTag } from '@mdi/js';
+	import { mdiAccount, mdiCart, mdiCash, mdiEmail, mdiHome, mdiInformation } from '@mdi/js';
 	import { onMount } from 'svelte';
 	import { swipe } from 'svelte-gestures';
 	import GlowingText from '../common/GlowingText.svelte';
@@ -69,22 +69,6 @@
 					{/key}
 				</div>
 			</div>
-			{#if $user.data !== null}
-				<div>
-					<div>
-						<svg viewBox="0 0 24 24" width="24" height="24">
-							<path d={mdiTag} fill="currentColor" />
-						</svg>
-					</div>
-					<a
-						onclick={onClickInternalLink}
-						data-sveltekit-preload-data="tap"
-						href="/admin/purchases"
-					>
-						{getTranslation('menu.purchases')}
-					</a>
-				</div>
-			{/if}
 			<div>
 				<div>
 					<svg viewBox="0 0 24 24" width="24" height="24">
@@ -153,6 +137,7 @@
 		align-items: center;
 		padding-bottom: 20px;
 		margin-bottom: 20px;
+		margin-top: 100px;
 		border-bottom: 2px solid rgba(255, 255, 255, 0.2);
 	}
 
