@@ -46,7 +46,8 @@
 	"common": {
 		"errors": {
 			"generic": "Ha ocurrido un error",
-			"tooManyRequests": "¡Vas muy rápido! Por favor espera un poco y vuelve a intentarlo"
+			"tooManyRequests": "¡Vas muy rápido! Por favor espera un poco y vuelve a intentarlo",
+			"sessionExpired": "Tu sesión ha expirado, por favor inicia sesión de nuevo"
 		},
 		"noMoreVideos": "No hay más vídeos que mostrar",
 		"orderBy": {

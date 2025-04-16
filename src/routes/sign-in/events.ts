@@ -36,13 +36,18 @@ export const onClickLoginButton = async (getEmail: () => string, getPassword: ()
 	} catch (e: unknown) {
 		const apiError = e as ApiError;
 
-		switch (apiError.getCode()) {
-			case 400:
-			case 401:
-				toasts.error(getTranslation('signInForm.errors.invalidCredentials'));
-				break;
-			default:
-				toasts.error(getTranslation('signInForm.errors.serverError'));
+		if (!e || !(e as ApiError).getCode) {
+			toasts.error(getTranslation('signInForm.errors.serverError'));
+			return;
+		} else {
+			switch (apiError.getCode()) {
+				case 400:
+				case 401:
+					toasts.error(getTranslation('signInForm.errors.invalidCredentials'));
+					break;
+				default:
+					toasts.error(getTranslation('signInForm.errors.serverError'));
+			}
 		}
 	} finally {
 		loading.set(false);

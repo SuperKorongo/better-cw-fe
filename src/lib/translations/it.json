@@ -45,7 +45,8 @@
 	"common": {
 		"errors": {
 			"generic": "Si è verificato un errore",
-			"tooManyRequests": "Stai andando troppo veloce! Per favore rallenta e riprova più tardi"
+			"tooManyRequests": "Stai andando troppo veloce! Per favore rallenta e riprova più tardi",
+			"sessionExpired": "La sessione è scaduta. Effettua nuovamente l'accesso."
 		},
 		"noMoreVideos": "Non ci sono più video da mostrare",
 		"orderBy": {

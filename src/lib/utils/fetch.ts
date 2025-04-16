@@ -5,6 +5,7 @@ import { getTranslation } from '$lib/translations';
 
 export const fetchWrapper = (fetchFunc: typeof window.fetch) => {
 	const handle401 = (response: Response): Response => {
+		toasts.warning(getTranslation('common.errors.sessionExpired'));
 		user.setData(null);
 		goto('/logout');
 		return response;

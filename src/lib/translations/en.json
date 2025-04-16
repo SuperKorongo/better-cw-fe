@@ -46,7 +46,8 @@
 	"common": {
 		"errors": {
 			"generic": "An error occurred",
-			"tooManyRequests": "You are too fast! Please slow down and try again later"
+			"tooManyRequests": "You are too fast! Please slow down and try again later",
+			"sessionExpired": "Your session has expired, please sign in again"
 		},
 		"noMoreVideos": "There are no more videos to show",
 		"orderBy": {
