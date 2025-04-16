@@ -53,6 +53,7 @@ export const events = (
 				});
 				onNewVideosLoaded({ videos: newVideos, error: null });
 			} catch (e: unknown) {
+				toasts.error(getTranslation('common.errors.generic'));
 				onNewVideosLoaded({ videos: [], error: e as Error });
 			} finally {
 				loading.set(false);
@@ -76,6 +77,7 @@ export const events = (
 			});
 			onNewVideosLoaded({ videos, error: null });
 		} catch (e: unknown) {
+			toasts.error(getTranslation('common.errors.generic'));
 			onNewVideosLoaded({ videos: [], error: e as Error });
 		} finally {
 			loading.set(false);
