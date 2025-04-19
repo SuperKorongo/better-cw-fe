@@ -227,6 +227,11 @@
 	"purchases": {
 		"title": "My Purchases",
 		"empty": "You haven't made any purchases yet",
+		"emptyDescription": "Discover our exclusive collection of high-quality videos. Start your journey with secure payments and instant access to premium content.",
+		"securePayment": "Secure Bitcoin Payments",
+		"instantAccess": "Instant Access",
+		"hdQuality": "HD Quality Content",
+		"browseCTA": "Explore Videos",
 		"table": {
 			"uuid": "UUID",
 			"createdAt": "Date",

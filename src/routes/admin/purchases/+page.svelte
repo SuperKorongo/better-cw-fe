@@ -11,6 +11,8 @@
     import Pagination from '$lib/components/table/Pagination.svelte';
     import { getFormattedDate, getFormattedPrice } from '$lib/utils/utils';
     import { defaultCurrency } from '$lib/stores/currency/store';
+    import Button from '@smui/button';
+    import { goto } from '$app/navigation';
 
     let data: PaginatedResponse<Payment> | null = $state(null);
     let pagination: PaginationType = $state({
@@ -64,10 +66,6 @@
                 return getTranslation('purchases.status.confirmed');
             case 'EXPIRED':
                 return getTranslation('purchases.status.expired');
-            case 'PAID':
-                return getTranslation('purchases.status.paid');
-            case 'FAILED':
-                return getTranslation('purchases.status.failed');
             default:
                 return status;
         }
@@ -75,9 +73,8 @@
 </script>
 
 <section>
-    <h1>{getTranslation('purchases.title')}</h1>
-    
     {#if data !== null && data.data.length > 0}
+        <h1>{getTranslation('purchases.title')}</h1>
         <div>
             <DataTable
                 sortable
@@ -112,7 +109,7 @@
                             <Cell>{payment.priceInBTC} BTC</Cell>
                             <Cell>
                                 <span 
-                                    class="status-cell" 
+                                    class="status-cell"
                                     class:awaiting={payment.status === 'AWAITING_BLOCKCHAIN_TRANSACTION' || 
                                                   payment.status === 'AWAITING_BLOCKCHAIN_CONFIRMATION' || 
                                                   payment.status === 'AWAITING_FULL_FUNDS'}
@@ -176,7 +173,35 @@
             </DataTable>
         </div>
     {:else if data !== null && data.data.length === 0}
-        <p class="empty-message">{getTranslation('purchases.empty')}</p>
+        <div class="empty-state">
+            <div class="empty-message-container">
+                <h2>{getTranslation('purchases.empty')}</h2>
+                <p class="subtitle">{getTranslation('purchases.emptyDescription')}</p>
+                
+                <div class="features">
+                    <div class="feature">
+                        <span class="feature-icon">🔒</span>
+                        <span class="feature-text">{getTranslation('purchases.securePayment')}</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">⚡️</span>
+                        <span class="feature-text">{getTranslation('purchases.instantAccess')}</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">🎥</span>
+                        <span class="feature-text">{getTranslation('purchases.hdQuality')}</span>
+                    </div>
+                </div>
+
+                <Button 
+                    variant="raised"
+                    class="browse-button"
+                    onclick={() => goto('/')}
+                >
+                    {getTranslation('purchases.browseCTA')}
+                </Button>
+            </div>
+        </div>
     {/if}
 </section>
 
@@ -189,13 +214,6 @@
         margin-bottom: 2rem;
         font-size: 1.5rem;
         color: #333;
-    }
-
-    .empty-message {
-        text-align: center;
-        padding: 40px;
-        color: #666;
-        font-size: 1.1rem;
     }
 
     div :global(.mdc-data-table__row):nth-child(even) {
@@ -222,21 +240,87 @@
         color: #f44336;
     }
 
-    div :global(.status) {
-        font-weight: bold;
+    .empty-state {
+        text-align: center;
+        padding: 60px 20px;
+        margin: 0 auto;
     }
 
-    div :global(.status.awaiting_blockchain_transaction),
-    div :global(.status.awaiting_blockchain_confirmation),
-    div :global(.status.awaiting_full_funds) {
-        color: #ff9800;
+    @media (min-width: 600px) {
+        .empty-state {
+            max-width: 600px;
+        }
     }
 
-    div :global(.status.blockchain_confirmed) {
-        color: #4caf50;
+    @media (max-width: 599px) {
+        .empty-state {
+            width: 100%;
+            padding: 20px 10px;
+        }
+
+        section {
+            padding: 0;
+        }
+
+        .empty-message-container {
+            border-radius: 0;
+        }
     }
 
-    div :global(.status.expired) {
-        color: #f44336;
+    .empty-message-container {
+        background: linear-gradient(145deg, #ffffff 0%, #f8f9ff 100%);
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        font-size: 1.8rem;
+        color: #333;
+        margin-bottom: 1rem;
+    }
+
+    .subtitle {
+        color: #666;
+        font-size: 1.1rem;
+        line-height: 1.5;
+        margin-bottom: 2rem;
+    }
+
+    .features {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 2.5rem;
+        flex-wrap: wrap;
+    }
+
+    .feature {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .feature-icon {
+        font-size: 2rem;
+    }
+
+    .feature-text {
+        color: #444;
+        font-size: 1rem;
+    }
+
+    :global(.browse-button) {
+        background: linear-gradient(45deg, #40c4ff, #a23cff);
+        color: white;
+        padding: 12px 32px;
+        font-size: 1.1rem;
+        border-radius: 25px;
+        transition: transform 0.2s ease;
+    }
+
+    :global(.browse-button:hover) {
+        transform: translateY(-2px);
     }
 </style>

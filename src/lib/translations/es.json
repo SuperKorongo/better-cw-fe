@@ -227,6 +227,11 @@
 	"purchases": {
 		"title": "Mis Compras",
 		"empty": "No has realizado ninguna compra todavía",
+		"emptyDescription": "Descubre nuestra colección exclusiva de vídeos de alta calidad. Comienza tu experiencia con pagos seguros y acceso instantáneo a contenido premium.",
+		"securePayment": "Pagos Seguros en Bitcoin",
+		"instantAccess": "Acceso Instantáneo",
+		"hdQuality": "Contenido en Alta Calidad",
+		"browseCTA": "Explorar Vídeos",
 		"table": {
 			"uuid": "UUID",
 			"createdAt": "Fecha",
