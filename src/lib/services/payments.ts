@@ -20,3 +20,18 @@ export const getMyPayments = async (
 
     return await response.json();
 };
+
+export const getPaymentByUUID = async (
+    fetch: PageLoadEvent['fetch'],
+    uuid: string
+): Promise<Payment> => {
+    const response = await fetchWrapper(fetch)(
+        `${PUBLIC_STORE_API_URL}/api/v1/payments/mine/${uuid}`
+    );
+
+    if (!response.ok) {
+        throw apiError(response);
+    }
+
+    return await response.json();
+};
