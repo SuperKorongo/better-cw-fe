@@ -72,7 +72,10 @@
                         </span>
                     </Cell>
                     <Cell>
-                        <span class="videos-cell">
+                        <span 
+                            class="videos-cell"
+                            title={payment.videos.map(v => v.title).join(', ')}
+                        >
                             {payment.videos.map(v => v.title).join(', ')}
                         </span>
                     </Cell>
