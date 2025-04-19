@@ -2,6 +2,7 @@
 	import type { Pagination } from '$lib/models/Pagination';
 	import type { Withdrawal, WithdrawalsResponse } from '$lib/services/admin/withdrawals';
 	import { getWithdrawals } from '$lib/services/admin/withdrawals';
+	import { loading } from '$lib/stores/loading/store';
 	import { getTranslation } from '$lib/translations';
 	import { getFormattedDate } from '$lib/utils/utils';
 	import { onMount } from 'svelte';
@@ -28,11 +29,14 @@
 
 	async function loadWithdrawals() {
 		try {
+			loading.set(true);
 			const response = await getWithdrawals(pagination);
 			withdrawals = response.data;
 			meta = response.meta;
 		} catch (error) {
 			console.error('Error loading withdrawals:', error);
+		} finally {
+			loading.set(false);
 		}
 	}
 
