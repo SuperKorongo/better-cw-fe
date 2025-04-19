@@ -223,5 +223,23 @@
 			"invalidMessage": "El mensaje debe tener entre 10 y 500 caracteres",
 			"submitFailed": "Error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde."
 		}
+	},
+	"purchases": {
+		"title": "Mis Compras",
+		"empty": "No has realizado ninguna compra todavía",
+		"table": {
+			"uuid": "UUID",
+			"createdAt": "Fecha",
+			"priceUSD": "Precio (USD)",
+			"priceBTC": "Precio (BTC)",
+			"status": "Estado"
+		},
+		"status": {
+			"awaitingBlockchain": "Esperando Pago",
+			"awaitingConfirmation": "Esperando Confirmación",
+			"awaitingFullFunds": "Esperando Pago Completo",
+			"confirmed": "Pago Confirmado",
+			"expired": "Pago Expirado"
+		}
 	}
 }
