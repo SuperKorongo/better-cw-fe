@@ -238,7 +238,9 @@
 			"priceUSD": "Prezzo (USD)",
 			"priceBTC": "Prezzo (BTC)",
 			"status": "Stato",
-			"videos": "Video"
+			"videos": "Video",
+			"rowsPerPage": "Acquisti per pagina",
+			"of": "di"
 		},
 		"status": {
 			"awaitingBlockchain": "In Attesa di Pagamento",

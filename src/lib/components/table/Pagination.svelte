@@ -22,7 +22,9 @@
 		onNextPage,
 		onPreviousPage,
 		onLastPage,
-		onChangeRowsPerPage
+		onChangeRowsPerPage,
+		rowsPerPageLabel,
+		ofLabel
 	}: {
 		rowsPerPageOptions: number[];
 		pagination: PaginationType;
@@ -32,12 +34,14 @@
 		onPreviousPage: () => void;
 		onLastPage: () => void;
 		onChangeRowsPerPage: (value: number) => void;
+		rowsPerPageLabel: string;
+		ofLabel: string;
 	} = $props();
 </script>
 
 <Pagination>
 	{#snippet rowsPerPage()}
-		<Label>{getTranslation('admin.myVideos.rowsPerPage')}</Label>
+		<Label>{getTranslation(rowsPerPageLabel)}</Label>
 		<Select
 			onSMUISelectChange={({ detail: { value } }) => {
 				onChangeRowsPerPage(value);
@@ -53,7 +57,7 @@
 	{/snippet}
 	{#snippet total()}
 		{pagination.offset + 1}-{pagination.offset + pagination.limit}
-		{getTranslation('admin.myVideos.of')}
+		{getTranslation(ofLabel)}
 		{meta.totalItems}
 	{/snippet}
 

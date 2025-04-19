@@ -97,6 +97,8 @@
 					rowsPerPageOptions={allowedRowsPerPage}
 					{pagination}
 					meta={data!.meta}
+					rowsPerPageLabel="admin.myVideos.rowsPerPage"
+					ofLabel="admin.myVideos.of"
 					onFirstPage={() =>
 						ifNotLoading(() => {
 							onChangePagination({

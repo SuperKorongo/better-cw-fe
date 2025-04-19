@@ -118,6 +118,8 @@
                         rowsPerPageOptions={allowedRowsPerPage}
                         {pagination}
                         meta={data!.meta}
+                        rowsPerPageLabel="purchases.table.rowsPerPage"
+                        ofLabel="purchases.table.of"
                         onFirstPage={() =>
                             ifNotLoading(() => {
                                 pagination = {
