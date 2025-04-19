@@ -2,6 +2,7 @@ import { goto } from '$app/navigation';
 import * as toasts from '$lib/components/toasts/toasts';
 import { login } from '$lib/services/users';
 import { loading } from '$lib/stores/loading/store';
+import { navigationHistory } from '$lib/stores/navigation/store';
 import { user as userStore } from '$lib/stores/user/store';
 import { getTranslation } from '$lib/translations';
 import { get } from 'svelte/store';
@@ -27,13 +28,8 @@ export const onClickLoginButton = async (getEmail: () => string, getPassword: ()
 		userStore.setData(user);
 		toasts.success(getTranslation('signInForm.welcome'));
 
-		// Check if there's a previous page in history
-		// todo: DONT GO BACK IF PREVIOUS IS LOGOUT
-		if (document.referrer && document.referrer !== window.location.href) {
-			history.back();
-		} else {
-			goto('/');
-		}
+		const previousPage = get(navigationHistory).previousPage;
+		goto(previousPage && previousPage !== '/logout' ? previousPage : '/');
 	} catch (e: unknown) {
 		const apiError = e as ApiError;
 

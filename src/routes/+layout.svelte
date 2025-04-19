@@ -15,6 +15,7 @@
 	import { language } from '$lib/stores/language/store';
 	import { menu } from '$lib/stores/menu/store';
 	import './styles.css';
+	import { navigationHistory } from '$lib/stores/navigation/store';
 
 	let { children } = $props();
 
@@ -45,6 +46,10 @@
 	});
 
 	$effect.pre(language.init);
+
+	$effect(() => {
+		navigationHistory.updatePreviousPage(page.url.pathname);
+	});
 </script>
 
 <svelte:head>
