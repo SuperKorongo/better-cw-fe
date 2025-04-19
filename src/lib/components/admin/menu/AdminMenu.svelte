@@ -84,7 +84,7 @@
 		animation-duration: 0.3s;
 		animation-fill-mode: forwards;
 
-		overflow-y: scroll;
+		overflow-y: auto;
 		overflow-x: hidden;
 	}
 
