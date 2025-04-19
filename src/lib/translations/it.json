@@ -209,5 +209,19 @@
 			"pageOf": "Pagina {0} di {1}"
 		},
 		"maxAmount": "Imposta l'importo al tuo saldo completo"
+	},
+	"contact": {
+		"title": "Contattaci",
+		"email": "Email",
+		"subject": "Oggetto",
+		"message": "Messaggio",
+		"submit": "Invia messaggio",
+		"success": "Il tuo messaggio è stato inviato con successo!",
+		"errors": {
+			"invalidEmail": "Inserisci un indirizzo email valido (massimo 255 caratteri)",
+			"invalidSubject": "L'oggetto deve essere tra 2 e 100 caratteri",
+			"invalidMessage": "Il messaggio deve essere tra 10 e 500 caratteri",
+			"submitFailed": "Impossibile inviare il messaggio. Per favore riprova più tardi."
+		}
 	}
 }

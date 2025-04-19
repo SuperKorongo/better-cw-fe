@@ -1,14 +1,17 @@
 <script lang="ts">
+    import * as toasts from '$lib/components/toasts/toasts';
     import { getTranslation } from '$lib/translations';
-	import * as toasts from '$lib/components/toasts/toasts';
     import Button from '@smui/button';
     import Textfield from '@smui/textfield';
-	import { loading } from '$lib/stores/loading/store';
+    import { loading } from '$lib/stores/loading/store';
+    import { sendContactMessage } from '$lib/services/contact';
+    import { onMount } from 'svelte';
+    
+    onMount(() => loading.set(false));
     
     let email = '';
     let subject = '';
     let message = '';
-    let isSubmitting = false;
 
     const validateForm = () => {
         // Email validation
@@ -33,25 +36,12 @@
     };
 
     const handleSubmit = async () => {
-        if (!validateForm()) return;
         if ($loading.value) return;
-
+        if (!validateForm()) return;
+        
         loading.set(true);
         try {
-            const response = await fetch('/api/v1/contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    email,
-                    subject,
-                    message
-                })
-            });
-
-            if (!response.ok) throw new Error('Failed to send message');
-            
+            await sendContactMessage(email, subject, message);
             toasts.success(getTranslation('contact.success'));
             // Clear form
             email = '';
@@ -65,40 +55,86 @@
     };
 </script>
 
-<div class="container mx-auto p-4 max-w-2xl">
-    <h1 class="text-2xl font-bold mb-6">{getTranslation('contact.title')}</h1>
-    
-    <form on:submit|preventDefault={handleSubmit} class="space-y-4">
-        <Textfield
-            label={getTranslation('contact.email')}
-            type="email"
-            bind:value={email}
-            required
-            class="w-full"
-        />
+<main>
+    <div class="container">
+        <h1>{getTranslation('contact.title')}</h1>
         
-        <Textfield
-            label={getTranslation('contact.subject')}
-            bind:value={subject}
-            required
-            class="w-full"
-        />
-        
-        <Textfield
-            label={getTranslation('contact.message')}
-            bind:value={message}
-            required
-            textarea
-            input$rows={4}
-            class="w-full"
-        />
-        
-        <Button
-            variant="raised"
-            type="submit"
-            class="w-full"
-        >
-            {getTranslation('contact.submit')}
-        </Button>
-    </form>
-</div>
+        <form on:submit|preventDefault={handleSubmit}>
+            <Textfield
+                label={getTranslation('contact.email')}
+                type="email"
+                bind:value={email}
+                required
+            />
+            
+            <Textfield
+                label={getTranslation('contact.subject')}
+                bind:value={subject}
+                required
+            />
+            
+            <Textfield
+                label={getTranslation('contact.message')}
+                bind:value={message}
+                required
+                textarea
+                input$rows={4}
+            />
+            
+            <Button variant="raised" type="submit">
+                {getTranslation('contact.submit')}
+            </Button>
+        </form>
+    </div>
+</main>
+
+<style>
+    main {
+        top: var(--navbar-height);
+        position: absolute;
+        background-color: white;
+        z-index: -1;
+        box-shadow: 0px 0px 10px 5px #686800;
+    }
+
+    @media (max-width: 600px) {
+        main {
+            left: 2.5%;
+            width: 95%;
+        }
+    }
+    @media (min-width: 600px) {
+        main {
+            left: 10%;
+            width: 80%;
+        }
+    }
+    @media (min-width: 1200px) {
+        main {
+            left: 20%;
+            width: 60%;
+        }
+    }
+    @media (min-width: 1600px) {
+        main {
+            left: 25%;
+            width: 50%;
+        }
+    }
+
+    .container {
+        padding: 1rem;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 1.5rem;
+    }
+</style>
