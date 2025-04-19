@@ -4,11 +4,17 @@
     import Button from '@smui/button';
     import Textfield from '@smui/textfield';
     import { loading } from '$lib/stores/loading/store';
+    import { user } from '$lib/stores/user/store';
     import { sendContactMessage } from '$lib/services/contact';
     import { onMount } from 'svelte';
     import { goto } from '$app/navigation';
     
-    onMount(() => loading.set(false));
+    onMount(() => {
+        loading.set(false);
+        if ($user.data?.email) {
+            email = $user.data.email;
+        }
+    });
     
     let email = '';
     let subject = '';
