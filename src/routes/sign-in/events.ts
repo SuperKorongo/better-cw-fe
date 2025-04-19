@@ -28,6 +28,7 @@ export const onClickLoginButton = async (getEmail: () => string, getPassword: ()
 		toasts.success(getTranslation('signInForm.welcome'));
 
 		// Check if there's a previous page in history
+		// todo: DONT GO BACK IF PREVIOUS IS LOGOUT
 		if (document.referrer && document.referrer !== window.location.href) {
 			history.back();
 		} else {
