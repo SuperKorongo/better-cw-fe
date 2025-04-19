@@ -9,6 +9,7 @@
     import { getFormattedDate, getFormattedPrice } from '$lib/utils/utils';
     import { defaultCurrency } from '$lib/stores/currency/store';
     import { tableHeader, allowedRowsPerPage } from './data';
+    import { goto } from '$app/navigation';
 
     let {
         data,
@@ -41,6 +42,11 @@
                 return status;
         }
     }
+
+    const onRowClick = (uuid: string) => {
+        loading.set(true);
+        goto(`/admin/purchases/${uuid}`);
+    };
 </script>
 
 <div>
@@ -54,7 +60,10 @@
         </Head>
         <Body>
             {#each data.data as payment (payment.uuid)}
-                <Row>
+                <Row 
+                    style="cursor: pointer"
+                    onclick={() => onRowClick(payment.uuid)}
+                >
                     <Cell>{payment.uuid}</Cell>
                     <Cell>{getFormattedDate(payment.createdAtTimestamp)}</Cell>
                     <Cell>{getFormattedPrice({ currency: defaultCurrency, value: payment.priceInCentsOfDollar / 100 })}</Cell>
