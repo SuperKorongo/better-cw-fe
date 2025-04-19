@@ -209,5 +209,19 @@
 			"pageOf": "Página {0} de {1}"
 		},
 		"maxAmount": "Establecer el importe a tu saldo completo"
+	},
+	"contact": {
+		"title": "Contacto",
+		"email": "Correo electrónico",
+		"subject": "Asunto",
+		"message": "Mensaje",
+		"submit": "Enviar mensaje",
+		"success": "¡Tu mensaje ha sido enviado con éxito!",
+		"errors": {
+			"invalidEmail": "Por favor, introduce un correo electrónico válido (máximo 255 caracteres)",
+			"invalidSubject": "El asunto debe tener entre 2 y 100 caracteres",
+			"invalidMessage": "El mensaje debe tener entre 10 y 500 caracteres",
+			"submitFailed": "Error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde."
+		}
 	}
 }

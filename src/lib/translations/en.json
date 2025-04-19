@@ -209,5 +209,19 @@
 			"pageOf": "Page {0} of {1}"
 		},
 		"maxAmount": "Set amount to your full balance"
+	},
+	"contact": {
+		"title": "Contact Us",
+		"email": "Email",
+		"subject": "Subject",
+		"message": "Message",
+		"submit": "Send Message",
+		"success": "Your message has been sent successfully!",
+		"errors": {
+			"invalidEmail": "Please enter a valid email address (max 255 characters)",
+			"invalidSubject": "Subject must be between 2 and 100 characters",
+			"invalidMessage": "Message must be between 10 and 500 characters",
+			"submitFailed": "Failed to send message. Please try again later."
+		}
 	}
 }
