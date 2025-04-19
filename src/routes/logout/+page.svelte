@@ -10,7 +10,7 @@
 		loading.set(false);
 		await logout();
 		user.setData(null);
-		cache.refreshMyVideos()
+		cache.refreshMyVideos();
 		goto('/sign-in');
 	});
 </script>

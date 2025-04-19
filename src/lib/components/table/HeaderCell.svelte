@@ -3,7 +3,8 @@
 	import { Cell, Label } from '@smui/data-table';
 	import IconButton, { Icon } from '@smui/icon-button';
 
-	let { columnId, label, sortable }: { columnId: string; label: string, sortable?: boolean } = $props();
+	let { columnId, label, sortable }: { columnId: string; label: string; sortable?: boolean } =
+		$props();
 </script>
 
 <Cell {columnId}>
