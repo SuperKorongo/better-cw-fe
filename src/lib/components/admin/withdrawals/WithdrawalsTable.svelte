@@ -74,7 +74,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				{#each withdrawals as withdrawal}
+				{#each withdrawals as withdrawal (withdrawal.uuid)}
 					<tr>
 						<td>{withdrawal.uuid}</td>
 						<td>{getFormattedDate(withdrawal.createdAtTimestamp)}</td>

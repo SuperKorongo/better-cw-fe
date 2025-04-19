@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Button, { Label } from '@smui/button';
+	import Button from '@smui/button';
 	import { goto } from '$app/navigation';
 	import { getTranslation } from '$lib/translations';
 </script>

@@ -48,7 +48,7 @@
 	$effect.pre(language.init);
 
 	$effect(() => {
-		navigationHistory.updatePreviousPage(page.url.pathname);
+		navigationHistory.push(page.url.pathname);
 	});
 </script>
 

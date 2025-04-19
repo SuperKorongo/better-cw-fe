@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { loading } from '$lib/stores/loading/store';
+	import { navigationHistory } from '$lib/stores/navigation/store';
 	import { user as userStore } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
 	import { enterKeyCheck } from '$lib/utils/utils';
@@ -15,7 +16,7 @@
 			loading.set(false);
 		}
 		if ($userStore.data !== null) {
-			goto('/');
+			goto(navigationHistory.getAppropiateRedirectAfterLogin());
 		}
 	});
 

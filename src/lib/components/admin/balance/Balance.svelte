@@ -17,7 +17,7 @@
 			loading.set(true);
 			balance = await getBalance();
 			user.setBalance(balance);
-		} catch (e) {
+		} catch {
 			error = getTranslation('admin.balance.errors.fetchError');
 			toasts.error(error);
 		} finally {

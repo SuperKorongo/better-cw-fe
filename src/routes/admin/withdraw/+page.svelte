@@ -20,7 +20,7 @@
 		try {
 			const info = getAddressInfo(address);
 			return info.network === 'mainnet';
-		} catch (error) {
+		} catch {
 			return false;
 		}
 	}
@@ -43,7 +43,7 @@
 			toasts.success(getTranslation('withdraw.success'));
 			btcAddress = '';
 			amount = 0;
-		} catch (error) {
+		} catch {
 			toasts.error(getTranslation('withdraw.errors.serverError'));
 		} finally {
 			loading.set(false);

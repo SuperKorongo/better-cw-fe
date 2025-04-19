@@ -66,9 +66,6 @@
 					toasts.success(getTranslation('upload.successfulUpload'));
 					break;
 				case 'patch':
-					console.log('form', $videoForm.thumbnails);
-					console.log('video', video?.thumbnailFilePaths);
-
 					await patch(video!.uuid, $videoForm);
 					patchThumbnails(video!);
 

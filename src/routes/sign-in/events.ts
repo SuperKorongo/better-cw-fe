@@ -28,8 +28,7 @@ export const onClickLoginButton = async (getEmail: () => string, getPassword: ()
 		userStore.setData(user);
 		toasts.success(getTranslation('signInForm.welcome'));
 
-		const previousPage = get(navigationHistory).previousPage;
-		goto(previousPage && previousPage !== '/logout' ? previousPage : '/');
+		goto(navigationHistory.getAppropiateRedirectAfterLogin());
 	} catch (e: unknown) {
 		const apiError = e as ApiError;
 

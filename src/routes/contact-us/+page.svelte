@@ -51,7 +51,7 @@
 			await sendContactMessage(email, subject, message);
 			toasts.success(getTranslation('contact.success'));
 			goto('/');
-		} catch (error) {
+		} catch {
 			toasts.error(getTranslation('contact.errors.submitFailed'));
 		} finally {
 			loading.set(false);

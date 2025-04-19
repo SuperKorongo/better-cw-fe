@@ -51,8 +51,7 @@ export const onClickRegisterButton = async (
 		toasts.success(getTranslation('signInForm.welcome'));
 		menu.forceOpenAfterNavigate(true);
 
-		const previousPage = get(navigationHistory).previousPage;
-		goto(previousPage && previousPage !== '/logout' ? previousPage : '/');
+		goto(navigationHistory.getAppropiateRedirectAfterLogin());
 	} catch (e: unknown) {
 		const apiError = e as ApiError;
 
