@@ -2,7 +2,9 @@ import { PUBLIC_STORE_API_URL } from '$env/static/public';
 import type { User } from '$lib/models/User';
 import { user } from '$lib/stores/user/store';
 import { fetchWrapper } from '$lib/utils/fetch';
+import { get } from 'svelte/store';
 import { apiError } from '../../errors/apiError';
+import { cache } from '$lib/stores/cache/store';
 
 export const login = async (email: string, password: string): Promise<User> => {
 	const response = await fetchWrapper(window.fetch)(`${PUBLIC_STORE_API_URL}/api/v1/login`, {
@@ -50,7 +52,8 @@ export const logout = async (): Promise<void> => {
 
 export const initLoggedInUser = async (): Promise<void> => {
 	try {
-		const response = await fetchWrapper(window.fetch)(`${PUBLIC_STORE_API_URL}/api/v1/me/`);
+		const cacheParam = get(cache).me;
+		const response = await fetchWrapper(window.fetch)(`${PUBLIC_STORE_API_URL}/api/v1/me/}${cacheParam ? `?cache=${cacheParam}` : ``}`);
 
 		if (!response.ok) {
 			user.setData(null);
