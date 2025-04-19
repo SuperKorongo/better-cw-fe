@@ -14,12 +14,12 @@
 				<path fill="currentColor" d={mdiArrowUp} />
 			</Icon>
 		</IconButton>
+		<IconButton class="material-icons">
+			<Icon tag="svg" viewBox="0 0 24 24" class="material-icons">
+				<path fill="currentColor" d={mdiArrowUp} />
+			</Icon>
+		</IconButton>
 	{/if}
-	<IconButton class="material-icons">
-		<Icon tag="svg" viewBox="0 0 24 24" class="material-icons">
-			<path fill="currentColor" d={mdiArrowUp} />
-		</Icon>
-	</IconButton>
 </Cell>
 
 <style>
