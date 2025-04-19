@@ -6,6 +6,7 @@
     import { loading } from '$lib/stores/loading/store';
     import { sendContactMessage } from '$lib/services/contact';
     import { onMount } from 'svelte';
+    import { goto } from '$app/navigation';
     
     onMount(() => loading.set(false));
     
@@ -43,10 +44,7 @@
         try {
             await sendContactMessage(email, subject, message);
             toasts.success(getTranslation('contact.success'));
-            // Clear form
-            email = '';
-            subject = '';
-            message = '';
+            goto('/');
         } catch (error) {
             toasts.error(getTranslation('contact.errors.submitFailed'));
         } finally {
