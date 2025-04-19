@@ -26,10 +26,11 @@
 
     const tableHeader = [
         { columnId: 'uuid', label: getTranslation('purchases.table.uuid') },
-        { columnId: 'created_at', label: getTranslation('purchases.table.createdAt') },
+        { columnId: 'created_at', label: getTranslation('purchases.table.createdAt')},
         { columnId: 'price_in_cents_of_dollar', label: getTranslation('purchases.table.priceUSD') },
         { columnId: 'price_in_btc', label: getTranslation('purchases.table.priceBTC') },
-        { columnId: 'status', label: getTranslation('purchases.table.status') }
+        { columnId: 'status', label: getTranslation('purchases.table.status') },
+        { columnId: 'videos', label: getTranslation('purchases.table.videos') }
     ];
 
     const allowedRowsPerPage: number[] = [10, 25];
@@ -76,23 +77,7 @@
     {#if data !== null && data.data.length > 0}
         <h1>{getTranslation('purchases.title')}</h1>
         <div>
-            <DataTable
-                sortable
-                style="width: 100%;"
-                onSMUIDataTableSorted={({ detail }) => {
-                    ifNotLoading(() => {
-                        pagination = {
-                            ...pagination,
-                            offset: 0,
-                            orderBy: {
-                                column: detail.columnId,
-                                direction: detail.sortValue === 'ascending' ? 'asc' : 'desc'
-                            }
-                        };
-                        loadPayments();
-                    });
-                }}
-            >
+            <DataTable style="width: 100%;">
                 <Head>
                     <Row>
                         {#each tableHeader as { columnId, label } (columnId)}
@@ -117,6 +102,11 @@
                                     class:expired={payment.status === 'EXPIRED'}
                                 >
                                     {getTranslatedStatus(payment.status)}
+                                </span>
+                            </Cell>
+                            <Cell>
+                                <span class="videos-cell">
+                                    {payment.videos.map(v => v.title).join(', ')}
                                 </span>
                             </Cell>
                         </Row>
@@ -309,6 +299,14 @@
     .feature-text {
         color: #444;
         font-size: 1rem;
+    }
+
+    .videos-cell {
+        display: block;
+        max-width: 300px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     :global(.browse-button) {

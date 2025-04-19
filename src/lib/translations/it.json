@@ -237,7 +237,8 @@
 			"createdAt": "Data",
 			"priceUSD": "Prezzo (USD)",
 			"priceBTC": "Prezzo (BTC)",
-			"status": "Stato"
+			"status": "Stato",
+			"videos": "Video"
 		},
 		"status": {
 			"awaitingBlockchain": "In Attesa di Pagamento",

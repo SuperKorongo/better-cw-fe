@@ -61,8 +61,8 @@
 		>
 			<Head>
 				<Row>
-					{#each tableHeader as { columnId, label } (columnId)}
-						<HeaderCell {columnId} {label} />
+					{#each tableHeader as { columnId, label, sortable } (columnId)}
+						<HeaderCell {columnId} {label} {sortable} />
 					{/each}
 				</Row>
 			</Head>
