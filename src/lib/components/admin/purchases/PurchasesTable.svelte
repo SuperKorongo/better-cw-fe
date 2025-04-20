@@ -5,7 +5,7 @@
 	import { loading } from '$lib/stores/loading/store';
 	import HeaderCell from '$lib/components/table/HeaderCell.svelte';
 	import Pagination from '$lib/components/table/Pagination.svelte';
-	import { getFormattedDate, getFormattedPrice } from '$lib/utils/utils';
+	import { getFormattedDateWithTime, getFormattedPrice } from '$lib/utils/utils';
 	import { defaultCurrency } from '$lib/stores/currency/store';
 	import { tableHeader, allowedRowsPerPage } from './data';
 	import { goto } from '$app/navigation';
@@ -45,7 +45,7 @@
 			{#each data.data as payment (payment.uuid)}
 				<Row style="cursor: pointer" onclick={() => onRowClick(payment.uuid)}>
 					<Cell>{payment.uuid}</Cell>
-					<Cell>{getFormattedDate(payment.createdAtTimestamp)}</Cell>
+					<Cell>{getFormattedDateWithTime(payment.createdAtTimestamp)}</Cell>
 					<Cell
 						>{getFormattedPrice({
 							currency: defaultCurrency,

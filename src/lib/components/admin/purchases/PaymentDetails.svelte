@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Payment } from '$lib/models/Payment';
 	import { getTranslation } from '$lib/translations';
-	import { getFormattedDate, getFormattedPrice } from '$lib/utils/utils';
+	import { getFormattedDateWithTime, getFormattedPrice } from '$lib/utils/utils';
 	import { defaultCurrency } from '$lib/stores/currency/store';
 	import { getTranslatedStatus } from './utils';
 
@@ -13,7 +13,7 @@
 	<div class="info-grid">
 		<div class="info-item">
 			<span class="label">{getTranslation('purchases.details.paymentDate')}:</span>
-			<span class="value">{getFormattedDate(payment.createdAtTimestamp)}</span>
+			<span class="value">{getFormattedDateWithTime(payment.createdAtTimestamp)}</span>
 		</div>
 		<div class="info-item">
 			<span class="label">{getTranslation('purchases.details.priceUSD')}:</span>

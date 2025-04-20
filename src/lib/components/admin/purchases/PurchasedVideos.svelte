@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Payment } from '$lib/models/Payment';
 	import { getTranslation } from '$lib/translations';
-	import { getFormattedDate, getFormattedPrice, getImageSrc } from '$lib/utils/utils';
+	import { getFormattedDateWithTime, getImageSrc } from '$lib/utils/utils';
 	import { defaultCurrency } from '$lib/stores/currency/store';
 	import DataTable, { Body, Cell, Head, Row } from '@smui/data-table';
 	import Button, { Label } from '@smui/button';
@@ -67,7 +67,7 @@
 					<Cell>
 						{#if video.confirmedAtTimestamp !== null}
 							<span class="confirmed-date">
-								{getTranslation('purchases.details.confirmedAt')}: {getFormattedDate(
+								{getTranslation('purchases.details.confirmedAt')}: {getFormattedDateWithTime(
 									video.confirmedAtTimestamp
 								)}
 							</span>
