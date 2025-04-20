@@ -1,6 +1,5 @@
 <script lang="ts">
 	import DataTable, { Body, Cell, Head, Row } from '@smui/data-table';
-	import { getTranslation } from '$lib/translations';
 	import type { PaginatedResponse, Pagination as PaginationType } from '$lib/models/Pagination';
 	import type { Payment } from '$lib/models/Payment';
 	import { loading } from '$lib/stores/loading/store';
