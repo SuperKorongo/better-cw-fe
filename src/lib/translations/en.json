@@ -252,9 +252,7 @@
 			"awaitingConfirmation": "Awaiting Confirmation",
 			"awaitingFullFunds": "Awaiting Full Payment",
 			"confirmed": "Payment Confirmed",
-			"expired": "Payment Expired",
-			"paid": "Completed",
-			"failed": "Failed"
+			"expired": "Payment Expired"
 		},
 		"details": {
 			"paymentDate": "Payment Date",
@@ -278,7 +276,11 @@
 				"expired": "Payment Expired",
 				"paid": "Payment Complete",
 				"failed": "Payment Failed"
-			}
+			},
+			"confirmedAt": "Confirmed at",
+			"confirm": "Confirm",
+			"dispute": "Dispute",
+			"statusTitle": "Status"
 		}
 	}
 }

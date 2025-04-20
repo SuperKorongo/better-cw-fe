@@ -13,6 +13,7 @@ export type PurchasedVideo = {
 	downloadLink: string | null;
 	downloadLinkInstructions: string | null;
 	thumbnailFilePaths: string[];
+	confirmedAtTimestamp: number | null;
 };
 
 export type Payment = {

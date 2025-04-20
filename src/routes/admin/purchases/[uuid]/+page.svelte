@@ -33,14 +33,6 @@
 			<h1>{getTranslation('purchases.title')}</h1>
 			<PaymentDetails {payment} />
 			<PurchasedVideos {payment} />
-			<div class="actions">
-				<Button variant="raised" style="margin-right: 1rem;">
-					<Label>{getTranslation('purchases.details.confirmPurchase')}</Label>
-				</Button>
-				<Button variant="outlined" class="dispute-button">
-					<Label>{getTranslation('purchases.details.openDispute')}</Label>
-				</Button>
-			</div>
 		</div>
 	{/if}
 </section>

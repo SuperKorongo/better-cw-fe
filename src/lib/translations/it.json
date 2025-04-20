@@ -276,7 +276,11 @@
 				"expired": "Pagamento Scaduto",
 				"paid": "Pagamento Completato",
 				"failed": "Pagamento Fallito"
-			}
+			},
+			"confirmedAt": "Confermato il",
+			"confirm": "Conferma",
+			"dispute": "Disputa",
+			"statusTitle": "Stato"
 		}
 	}
 }
