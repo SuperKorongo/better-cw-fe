@@ -1,8 +1,6 @@
 <script lang="ts">
 	import type { Payment } from '$lib/models/Payment';
 	import { getTranslation } from '$lib/translations';
-	import { getFormattedPrice } from '$lib/utils/utils';
-	import { defaultCurrency } from '$lib/stores/currency/store';
 	import DataTable, { Body, Cell, Head, Row } from '@smui/data-table';
 	import Button, { Label } from '@smui/button';
 	import DownloadInstructionsModal from '$lib/components/common/DownloadInstructionsModal.svelte';
@@ -19,7 +17,6 @@
 		<Head>
 			<Row>
 				<Cell>{getTranslation('purchases.details.videoTitle')}</Cell>
-				<Cell>{getTranslation('purchases.details.videoPrice')}</Cell>
 				<Cell>{getTranslation('purchases.details.modelName')}</Cell>
 				<Cell>{getTranslation('purchases.details.downloadLink')}</Cell>
 				<Cell>{getTranslation('purchases.details.downloadInstructions')}</Cell>
@@ -29,12 +26,6 @@
 			{#each payment.videos as video (video.uuid)}
 				<Row>
 					<Cell>{video.title}</Cell>
-					<Cell>
-						{getFormattedPrice({
-							currency: defaultCurrency,
-							value: video.priceInCentsOfDollar / 100
-						})}
-					</Cell>
 					<Cell>{video.model || '-'}</Cell>
 					<Cell>
 						{#if video.downloadLink}
