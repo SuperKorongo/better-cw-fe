@@ -9,7 +9,6 @@
 </script>
 
 <div class="info-section">
-	<h2>{getTranslation('purchases.details.paymentDate')}</h2>
 	<div class="info-grid">
 		<div class="info-item">
 			<span class="label">{getTranslation('purchases.details.paymentDate')}:</span>

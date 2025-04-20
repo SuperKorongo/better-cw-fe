@@ -30,7 +30,6 @@
 <section>
 	{#if payment}
 		<div class="payment-details">
-			<h1>{getTranslation('purchases.title')}</h1>
 			<PaymentDetails {payment} />
 			<PurchasedVideos {payment} />
 		</div>
