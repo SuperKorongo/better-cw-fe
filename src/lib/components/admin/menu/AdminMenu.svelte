@@ -114,9 +114,8 @@
 		height: 8px;
 		border-radius: 50%;
 		background: red;
-		display: inline-block;
-		margin-left: 8px;
-		transform: translateY(1px);
+		position: absolute;
+		margin-left: 5px;
 	}
 
 	@keyframes expand-left-to-right {
