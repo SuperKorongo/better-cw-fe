@@ -280,7 +280,13 @@
 			"confirmedAt": "Confirmed at",
 			"confirm": "Confirm",
 			"dispute": "Dispute",
-			"statusTitle": "Status"
+			"statusTitle": "Status",
+			"confirmationModal": {
+				"title": "Confirm Video Receipt",
+				"message": "I confirm that I was able to download the video and its content matches what was advertised. I understand that once confirmed, I will not be eligible for a refund.",
+				"confirm": "Yes, Confirm",
+				"cancel": "Cancel"
+			}
 		}
 	}
 }

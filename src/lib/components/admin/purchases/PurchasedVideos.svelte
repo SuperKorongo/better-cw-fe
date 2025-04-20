@@ -6,11 +6,13 @@
 	import DataTable, { Body, Cell, Head, Row } from '@smui/data-table';
 	import Button, { Label } from '@smui/button';
 	import DownloadInstructionsModal from '$lib/components/common/DownloadInstructionsModal.svelte';
+	import VideoConfirmationModal from './VideoConfirmationModal.svelte';
 
 	let { payment }: { payment: Payment } = $props();
 
 	let modalOpen = $state(false);
 	let selectedInstructions: string | null = $state('');
+	let confirmationModalOpen = $state(false);
 </script>
 
 <div class="videos-section">
@@ -73,13 +75,17 @@
 							</span>
 						{:else}
 							<div class="action-buttons">
-								<Button variant="raised" color="primary">
-									<Label>{getTranslation('purchases.details.confirm')}</Label>
-								</Button>
-								<Button variant="outlined" color="secondary" class="dispute-button">
-									<Label>{getTranslation('purchases.details.dispute')}</Label>
-								</Button>
-							</div>
+									<Button 
+										variant="raised" 
+										color="primary"
+										onclick={() => confirmationModalOpen = true}
+									>
+										<Label>{getTranslation('purchases.details.confirm')}</Label>
+									</Button>
+									<Button variant="outlined" color="secondary" class="dispute-button">
+										<Label>{getTranslation('purchases.details.dispute')}</Label>
+									</Button>
+								</div>
 						{/if}
 					</Cell>
 				</Row>
@@ -89,6 +95,7 @@
 </div>
 
 <DownloadInstructionsModal bind:open={modalOpen} instructions={selectedInstructions ?? ''} />
+<VideoConfirmationModal bind:open={confirmationModalOpen} />
 
 <style>
 	.videos-section {

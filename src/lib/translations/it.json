@@ -280,7 +280,13 @@
 			"confirmedAt": "Confermato il",
 			"confirm": "Conferma",
 			"dispute": "Disputa",
-			"statusTitle": "Stato"
+			"statusTitle": "Stato",
+			"confirmationModal": {
+				"title": "Conferma Ricezione Video",
+				"message": "Confermo di aver scaricato il video e che il suo contenuto corrisponde a quanto pubblicizzato. Comprendo che una volta confermato, non avrò diritto a un rimborso.",
+				"confirm": "Sì, Conferma",
+				"cancel": "Annulla"
+			}
 		}
 	}
 }

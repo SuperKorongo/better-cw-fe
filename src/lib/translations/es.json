@@ -280,7 +280,13 @@
 			"confirmedAt": "Confirmado el",
 			"confirm": "Confirmar",
 			"dispute": "Disputar",
-			"statusTitle": "Estado"
+			"statusTitle": "Estado",
+			"confirmationModal": {
+				"title": "Confirmar Recepción del Vídeo",
+				"message": "Confirmo que he podido descargar el vídeo y su contenido corresponde con lo anunciado. Entiendo que una vez confirmado, no podré solicitar un reembolso.",
+				"confirm": "Sí, Confirmar",
+				"cancel": "Cancelar"
+			}
 		}
 	}
 }
