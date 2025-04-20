@@ -1,6 +1,8 @@
 <script lang="ts">
 	import type { Payment } from '$lib/models/Payment';
 	import { getTranslation } from '$lib/translations';
+	import { getImageSrc } from '$lib/utils/utils';
+	import { defaultCurrency } from '$lib/stores/currency/store';
 	import DataTable, { Body, Cell, Head, Row } from '@smui/data-table';
 	import Button, { Label } from '@smui/button';
 	import DownloadInstructionsModal from '$lib/components/common/DownloadInstructionsModal.svelte';
@@ -16,6 +18,7 @@
 	<DataTable style="width: 100%;">
 		<Head>
 			<Row>
+				 <Cell>Thumbnail</Cell>
 				<Cell>{getTranslation('purchases.details.videoTitle')}</Cell>
 				<Cell>{getTranslation('purchases.details.modelName')}</Cell>
 				<Cell>{getTranslation('purchases.details.downloadLink')}</Cell>
@@ -25,6 +28,15 @@
 		<Body>
 			{#each payment.videos as video (video.uuid)}
 				<Row>
+					 <Cell style="display: flex; justify-content: center; align-items: center; padding: 8px;">
+                        {#if video.thumbnailFilePaths && video.thumbnailFilePaths.length > 0}
+                            <img
+                                src={getImageSrc(video.thumbnailFilePaths[0], true)}
+                                alt={video.title}
+                                class="video-thumbnail"
+                            />
+                        {/if}
+                    </Cell>
 					<Cell>{video.title}</Cell>
 					<Cell>{video.model || '-'}</Cell>
 					<Cell>
@@ -82,10 +94,22 @@
 		text-decoration: underline;
 	}
 
+	.video-thumbnail {
+        width: 100px;
+        height: 56.25px; /* 16:9 aspect ratio */
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
 	@media (max-width: 599px) {
 		:global(.mdc-data-table) {
 			margin: 0 -1rem;
 			width: calc(100% + 2rem) !important;
 		}
+
+		.video-thumbnail {
+            width: 80px;
+            height: 45px;
+        }
 	}
 </style>
