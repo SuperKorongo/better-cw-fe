@@ -75,17 +75,17 @@
 							</span>
 						{:else}
 							<div class="action-buttons">
-									<Button 
-										variant="raised" 
-										color="primary"
-										onclick={() => confirmationModalOpen = true}
-									>
-										<Label>{getTranslation('purchases.details.confirm')}</Label>
-									</Button>
-									<Button variant="outlined" color="secondary" class="dispute-button">
-										<Label>{getTranslation('purchases.details.dispute')}</Label>
-									</Button>
-								</div>
+								<Button
+									variant="raised"
+									color="primary"
+									onclick={() => (confirmationModalOpen = true)}
+								>
+									<Label>{getTranslation('purchases.details.confirm')}</Label>
+								</Button>
+								<Button variant="outlined" color="secondary" class="dispute-button">
+									<Label>{getTranslation('purchases.details.dispute')}</Label>
+								</Button>
+							</div>
 						{/if}
 					</Cell>
 				</Row>
