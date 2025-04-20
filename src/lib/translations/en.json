@@ -250,6 +250,30 @@
 			"expired": "Payment Expired",
 			"paid": "Completed",
 			"failed": "Failed"
+		},
+		"details": {
+			"paymentDate": "Payment Date",
+			"priceUSD": "Price in USD",
+			"priceBTC": "Price in BTC",
+			"videos": "Videos",
+			"videoTitle": "Title",
+			"videoPrice": "Price",
+			"modelName": "Model",
+			"downloadLink": "Download Link",
+			"downloadInstructions": "Download Instructions",
+			"confirmPurchase": "Confirm Purchase",
+			"openDispute": "Open Dispute",
+			"confirmButtonTitle": "Confirm that you received the product as expected",
+			"disputeButtonTitle": "Report an issue with this purchase",
+			"status": {
+				"awaitingBlockchain": "Awaiting Blockchain Payment",
+				"awaitingConfirmation": "Awaiting Confirmation",
+				"awaitingFullFunds": "Awaiting Full Payment",
+				"confirmed": "Payment Confirmed",
+				"expired": "Payment Expired",
+				"paid": "Payment Complete",
+				"failed": "Payment Failed"
+			}
 		}
 	}
 }

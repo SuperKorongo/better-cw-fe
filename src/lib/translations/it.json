@@ -248,6 +248,30 @@
 			"awaitingFullFunds": "In Attesa di Pagamento Completo",
 			"confirmed": "Pagamento Confermato",
 			"expired": "Pagamento Scaduto"
+		},
+		"details": {
+			"paymentDate": "Data di Pagamento",
+			"priceUSD": "Prezzo in USD",
+			"priceBTC": "Prezzo in BTC",
+			"videos": "Video",
+			"videoTitle": "Titolo",
+			"videoPrice": "Prezzo",
+			"modelName": "Modello",
+			"downloadLink": "Link di Download",
+			"downloadInstructions": "Istruzioni per il Download",
+			"confirmPurchase": "Conferma Acquisto",
+			"openDispute": "Apri Controversia",
+			"confirmButtonTitle": "Conferma di aver ricevuto il prodotto come previsto",
+			"disputeButtonTitle": "Segnala un problema con questo acquisto",
+			"status": {
+				"awaitingBlockchain": "In Attesa di Pagamento Blockchain",
+				"awaitingConfirmation": "In Attesa di Conferma",
+				"awaitingFullFunds": "In Attesa di Pagamento Completo",
+				"confirmed": "Pagamento Confermato",
+				"expired": "Pagamento Scaduto",
+				"paid": "Pagamento Completato",
+				"failed": "Pagamento Fallito"
+			}
 		}
 	}
 }

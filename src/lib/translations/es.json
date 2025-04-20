@@ -248,6 +248,30 @@
 			"awaitingFullFunds": "Esperando Pago Completo",
 			"confirmed": "Pago Confirmado",
 			"expired": "Pago Expirado"
+		},
+		"details": {
+			"paymentDate": "Fecha de Pago",
+			"priceUSD": "Precio en USD",
+			"priceBTC": "Precio en BTC",
+			"videos": "Vídeos",
+			"videoTitle": "Título",
+			"videoPrice": "Precio",
+			"modelName": "Modelo",
+			"downloadLink": "Enlace de Descarga",
+			"downloadInstructions": "Instrucciones de Descarga",
+			"confirmPurchase": "Confirmar Compra",
+			"openDispute": "Abrir Disputa",
+			"confirmButtonTitle": "Confirmar que has recibido el producto como se esperaba",
+			"disputeButtonTitle": "Reportar un problema con esta compra",
+			"status": {
+				"awaitingBlockchain": "Esperando Pago en Blockchain",
+				"awaitingConfirmation": "Esperando Confirmación",
+				"awaitingFullFunds": "Esperando Pago Completo",
+				"confirmed": "Pago Confirmado",
+				"expired": "Pago Expirado",
+				"paid": "Pago Completado",
+				"failed": "Pago Fallido"
+			}
 		}
 	}
 }
