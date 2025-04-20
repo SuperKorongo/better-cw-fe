@@ -53,7 +53,9 @@ export const logout = async (): Promise<void> => {
 export const initLoggedInUser = async (): Promise<void> => {
 	try {
 		const cacheParam = get(cache).me;
-		const response = await fetchWrapper(window.fetch)(`${PUBLIC_STORE_API_URL}/api/v1/me/${cacheParam ? `?cache=${cacheParam}` : ``}`);
+		const response = await fetchWrapper(window.fetch)(
+			`${PUBLIC_STORE_API_URL}/api/v1/me/${cacheParam ? `?cache=${cacheParam}` : ``}`
+		);
 
 		if (!response.ok) {
 			user.setData(null);

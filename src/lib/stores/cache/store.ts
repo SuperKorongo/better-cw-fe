@@ -45,7 +45,6 @@ export const cache = (() => {
 			cache.refreshMe();
 		},
 
-
 		init: () =>
 			update((cache) => {
 				const cacheInLocalStorage = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -56,7 +55,6 @@ export const cache = (() => {
 			})
 	};
 })();
-
 
 function updateLocalStorage(data: Data): void {
 	localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data));

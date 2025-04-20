@@ -59,7 +59,12 @@
 			"ratingDesc": "Valutazione (migliori prima)",
 			"totalRatingsAsc": "Numero di valutazioni (meno valutazioni prima)",
 			"totalRatingsDesc": "Numero di valutazioni (più valutazioni prima)"
-		}
+		},
+		"downloadInstructions": {
+			"title": "Istruzioni per il Download",
+			"viewInstructions": "Visualizza Istruzioni"
+		},
+		"close": "Chiudi"
 	},
 	"headers": {
 		"browsing": "Sfogliando i video ",

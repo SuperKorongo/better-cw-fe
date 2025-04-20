@@ -11,8 +11,11 @@
 	import DataTable, { Body, Cell, Head, Row } from '@smui/data-table';
 	import Button, { Label } from '@smui/button';
 	import { onMount } from 'svelte';
+	import DownloadInstructionsModal from '$lib/components/common/DownloadInstructionsModal.svelte';
 
 	let payment: Payment | null = $state(null);
+	let modalOpen = $state(false);
+	let selectedInstructions: string | null = $state('');
 
 	onMount(async () => {
 		const { uuid } = $page.params;
@@ -36,7 +39,7 @@
 	{#if payment}
 		<div class="payment-details">
 			<h1>{getTranslation('purchases.title')}</h1>
-			
+
 			<div class="info-section">
 				<h2>{getTranslation('purchases.details.paymentDate')}</h2>
 				<div class="info-grid">
@@ -59,12 +62,14 @@
 					</div>
 					<div class="info-item">
 						<span class="label">{getTranslation('purchases.table.status')}:</span>
-						<span class="status-cell" 
-							class:awaiting={payment.status === 'AWAITING_BLOCKCHAIN_TRANSACTION' || 
-								payment.status === 'AWAITING_BLOCKCHAIN_CONFIRMATION' || 
+						<span
+							class="status-cell"
+							class:awaiting={payment.status === 'AWAITING_BLOCKCHAIN_TRANSACTION' ||
+								payment.status === 'AWAITING_BLOCKCHAIN_CONFIRMATION' ||
 								payment.status === 'AWAITING_FULL_FUNDS'}
 							class:confirmed={payment.status === 'BLOCKCHAIN_CONFIRMED'}
-							class:expired={payment.status === 'EXPIRED'}>
+							class:expired={payment.status === 'EXPIRED'}
+						>
 							{getTranslatedStatus(payment.status)}
 						</span>
 					</div>
@@ -103,7 +108,21 @@
 										-
 									{/if}
 								</Cell>
-								<Cell>{video.downloadLinkInstructions || '-'}</Cell>
+								<Cell>
+									{#if video.downloadLinkInstructions}
+										<Button
+											onclick={() => {
+												selectedInstructions = video.downloadLinkInstructions;
+												modalOpen = true;
+											}}
+											variant="outlined"
+										>
+											<Label>{getTranslation('purchases.details.viewInstructions')}</Label>
+										</Button>
+									{:else}
+										-
+									{/if}
+								</Cell>
 							</Row>
 						{/each}
 					</Body>
@@ -121,6 +140,8 @@
 		</div>
 	{/if}
 </section>
+
+<DownloadInstructionsModal bind:open={modalOpen} instructions={selectedInstructions ?? ""} />
 
 <style>
 	section {

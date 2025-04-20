@@ -60,7 +60,12 @@
 			"ratingDesc": "Rating (best first)",
 			"totalRatingsAsc": "Total ratings (least ratings first)",
 			"totalRatingsDesc": "Total ratings (most ratings first)"
-		}
+		},
+		"downloadInstructions": {
+			"title": "Download Instructions",
+			"viewInstructions": "View Instructions"
+		},
+		"close": "Close"
 	},
 	"headers": {
 		"browsing": "Browsing videos ",

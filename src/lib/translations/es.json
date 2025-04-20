@@ -60,7 +60,12 @@
 			"ratingDesc": "Valoración (de mejor a peor)",
 			"totalRatingsAsc": "Valoraciones totales (menos valoraciones primero)",
 			"totalRatingsDesc": "Valoraciones totales (más valoraciones primero)"
-		}
+		},
+		"downloadInstructions": {
+			"title": "Instrucciones de Descarga",
+			"viewInstructions": "Ver Instrucciones"
+		},
+		"close": "Cerrar"
 	},
 	"headers": {
 		"browsing": "Viendo videos ",

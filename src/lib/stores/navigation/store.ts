@@ -1,7 +1,7 @@
 import { get, writable } from 'svelte/store';
 
 type NavigationHistory = {
-    history: string[];
+	history: string[];
 };
 
 export const navigationHistory = (() => {
@@ -14,20 +14,20 @@ export const navigationHistory = (() => {
 
 		push: (path: string) =>
 			update((data: NavigationHistory) => {
-                data.history.push(path);
+				data.history.push(path);
 				return data;
 			}),
 
-        getAppropiateRedirectAfterLogin: (): string => {
-            const history = get(navigationHistory).history;
-            for (let i = history.length - 1; i >= 0; i--) {
-                if (["/sign-in", "/register", "/logout"].includes(history[i])) {
-                    continue;
-                }
-                return history[i];
-            }
+		getAppropiateRedirectAfterLogin: (): string => {
+			const history = get(navigationHistory).history;
+			for (let i = history.length - 1; i >= 0; i--) {
+				if (['/sign-in', '/register', '/logout'].includes(history[i])) {
+					continue;
+				}
+				return history[i];
+			}
 
-            return "/";
-        }
+			return '/';
+		}
 	};
 })();
