@@ -15,8 +15,6 @@ export const navigationHistory = (() => {
 		push: (path: string) =>
 			update((data: NavigationHistory) => {
                 data.history.push(path);
-                console.log(data.history, "pushed");
-                
 				return data;
 			}),
 

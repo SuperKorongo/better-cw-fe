@@ -3,4 +3,5 @@ export type User = {
 	readonly email: string;
 	readonly avatarUrl: string;
 	readonly rating: number;
+	readonly hasOpenDisputes: boolean;
 };

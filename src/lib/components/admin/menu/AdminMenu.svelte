@@ -7,6 +7,7 @@
 	import { onMount } from 'svelte';
 	import { swipe } from 'svelte-gestures';
 	import { onClose, onSwipe } from './events';
+	import { user } from '$lib/stores/user/store';
 
 	let menuContainer: HTMLElement;
 
@@ -66,6 +67,9 @@
 				<div class={getClass(item.href)}>
 					<a onclick={onClickMenuLink} data-sveltekit-preload-data="tap" href={item.href}>
 						{item.label}
+						{#if item.href === '/admin/disputes' && $user.data?.hasOpenDisputes}
+							<span class="disputes-indicator"></span>
+						{/if}
 					</a>
 				</div>
 			{/each}
@@ -94,6 +98,7 @@
 	}
 
 	.main-section > div {
+		position: relative;
 		display: flex;
 		align-items: center;
 	}
@@ -102,6 +107,16 @@
 		background-color: blue;
 		padding: 10px 20px;
 		border-radius: 10px;
+	}
+
+	.disputes-indicator {
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: red;
+		display: inline-block;
+		margin-left: 8px;
+		transform: translateY(1px);
 	}
 
 	@keyframes expand-left-to-right {

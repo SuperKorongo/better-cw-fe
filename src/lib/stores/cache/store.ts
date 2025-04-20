@@ -6,6 +6,8 @@ type Data = {
 	me: number | null;
 };
 
+export const LOCAL_STORAGE_KEY = 'cache';
+
 export const cache = (() => {
 	const { subscribe, update } = writable<Data>({
 		myVideos: null,
@@ -19,18 +21,21 @@ export const cache = (() => {
 		refreshMyVideos: () =>
 			update((data: Data) => {
 				data.myVideos = new Date().getTime();
+				updateLocalStorage(data);
 				return data;
 			}),
 
 		refreshMyPurchases: () =>
 			update((data: Data) => {
 				data.myPurchases = new Date().getTime();
+				updateLocalStorage(data);
 				return data;
 			}),
 
 		refreshMe: () =>
 			update((data: Data) => {
 				data.me = new Date().getTime();
+				updateLocalStorage(data);
 				return data;
 			}),
 
@@ -38,6 +43,21 @@ export const cache = (() => {
 			cache.refreshMyVideos();
 			cache.refreshMyPurchases();
 			cache.refreshMe();
-		}
+		},
+
+
+		init: () =>
+			update((cache) => {
+				const cacheInLocalStorage = localStorage.getItem(LOCAL_STORAGE_KEY);
+				if (cacheInLocalStorage) {
+					return JSON.parse(cacheInLocalStorage);
+				}
+				return cache;
+			})
 	};
 })();
+
+
+function updateLocalStorage(data: Data): void {
+	localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data));
+}

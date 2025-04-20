@@ -16,6 +16,7 @@
 	import { menu } from '$lib/stores/menu/store';
 	import './styles.css';
 	import { navigationHistory } from '$lib/stores/navigation/store';
+	import { cache } from '$lib/stores/cache/store';
 
 	let { children } = $props();
 
@@ -33,6 +34,7 @@
 	let mounted: boolean = $state(false);
 	onMount(() => {
 		mounted = true;
+		cache.init();
 		cart.init();
 		search.init();
 
