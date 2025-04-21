@@ -8,7 +8,7 @@ type Data = {
 
 export const LOCAL_STORAGE_KEY = 'cache';
 
-export const cache = (() => {
+export const cacheInvalidation = (() => {
 	const { subscribe, update } = writable<Data>({
 		myVideos: null,
 		myPurchases: null,
@@ -40,9 +40,9 @@ export const cache = (() => {
 			}),
 
 		refreshAll: () => {
-			cache.refreshMyVideos();
-			cache.refreshMyPurchases();
-			cache.refreshMe();
+			cacheInvalidation.refreshMyVideos();
+			cacheInvalidation.refreshMyPurchases();
+			cacheInvalidation.refreshMe();
 		},
 
 		init: () =>

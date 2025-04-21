@@ -4,7 +4,7 @@
 	import type { Video } from '$lib/models/Video';
 	import { patch } from '$lib/services/admin/videos';
 	import { upload } from '$lib/services/videos';
-	import { cache } from '$lib/stores/cache/store';
+	import { cacheInvalidation } from '$lib/stores/cache-invalidation/store';
 	import { loading } from '$lib/stores/loading/store';
 	import { videoForm } from '$lib/stores/video-form/store';
 	import { getTranslation } from '$lib/translations';
@@ -73,7 +73,7 @@
 					break;
 			}
 
-			cache.refreshMyVideos();
+			cacheInvalidation.refreshMyVideos();
 			goto('/admin/my-videos');
 		} catch (e: unknown) {
 			const apiError = e as ApiError;

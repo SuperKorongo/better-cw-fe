@@ -6,14 +6,14 @@ import { get } from 'svelte/store';
 import { apiError } from '../../errors/apiError';
 import type { PageLoadEvent } from '../../routes/$types';
 import { getQueryParams } from './common';
-import { cache } from '$lib/stores/cache/store';
+import { cacheInvalidation } from '$lib/stores/cache-invalidation/store';
 
 export const getMyPayments = async (
 	fetch: PageLoadEvent['fetch'],
 	pagination: Pagination
 ): Promise<PaginatedResponse<Payment>> => {
 	const response = await fetchWrapper(fetch)(
-		`${PUBLIC_STORE_API_URL}/api/v1/payments/mine/?${getQueryParams(pagination, '', get(cache).myPurchases)}`
+		`${PUBLIC_STORE_API_URL}/api/v1/payments/mine/?${getQueryParams(pagination, '', get(cacheInvalidation).myPurchases)}`
 	);
 
 	if (!response.ok) {
@@ -27,7 +27,7 @@ export const getPaymentByUUID = async (
 	fetch: PageLoadEvent['fetch'],
 	uuid: string
 ): Promise<Payment> => {
-	const cacheParam = get(cache).myPurchases;
+	const cacheParam = get(cacheInvalidation).myPurchases;
 	const response = await fetchWrapper(fetch)(
 		`${PUBLIC_STORE_API_URL}/api/v1/payments/mine/${uuid}${cacheParam ? `?cache=${cacheParam}` : ``}`
 	);

@@ -4,7 +4,7 @@ import { user } from '$lib/stores/user/store';
 import { fetchWrapper } from '$lib/utils/fetch';
 import { get } from 'svelte/store';
 import { apiError } from '../../errors/apiError';
-import { cache } from '$lib/stores/cache/store';
+import { cacheInvalidation } from '$lib/stores/cache-invalidation/store';
 
 export const login = async (email: string, password: string): Promise<User> => {
 	const response = await fetchWrapper(window.fetch)(`${PUBLIC_STORE_API_URL}/api/v1/login`, {
@@ -52,7 +52,7 @@ export const logout = async (): Promise<void> => {
 
 export const initLoggedInUser = async (): Promise<void> => {
 	try {
-		const cacheParam = get(cache).me;
+		const cacheParam = get(cacheInvalidation).me;
 		const response = await fetchWrapper(window.fetch)(
 			`${PUBLIC_STORE_API_URL}/api/v1/me/${cacheParam ? `?cache=${cacheParam}` : ``}`
 		);
