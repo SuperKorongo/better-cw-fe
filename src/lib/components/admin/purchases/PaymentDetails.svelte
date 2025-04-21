@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Button, { Label } from '@smui/button';
 	import {
 		AWAITING_BLOCKCHAIN_CONFIRMATION_STATUS,
 		AWAITING_BLOCKCHAIN_TRANSACTION_STATUS,
@@ -56,6 +57,14 @@
 		</div>
 	</div>
 </div>
+
+{#if payment.status !== BLOCKCHAIN_CONFIRMED_STATUS && payment.status !== EXPIRED_STATUS}
+    <div class="pay-button-container">
+        <Button variant="raised" color="primary">
+            <Label>{getTranslation('purchases.details.payInvoice')}</Label>
+        </Button>
+    </div>
+{/if}
 
 <style>
 	.info-section {
@@ -131,5 +140,11 @@
 		.info-grid {
 			grid-template-columns: 1fr;
 		}
+	}
+
+	.pay-button-container {
+		display: flex;
+		justify-content: center;
+		margin: 2rem 0;
 	}
 </style>

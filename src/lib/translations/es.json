@@ -293,7 +293,9 @@
 				"message": "Confirmo que he podido descargar el vídeo y su contenido corresponde con lo anunciado. Entiendo que una vez confirmado, no podré solicitar un reembolso.",
 				"confirm": "Sí, Confirmar",
 				"cancel": "Cancelar"
-			}
+			},
+			"payInvoice": "Pagar Factura",
+			"paymentRequired": "Por favor envía el pago para ver los enlaces de descarga"
 		}
 	}
 }

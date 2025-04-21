@@ -6,12 +6,16 @@
 	import Button, { Label } from '@smui/button';
 	import DownloadInstructionsModal from '$lib/components/common/DownloadInstructionsModal.svelte';
 	import VideoConfirmationModal from './VideoConfirmationModal.svelte';
+	import { BLOCKCHAIN_CONFIRMED_STATUS, EXPIRED_STATUS } from '$lib/models/Payment';
 
 	let { payment }: { payment: Payment } = $props();
 
 	let modalOpen = $state(false);
 	let selectedInstructions: string | null = $state('');
 	let confirmationModalOpen = $state(false);
+
+	const isPaid = payment.status === BLOCKCHAIN_CONFIRMED_STATUS;
+	const isExpired = payment.status === EXPIRED_STATUS;
 </script>
 
 <div class="videos-section">
@@ -42,16 +46,20 @@
 					<Cell>{video.title}</Cell>
 					<Cell>{video.model || '-'}</Cell>
 					<Cell>
-						{#if video.downloadLink}
-							<a href={video.downloadLink} target="_blank" rel="noopener noreferrer">
-								{getTranslation('purchases.details.downloadLink')}
-							</a>
+						{#if isPaid}
+							{#if video.downloadLink}
+								<a href={video.downloadLink} target="_blank" rel="noopener noreferrer">
+									{getTranslation('purchases.details.downloadLink')}
+								</a>
+							{:else}
+								-
+							{/if}
 						{:else}
-							-
+							<span class="payment-required">{getTranslation('purchases.details.paymentRequired')}</span>
 						{/if}
 					</Cell>
 					<Cell>
-						{#if video.downloadLinkInstructions}
+						{#if isPaid && video.downloadLinkInstructions}
 							<Button
 								onclick={() => {
 									selectedInstructions = video.downloadLinkInstructions;
@@ -72,7 +80,7 @@
 									video.confirmedAtTimestamp
 								)}
 							</span>
-						{:else}
+						{:else if isPaid && !isExpired}
 							<div class="action-buttons">
 								<Button
 									variant="raised"
@@ -150,5 +158,14 @@
 		.action-buttons {
 			flex-direction: column;
 		}
+	}
+
+	.payment-required {
+		color: #856404;
+		background-color: #fff3cd;
+		padding: 0.5rem;
+		border-radius: 4px;
+		font-size: 0.9rem;
+		display: inline-block;
 	}
 </style>
