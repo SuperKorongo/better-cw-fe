@@ -6,7 +6,6 @@
 	import { getPaymentByUUID } from '$lib/services/payments';
 	import { loading } from '$lib/stores/loading/store';
 	import { getTranslation } from '$lib/translations';
-	import Button, { Label } from '@smui/button';
 	import { onMount } from 'svelte';
 	import PaymentDetails from '$lib/components/admin/purchases/PaymentDetails.svelte';
 	import PurchasedVideos from '$lib/components/admin/purchases/PurchasedVideos.svelte';
@@ -41,32 +40,15 @@
 		padding: 30px 50px;
 	}
 
-	h1 {
-		margin-bottom: 2rem;
-		font-size: 1.5rem;
-		color: #333;
-	}
-
 	.payment-details {
 		display: flex;
 		flex-direction: column;
 		gap: 2rem;
 	}
 
-	.actions {
-		display: flex;
-		gap: 1rem;
-		justify-content: flex-end;
-		margin-top: 2rem;
-	}
-
 	@media (max-width: 599px) {
 		section {
 			padding: 1rem;
-		}
-
-		.actions {
-			flex-direction: column;
 		}
 	}
 </style>

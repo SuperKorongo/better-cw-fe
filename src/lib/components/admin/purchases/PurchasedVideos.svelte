@@ -2,7 +2,6 @@
 	import type { Payment } from '$lib/models/Payment';
 	import { getTranslation } from '$lib/translations';
 	import { getFormattedDateWithTime, getImageSrc } from '$lib/utils/utils';
-	import { defaultCurrency } from '$lib/stores/currency/store';
 	import DataTable, { Body, Cell, Head, Row } from '@smui/data-table';
 	import Button, { Label } from '@smui/button';
 	import DownloadInstructionsModal from '$lib/components/common/DownloadInstructionsModal.svelte';

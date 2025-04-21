@@ -2,7 +2,7 @@
 	import { getTranslation } from '$lib/translations';
 	import Button, { Label } from '@smui/button';
 
-	let { open = $bindable(false), videoTitle = '' } = $props();
+	let { open = $bindable(false) } = $props();
 </script>
 
 {#if open}
