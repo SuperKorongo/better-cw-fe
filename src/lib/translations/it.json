@@ -252,7 +252,14 @@
 			"awaitingConfirmation": "In Attesa di Conferma",
 			"awaitingFullFunds": "In Attesa di Pagamento Completo",
 			"confirmed": "Pagamento Confermato",
-			"expired": "Pagamento Scaduto"
+			"expired": "Pagamento Scaduto",
+			"descriptions": {
+				"awaitingBlockchain": "In attesa dell'invio del pagamento in BTC",
+				"awaitingConfirmation": "Il pagamento è stato rilevato nella blockchain ma richiede conferme",
+				"awaitingFullFunds": "Il pagamento ricevuto è inferiore all'importo richiesto",
+				"confirmed": "Il pagamento è stato confermato nella blockchain",
+				"expired": "La finestra di pagamento è scaduta senza ricevere l'importo completo"
+			}
 		},
 		"details": {
 			"paymentDate": "Data di Pagamento",

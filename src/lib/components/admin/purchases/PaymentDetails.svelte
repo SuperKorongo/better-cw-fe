@@ -1,9 +1,17 @@
 <script lang="ts">
-	import { AWAITING_BLOCKCHAIN_CONFIRMATION_STATUS, AWAITING_BLOCKCHAIN_TRANSACTION_STATUS, AWAITING_FULL_FUNDS_STATUS, BLOCKCHAIN_CONFIRMED_STATUS, EXPIRED_STATUS, type Payment } from '$lib/models/Payment';
+	import {
+		AWAITING_BLOCKCHAIN_CONFIRMATION_STATUS,
+		AWAITING_BLOCKCHAIN_TRANSACTION_STATUS,
+		AWAITING_FULL_FUNDS_STATUS,
+		BLOCKCHAIN_CONFIRMED_STATUS,
+		EXPIRED_STATUS,
+		type Payment
+	} from '$lib/models/Payment';
 	import { getTranslation } from '$lib/translations';
 	import { getFormattedDateWithTime, getFormattedPrice } from '$lib/utils/utils';
 	import { defaultCurrency } from '$lib/stores/currency/store';
 	import { getTranslatedStatus } from './utils';
+	import StatusTooltip from './StatusTooltip.svelte';
 
 	let { payment }: { payment: Payment } = $props();
 </script>
@@ -28,7 +36,7 @@
 			<span class="value">{payment.priceInBTC} BTC</span>
 		</div>
 		<div class="info-item">
-			<span class="label">{getTranslation('purchases.table.status')}:</span>
+			<StatusTooltip />
 			<span
 				class="status-cell"
 				class:awaiting={payment.status === AWAITING_BLOCKCHAIN_TRANSACTION_STATUS ||

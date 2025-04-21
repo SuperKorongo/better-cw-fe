@@ -252,7 +252,14 @@
 			"awaitingConfirmation": "Esperando Confirmación",
 			"awaitingFullFunds": "Esperando Pago Completo",
 			"confirmed": "Pago Confirmado",
-			"expired": "Pago Expirado"
+			"expired": "Pago Expirado",
+			"descriptions": {
+				"awaitingBlockchain": "Esperando a que envíes el pago en BTC",
+				"awaitingConfirmation": "El pago ha sido detectado en la blockchain pero necesita confirmaciones",
+				"awaitingFullFunds": "El pago recibido es menor que el importe requerido",
+				"confirmed": "El pago ha sido confirmado en la blockchain",
+				"expired": "El tiempo de pago ha expirado sin recibir el importe completo"
+			}
 		},
 		"details": {
 			"paymentDate": "Fecha de Pago",

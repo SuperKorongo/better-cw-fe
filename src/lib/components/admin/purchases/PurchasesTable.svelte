@@ -1,7 +1,14 @@
 <script lang="ts">
 	import DataTable, { Body, Cell, Head, Row } from '@smui/data-table';
 	import type { PaginatedResponse, Pagination as PaginationType } from '$lib/models/Pagination';
-	import { AWAITING_BLOCKCHAIN_CONFIRMATION_STATUS, AWAITING_BLOCKCHAIN_TRANSACTION_STATUS, AWAITING_FULL_FUNDS_STATUS, BLOCKCHAIN_CONFIRMED_STATUS, EXPIRED_STATUS, type Payment } from '$lib/models/Payment';
+	import {
+		AWAITING_BLOCKCHAIN_CONFIRMATION_STATUS,
+		AWAITING_BLOCKCHAIN_TRANSACTION_STATUS,
+		AWAITING_FULL_FUNDS_STATUS,
+		BLOCKCHAIN_CONFIRMED_STATUS,
+		EXPIRED_STATUS,
+		type Payment
+	} from '$lib/models/Payment';
 	import { loading } from '$lib/stores/loading/store';
 	import HeaderCell from '$lib/components/table/HeaderCell.svelte';
 	import Pagination from '$lib/components/table/Pagination.svelte';
@@ -10,6 +17,8 @@
 	import { tableHeader, allowedRowsPerPage } from './data';
 	import { goto } from '$app/navigation';
 	import { getTranslatedStatus } from './utils';
+	import StatusTooltip from './StatusTooltip.svelte';
+	import { getTranslation } from '$lib/translations';
 
 	let {
 		data,
@@ -36,22 +45,29 @@
 	<DataTable style="width: 100%;">
 		<Head>
 			<Row>
-				{#each tableHeader as { columnId, label } (columnId)}
-					<HeaderCell {columnId} {label} />
-				{/each}
+				<Cell>{getTranslation('purchases.table.createdAt')}</Cell>
+				<Cell>{getTranslation('purchases.table.uuid')}</Cell>
+				<Cell>{getTranslation('purchases.table.priceUSD')}</Cell>
+				<Cell>{getTranslation('purchases.table.priceBTC')}</Cell>
+				<Cell>
+					<div class="status-header">
+						<StatusTooltip />
+					</div>
+				</Cell>
+				<Cell>{getTranslation('purchases.table.videos')}</Cell>
 			</Row>
 		</Head>
 		<Body>
 			{#each data.data as payment (payment.uuid)}
 				<Row style="cursor: pointer" onclick={() => onRowClick(payment.uuid)}>
-					<Cell>{getFormattedDateWithTime(payment.updatedAtTimestamp)}</Cell>
+					<Cell>{getFormattedDateWithTime(payment.createdAtTimestamp)}</Cell>
 					<Cell>{payment.uuid}</Cell>
-					<Cell
-						>{getFormattedPrice({
+					<Cell>
+						{getFormattedPrice({
 							currency: defaultCurrency,
 							value: payment.priceInCentsOfDollar / 100
-						})}</Cell
-					>
+						})}
+					</Cell>
 					<Cell>{payment.priceInBTC} BTC</Cell>
 					<Cell>
 						<span
@@ -73,52 +89,52 @@
 				</Row>
 			{/each}
 		</Body>
-
-		{#snippet paginate()}
-			<Pagination
-				rowsPerPageOptions={allowedRowsPerPage}
-				{pagination}
-				meta={data.meta}
-				rowsPerPageLabel="purchases.table.rowsPerPage"
-				ofLabel="purchases.table.of"
-				onFirstPage={() =>
-					ifNotLoading(() => {
-						onChangePagination({
-							...pagination,
-							offset: 0
-						});
-					})}
-				onPreviousPage={() =>
-					ifNotLoading(() => {
-						onChangePagination({
-							...pagination,
-							offset: pagination.offset - pagination.limit
-						});
-					})}
-				onNextPage={() =>
-					ifNotLoading(() => {
-						onChangePagination({
-							...pagination,
-							offset: pagination.offset + pagination.limit
-						});
-					})}
-				onLastPage={() =>
-					ifNotLoading(() => {
-						onChangePagination({
-							...pagination,
-							offset: data.meta.totalItems - pagination.limit
-						});
-					})}
-				onChangeRowsPerPage={(value: number) =>
-					ifNotLoading(() => {
-						onChangePagination({
-							...pagination,
-							limit: value
-						});
-					})}
-			/>
-		{/snippet}
 	</DataTable>
+
+	{#if data}
+		<Pagination
+			rowsPerPageOptions={allowedRowsPerPage}
+			{pagination}
+			meta={data.meta}
+			rowsPerPageLabel="purchases.table.rowsPerPage"
+			ofLabel="purchases.table.of"
+			onFirstPage={() =>
+				ifNotLoading(() => {
+					onChangePagination({
+						...pagination,
+						offset: 0
+					});
+				})}
+			onPreviousPage={() =>
+				ifNotLoading(() => {
+					onChangePagination({
+						...pagination,
+						offset: pagination.offset - pagination.limit
+					});
+				})}
+			onNextPage={() =>
+				ifNotLoading(() => {
+					onChangePagination({
+						...pagination,
+						offset: pagination.offset + pagination.limit
+					});
+				})}
+			onLastPage={() =>
+				ifNotLoading(() => {
+					onChangePagination({
+						...pagination,
+						offset: data.meta.totalItems - pagination.limit
+					});
+				})}
+			onChangeRowsPerPage={(value: number) =>
+				ifNotLoading(() => {
+					onChangePagination({
+						...pagination,
+						limit: value
+					});
+				})}
+		/>
+	{/if}
 </div>
 
 <style>
@@ -132,18 +148,24 @@
 
 	.status-cell {
 		font-weight: bold;
+		padding: 0.25rem 0.75rem;
+		border-radius: 1rem;
+		display: inline-block;
 	}
 
 	.awaiting {
 		color: #ff9800;
+		background-color: #fff3cd;
 	}
 
 	.confirmed {
-		color: #4caf50;
+		color: #155724;
+		background-color: #d4edda;
 	}
 
 	.expired {
-		color: #f44336;
+		color: #721c24;
+		background-color: #f8d7da;
 	}
 
 	.videos-cell {
@@ -152,5 +174,12 @@
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
+	}
+
+	:global(.mdc-data-table__header-cell) .status-header {
+		display: flex;
+		align-items: center;
+		height: 100%;
+		padding: 0 16px;
 	}
 </style>
