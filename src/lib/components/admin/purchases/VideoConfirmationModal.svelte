@@ -10,6 +10,9 @@
 		<div class="modal-content">
 			<h2>{getTranslation('purchases.details.confirmationModal.title')}</h2>
 			<p class="message">{getTranslation('purchases.details.confirmationModal.message')}</p>
+			<p class="auto-confirmation">
+				{getTranslation('purchases.details.confirmationModal.autoConfirmation')}
+			</p>
 			<div class="actions">
 				<Button variant="outlined" color="secondary" onclick={() => (open = false)}>
 					<Label>{getTranslation('purchases.details.confirmationModal.cancel')}</Label>
@@ -54,6 +57,13 @@
 		margin: 0 0 1.5rem 0;
 		line-height: 1.5;
 		color: #555;
+	}
+
+	.auto-confirmation {
+		margin: 0 0 1.5rem 0;
+		font-size: 0.9rem;
+		color: #666;
+		font-style: italic;
 	}
 
 	.actions {
