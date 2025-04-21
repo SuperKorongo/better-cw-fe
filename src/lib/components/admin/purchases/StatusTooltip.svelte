@@ -61,6 +61,7 @@
 	.tooltip-container {
 		position: relative;
 		display: inline-block;
+		z-index: 1100;
 	}
 
 	.status-header {
@@ -93,7 +94,7 @@
 		border-radius: 8px;
 		padding: 1rem;
 		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-		z-index: 1000;
+		z-index: 1100;
 		width: 300px;
 		margin-top: 0.5rem;
 	}

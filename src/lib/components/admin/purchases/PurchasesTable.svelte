@@ -1,14 +1,7 @@
 <script lang="ts">
 	import DataTable, { Body, Cell, Head, Row } from '@smui/data-table';
 	import type { PaginatedResponse, Pagination as PaginationType } from '$lib/models/Pagination';
-	import {
-		AWAITING_BLOCKCHAIN_CONFIRMATION_STATUS,
-		AWAITING_BLOCKCHAIN_TRANSACTION_STATUS,
-		AWAITING_FULL_FUNDS_STATUS,
-		BLOCKCHAIN_CONFIRMED_STATUS,
-		EXPIRED_STATUS,
-		type Payment
-	} from '$lib/models/Payment';
+	import { AWAITING_BLOCKCHAIN_CONFIRMATION_STATUS, AWAITING_BLOCKCHAIN_TRANSACTION_STATUS, AWAITING_FULL_FUNDS_STATUS, BLOCKCHAIN_CONFIRMED_STATUS, EXPIRED_STATUS, type Payment } from '$lib/models/Payment';
 	import { loading } from '$lib/stores/loading/store';
 	import HeaderCell from '$lib/components/table/HeaderCell.svelte';
 	import Pagination from '$lib/components/table/Pagination.svelte';
@@ -17,7 +10,7 @@
 	import { tableHeader, allowedRowsPerPage } from './data';
 	import { goto } from '$app/navigation';
 	import { getTranslatedStatus } from './utils';
-	import StatusTooltip from './StatusTooltip.svelte';
+	import StatusInfoModal from './StatusInfoModal.svelte';
 	import { getTranslation } from '$lib/translations';
 
 	let {
@@ -39,9 +32,11 @@
 		loading.set(true);
 		goto(`/admin/purchases/${uuid}`);
 	};
+
+	let statusModalOpen = $state(false);
 </script>
 
-<div>
+<div class="table-container">
 	<DataTable style="width: 100%;">
 		<Head>
 			<Row>
@@ -51,7 +46,8 @@
 				<Cell>{getTranslation('purchases.table.priceBTC')}</Cell>
 				<Cell>
 					<div class="status-header">
-						<StatusTooltip />
+						<span>{getTranslation('purchases.table.status')}</span>
+						<button class="info-icon" onclick={() => statusModalOpen = true}>?</button>
 					</div>
 				</Cell>
 				<Cell>{getTranslation('purchases.table.videos')}</Cell>
@@ -137,7 +133,13 @@
 	{/if}
 </div>
 
+<StatusInfoModal bind:open={statusModalOpen} />
+
 <style>
+	.table-container {
+		position: relative;
+	}
+
 	div :global(.mdc-data-table__row):nth-child(even) {
 		background-color: #fdfdfd;
 	}
@@ -180,6 +182,30 @@
 		display: flex;
 		align-items: center;
 		height: 100%;
-		padding: 0 16px;
+	}
+
+	:global(.tooltip-container) {
+		z-index: 1100;
+	}
+
+	.status-header {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.info-icon {
+		width: 18px;
+		height: 18px;
+		border-radius: 50%;
+		background: #666;
+		color: white;
+		border: none;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 12px;
+		font-weight: bold;
 	}
 </style>
