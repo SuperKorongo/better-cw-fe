@@ -230,7 +230,7 @@
 		}
 	},
 	"purchases": {
-		"title": "Mis Compras",
+		"title": "Mis Facturas",
 		"empty": "No has realizado ninguna compra todavía",
 		"emptyDescription": "Descubre nuestra colección exclusiva de vídeos de alta calidad. Comienza tu experiencia con pagos seguros y acceso instantáneo a contenido premium.",
 		"securePayment": "Pagos Seguros en Bitcoin",

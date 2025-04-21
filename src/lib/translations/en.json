@@ -230,7 +230,7 @@
 		}
 	},
 	"purchases": {
-		"title": "My Purchases",
+		"title": "My Invoices",
 		"empty": "You haven't made any purchases yet",
 		"emptyDescription": "Discover our exclusive collection of high-quality videos. Start your journey with secure payments and instant access to premium content.",
 		"securePayment": "Secure Bitcoin Payments",
