@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Button, { Label } from '@smui/button';
 	import {
 		AWAITING_BLOCKCHAIN_CONFIRMATION_STATUS,
 		AWAITING_BLOCKCHAIN_TRANSACTION_STATUS,
@@ -13,7 +12,6 @@
 	import { defaultCurrency } from '$lib/stores/currency/store';
 	import { getTranslatedStatus } from './utils';
 	import StatusTooltip from './StatusTooltip.svelte';
-	import GlowingText from '$lib/components/common/GlowingText.svelte';
 
 	let { payment }: { payment: Payment } = $props();
 </script>

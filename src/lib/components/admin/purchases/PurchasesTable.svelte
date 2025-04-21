@@ -10,11 +10,10 @@
 		type Payment
 	} from '$lib/models/Payment';
 	import { loading } from '$lib/stores/loading/store';
-	import HeaderCell from '$lib/components/table/HeaderCell.svelte';
 	import Pagination from '$lib/components/table/Pagination.svelte';
 	import { getFormattedDateWithTime, getFormattedPrice } from '$lib/utils/utils';
 	import { defaultCurrency } from '$lib/stores/currency/store';
-	import { tableHeader, allowedRowsPerPage } from './data';
+	import { allowedRowsPerPage } from './data';
 	import { goto } from '$app/navigation';
 	import { getTranslatedStatus } from './utils';
 	import StatusInfoModal from './StatusInfoModal.svelte';
