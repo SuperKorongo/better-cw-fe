@@ -1,7 +1,14 @@
 <script lang="ts">
 	import DataTable, { Body, Cell, Head, Row } from '@smui/data-table';
 	import type { PaginatedResponse, Pagination as PaginationType } from '$lib/models/Pagination';
-	import { AWAITING_BLOCKCHAIN_CONFIRMATION_STATUS, AWAITING_BLOCKCHAIN_TRANSACTION_STATUS, AWAITING_FULL_FUNDS_STATUS, BLOCKCHAIN_CONFIRMED_STATUS, EXPIRED_STATUS, type Payment } from '$lib/models/Payment';
+	import {
+		AWAITING_BLOCKCHAIN_CONFIRMATION_STATUS,
+		AWAITING_BLOCKCHAIN_TRANSACTION_STATUS,
+		AWAITING_FULL_FUNDS_STATUS,
+		BLOCKCHAIN_CONFIRMED_STATUS,
+		EXPIRED_STATUS,
+		type Payment
+	} from '$lib/models/Payment';
 	import { loading } from '$lib/stores/loading/store';
 	import HeaderCell from '$lib/components/table/HeaderCell.svelte';
 	import Pagination from '$lib/components/table/Pagination.svelte';
@@ -47,7 +54,7 @@
 				<Cell>
 					<div class="status-header">
 						<span>{getTranslation('purchases.table.status')}</span>
-						<button class="info-icon" onclick={() => statusModalOpen = true}>?</button>
+						<button class="info-icon" onclick={() => (statusModalOpen = true)}>?</button>
 					</div>
 				</Cell>
 				<Cell>{getTranslation('purchases.table.videos')}</Cell>

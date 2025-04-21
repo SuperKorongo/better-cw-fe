@@ -35,8 +35,10 @@
 			<span class="label">{getTranslation('purchases.details.priceBTC')}:</span>
 			<span class="value">{payment.priceInBTC} BTC</span>
 		</div>
-		<div class="info-item">
-			<StatusTooltip />
+		<div class="info-item status-item">
+			<div class="status-header">
+				<StatusTooltip />
+			</div>
 			<span
 				class="status-cell"
 				class:awaiting={payment.status === AWAITING_BLOCKCHAIN_TRANSACTION_STATUS ||
@@ -83,11 +85,22 @@
 	}
 
 	.status-cell {
-		padding: 0.25rem 0.75rem;
-		border-radius: 1rem;
+		padding: 0.5rem 1rem;
+		border-radius: 2rem;
 		font-size: 0.9rem;
-		font-weight: 500;
+		font-weight: 700;
 		display: inline-block;
+		text-align: center;
+		min-width: 140px;
+	}
+
+	.status-item {
+		align-items: flex-start;
+		margin-top: -0.5rem;
+	}
+
+	.status-header {
+		margin-bottom: 0.25rem;
 	}
 
 	.status-cell.awaiting {
