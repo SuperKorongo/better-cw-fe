@@ -6,7 +6,7 @@ type Data = {
 	me: number | null;
 };
 
-export const LOCAL_STORAGE_KEY = 'cache';
+export const LOCAL_STORAGE_KEY = 'cache-invalidation';
 
 export const cacheInvalidation = (() => {
 	const { subscribe, update } = writable<Data>({

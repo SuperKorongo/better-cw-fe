@@ -44,8 +44,8 @@
 		<Body>
 			{#each data.data as payment (payment.uuid)}
 				<Row style="cursor: pointer" onclick={() => onRowClick(payment.uuid)}>
+					<Cell>{getFormattedDateWithTime(payment.updatedAtTimestamp)}</Cell>
 					<Cell>{payment.uuid}</Cell>
-					<Cell>{getFormattedDateWithTime(payment.createdAtTimestamp)}</Cell>
 					<Cell
 						>{getFormattedPrice({
 							currency: defaultCurrency,

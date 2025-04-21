@@ -5,6 +5,12 @@ export type PaymentStatus =
 	| 'BLOCKCHAIN_CONFIRMED'
 	| 'EXPIRED';
 
+export const AWAITING_BLOCKCHAIN_TRANSACTION_STATUS: PaymentStatus = 'AWAITING_BLOCKCHAIN_TRANSACTION';
+export const AWAITING_BLOCKCHAIN_CONFIRMATION_STATUS: PaymentStatus = 'AWAITING_BLOCKCHAIN_CONFIRMATION';
+export const AWAITING_FULL_FUNDS_STATUS: PaymentStatus = 'AWAITING_FULL_FUNDS';
+export const BLOCKCHAIN_CONFIRMED_STATUS: PaymentStatus = 'BLOCKCHAIN_CONFIRMED';
+export const EXPIRED_STATUS: PaymentStatus = 'EXPIRED';
+
 export type PurchasedVideo = {
 	uuid: string;
 	title: string;
