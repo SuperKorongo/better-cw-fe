@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Payment } from '$lib/models/Payment';
+	import { AWAITING_BLOCKCHAIN_CONFIRMATION_STATUS, AWAITING_BLOCKCHAIN_TRANSACTION_STATUS, AWAITING_FULL_FUNDS_STATUS, BLOCKCHAIN_CONFIRMED_STATUS, EXPIRED_STATUS, type Payment } from '$lib/models/Payment';
 	import { getTranslation } from '$lib/translations';
 	import { getFormattedDateWithTime, getFormattedPrice } from '$lib/utils/utils';
 	import { defaultCurrency } from '$lib/stores/currency/store';
@@ -31,11 +31,11 @@
 			<span class="label">{getTranslation('purchases.table.status')}:</span>
 			<span
 				class="status-cell"
-				class:awaiting={payment.status === 'AWAITING_BLOCKCHAIN_TRANSACTION' ||
-					payment.status === 'AWAITING_BLOCKCHAIN_CONFIRMATION' ||
-					payment.status === 'AWAITING_FULL_FUNDS'}
-				class:confirmed={payment.status === 'BLOCKCHAIN_CONFIRMED'}
-				class:expired={payment.status === 'EXPIRED'}
+				class:awaiting={payment.status === AWAITING_BLOCKCHAIN_TRANSACTION_STATUS ||
+					payment.status === AWAITING_BLOCKCHAIN_CONFIRMATION_STATUS ||
+					payment.status === AWAITING_FULL_FUNDS_STATUS}
+				class:confirmed={payment.status === BLOCKCHAIN_CONFIRMED_STATUS}
+				class:expired={payment.status === EXPIRED_STATUS}
 			>
 				{getTranslatedStatus(payment.status)}
 			</span>
