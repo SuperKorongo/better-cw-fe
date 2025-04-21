@@ -59,11 +59,11 @@
 </div>
 
 {#if payment.status !== BLOCKCHAIN_CONFIRMED_STATUS && payment.status !== EXPIRED_STATUS}
-    <div class="pay-button-container">
-        <button class="pay-button">
-            <span class="pay-button-text">{getTranslation('purchases.details.payInvoice')}</span>
-        </button>
-    </div>
+	<div class="pay-button-container">
+		<button class="pay-button">
+			<span class="pay-button-text">{getTranslation('purchases.details.payInvoice')}</span>
+		</button>
+	</div>
 {/if}
 
 <style>
@@ -161,13 +161,13 @@
 		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 		background: linear-gradient(
 			45deg,
-			 #4776E6,  /* Royal Blue - Trust */
-			 #3CB4AC,  /* Turquoise - Calmness */
-			 #8E54E9,  /* Light Purple - Premium */
-			 #2ECC71,  /* Emerald Green - Success */
-			 #8E54E9,  /* Light Purple - Premium */
-			 #3CB4AC,  /* Turquoise - Calmness */
-			 #4776E6   /* Royal Blue - Trust */
+			#4776e6,
+			/* Royal Blue - Trust */ #3cb4ac,
+			/* Turquoise - Calmness */ #8e54e9,
+			/* Light Purple - Premium */ #2ecc71,
+			/* Emerald Green - Success */ #8e54e9,
+			/* Light Purple - Premium */ #3cb4ac,
+			/* Turquoise - Calmness */ #4776e6 /* Royal Blue - Trust */
 		);
 		background-size: 300% 300%;
 		animation: moveGradient 8s ease infinite;

@@ -55,7 +55,9 @@
 								-
 							{/if}
 						{:else}
-							<span class="payment-required">{getTranslation('purchases.details.paymentRequired')}</span>
+							<span class="payment-required"
+								>{getTranslation('purchases.details.paymentRequired')}</span
+							>
 						{/if}
 					</Cell>
 					<Cell>
