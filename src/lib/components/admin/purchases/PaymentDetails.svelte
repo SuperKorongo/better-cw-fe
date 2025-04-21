@@ -13,6 +13,7 @@
 	import { defaultCurrency } from '$lib/stores/currency/store';
 	import { getTranslatedStatus } from './utils';
 	import StatusTooltip from './StatusTooltip.svelte';
+	import GlowingText from '$lib/components/common/GlowingText.svelte';
 
 	let { payment }: { payment: Payment } = $props();
 </script>
@@ -61,7 +62,7 @@
 {#if payment.status !== BLOCKCHAIN_CONFIRMED_STATUS && payment.status !== EXPIRED_STATUS}
 	<div class="pay-button-container">
 		<button class="pay-button">
-			<span class="pay-button-text">{getTranslation('purchases.details.payInvoice')}</span>
+			{getTranslation('purchases.details.payInvoice')}
 		</button>
 	</div>
 {/if}
@@ -159,18 +160,7 @@
 		cursor: pointer;
 		overflow: hidden;
 		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-		background: linear-gradient(
-			45deg,
-			#4776e6,
-			/* Royal Blue - Trust */ #3cb4ac,
-			/* Turquoise - Calmness */ #8e54e9,
-			/* Light Purple - Premium */ #2ecc71,
-			/* Emerald Green - Success */ #8e54e9,
-			/* Light Purple - Premium */ #3cb4ac,
-			/* Turquoise - Calmness */ #4776e6 /* Royal Blue - Trust */
-		);
-		background-size: 300% 300%;
-		animation: moveGradient 8s ease infinite;
+		background: rgb(0, 0, 160);
 	}
 
 	.pay-button:hover {
@@ -181,12 +171,6 @@
 
 	.pay-button:active {
 		transform: translateY(1px) scale(0.98);
-	}
-
-	.pay-button-text {
-		font-weight: 700;
-		letter-spacing: 0.5px;
-		text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 	}
 
 	@keyframes moveGradient {
