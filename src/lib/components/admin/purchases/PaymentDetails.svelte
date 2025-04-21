@@ -23,6 +23,10 @@
 			<span class="value">{getFormattedDateWithTime(payment.createdAtTimestamp)}</span>
 		</div>
 		<div class="info-item">
+			<span class="label">UUID:</span>
+			<span class="value uuid">{payment.uuid}</span>
+		</div>
+		<div class="info-item">
 			<span class="label">{getTranslation('purchases.details.priceUSD')}:</span>
 			<span class="value">
 				{getFormattedPrice({
@@ -116,6 +120,11 @@
 	.status-cell.expired {
 		background-color: #f8d7da;
 		color: #721c24;
+	}
+
+	.uuid {
+		font-family: monospace;
+		font-size: 1rem;
 	}
 
 	@media (max-width: 599px) {

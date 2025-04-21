@@ -6,8 +6,8 @@
 </script>
 
 {#if open}
-	<div class="modal-backdrop" onclick={() => (open = false)}>
-		<div class="modal-content" onclick={(e) => e.stopPropagation()}>
+	<div role="none" tabindex="-1" onkeypress={() => null} class="modal-backdrop" onclick={() => (open = false)}>
+		<div role="none" onkeypress={() => null} class="modal-content" onclick={(e) => e.stopPropagation()}>
 			<h2>{getTranslation('purchases.table.status')}</h2>
 			<div class="status-list">
 				<div class="status-row">
