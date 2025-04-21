@@ -60,9 +60,9 @@
 
 {#if payment.status !== BLOCKCHAIN_CONFIRMED_STATUS && payment.status !== EXPIRED_STATUS}
     <div class="pay-button-container">
-        <Button variant="raised" color="primary">
-            <Label>{getTranslation('purchases.details.payInvoice')}</Label>
-        </Button>
+        <button class="pay-button">
+            <span class="pay-button-text">{getTranslation('purchases.details.payInvoice')}</span>
+        </button>
     </div>
 {/if}
 
@@ -146,5 +146,58 @@
 		display: flex;
 		justify-content: center;
 		margin: 2rem 0;
+	}
+
+	.pay-button {
+		position: relative;
+		padding: 16px 32px;
+		border: none;
+		border-radius: 12px;
+		font-size: 1.2rem;
+		font-weight: 600;
+		color: white;
+		cursor: pointer;
+		overflow: hidden;
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		background: linear-gradient(
+			45deg,
+			 #4776E6,  /* Royal Blue - Trust */
+			 #3CB4AC,  /* Turquoise - Calmness */
+			 #8E54E9,  /* Light Purple - Premium */
+			 #2ECC71,  /* Emerald Green - Success */
+			 #8E54E9,  /* Light Purple - Premium */
+			 #3CB4AC,  /* Turquoise - Calmness */
+			 #4776E6   /* Royal Blue - Trust */
+		);
+		background-size: 300% 300%;
+		animation: moveGradient 8s ease infinite;
+	}
+
+	.pay-button:hover {
+		transform: translateY(-2px) scale(1.02);
+		box-shadow: 0 15px 30px rgba(71, 118, 230, 0.2); /* Matching shadow color to the primary blue */
+		animation: moveGradient 2s ease infinite;
+	}
+
+	.pay-button:active {
+		transform: translateY(1px) scale(0.98);
+	}
+
+	.pay-button-text {
+		font-weight: 700;
+		letter-spacing: 0.5px;
+		text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	}
+
+	@keyframes moveGradient {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
 	}
 </style>
