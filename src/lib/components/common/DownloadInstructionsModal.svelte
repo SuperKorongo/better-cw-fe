@@ -1,7 +1,7 @@
 <script lang="ts">
-	import Dialog, { Content, Title } from '@smui/dialog';
-	import Button, { Label } from '@smui/button';
 	import { getTranslation } from '$lib/translations';
+	import Button, { Label } from '@smui/button';
+	import Dialog, { Content, Title } from '@smui/dialog';
 
 	let { instructions = '', open = $bindable() }: { instructions: string; open: boolean } = $props();
 </script>
@@ -16,7 +16,6 @@
 	>
 	<Content>
 		<div class="modal-content">
-			<h2>{getTranslation('common.downloadInstructions.title')}</h2>
 			<p class="instructions">{instructions}</p>
 			<Button onclick={() => (open = false)} variant="outlined">
 				<Label>{getTranslation('common.close')}</Label>
