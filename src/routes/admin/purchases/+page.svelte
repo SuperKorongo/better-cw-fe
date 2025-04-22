@@ -1,17 +1,17 @@
 <script lang="ts">
+	import NoPurchases from '$lib/components/admin/purchases/NoPurchases.svelte';
+	import PurchasesTable from '$lib/components/admin/purchases/PurchasesTable.svelte';
 	import * as toasts from '$lib/components/toasts/toasts';
-	import { onMount } from 'svelte';
-	import { loading } from '$lib/stores/loading/store';
 	import {
 		DEFAULT_PAGINATION,
 		type PaginatedResponse,
 		type Pagination as PaginationType
 	} from '$lib/models/Pagination';
-	import type { Payment } from '$lib/models/Payment';
+	import { type Payment } from '$lib/models/Payment';
 	import { getMyPayments } from '$lib/services/payments';
-	import PurchasesTable from '$lib/components/admin/purchases/PurchasesTable.svelte';
-	import NoPurchases from '$lib/components/admin/purchases/NoPurchases.svelte';
+	import { loading } from '$lib/stores/loading/store';
 	import { getTranslation } from '$lib/translations';
+	import { onMount } from 'svelte';
 
 	let data: PaginatedResponse<Payment> | null = $state(null);
 	let pagination: PaginationType = $state({
@@ -22,6 +22,7 @@
 			direction: 'desc'
 		}
 	});
+	let showPaidOnly = $state(false);
 
 	onMount(async () => {
 		await loadPayments();
@@ -30,12 +31,29 @@
 	async function loadPayments() {
 		try {
 			loading.set(true);
-			data = await getMyPayments(window.fetch, pagination);
+			const statusFilter = showPaidOnly ? [3] : undefined; // todo: map constants
+			data = await getMyPayments(
+				window.fetch,
+				{
+					...pagination
+				},
+				statusFilter
+			);
 		} catch {
 			toasts.error(getTranslation('common.errors.generic'));
 		} finally {
 			loading.set(false);
 		}
+	}
+
+	function handlePaginationChange(newPagination: PaginationType) {
+		pagination = newPagination;
+		loadPayments();
+	}
+
+	function handleStatusFilterChange(newShowPaidOnly: boolean) {
+		showPaidOnly = newShowPaidOnly;
+		loadPayments();
 	}
 </script>
 
@@ -46,10 +64,9 @@
 			<PurchasesTable
 				{data}
 				{pagination}
-				onChangePagination={(newPagination) => {
-					pagination = newPagination;
-					loadPayments();
-				}}
+				{showPaidOnly}
+				onChangePagination={handlePaginationChange}
+				onChangeStatusFilter={handleStatusFilterChange}
 			/>
 		</div>
 	{:else if data !== null && data.data.length === 0}

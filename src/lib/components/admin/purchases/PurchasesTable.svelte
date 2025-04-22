@@ -1,5 +1,6 @@
 <script lang="ts">
-	import DataTable, { Body, Cell, Head, Row } from '@smui/data-table';
+	import { goto } from '$app/navigation';
+	import Pagination from '$lib/components/table/Pagination.svelte';
 	import type { PaginatedResponse, Pagination as PaginationType } from '$lib/models/Pagination';
 	import {
 		AWAITING_BLOCKCHAIN_CONFIRMATION_STATUS,
@@ -9,24 +10,29 @@
 		EXPIRED_STATUS,
 		type Payment
 	} from '$lib/models/Payment';
-	import { loading } from '$lib/stores/loading/store';
-	import Pagination from '$lib/components/table/Pagination.svelte';
-	import { getFormattedDateWithTime, getFormattedPrice } from '$lib/utils/utils';
 	import { defaultCurrency } from '$lib/stores/currency/store';
-	import { allowedRowsPerPage } from './data';
-	import { goto } from '$app/navigation';
-	import { getTranslatedStatus } from './utils';
-	import StatusInfoModal from './StatusInfoModal.svelte';
+	import { loading } from '$lib/stores/loading/store';
 	import { getTranslation } from '$lib/translations';
+	import { getFormattedDateWithTime, getFormattedPrice } from '$lib/utils/utils';
+	import DataTable, { Body, Cell, Head, Row } from '@smui/data-table';
+	import FormField from '@smui/form-field';
+	import Switch from '@smui/switch';
+	import { allowedRowsPerPage } from './data';
+	import StatusInfoModal from './StatusInfoModal.svelte';
+	import { getTranslatedStatus } from './utils';
 
 	let {
 		data,
 		pagination,
-		onChangePagination
+		onChangePagination,
+		showPaidOnly,
+		onChangeStatusFilter
 	}: {
 		data: PaginatedResponse<Payment>;
 		pagination: PaginationType;
 		onChangePagination: (pagination: PaginationType) => void;
+		showPaidOnly: boolean;
+		onChangeStatusFilter: (showPaidOnly: boolean) => void;
 	} = $props();
 
 	const ifNotLoading = (action: () => void) => {
@@ -43,6 +49,20 @@
 </script>
 
 <div class="table-container">
+	<div class="filters">
+		<FormField align="end">
+			<Switch
+				checked={showPaidOnly}
+				onclick={() => {
+					ifNotLoading(() => {
+						onChangeStatusFilter(!showPaidOnly);
+					});
+				}}
+			/>
+			<span>{getTranslation('purchases.table.showOnlyPaid')}</span>
+		</FormField>
+	</div>
+
 	<DataTable style="width: 100%;">
 		<Head>
 			<Row>
@@ -132,7 +152,8 @@
 				ifNotLoading(() => {
 					onChangePagination({
 						...pagination,
-						limit: value
+						limit: value,
+						offset: 0
 					});
 				})}
 		/>
@@ -213,5 +234,9 @@
 		justify-content: center;
 		font-size: 12px;
 		font-weight: bold;
+	}
+
+	.filters {
+		margin-bottom: 1rem;
 	}
 </style>

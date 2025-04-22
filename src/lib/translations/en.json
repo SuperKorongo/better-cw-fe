@@ -245,7 +245,8 @@
 			"status": "Status",
 			"videos": "Videos",
 			"rowsPerPage": "Purchases per page",
-			"of": "of"
+			"of": "of",
+			"showOnlyPaid": "Show only paid invoices"
 		},
 		"status": {
 			"awaitingBlockchain": "Awaiting Payment",
