@@ -245,7 +245,8 @@
 			"status": "Stato",
 			"videos": "Video",
 			"rowsPerPage": "Acquisti per pagina",
-			"of": "di"
+			"of": "di",
+			"showOnlyPaid": "Mostra solo fatture pagate"
 		},
 		"status": {
 			"awaitingBlockchain": "In Attesa di Pagamento",

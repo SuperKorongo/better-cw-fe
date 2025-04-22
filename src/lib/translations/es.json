@@ -245,7 +245,8 @@
 			"status": "Estado",
 			"videos": "Vídeos",
 			"rowsPerPage": "Compras por página",
-			"of": "de"
+			"of": "de",
+			"showOnlyPaid": "Mostrar solo facturas pagadas"
 		},
 		"status": {
 			"awaitingBlockchain": "Esperando Pago",
