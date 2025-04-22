@@ -1,0 +1,13 @@
+Let me give you more knowledge and how-to.
+
+For toasts we are using a custom component located in src/lib/components/toasts/toasts.ts
+
+Whenever we need to display a toast we import that package
+`import * as toasts from '$lib/components/toasts/toasts';`
+and then do toasts.success, toasts.warning or toast.error
+
+
+Another topic is translations. We have english, italian and spanish translations for all text in the app. The translations are located in src/lib/translations.
+
+Whenever I tell you to display any text, you always need to add the necessary translations to all languages and then use the getTranslation function 
+`import { getTranslation } from '$lib/translations';`

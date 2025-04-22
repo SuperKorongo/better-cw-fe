@@ -1,0 +1,12 @@
+Hi there!
+Please learn as much as you can about this project.
+I will give you initial context, and then please get back to me with any questions you may have so I can give you all the details you need to be the best copilot for me.
+
+So, initial contex:
+This is a svelte frontend application. It is a frontend for a videos marketplace, where users can browse videos, add them to card and pay with bitcoin, and users can also upload thei videos into the system and get paid in bitcoin.
+
+The backend API is written in go and that is another project, here we will only work in the frontend side of things.
+
+Please take a look at the folders and files and learnas much as you can
+
+Thanks!

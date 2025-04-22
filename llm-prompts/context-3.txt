@@ -1,0 +1,3 @@
+This is a svelte 5 application.
+Please read the docs and learn how to do things in svelte 5.
+https://svelte.dev/llms-full.txt #fetch
