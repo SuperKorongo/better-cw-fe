@@ -60,15 +60,13 @@
 <section>
 	{#if data !== null && data.data.length > 0}
 		<h1>{getTranslation('purchases.title')}</h1>
-		<div>
-			<PurchasesTable
-				{data}
-				{pagination}
-				{showPaidOnly}
-				onChangePagination={handlePaginationChange}
-				onChangeStatusFilter={handleStatusFilterChange}
-			/>
-		</div>
+		<PurchasesTable
+			{data}
+			{pagination}
+			{showPaidOnly}
+			onChangePagination={handlePaginationChange}
+			onChangeStatusFilter={handleStatusFilterChange}
+		/>
 	{:else if data !== null && data.data.length === 0}
 		<NoPurchases />
 	{/if}
@@ -83,11 +81,5 @@
 		margin-bottom: 2rem;
 		font-size: 1.5rem;
 		color: #333;
-	}
-
-	@media (max-width: 599px) {
-		section {
-			padding: 0;
-		}
 	}
 </style>

@@ -170,10 +170,6 @@
 <StatusInfoModal bind:open={statusModalOpen} />
 
 <style>
-	.table-container {
-		position: relative;
-	}
-
 	div :global(.mdc-data-table__row):nth-child(even) {
 		background-color: #fdfdfd;
 	}
