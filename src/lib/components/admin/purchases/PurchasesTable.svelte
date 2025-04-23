@@ -46,21 +46,28 @@
 	};
 
 	let statusModalOpen = $state(false);
+	let shouldShowOnlyPaidToggle = (): boolean => {
+		return (
+			data.data.find((payment) => payment.status === BLOCKCHAIN_CONFIRMED_STATUS) !== undefined
+		);
+	};
 </script>
 
 <div class="table-container">
 	<div class="filters">
-		<FormField align="end">
-			<Switch
-				checked={showPaidOnly}
-				onclick={() => {
-					ifNotLoading(() => {
-						onChangeStatusFilter(!showPaidOnly);
-					});
-				}}
-			/>
-			<span>{getTranslation('purchases.table.showOnlyPaid')}</span>
-		</FormField>
+		{#if shouldShowOnlyPaidToggle()}
+			<FormField align="end">
+				<Switch
+					checked={showPaidOnly}
+					onclick={() => {
+						ifNotLoading(() => {
+							onChangeStatusFilter(!showPaidOnly);
+						});
+					}}
+				/>
+				<span>{getTranslation('purchases.table.showOnlyPaid')}</span>
+			</FormField>
+		{/if}
 	</div>
 
 	<DataTable style="width: 100%;">
