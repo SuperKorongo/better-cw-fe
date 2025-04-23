@@ -13,6 +13,14 @@ export const AWAITING_FULL_FUNDS_STATUS: PaymentStatus = 'AWAITING_FULL_FUNDS';
 export const BLOCKCHAIN_CONFIRMED_STATUS: PaymentStatus = 'BLOCKCHAIN_CONFIRMED';
 export const EXPIRED_STATUS: PaymentStatus = 'EXPIRED';
 
+export const PAYMENT_STATUS_MAP: Record<PaymentStatus, number> = {
+	AWAITING_BLOCKCHAIN_TRANSACTION: 0,
+	AWAITING_BLOCKCHAIN_CONFIRMATION: 1,
+	AWAITING_FULL_FUNDS: 2,
+	BLOCKCHAIN_CONFIRMED: 3,
+	EXPIRED: 4
+};
+
 export type PurchasedVideo = {
 	uuid: string;
 	title: string;
@@ -22,6 +30,7 @@ export type PurchasedVideo = {
 	downloadLinkInstructions: string | null;
 	thumbnailFilePaths: string[];
 	confirmedAtTimestamp: number | null;
+	userRating: number | null;
 };
 
 export type Payment = {

@@ -7,7 +7,11 @@
 		type PaginatedResponse,
 		type Pagination as PaginationType
 	} from '$lib/models/Pagination';
-	import { type Payment } from '$lib/models/Payment';
+	import {
+		BLOCKCHAIN_CONFIRMED_STATUS,
+		PAYMENT_STATUS_MAP,
+		type Payment
+	} from '$lib/models/Payment';
 	import { getMyPayments } from '$lib/services/payments';
 	import { loading } from '$lib/stores/loading/store';
 	import { getTranslation } from '$lib/translations';
@@ -31,7 +35,9 @@
 	async function loadPayments() {
 		try {
 			loading.set(true);
-			const statusFilter = showPaidOnly ? [3] : undefined; // todo: map constants
+			const statusFilter = showPaidOnly
+				? [PAYMENT_STATUS_MAP[BLOCKCHAIN_CONFIRMED_STATUS]]
+				: undefined;
 			data = await getMyPayments(
 				window.fetch,
 				{
