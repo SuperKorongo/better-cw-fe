@@ -61,7 +61,6 @@
 	.tooltip-container {
 		position: relative;
 		display: inline-block;
-		z-index: 1100;
 	}
 
 	.status-header {

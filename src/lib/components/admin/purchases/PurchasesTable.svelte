@@ -218,10 +218,6 @@
 		height: 100%;
 	}
 
-	:global(.tooltip-container) {
-		z-index: 1100;
-	}
-
 	.status-header {
 		display: flex;
 		align-items: center;
