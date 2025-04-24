@@ -1,5 +1,5 @@
 <script lang="ts">
-	import HeartRating from '$lib/components/common/HeartRating.svelte';
+	import StarRating from '$lib/components/common/StarRating.svelte';
 	import type { Video } from '$lib/models/Video';
 	import { getTranslation } from '$lib/translations';
 	import { getDurationString, getFormattedDate, onClickInternalLink } from '$lib/utils/utils';
@@ -16,7 +16,7 @@
 	{getTranslation('video.videoRating')}
 </span>
 <span class="meta-value">
-	<HeartRating totalRatings={video.totalRatings} value={video.rating} />
+	<StarRating totalRatings={video.totalRatings} value={video.rating} />
 </span>
 
 <span class="meta-label">

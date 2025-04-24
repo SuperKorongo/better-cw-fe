@@ -8,7 +8,7 @@
 		getPlaceholderImageSrc
 	} from '$lib/utils/utils';
 	import { onMount } from 'svelte';
-	import HeartRating from '../common/HeartRating.svelte';
+	import StarRating from '../common/StarRating.svelte';
 	import UploaderLink from '../common/UploaderLink.svelte';
 	import { eventFunctions } from './thumbnail';
 
@@ -53,7 +53,7 @@
 		<div class="rating-and-duration-container">
 			<div class="rating-container">
 				{#if video.totalRatings > 0}
-					<HeartRating value={video.rating} />
+					<StarRating value={video.rating} />
 				{/if}
 			</div>
 			<div class="duration-container">

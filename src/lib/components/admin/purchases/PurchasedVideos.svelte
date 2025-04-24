@@ -1,12 +1,13 @@
 <script lang="ts">
-	import type { Payment } from '$lib/models/Payment';
-	import { getTranslation } from '$lib/translations';
-	import { getFormattedDateWithTime, getImageSrc } from '$lib/utils/utils';
-	import DataTable, { Body, Cell, Head, Row } from '@smui/data-table';
-	import Button, { Label } from '@smui/button';
 	import DownloadInstructionsModal from '$lib/components/common/DownloadInstructionsModal.svelte';
-	import VideoConfirmationModal from './VideoConfirmationModal.svelte';
+	import type { Payment } from '$lib/models/Payment';
 	import { BLOCKCHAIN_CONFIRMED_STATUS, EXPIRED_STATUS } from '$lib/models/Payment';
+	import { getTranslation } from '$lib/translations';
+	import { getImageSrc } from '$lib/utils/utils';
+	import Button, { Label } from '@smui/button';
+	import DataTable, { Body, Cell, Head, Row } from '@smui/data-table';
+	import Rating from './Rating.svelte';
+	import VideoConfirmationModal from './VideoConfirmationModal.svelte';
 
 	let { payment }: { payment: Payment } = $props();
 
@@ -77,11 +78,7 @@
 					</Cell>
 					<Cell>
 						{#if video.confirmedAtTimestamp !== null}
-							<span class="confirmed-date">
-								{getTranslation('purchases.details.confirmedAt')}: {getFormattedDateWithTime(
-									video.confirmedAtTimestamp
-								)}
-							</span>
+							<Rating rating={video.userRating} />
 						{:else if isPaid && !isExpired}
 							<div class="action-buttons">
 								<Button
