@@ -16,7 +16,7 @@
 	{getTranslation('video.videoRating')}
 </span>
 <span class="meta-value">
-	<StarRating totalRatings={video.totalRatings} value={video.rating} />
+	<StarRating value={video.rating} />
 </span>
 
 <span class="meta-label">

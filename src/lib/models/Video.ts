@@ -23,7 +23,6 @@ export type Video = {
 	} | null;
 	tags: string[];
 	rating: number;
-	totalRatings: number;
 };
 
 export const getEmpty = (): Video => {
@@ -53,8 +52,7 @@ export const getEmpty = (): Video => {
 			name: ''
 		},
 		tags: [],
-		rating: 0,
-		totalRatings: 0
+		rating: 0
 	};
 };
 

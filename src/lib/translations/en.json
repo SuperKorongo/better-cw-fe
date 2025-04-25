@@ -170,8 +170,7 @@
 		"uploadedBy": "Uploaded by",
 		"videoRating": "Video rating",
 		"modelName": "Model name",
-		"duration": "Duration",
-		"totalRatings": "total ratings"
+		"duration": "Duration"
 	},
 	"withdraw": {
 		"title": "Withdraw funds",

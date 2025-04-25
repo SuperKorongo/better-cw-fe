@@ -52,9 +52,7 @@
 		/>
 		<div class="rating-and-duration-container">
 			<div class="rating-container">
-				{#if video.totalRatings > 0}
-					<StarRating value={video.rating} />
-				{/if}
+				<StarRating value={video.rating} />
 			</div>
 			<div class="duration-container">
 				<span class="duration">{getDurationString(video.durationInSeconds)}</span>

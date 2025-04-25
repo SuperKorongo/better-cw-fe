@@ -170,8 +170,7 @@
 		"uploadedBy": "Subido por",
 		"videoRating": "Video rating",
 		"modelName": "Modelo",
-		"duration": "Duración",
-		"totalRatings": "valoraciones totales"
+		"duration": "Duración"
 	},
 	"withdraw": {
 		"title": "Retirar fondos",

@@ -170,8 +170,7 @@
 		"uploadedBy": "Caricato da",
 		"videoRating": "Valutazione del video",
 		"modelName": "Nome del modello",
-		"duration": "Durata",
-		"totalRatings": "valutazioni totali"
+		"duration": "Durata"
 	},
 	"withdraw": {
 		"title": "Preleva fondi",
