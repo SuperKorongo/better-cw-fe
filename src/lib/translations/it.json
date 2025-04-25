@@ -295,7 +295,8 @@
 				"message": "Confermo di aver scaricato il video e che il suo contenuto corrisponde a quanto pubblicizzato. Comprendo che una volta confermato, non avrò diritto a un rimborso.",
 				"confirm": "Sì, Conferma",
 				"cancel": "Annulla",
-				"autoConfirmation": "L'acquisto del video sarà confermato automaticamente dopo 24h"
+				"autoConfirmation": "L'acquisto del video sarà confermato automaticamente dopo 24h",
+				"confirmationSuccess": "L'acquisto è stato confermato con successo"
 			},
 			"rateTheVideo": "Valuta il video",
 			"yourRating": "La tua valutazione",

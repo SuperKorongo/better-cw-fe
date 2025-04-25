@@ -9,10 +9,14 @@
 	import Rating from './Rating.svelte';
 	import VideoConfirmationModal from './VideoConfirmationModal.svelte';
 
-	let { payment }: { payment: Payment } = $props();
+	let {
+		payment,
+		onConfirmVideoCallback
+	}: { payment: Payment; onConfirmVideoCallback: (videoUUID: string) => void } = $props();
 
 	let modalOpen = $state(false);
 	let selectedInstructions: string | null = $state('');
+	let selectedVideoUUID: string | null = $state(null);
 	let confirmationModalOpen = $state(false);
 
 	const isPaid = payment.status === BLOCKCHAIN_CONFIRMED_STATUS;
@@ -84,7 +88,10 @@
 								<Button
 									variant="raised"
 									color="primary"
-									onclick={() => (confirmationModalOpen = true)}
+									onclick={() => {
+										confirmationModalOpen = true;
+										selectedVideoUUID = video.uuid;
+									}}
 								>
 									<Label>{getTranslation('purchases.details.confirm')}</Label>
 								</Button>
@@ -101,7 +108,12 @@
 </div>
 
 <DownloadInstructionsModal bind:open={modalOpen} instructions={selectedInstructions ?? ''} />
-<VideoConfirmationModal bind:open={confirmationModalOpen} />
+<VideoConfirmationModal
+	bind:open={confirmationModalOpen}
+	paymentUUID={payment.uuid}
+	videoUUID={selectedVideoUUID!}
+	onConfirmCallback={onConfirmVideoCallback}
+/>
 
 <style>
 	.videos-section {
@@ -136,11 +148,6 @@
 	.action-buttons {
 		display: flex;
 		gap: 8px;
-	}
-
-	.confirmed-date {
-		color: #155724;
-		font-weight: 500;
 	}
 
 	@media (max-width: 599px) {

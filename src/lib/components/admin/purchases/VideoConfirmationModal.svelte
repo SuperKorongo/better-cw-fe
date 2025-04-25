@@ -1,8 +1,40 @@
 <script lang="ts">
+	import * as toasts from '$lib/components/toasts/toasts';
+	import { confirmVideo } from '$lib/services/payments';
+	import { cacheInvalidation } from '$lib/stores/cache-invalidation/store';
+	import { loading } from '$lib/stores/loading/store';
 	import { getTranslation } from '$lib/translations';
 	import Button, { Label } from '@smui/button';
 
-	let { open = $bindable(false) } = $props();
+	let {
+		open = $bindable(false),
+		paymentUUID,
+		videoUUID,
+		onConfirmCallback
+	}: {
+		open: boolean;
+		paymentUUID: string;
+		videoUUID: string;
+		onConfirmCallback: (videoUUID: string) => void;
+	} = $props();
+
+	const onConfirm = async () => {
+		try {
+			loading.set(true);
+			await confirmVideo(window.fetch, paymentUUID, videoUUID);
+			toasts.success(getTranslation('purchases.details.confirmationModal.confirmationSuccess'));
+			cacheInvalidation.refreshMyPurchases();
+			onConfirmCallback(videoUUID);
+		} catch {
+			toasts.error(getTranslation('common.errors.generic'));
+		} finally {
+			loading.set(false);
+		}
+		open = false;
+	};
+	const onCancel = () => {
+		open = false;
+	};
 </script>
 
 {#if open}
@@ -14,10 +46,10 @@
 				{getTranslation('purchases.details.confirmationModal.autoConfirmation')}
 			</p>
 			<div class="actions">
-				<Button variant="outlined" color="secondary" onclick={() => (open = false)}>
+				<Button variant="outlined" color="secondary" onclick={onCancel}>
 					<Label>{getTranslation('purchases.details.confirmationModal.cancel')}</Label>
 				</Button>
-				<Button variant="raised" color="primary" onclick={() => (open = false)}>
+				<Button variant="raised" color="primary" onclick={onConfirm}>
 					<Label>{getTranslation('purchases.details.confirmationModal.confirm')}</Label>
 				</Button>
 			</div>

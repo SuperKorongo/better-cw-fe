@@ -1,14 +1,14 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
+	import PaymentDetails from '$lib/components/admin/purchases/PaymentDetails.svelte';
+	import PurchasedVideos from '$lib/components/admin/purchases/PurchasedVideos.svelte';
 	import * as toasts from '$lib/components/toasts/toasts';
 	import type { Payment } from '$lib/models/Payment';
 	import { getPaymentByUUID } from '$lib/services/payments';
 	import { loading } from '$lib/stores/loading/store';
 	import { getTranslation } from '$lib/translations';
 	import { onMount } from 'svelte';
-	import PaymentDetails from '$lib/components/admin/purchases/PaymentDetails.svelte';
-	import PurchasedVideos from '$lib/components/admin/purchases/PurchasedVideos.svelte';
 
 	let payment: Payment | null = $state(null);
 
@@ -30,7 +30,15 @@
 	{#if payment}
 		<div class="payment-details">
 			<PaymentDetails {payment} />
-			<PurchasedVideos {payment} />
+			<PurchasedVideos
+				{payment}
+				onConfirmVideoCallback={(videoUUID: string) => {
+					const video = payment!.videos.find((video) => video.uuid === videoUUID);
+					if (!video) return;
+
+					video.confirmedAtTimestamp = new Date().getTime();
+				}}
+			/>
 		</div>
 	{/if}
 </section>

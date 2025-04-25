@@ -293,7 +293,8 @@
 				"message": "I confirm that I was able to download the video and its content matches what was advertised. I understand that once confirmed, I will not be eligible for a refund.",
 				"confirm": "Yes, Confirm",
 				"cancel": "Cancel",
-				"autoConfirmation": "Video purchase will be confirmed automatically after 24h"
+				"autoConfirmation": "Video purchase will be confirmed automatically after 24h",
+				"confirmationSuccess": "Video purchase confirmed successfully"
 			},
 			"payInvoice": "Pay Invoice",
 			"paymentRequired": "Please send the payment to view the download links",

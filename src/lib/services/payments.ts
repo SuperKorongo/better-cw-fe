@@ -43,3 +43,20 @@ export const getPaymentByUUID = async (
 
 	return await response.json();
 };
+
+export const confirmVideo = async (
+	fetch: PageLoadEvent['fetch'],
+	paymentUUID: string,
+	videoUUID: string
+): Promise<void> => {
+	const response = await fetchWrapper(fetch)(
+		`${PUBLIC_STORE_API_URL}/api/v1/payments/buyer-confirmation/${paymentUUID}/${videoUUID}`,
+		{
+			method: 'PATCH'
+		}
+	);
+
+	if (!response.ok) {
+		throw apiError(response);
+	}
+};

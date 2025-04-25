@@ -293,7 +293,8 @@
 				"message": "Confirmo que he podido descargar el vídeo y su contenido corresponde con lo anunciado. Entiendo que una vez confirmado, no podré solicitar un reembolso.",
 				"confirm": "Sí, Confirmar",
 				"cancel": "Cancelar",
-				"autoConfirmation": "La compra del vídeo se confirmará automáticamente después de 24h"
+				"autoConfirmation": "La compra del vídeo se confirmará automáticamente después de 24h",
+				"confirmationSuccess": "Se ha confirmado la compra correctamente"
 			},
 			"payInvoice": "Pagar Factura",
 			"paymentRequired": "Por favor envía el pago para ver los enlaces de descarga",
