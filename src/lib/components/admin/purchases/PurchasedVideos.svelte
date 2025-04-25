@@ -102,7 +102,15 @@
 								>
 									<Label>{getTranslation('purchases.details.confirm')}</Label>
 								</Button>
-								<Button variant="outlined" color="secondary" class="dispute-button">
+								<Button
+									onclick={() => {
+										disputeModalOpen = true;
+										selectedVideoUUID = video.uuid;
+									}}
+									variant="outlined"
+									color="secondary"
+									class="dispute-button"
+								>
 									<Label>{getTranslation('purchases.details.dispute')}</Label>
 								</Button>
 							</div>

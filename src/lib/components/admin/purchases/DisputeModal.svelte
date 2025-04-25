@@ -22,11 +22,7 @@
 {#if open}
 	<div class="modal-backdrop">
 		<div class="modal-content">
-			<h2>{getTranslation('purchases.details.confirmationModal.title')}</h2>
-			<p class="message">{getTranslation('purchases.details.confirmationModal.message')}</p>
-			<p class="auto-confirmation">
-				{getTranslation('purchases.details.confirmationModal.autoConfirmation')}
-			</p>
+			TODO
 			<div class="actions">
 				<Button variant="outlined" color="secondary" onclick={onCancel}>
 					<Label>{getTranslation('purchases.details.confirmationModal.cancel')}</Label>
