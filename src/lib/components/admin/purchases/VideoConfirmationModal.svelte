@@ -113,9 +113,5 @@
 		.actions {
 			flex-direction: column-reverse;
 		}
-
-		:global(.actions button) {
-			width: 100%;
-		}
 	}
 </style>
