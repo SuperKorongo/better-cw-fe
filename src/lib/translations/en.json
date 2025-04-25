@@ -297,7 +297,11 @@
 				"autoConfirmation": "Video purchase will be confirmed automatically after 24h"
 			},
 			"payInvoice": "Pay Invoice",
-			"paymentRequired": "Please send the payment to view the download links"
+			"paymentRequired": "Please send the payment to view the download links",
+			"rateTheVideo": "Rate the video",
+			"yourRating": "Your rating",
+			"submit": "Submit",
+			"successfullyRated": "Video rated successfully"
 		}
 	}
 }

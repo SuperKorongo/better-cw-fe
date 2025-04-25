@@ -35,7 +35,7 @@
 		<Body>
 			{#each payment.videos as video (video.uuid)}
 				<Row>
-					<Cell style="display: flex; justify-content: center; align-items: center; padding: 8px;">
+					<Cell style="text-align: center">
 						{#if video.thumbnailFilePaths && video.thumbnailFilePaths.length > 0}
 							<img
 								src={getImageSrc(video.thumbnailFilePaths[0], true)}
@@ -78,7 +78,7 @@
 					</Cell>
 					<Cell>
 						{#if video.confirmedAtTimestamp !== null}
-							<Rating rating={video.userRating} />
+							<Rating rating={video.userRating} videoUUID={video.uuid} invoiceUUID={payment.uuid} />
 						{:else if isPaid && !isExpired}
 							<div class="action-buttons">
 								<Button

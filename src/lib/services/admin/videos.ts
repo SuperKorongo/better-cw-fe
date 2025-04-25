@@ -101,3 +101,16 @@ export const deleteThumbnail = async (
 		}
 	);
 };
+
+export const rateVideo = async (
+	invoiceUUID: string,
+	videoUUID: string,
+	rating: number
+): Promise<void> => {
+	await fetchWrapper(window.fetch)(
+		`${PUBLIC_STORE_API_URL}/api/v1/videos/rate/${invoiceUUID}/${videoUUID}/${rating}`,
+		{
+			method: 'POST'
+		}
+	);
+};

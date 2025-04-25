@@ -297,7 +297,11 @@
 				"confirm": "Sì, Conferma",
 				"cancel": "Annulla",
 				"autoConfirmation": "L'acquisto del video sarà confermato automaticamente dopo 24h"
-			}
+			},
+			"rateTheVideo": "Valuta il video",
+			"yourRating": "La tua valutazione",
+			"submit": "Invia",
+			"successfullyRated": "Video valutato con successo"
 		}
 	}
 }
