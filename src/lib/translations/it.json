@@ -296,7 +296,8 @@
 				"confirm": "Sì, Conferma",
 				"cancel": "Annulla",
 				"autoConfirmation": "L'acquisto del video sarà confermato automaticamente dopo 24h",
-				"confirmationSuccess": "L'acquisto è stato confermato con successo"
+				"confirmationSuccess": "L'acquisto è stato confermato con successo",
+				"confirmationDisputeConflict": "Il video non può essere confermato perché è in corso una controversia."
 			},
 			"rateTheVideo": "Valuta il video",
 			"yourRating": "La tua valutazione",

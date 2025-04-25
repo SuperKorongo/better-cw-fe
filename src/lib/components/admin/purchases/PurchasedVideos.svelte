@@ -6,18 +6,25 @@
 	import { getImageSrc } from '$lib/utils/utils';
 	import Button, { Label } from '@smui/button';
 	import DataTable, { Body, Cell, Head, Row } from '@smui/data-table';
+	import DisputeModal from './DisputeModal.svelte';
 	import Rating from './Rating.svelte';
 	import VideoConfirmationModal from './VideoConfirmationModal.svelte';
 
 	let {
 		payment,
-		onConfirmVideoCallback
-	}: { payment: Payment; onConfirmVideoCallback: (videoUUID: string) => void } = $props();
+		onConfirmVideoCallback,
+		onDisputeOpenCallback
+	}: {
+		payment: Payment;
+		onConfirmVideoCallback: (videoUUID: string) => void;
+		onDisputeOpenCallback: (videoUUID: string) => void;
+	} = $props();
 
-	let modalOpen = $state(false);
+	let instructionsModalOpen = $state(false);
 	let selectedInstructions: string | null = $state('');
 	let selectedVideoUUID: string | null = $state(null);
 	let confirmationModalOpen = $state(false);
+	let disputeModalOpen = $state(false);
 
 	const isPaid = payment.status === BLOCKCHAIN_CONFIRMED_STATUS;
 	const isExpired = payment.status === EXPIRED_STATUS;
@@ -70,7 +77,7 @@
 							<Button
 								onclick={() => {
 									selectedInstructions = video.downloadLinkInstructions;
-									modalOpen = true;
+									instructionsModalOpen = true;
 								}}
 								variant="outlined"
 							>
@@ -107,12 +114,21 @@
 	</DataTable>
 </div>
 
-<DownloadInstructionsModal bind:open={modalOpen} instructions={selectedInstructions ?? ''} />
+<DownloadInstructionsModal
+	bind:open={instructionsModalOpen}
+	instructions={selectedInstructions ?? ''}
+/>
 <VideoConfirmationModal
 	bind:open={confirmationModalOpen}
 	paymentUUID={payment.uuid}
 	videoUUID={selectedVideoUUID!}
 	onConfirmCallback={onConfirmVideoCallback}
+/>
+<DisputeModal
+	bind:open={disputeModalOpen}
+	paymentUUID={payment.uuid}
+	videoUUID={selectedVideoUUID!}
+	{onDisputeOpenCallback}
 />
 
 <style>

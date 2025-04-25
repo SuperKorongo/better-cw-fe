@@ -294,7 +294,8 @@
 				"confirm": "Yes, Confirm",
 				"cancel": "Cancel",
 				"autoConfirmation": "Video purchase will be confirmed automatically after 24h",
-				"confirmationSuccess": "Video purchase confirmed successfully"
+				"confirmationSuccess": "Video purchase confirmed successfully",
+				"confirmationDisputeConflict": "Can't confirm the video because there is an open dispute for this purchase"
 			},
 			"payInvoice": "Pay Invoice",
 			"paymentRequired": "Please send the payment to view the download links",

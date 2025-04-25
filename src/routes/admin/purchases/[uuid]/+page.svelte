@@ -24,6 +24,13 @@
 			loading.set(false);
 		}
 	});
+
+	const onConfirmVideoCallback = (videoUUID: string) => {
+		const video = payment!.videos.find((video) => video.uuid === videoUUID);
+		if (!video) return;
+
+		video.confirmedAtTimestamp = new Date().getTime();
+	};
 </script>
 
 <section>
@@ -32,12 +39,8 @@
 			<PaymentDetails {payment} />
 			<PurchasedVideos
 				{payment}
-				onConfirmVideoCallback={(videoUUID: string) => {
-					const video = payment!.videos.find((video) => video.uuid === videoUUID);
-					if (!video) return;
-
-					video.confirmedAtTimestamp = new Date().getTime();
-				}}
+				{onConfirmVideoCallback}
+				onDisputeOpenCallback={onConfirmVideoCallback}
 			/>
 		</div>
 	{/if}

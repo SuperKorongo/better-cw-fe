@@ -1,55 +1,19 @@
 <script lang="ts">
-	import * as toasts from '$lib/components/toasts/toasts';
-	import { confirmVideo } from '$lib/services/payments';
-	import { cacheInvalidation } from '$lib/stores/cache-invalidation/store';
-	import { loading } from '$lib/stores/loading/store';
 	import { getTranslation } from '$lib/translations';
 	import Button, { Label } from '@smui/button';
-	import type { ApiError } from '../../../../errors/apiError';
 
 	let {
 		open = $bindable(false),
 		paymentUUID,
 		videoUUID,
-		onConfirmCallback
+		onDisputeOpenCallback
 	}: {
 		open: boolean;
 		paymentUUID: string;
 		videoUUID: string;
-		onConfirmCallback: (videoUUID: string) => void;
+		onDisputeOpenCallback: (videoUUID: string) => void;
 	} = $props();
 
-	const onConfirm = async () => {
-		try {
-			loading.set(true);
-			await confirmVideo(window.fetch, paymentUUID, videoUUID);
-			toasts.success(getTranslation('purchases.details.confirmationModal.confirmationSuccess'));
-			cacheInvalidation.refreshMyPurchases();
-			onConfirmCallback(videoUUID);
-		} catch (e: unknown) {
-			const apiError = e as ApiError;
-			if (!e || !(e as ApiError).getCode) {
-				toasts.error(getTranslation('common.errors.generic'));
-				return;
-			} else {
-				switch (apiError.getCode()) {
-					case 409:
-						toasts.warning(
-							getTranslation('purchases.details.confirmationModal.confirmationDisputeConflict'),
-							{
-								duration: 15000
-							}
-						);
-						break;
-					default:
-						toasts.error(getTranslation('common.errors.generic'));
-				}
-			}
-		} finally {
-			loading.set(false);
-		}
-		open = false;
-	};
 	const onCancel = () => {
 		open = false;
 	};
@@ -66,9 +30,6 @@
 			<div class="actions">
 				<Button variant="outlined" color="secondary" onclick={onCancel}>
 					<Label>{getTranslation('purchases.details.confirmationModal.cancel')}</Label>
-				</Button>
-				<Button variant="raised" color="primary" onclick={onConfirm}>
-					<Label>{getTranslation('purchases.details.confirmationModal.confirm')}</Label>
 				</Button>
 			</div>
 		</div>
