@@ -302,7 +302,12 @@
 			"rateTheVideo": "Valuta il video",
 			"yourRating": "La tua valutazione",
 			"submit": "Invia",
-			"successfullyRated": "Video valutato con successo"
+			"successfullyRated": "Video valutato con successo",
+			"disputeModal": {
+				"text": "Se non riesci a scaricare il video o il video non corrisponde a quanto pubblicizzato, per favore apri una disputa.",
+				"text2": "Indica brevemente qual è il tuo problema, esamineremo il caso attentamente e potresti avere diritto a un rimborso.",
+				"open": "Apri Disputa"
+			}
 		}
 	}
 }

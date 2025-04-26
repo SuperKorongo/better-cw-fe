@@ -302,7 +302,12 @@
 			"rateTheVideo": "Califica el video",
 			"yourRating": "Tu calificación",
 			"submit": "Enviar",
-			"successfullyRated": "Video calificado exitosamente"
+			"successfullyRated": "Video calificado exitosamente",
+			"disputeModal": {
+				"text": "Si no puedes descargar el video o el video no coincide con lo anunciado, por favor abre una disputa.",
+				"text2": "Indica brevemente cuál es tu problema, revisaremos el caso cuidadosamente y podrías ser elegible para un reembolso.",
+				"open": "Abrir Disputa"
+			}
 		}
 	}
 }

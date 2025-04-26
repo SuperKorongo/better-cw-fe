@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { getTranslation } from '$lib/translations';
 	import Button, { Label } from '@smui/button';
+	import Textfield from '@smui/textfield';
+	import CharacterCounter from '@smui/textfield/character-counter';
 
 	let {
 		open = $bindable(false),
@@ -14,18 +16,48 @@
 		onDisputeOpenCallback: (videoUUID: string) => void;
 	} = $props();
 
-	const onCancel = () => {
+	const MAX_CLAIM_LENGTH: number = 500;
+	let claim: string = $state('');
+
+	const onCancel = (): void => {
 		open = false;
+	};
+
+	const onOpenDispute = (): void => {
+		console.log(claim);
 	};
 </script>
 
 {#if open}
 	<div class="modal-backdrop">
 		<div class="modal-content">
-			TODO
+			<h2>{getTranslation('purchases.details.disputeModal.open')}⚠️</h2>
+			<div>
+				{getTranslation('purchases.details.disputeModal.text')}
+				<br /><br />
+				{getTranslation('purchases.details.disputeModal.text2')}
+			</div>
+			<div class="textarea-container">
+				<Textfield
+					variant="outlined"
+					textarea
+					invalid={claim.length > MAX_CLAIM_LENGTH}
+					style="width: 100%"
+					bind:value={claim}
+					input$maxlength={MAX_CLAIM_LENGTH}
+					input$rows={8}
+				>
+					{#snippet helper()}
+						<CharacterCounter />
+					{/snippet}
+				</Textfield>
+			</div>
 			<div class="actions">
 				<Button variant="outlined" color="secondary" onclick={onCancel}>
 					<Label>{getTranslation('purchases.details.confirmationModal.cancel')}</Label>
+				</Button>
+				<Button variant="raised" color="primary" onclick={onOpenDispute}>
+					<Label>{getTranslation('purchases.details.disputeModal.open')}</Label>
 				</Button>
 			</div>
 		</div>
@@ -54,29 +86,14 @@
 		width: 90%;
 	}
 
-	h2 {
-		margin: 0 0 1rem 0;
-		font-size: 1.5rem;
-		color: #333;
-	}
-
-	.message {
-		margin: 0 0 1.5rem 0;
-		line-height: 1.5;
-		color: #555;
-	}
-
-	.auto-confirmation {
-		margin: 0 0 1.5rem 0;
-		font-size: 0.9rem;
-		color: #666;
-		font-style: italic;
-	}
-
 	.actions {
 		display: flex;
 		justify-content: flex-end;
 		gap: 1rem;
+	}
+
+	.textarea-container {
+		margin: 20px 0px;
 	}
 
 	@media (max-width: 599px) {
