@@ -95,8 +95,8 @@
 				<span>{getTranslation('disputes.table.showOnlyOpen')}</span>
 			</FormField>
 		</div>
+		<h1>{getTranslation('disputes.buyerTitle')}</h1>
 		{#if disputesAsBuyer !== null && disputesAsBuyer.data.length > 0}
-			<h1>{getTranslation('disputes.buyerTitle')}</h1>
 			<DisputesTable
 				data={disputesAsBuyer}
 				pagination={disputesAsBuyerPagination}
@@ -106,8 +106,8 @@
 			<NoDisputes />
 		{/if}
 		<div>
+			<h1>{getTranslation('disputes.sellerTitle')}</h1>
 			{#if disputesAsSeller !== null && disputesAsSeller.data.length > 0}
-				<h1>{getTranslation('disputes.sellerTitle')}</h1>
 				<DisputesTable
 					data={disputesAsSeller}
 					pagination={disputesAsSellerPagination}
