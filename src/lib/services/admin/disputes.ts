@@ -1,40 +1,11 @@
 import { PUBLIC_STORE_API_URL } from '$env/static/public';
+import type { Dispute } from '$lib/models/Dispute';
 import type { PaginatedResponse, Pagination } from '$lib/models/Pagination';
 import { cacheInvalidation } from '$lib/stores/cache-invalidation/store';
 import { fetchWrapper } from '$lib/utils/fetch';
 import { get } from 'svelte/store';
 import type { PageLoadEvent } from '../../../routes/$types';
 import { getQueryParams } from '../common';
-
-export type Claim = {
-	author: 'admin' | 'buyer' | 'seller';
-	addedAtTimestamp: number;
-	contents: string;
-};
-
-export type DisputeVideo = {
-	uuid: string;
-	title: string;
-	priceInCentsOfDollar: number;
-	model: string;
-};
-
-export type DisputeInvoice = {
-	uuid: string;
-	priceInCentsOfDollar: number;
-	priceInBTC: number;
-	paidAtTimestamp: number;
-};
-
-export type Dispute = {
-	uuid: string;
-	status: 'open' | 'closed';
-	createdAtTimestamp: number;
-	updatedAtTimestamp: number;
-	claims: Claim[];
-	video: DisputeVideo;
-	invoice: DisputeInvoice;
-};
 
 export const openDispute = async (
 	fetch: PageLoadEvent['fetch'],

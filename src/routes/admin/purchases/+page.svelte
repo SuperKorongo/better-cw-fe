@@ -35,9 +35,7 @@
 	async function loadPayments() {
 		try {
 			loading.set(true);
-			const statusFilter = showPaidOnly
-				? [PAYMENT_STATUS_MAP[BLOCKCHAIN_CONFIRMED_STATUS]]
-				: undefined;
+			const statusFilter = showPaidOnly ? [PAYMENT_STATUS_MAP[BLOCKCHAIN_CONFIRMED_STATUS]] : [];
 			data = await getMyPayments(
 				window.fetch,
 				{

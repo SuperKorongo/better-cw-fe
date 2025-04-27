@@ -113,3 +113,8 @@ export const getFormattedDateWithTime = (timestampInSeconds: number): string => 
 	const date = new Date(timestampInSeconds * 1000);
 	return `${date.toLocaleDateString()} ${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
 };
+
+export const ifNotLoading = (action: () => void) => {
+	if (get(loading).value) return;
+	action();
+};

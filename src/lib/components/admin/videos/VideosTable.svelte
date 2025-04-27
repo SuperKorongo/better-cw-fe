@@ -12,7 +12,7 @@
 	import { loading } from '$lib/stores/loading/store';
 	import { user } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
-	import { getFormattedDate, getFormattedPrice } from '$lib/utils/utils';
+	import { getFormattedDate, getFormattedPrice, ifNotLoading } from '$lib/utils/utils';
 	import DataTable, { Body, Cell, Head, Row } from '@smui/data-table';
 	import Switch from '@smui/switch';
 	import { allowedRowsPerPage, tableHeader } from './data';
@@ -26,11 +26,6 @@
 		pagination: PaginationType;
 		onChangePagination: (data: PaginationType) => void;
 	} = $props();
-
-	const ifNotLoading = (action: () => void) => {
-		if ($loading.value) return;
-		action();
-	};
 
 	const onToggleActive = async (video: AdminListVideo): Promise<void> => {
 		try {

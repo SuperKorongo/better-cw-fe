@@ -33,11 +33,8 @@
 	};
 
 	const onDisputeOpenCallback = (videoUUID: string, disputeUUID: string) => {
-		// todo: GO TO DISPUTES/UUID
-		console.log(disputeUUID);
-
 		loading.set(true);
-		goto('/admin/disputes');
+		goto(`/admin/disputes/${disputeUUID}`);
 	};
 </script>
 

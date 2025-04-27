@@ -13,11 +13,10 @@
 	import { defaultCurrency } from '$lib/stores/currency/store';
 	import { loading } from '$lib/stores/loading/store';
 	import { getTranslation } from '$lib/translations';
-	import { getFormattedDateWithTime, getFormattedPrice } from '$lib/utils/utils';
+	import { getFormattedDateWithTime, getFormattedPrice, ifNotLoading } from '$lib/utils/utils';
 	import DataTable, { Body, Cell, Head, Row } from '@smui/data-table';
 	import FormField from '@smui/form-field';
 	import Switch from '@smui/switch';
-	import { allowedRowsPerPage } from './data';
 	import StatusInfoModal from './StatusInfoModal.svelte';
 	import { getTranslatedStatus } from './utils';
 
@@ -34,11 +33,6 @@
 		showPaidOnly: boolean;
 		onChangeStatusFilter: (showPaidOnly: boolean) => void;
 	} = $props();
-
-	const ifNotLoading = (action: () => void) => {
-		if ($loading.value) return;
-		action();
-	};
 
 	const onRowClick = (uuid: string) => {
 		loading.set(true);
@@ -122,7 +116,7 @@
 
 	{#if data}
 		<Pagination
-			rowsPerPageOptions={allowedRowsPerPage}
+			rowsPerPageOptions={[10, 25]}
 			{pagination}
 			meta={data.meta}
 			rowsPerPageLabel="purchases.table.rowsPerPage"
