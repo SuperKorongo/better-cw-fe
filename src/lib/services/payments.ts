@@ -4,7 +4,6 @@ import type { Payment } from '$lib/models/Payment';
 import { cacheInvalidation } from '$lib/stores/cache-invalidation/store';
 import { fetchWrapper } from '$lib/utils/fetch';
 import { get } from 'svelte/store';
-import { apiError } from '../../errors/apiError';
 import type { PageLoadEvent } from '../../routes/$types';
 import { getQueryParams } from './common';
 
@@ -21,10 +20,6 @@ export const getMyPayments = async (
 		`${PUBLIC_STORE_API_URL}/api/v1/payments/mine/?${getQueryParams(pagination, '', get(cacheInvalidation).myPurchases)}${statusQueryParam ? `${statusQueryParam}` : ``}`
 	);
 
-	if (!response.ok) {
-		throw apiError(response);
-	}
-
 	return await response.json();
 };
 
@@ -37,10 +32,6 @@ export const getPaymentByUUID = async (
 		`${PUBLIC_STORE_API_URL}/api/v1/payments/mine/${uuid}${cacheParam ? `?cache=${cacheParam}` : ``}`
 	);
 
-	if (!response.ok) {
-		throw apiError(response);
-	}
-
 	return await response.json();
 };
 
@@ -49,14 +40,10 @@ export const confirmVideo = async (
 	paymentUUID: string,
 	videoUUID: string
 ): Promise<void> => {
-	const response = await fetchWrapper(fetch)(
+	await fetchWrapper(fetch)(
 		`${PUBLIC_STORE_API_URL}/api/v1/payments/buyer-confirmation/${paymentUUID}/${videoUUID}`,
 		{
 			method: 'PATCH'
 		}
 	);
-
-	if (!response.ok) {
-		throw apiError(response);
-	}
 };

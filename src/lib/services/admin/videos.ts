@@ -4,7 +4,6 @@ import { cacheInvalidation } from '$lib/stores/cache-invalidation/store';
 import type { Data as VideoData } from '$lib/stores/video-form/store';
 import { fetchWrapper } from '$lib/utils/fetch';
 import { get } from 'svelte/store';
-import { apiError } from '../../../errors/apiError';
 import type { PageLoadEvent } from '../../../routes/$types';
 import type { AdminListVideo, Video } from '../../models/Video';
 import { getQueryParams } from '../common';
@@ -18,10 +17,6 @@ export const getUserVideos = async (
 	const response = await fetchWrapper(fetch)(
 		`${PUBLIC_STORE_API_URL}/api/v1/videos/mine/?${getQueryParams(pagination, search, get(cacheInvalidation).myVideos)}`
 	);
-
-	if (!response.ok) {
-		throw apiError(response);
-	}
 
 	return await response.json();
 };
@@ -40,10 +35,6 @@ export const getUserVideoByUUID = async (
 		`${PUBLIC_STORE_API_URL}/api/v1/videos/mine/${uuid}${cacheParam ? `?cache=${cacheParam}` : ``}`
 	);
 
-	if (!response.ok) {
-		throw apiError(response);
-	}
-
 	return await response.json();
 };
 
@@ -60,17 +51,10 @@ export const patch = async (
 	}
 	delete patchVideoRequest['blobs'];
 
-	const response = await fetchWrapper(window.fetch)(
-		`${PUBLIC_STORE_API_URL}/api/v1/videos/${uuid}`,
-		{
-			method: 'PATCH',
-			body: JSON.stringify(patchVideoRequest)
-		}
-	);
-
-	if (!response.ok) {
-		throw apiError(response);
-	}
+	await fetchWrapper(window.fetch)(`${PUBLIC_STORE_API_URL}/api/v1/videos/${uuid}`, {
+		method: 'PATCH',
+		body: JSON.stringify(patchVideoRequest)
+	});
 };
 
 export const replaceThumbnail = async (

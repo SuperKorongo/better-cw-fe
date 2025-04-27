@@ -2,6 +2,7 @@ import { goto } from '$app/navigation';
 import * as toasts from '$lib/components/toasts/toasts';
 import { user } from '$lib/stores/user/store';
 import { getTranslation } from '$lib/translations';
+import { apiError } from '../../errors/apiError';
 
 export const fetchWrapper = (fetchFunc: typeof window.fetch) => {
 	const handle401 = (response: Response): Response => {
@@ -32,7 +33,7 @@ export const fetchWrapper = (fetchFunc: typeof window.fetch) => {
 			case 429:
 				return handle429(response);
 			default:
-				return response;
+				throw apiError(response);
 		}
 	};
 };

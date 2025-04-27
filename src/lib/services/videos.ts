@@ -2,7 +2,6 @@ import { PUBLIC_STORE_API_URL } from '$env/static/public';
 import type { PaginatedResponse, Pagination } from '$lib/models/Pagination';
 import type { Data as VideoData } from '$lib/stores/video-form/store';
 import { fetchWrapper } from '$lib/utils/fetch';
-import { apiError } from '../../errors/apiError';
 import type { PageLoadEvent } from '../../routes/$types';
 import type { Video } from '../models/Video';
 import { getQueryParams } from './common';
@@ -18,10 +17,6 @@ export const getHomepageVideos = async (
 		`${PUBLIC_STORE_API_URL}/api/v1/videos/?${getQueryParams(pagination, search)}`
 	);
 
-	if (!response.ok) {
-		throw apiError(response);
-	}
-
 	const paginatedResponse = (await response.json()) as PaginatedResponse<Video>;
 	return paginatedResponse.data;
 };
@@ -34,11 +29,6 @@ export const getVideoByUUID = async (
 	const response = await fetchWrapper(fetch)(
 		`${PUBLIC_STORE_API_URL}/api/v1/videos/${uuid}${bypassCache ? `?${new Date().getTime()}` : ``}`
 	);
-
-	if (!response.ok) {
-		throw apiError(response);
-	}
-
 	return await response.json();
 };
 
@@ -56,10 +46,6 @@ export const getVideosBy = async (
 	const response = await fetchWrapper(fetch)(
 		`${PUBLIC_STORE_API_URL}/api/v1/videos/${endpoint}/${name}/?${getQueryParams(pagination, search)}`
 	);
-
-	if (!response.ok) {
-		throw apiError(response);
-	}
 
 	const paginatedResponse = (await response.json()) as PaginatedResponse<Video>;
 	return paginatedResponse.data;
@@ -87,10 +73,6 @@ export const upload = async (data: VideoData): Promise<string> => {
 		method: 'PUT',
 		body: JSON.stringify({ videos: [uploadVideoRequest] })
 	});
-
-	if (!response.ok) {
-		throw apiError(response);
-	}
 
 	const { uuids } = (await response.json()) as {
 		uuids: string[];

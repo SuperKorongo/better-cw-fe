@@ -3,6 +3,7 @@ import { writable } from 'svelte/store';
 type Data = {
 	myVideos: number | null;
 	myPurchases: number | null;
+	myDisputes: number | null;
 	me: number | null;
 };
 
@@ -12,6 +13,7 @@ export const cacheInvalidation = (() => {
 	const { subscribe, update } = writable<Data>({
 		myVideos: null,
 		myPurchases: null,
+		myDisputes: null,
 		me: null
 	});
 
@@ -39,9 +41,17 @@ export const cacheInvalidation = (() => {
 				return data;
 			}),
 
+		refreshMyDisputes: () =>
+			update((data: Data) => {
+				data.myDisputes = new Date().getTime();
+				updateLocalStorage(data);
+				return data;
+			}),
+
 		refreshAll: () => {
 			cacheInvalidation.refreshMyVideos();
 			cacheInvalidation.refreshMyPurchases();
+			cacheInvalidation.refreshMyDisputes();
 			cacheInvalidation.refreshMe();
 		},
 
