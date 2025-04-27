@@ -67,6 +67,20 @@
 		},
 		"close": "Cerrar"
 	},
+	"contact": {
+		"title": "Contacto",
+		"email": "Correo electrónico",
+		"subject": "Asunto",
+		"message": "Mensaje",
+		"submit": "Enviar mensaje",
+		"success": "¡Tu mensaje ha sido enviado con éxito!",
+		"errors": {
+			"invalidEmail": "Por favor, introduce un correo electrónico válido (máximo 255 caracteres)",
+			"invalidSubject": "El asunto debe tener entre 2 y 100 caracteres",
+			"invalidMessage": "El mensaje debe tener entre 10 y 500 caracteres",
+			"submitFailed": "Error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde."
+		}
+	},
 	"headers": {
 		"browsing": "Viendo videos ",
 		"member": "subidos por",
@@ -87,6 +101,90 @@
 		"register": "Registrarse",
 		"profile": "Mi Cuenta",
 		"logout": "Desconectar"
+	},
+	"purchases": {
+		"title": "Mis Facturas",
+		"empty": "No has realizado ninguna compra todavía",
+		"emptyDescription": "Descubre nuestra colección exclusiva de vídeos de alta calidad. Comienza tu experiencia con pagos seguros y acceso instantáneo a contenido premium.",
+		"securePayment": "Pagos Seguros en Bitcoin",
+		"instantAccess": "Acceso Instantáneo",
+		"hdQuality": "Contenido en Alta Calidad",
+		"browseCTA": "Explorar Vídeos",
+		"table": {
+			"uuid": "UUID",
+			"createdAt": "Fecha",
+			"priceUSD": "Precio (USD)",
+			"priceBTC": "Precio (BTC)",
+			"status": "Estado",
+			"videos": "Vídeos",
+			"rowsPerPage": "Compras por página",
+			"of": "de",
+			"showOnlyPaid": "Mostrar solo facturas pagadas"
+		},
+		"status": {
+			"awaitingBlockchain": "Esperando Pago",
+			"awaitingConfirmation": "Esperando Confirmación",
+			"awaitingFullFunds": "Esperando Pago Completo",
+			"confirmed": "Pago Confirmado",
+			"expired": "Pago Expirado",
+			"descriptions": {
+				"awaitingBlockchain": "Esperando a que envíes el pago en BTC",
+				"awaitingConfirmation": "El pago ha sido detectado en la blockchain pero necesita confirmaciones",
+				"awaitingFullFunds": "El pago recibido es menor que el importe requerido",
+				"confirmed": "El pago ha sido confirmado en la blockchain",
+				"expired": "El tiempo de pago ha expirado sin recibir el importe completo"
+			}
+		},
+		"details": {
+			"paymentDate": "Fecha de Pago",
+			"priceUSD": "Precio en USD",
+			"priceBTC": "Precio en BTC",
+			"videos": "Vídeos",
+			"videoTitle": "Título",
+			"videoPrice": "Precio",
+			"modelName": "Modelo",
+			"downloadLink": "Enlace de Descarga",
+			"downloadInstructions": "Instrucciones de Descarga",
+			"confirmPurchase": "Confirmar Compra",
+			"openDispute": "Abrir Disputa",
+			"confirmButtonTitle": "Confirmar que has recibido el producto como se esperaba",
+			"disputeButtonTitle": "Reportar un problema con esta compra",
+			"status": {
+				"awaitingBlockchain": "Esperando Pago en Blockchain",
+				"awaitingConfirmation": "Esperando Confirmación",
+				"awaitingFullFunds": "Esperando Pago Completo",
+				"confirmed": "Pago Confirmado",
+				"expired": "Pago Expirado",
+				"paid": "Pago Completado",
+				"failed": "Pago Fallido"
+			},
+			"confirmedAt": "Confirmado el",
+			"confirm": "Confirmar",
+			"dispute": "Disputar",
+			"statusTitle": "Estado",
+			"confirmationModal": {
+				"title": "Confirmar Recepción del Vídeo",
+				"message": "Confirmo que he podido descargar el vídeo y su contenido corresponde con lo anunciado. Entiendo que una vez confirmado, no podré solicitar un reembolso.",
+				"confirm": "Sí, Confirmar",
+				"cancel": "Cancelar",
+				"autoConfirmation": "La compra del vídeo se confirmará automáticamente después de 24h",
+				"confirmationSuccess": "Se ha confirmado la compra correctamente",
+				"confirmationDisputeConflict": "El video no se puede confirmar porque hay una disputa abierta"
+			},
+			"payInvoice": "Pagar Factura",
+			"paymentRequired": "Por favor envía el pago para ver los enlaces de descarga",
+			"rateTheVideo": "Califica el video",
+			"yourRating": "Tu calificación",
+			"submit": "Enviar",
+			"successfullyRated": "Video calificado exitosamente",
+			"disputeModal": {
+				"text": "Si no puedes descargar el video o el video no coincide con lo anunciado, por favor abre una disputa.",
+				"text2": "Indica brevemente cuál es tu problema, revisaremos el caso cuidadosamente y podrías ser elegible para un reembolso.",
+				"open": "Abrir Disputa",
+				"successfullyOpened": "Disputa abierta con éxito - Revisaremos tu caso cuidadosamente.",
+				"conflict": "Ya hay una disputa abierta para este video. Por favor, revisa la sección de Disputas en el menú."
+			}
+		}
 	},
 	"search": {
 		"placeholder": "Buscar videos"
@@ -213,103 +311,5 @@
 			"pageOf": "Página {0} de {1}"
 		},
 		"maxAmount": "Establecer el importe a tu saldo completo"
-	},
-	"contact": {
-		"title": "Contacto",
-		"email": "Correo electrónico",
-		"subject": "Asunto",
-		"message": "Mensaje",
-		"submit": "Enviar mensaje",
-		"success": "¡Tu mensaje ha sido enviado con éxito!",
-		"errors": {
-			"invalidEmail": "Por favor, introduce un correo electrónico válido (máximo 255 caracteres)",
-			"invalidSubject": "El asunto debe tener entre 2 y 100 caracteres",
-			"invalidMessage": "El mensaje debe tener entre 10 y 500 caracteres",
-			"submitFailed": "Error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde."
-		}
-	},
-	"purchases": {
-		"title": "Mis Facturas",
-		"empty": "No has realizado ninguna compra todavía",
-		"emptyDescription": "Descubre nuestra colección exclusiva de vídeos de alta calidad. Comienza tu experiencia con pagos seguros y acceso instantáneo a contenido premium.",
-		"securePayment": "Pagos Seguros en Bitcoin",
-		"instantAccess": "Acceso Instantáneo",
-		"hdQuality": "Contenido en Alta Calidad",
-		"browseCTA": "Explorar Vídeos",
-		"table": {
-			"uuid": "UUID",
-			"createdAt": "Fecha",
-			"priceUSD": "Precio (USD)",
-			"priceBTC": "Precio (BTC)",
-			"status": "Estado",
-			"videos": "Vídeos",
-			"rowsPerPage": "Compras por página",
-			"of": "de",
-			"showOnlyPaid": "Mostrar solo facturas pagadas"
-		},
-		"status": {
-			"awaitingBlockchain": "Esperando Pago",
-			"awaitingConfirmation": "Esperando Confirmación",
-			"awaitingFullFunds": "Esperando Pago Completo",
-			"confirmed": "Pago Confirmado",
-			"expired": "Pago Expirado",
-			"descriptions": {
-				"awaitingBlockchain": "Esperando a que envíes el pago en BTC",
-				"awaitingConfirmation": "El pago ha sido detectado en la blockchain pero necesita confirmaciones",
-				"awaitingFullFunds": "El pago recibido es menor que el importe requerido",
-				"confirmed": "El pago ha sido confirmado en la blockchain",
-				"expired": "El tiempo de pago ha expirado sin recibir el importe completo"
-			}
-		},
-		"details": {
-			"paymentDate": "Fecha de Pago",
-			"priceUSD": "Precio en USD",
-			"priceBTC": "Precio en BTC",
-			"videos": "Vídeos",
-			"videoTitle": "Título",
-			"videoPrice": "Precio",
-			"modelName": "Modelo",
-			"downloadLink": "Enlace de Descarga",
-			"downloadInstructions": "Instrucciones de Descarga",
-			"confirmPurchase": "Confirmar Compra",
-			"openDispute": "Abrir Disputa",
-			"confirmButtonTitle": "Confirmar que has recibido el producto como se esperaba",
-			"disputeButtonTitle": "Reportar un problema con esta compra",
-			"status": {
-				"awaitingBlockchain": "Esperando Pago en Blockchain",
-				"awaitingConfirmation": "Esperando Confirmación",
-				"awaitingFullFunds": "Esperando Pago Completo",
-				"confirmed": "Pago Confirmado",
-				"expired": "Pago Expirado",
-				"paid": "Pago Completado",
-				"failed": "Pago Fallido"
-			},
-			"confirmedAt": "Confirmado el",
-			"confirm": "Confirmar",
-			"dispute": "Disputar",
-			"statusTitle": "Estado",
-			"confirmationModal": {
-				"title": "Confirmar Recepción del Vídeo",
-				"message": "Confirmo que he podido descargar el vídeo y su contenido corresponde con lo anunciado. Entiendo que una vez confirmado, no podré solicitar un reembolso.",
-				"confirm": "Sí, Confirmar",
-				"cancel": "Cancelar",
-				"autoConfirmation": "La compra del vídeo se confirmará automáticamente después de 24h",
-				"confirmationSuccess": "Se ha confirmado la compra correctamente",
-				"confirmationDisputeConflict": "El video no se puede confirmar porque hay una disputa abierta"
-			},
-			"payInvoice": "Pagar Factura",
-			"paymentRequired": "Por favor envía el pago para ver los enlaces de descarga",
-			"rateTheVideo": "Califica el video",
-			"yourRating": "Tu calificación",
-			"submit": "Enviar",
-			"successfullyRated": "Video calificado exitosamente",
-			"disputeModal": {
-				"text": "Si no puedes descargar el video o el video no coincide con lo anunciado, por favor abre una disputa.",
-				"text2": "Indica brevemente cuál es tu problema, revisaremos el caso cuidadosamente y podrías ser elegible para un reembolso.",
-				"open": "Abrir Disputa",
-				"successfullyOpened": "Disputa abierta con éxito - Revisaremos tu caso cuidadosamente.",
-				"conflict": "Ya hay una disputa abierta para este video. Por favor, revisa la sección de Disputas en el menú."
-			}
-		}
 	}
 }
