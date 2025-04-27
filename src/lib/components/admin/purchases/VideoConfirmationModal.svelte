@@ -30,7 +30,6 @@
 			const apiError = e as ApiError;
 			if (!e || !(e as ApiError).getCode) {
 				toasts.error(getTranslation('common.errors.generic'));
-				return;
 			} else {
 				switch (apiError.getCode()) {
 					case 409:
@@ -47,8 +46,8 @@
 			}
 		} finally {
 			loading.set(false);
+			open = false;
 		}
-		open = false;
 	};
 	const onCancel = () => {
 		open = false;

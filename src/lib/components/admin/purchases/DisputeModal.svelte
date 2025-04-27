@@ -1,8 +1,13 @@
 <script lang="ts">
+	import * as toasts from '$lib/components/toasts/toasts';
+	import { openDispute } from '$lib/services/admin/disputes';
+	import { cacheInvalidation } from '$lib/stores/cache-invalidation/store';
+	import { loading } from '$lib/stores/loading/store';
 	import { getTranslation } from '$lib/translations';
 	import Button, { Label } from '@smui/button';
 	import Textfield from '@smui/textfield';
 	import CharacterCounter from '@smui/textfield/character-counter';
+	import type { ApiError } from '../../../../errors/apiError';
 
 	let {
 		open = $bindable(false),
@@ -13,7 +18,7 @@
 		open: boolean;
 		paymentUUID: string;
 		videoUUID: string;
-		onDisputeOpenCallback: (videoUUID: string) => void;
+		onDisputeOpenCallback: (videoUUID: string, disputeUUID: string) => void;
 	} = $props();
 
 	const MAX_CLAIM_LENGTH: number = 500;
@@ -23,8 +28,34 @@
 		open = false;
 	};
 
-	const onOpenDispute = (): void => {
-		console.log(claim);
+	const onOpenDispute = async (): Promise<void> => {
+		try {
+			loading.set(true);
+			const dispute = await openDispute(window.fetch, paymentUUID, videoUUID, claim);
+			toasts.success(getTranslation('purchases.details.disputeModal.successfullyOpened'), {
+				duration: 15000
+			});
+			cacheInvalidation.refreshMyDisputes();
+			onDisputeOpenCallback(videoUUID, dispute.uuid);
+		} catch (e: unknown) {
+			const apiError = e as ApiError;
+			if (!e || !(e as ApiError).getCode) {
+				toasts.error(getTranslation('common.errors.generic'));
+			} else {
+				switch (apiError.getCode()) {
+					case 409:
+						toasts.warning(getTranslation('purchases.details.disputeModal.conflict'), {
+							duration: 15000
+						});
+						break;
+					default:
+						toasts.error(getTranslation('common.errors.generic'));
+				}
+			}
+		} finally {
+			loading.set(false);
+			open = false;
+		}
 	};
 </script>
 

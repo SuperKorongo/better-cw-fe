@@ -306,7 +306,9 @@
 			"disputeModal": {
 				"text": "Si no puedes descargar el video o el video no coincide con lo anunciado, por favor abre una disputa.",
 				"text2": "Indica brevemente cuál es tu problema, revisaremos el caso cuidadosamente y podrías ser elegible para un reembolso.",
-				"open": "Abrir Disputa"
+				"open": "Abrir Disputa",
+				"successfullyOpened": "Disputa abierta con éxito - Revisaremos tu caso cuidadosamente.",
+				"conflict": "Ya hay una disputa abierta para este video. Por favor, revisa la sección de Disputas en el menú."
 			}
 		}
 	}

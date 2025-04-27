@@ -41,14 +41,16 @@ export const openDispute = async (
 	invoiceUUID: string,
 	videoUUID: string,
 	claim: string
-): Promise<void> => {
-	await fetchWrapper(fetch)(
+): Promise<Dispute> => {
+	const response = await fetchWrapper(fetch)(
 		`${PUBLIC_STORE_API_URL}/api/v1/disputes/new/${invoiceUUID}/${videoUUID}`,
 		{
 			method: 'POST',
 			body: JSON.stringify({ claim })
 		}
 	);
+
+	return await response.json();
 };
 
 export const addClaimToDispute = async (

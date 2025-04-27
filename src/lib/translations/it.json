@@ -306,7 +306,9 @@
 			"disputeModal": {
 				"text": "Se non riesci a scaricare il video o il video non corrisponde a quanto pubblicizzato, per favore apri una disputa.",
 				"text2": "Indica brevemente qual è il tuo problema, esamineremo il caso attentamente e potresti avere diritto a un rimborso.",
-				"open": "Apri Disputa"
+				"open": "Apri Disputa",
+				"successfullyOpened": "Controversia aperta con successo - Esamineremo il tuo caso con attenzione.",
+				"conflict": "C'è già una controversia aperta per questo video. Controlla la sezione Controversie nel menu."
 			}
 		}
 	}

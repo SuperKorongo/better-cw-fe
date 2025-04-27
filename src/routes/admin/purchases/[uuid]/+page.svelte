@@ -31,17 +31,21 @@
 
 		video.confirmedAtTimestamp = new Date().getTime();
 	};
+
+	const onDisputeOpenCallback = (videoUUID: string, disputeUUID: string) => {
+		// todo: GO TO DISPUTES/UUID
+		console.log(disputeUUID);
+
+		loading.set(true);
+		goto('/admin/disputes');
+	};
 </script>
 
 <section>
 	{#if payment}
 		<div class="payment-details">
 			<PaymentDetails {payment} />
-			<PurchasedVideos
-				{payment}
-				{onConfirmVideoCallback}
-				onDisputeOpenCallback={onConfirmVideoCallback}
-			/>
+			<PurchasedVideos {payment} {onConfirmVideoCallback} {onDisputeOpenCallback} />
 		</div>
 	{/if}
 </section>

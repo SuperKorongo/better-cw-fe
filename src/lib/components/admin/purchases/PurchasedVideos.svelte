@@ -17,7 +17,7 @@
 	}: {
 		payment: Payment;
 		onConfirmVideoCallback: (videoUUID: string) => void;
-		onDisputeOpenCallback: (videoUUID: string) => void;
+		onDisputeOpenCallback: (videoUUID: string, disputeUUID: string) => void;
 	} = $props();
 
 	let instructionsModalOpen = $state(false);

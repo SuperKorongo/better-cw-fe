@@ -306,7 +306,9 @@
 			"disputeModal": {
 				"text": "If you are not able to download the video, or the video does not match what is advertised, please open a dispute.",
 				"text2": "Indicate briefly what your issue is, we will review the case carefully and you may be eligible for a refund.",
-				"open": "Open Dispute"
+				"open": "Open Dispute",
+				"successfullyOpened": "Dispute opened successfully - We will review your case carefully.",
+				"conflict": "There is already an open dispute for this video. Please check the Disputes section in the menu"
 			}
 		}
 	}
