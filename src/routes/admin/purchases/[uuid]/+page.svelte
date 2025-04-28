@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import PaymentDetails from '$lib/components/admin/purchases/PaymentDetails.svelte';
 	import PurchasedVideos from '$lib/components/admin/purchases/PurchasedVideos.svelte';
 	import * as toasts from '$lib/components/toasts/toasts';
@@ -13,7 +13,7 @@
 	let payment: Payment | null = $state(null);
 
 	onMount(async () => {
-		const { uuid } = $page.params;
+		const { uuid } = page.params;
 
 		try {
 			payment = await getPaymentByUUID(window.fetch, uuid);
