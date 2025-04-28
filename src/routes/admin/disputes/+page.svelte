@@ -54,9 +54,7 @@
 			loading.set(true);
 			const statusFilter = showOnlyOpenDisputes ? [DISPUTE_STATUS_MAP[OPEN_DISPUTE_STATUS]] : [];
 			return await getDisputes(window.fetch, asWho, pagination, statusFilter);
-		} catch (e: any) {
-			console.log(e);
-
+		} catch {
 			toasts.error(getTranslation('common.errors.generic'));
 		} finally {
 			loading.set(false);
