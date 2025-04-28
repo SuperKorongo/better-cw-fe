@@ -94,10 +94,11 @@
 			"showOnlyOpen": "Mostra solo controversie aperte",
 			"createdAt": "Data",
 			"updatedAt": "Ultimo aggiornamento",
-			"uuid": "UUID",
+			"lastComment": "Ultimo commento",
 			"status": "Stato",
 			"videoTitle": "Video",
-			"invoiceUuid": "UUID della fattura"
+			"invoiceUuid": "UUID della fattura",
+			"rowsPerPage": "Controversie per pagina"
 		}
 	},
 	"headers": {

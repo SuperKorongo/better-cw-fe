@@ -5,7 +5,7 @@
 	import type { PaginatedResponse, Pagination as PaginationType } from '$lib/models/Pagination';
 	import { loading } from '$lib/stores/loading/store';
 	import { getTranslation } from '$lib/translations';
-	import { getFormattedDateWithTime, ifNotLoading } from '$lib/utils/utils';
+	import { getFormattedDateWithTime, ifNotLoading, onClickInternalLink } from '$lib/utils/utils';
 	import DataTable, { Body, Cell, Head, Row } from '@smui/data-table';
 
 	let {
@@ -30,7 +30,7 @@
 			<Row>
 				<Cell>{getTranslation('disputes.table.createdAt')}</Cell>
 				<Cell>{getTranslation('disputes.table.updatedAt')}</Cell>
-				<Cell>{getTranslation('disputes.table.uuid')}</Cell>
+				<Cell>{getTranslation('disputes.table.lastComment')}</Cell>
 				<Cell>{getTranslation('disputes.table.status')}</Cell>
 				<Cell>{getTranslation('disputes.table.videoTitle')}</Cell>
 				<Cell>{getTranslation('disputes.table.invoiceUuid')}</Cell>
@@ -41,17 +41,33 @@
 				<Row style="cursor: pointer" onclick={() => onRowClick(dispute.uuid)}>
 					<Cell>{getFormattedDateWithTime(dispute.createdAtTimestamp)}</Cell>
 					<Cell>{getFormattedDateWithTime(dispute.updatedAtTimestamp)}</Cell>
-					<Cell>{dispute.uuid}</Cell>
+					<Cell
+						><span title={dispute.claims[0].contents} class="last-comment"
+							>{dispute.claims[0].contents}</span
+						></Cell
+					>
 					<Cell>
 						<span
 							class="status-cell"
 							class:open={dispute.status === OPEN_DISPUTE_STATUS}
 							class:closed={dispute.status === CLOSED_DISPUTE_STATUS}
 						>
+							{dispute.status === OPEN_DISPUTE_STATUS ? `❗` : `✅`}
 						</span>
 					</Cell>
 					<Cell>{dispute.video.title}</Cell>
-					<Cell>{dispute.invoice.uuid}</Cell>
+					<Cell>
+						<a
+							class="invoice-link"
+							onclick={(e: MouseEvent) => {
+								e.stopPropagation();
+								onClickInternalLink(e);
+							}}
+							href={`/admin/purchases/${dispute.invoice.uuid}`}
+						>
+							{dispute.invoice.uuid}
+						</a>
+					</Cell>
 				</Row>
 			{/each}
 		</Body>
@@ -62,7 +78,7 @@
 			rowsPerPageOptions={[10]}
 			{pagination}
 			meta={data.meta}
-			rowsPerPageLabel="purchases.table.rowsPerPage"
+			rowsPerPageLabel="disputes.table.rowsPerPage"
 			ofLabel="purchases.table.of"
 			onFirstPage={() =>
 				ifNotLoading(() => {
@@ -128,5 +144,18 @@
 	.open {
 		color: #721c24;
 		background-color: #f8d7da;
+	}
+
+	.last-comment {
+		display: inline-block;
+		max-width: 50ch;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.invoice-link:hover {
+		text-decoration: underline !important;
+		color: blue !important;
 	}
 </style>

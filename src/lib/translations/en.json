@@ -94,10 +94,11 @@
 			"showOnlyOpen": "Show only open disputes",
 			"createdAt": "Date",
 			"updatedAt": "Last Update",
-			"uuid": "UUID",
+			"lastComment": "Last Comment",
 			"status": "Status",
 			"videoTitle": "Video",
-			"invoiceUuid": "Invoice UUID"
+			"invoiceUuid": "Invoice UUID",
+			"rowsPerPage": "Disputes per page"
 		}
 	},
 	"headers": {
