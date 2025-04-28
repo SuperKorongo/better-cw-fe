@@ -9,6 +9,7 @@
 			"withdraw": "Preleva"
 		},
 		"myVideos": {
+			"info": "L'aggiornamento del denaro generato per video può richiedere fino a 1 giorno",
 			"title": "Titolo",
 			"price": "Prezzo",
 			"uploadedAt": "Caricato il",
@@ -82,6 +83,12 @@
 	},
 	"disputes": {
 		"buyerTitle": "Controversie come acquirente",
+		"noBuyerDisputes1": "Non hai controversie - Ottimo! 🙂",
+		"noBuyerDisputes2": "Se hai problemi a scaricare uno dei video acquistati, puoi aprire una controversia dalla pagina degli acquisti.",
+		"noBuyerDisputes3": "Esamineremo il caso e potresti avere diritto a un rimborso 💵",
+		"noSellerDisputes1": "Non hai controversie - Ottimo! 🙂",
+		"noSellerDisputes2": "Gli acquirenti dei tuoi video possono aprire una controversia se hanno problemi con il download o con i contenuti.",
+		"noSellerDisputes3": "Controlliamo ogni controversia individualmente per garantire la migliore esperienza sia agli acquirenti che ai venditori 👈",
 		"sellerTitle": "Controversie come venditore",
 		"table": {
 			"showOnlyOpen": "Mostra solo controversie aperte",
@@ -104,7 +111,6 @@
 		"loadMore": "Carica più video"
 	},
 	"menu": {
-		"info": "L'aggiornamento del denaro generato per video potrebbe richiedere fino a 1 giorno",
 		"home": "Home",
 		"cart": "Carrello",
 		"aboutUs": "Chi siamo",

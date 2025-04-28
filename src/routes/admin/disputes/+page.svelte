@@ -93,17 +93,19 @@
 				<span>{getTranslation('disputes.table.showOnlyOpen')}</span>
 			</FormField>
 		</div>
-		<h1>{getTranslation('disputes.buyerTitle')}</h1>
-		{#if disputesAsBuyer !== null && disputesAsBuyer.data.length > 0}
-			<DisputesTable
-				data={disputesAsBuyer}
-				pagination={disputesAsBuyerPagination}
-				onChangePagination={handleBuyerPaginationChange}
-			/>
-		{:else if disputesAsBuyer !== null && disputesAsBuyer.data.length === 0}
-			<NoDisputes />
-		{/if}
-		<div>
+		<div class="disputes-container">
+			<h1>{getTranslation('disputes.buyerTitle')}</h1>
+			{#if disputesAsBuyer !== null && disputesAsBuyer.data.length > 0}
+				<DisputesTable
+					data={disputesAsBuyer}
+					pagination={disputesAsBuyerPagination}
+					onChangePagination={handleBuyerPaginationChange}
+				/>
+			{:else if disputesAsBuyer !== null && disputesAsBuyer.data.length === 0}
+				<NoDisputes whose="buyer" />
+			{/if}
+		</div>
+		<div class="disputes-container">
 			<h1>{getTranslation('disputes.sellerTitle')}</h1>
 			{#if disputesAsSeller !== null && disputesAsSeller.data.length > 0}
 				<DisputesTable
@@ -112,7 +114,7 @@
 					onChangePagination={handleSellerPaginationChange}
 				/>
 			{:else if disputesAsSeller !== null && disputesAsSeller.data.length === 0}
-				<NoDisputes />
+				<NoDisputes whose="seller" />
 			{/if}
 		</div>
 	</div>
@@ -131,5 +133,9 @@
 
 	.filters {
 		margin-bottom: 1rem;
+	}
+
+	.disputes-container {
+		margin-bottom: 80px;
 	}
 </style>

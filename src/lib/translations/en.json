@@ -83,6 +83,12 @@
 	},
 	"disputes": {
 		"buyerTitle": "Disputes as buyer",
+		"noBuyerDisputes1": "You have no disputes - Nice! 🙂",
+		"noBuyerDisputes2": "If you have any issue downloading any of your purchased videos, you can open a dispute from the purchases page.",
+		"noBuyerDisputes3": "We will review the case and you may be eligible for a refund 💵",
+		"noSellerDisputes1": "You have no disputes - Nice! 🙂",
+		"noSellerDisputes2": "Buyers of your videos can open a dispute if they have any issue with the download or the contents.",
+		"noSellerDisputes3": "We check every dispute individually to make sure both buyers and sellers have the best experience 👈",
 		"sellerTitle": "Disputes as seller",
 		"table": {
 			"showOnlyOpen": "Show only open disputes",

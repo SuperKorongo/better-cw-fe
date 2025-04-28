@@ -83,6 +83,12 @@
 	},
 	"disputes": {
 		"buyerTitle": "Disputas como comprador",
+		"noBuyerDisputes1": "No tienes disputas - ¡Genial! 🙂",
+		"noBuyerDisputes2": "Si tienes algún problema al descargar alguno de tus videos comprados, puedes abrir una disputa desde la página de compras.",
+		"noBuyerDisputes3": "Revisaremos el caso y podrías ser elegible para un reembolso 💵",
+		"noSellerDisputes1": "No tienes disputas - ¡Genial! 🙂",
+		"noSellerDisputes2": "Los compradores de tus videos pueden abrir una disputa si tienen algún problema con la descarga o el contenido.",
+		"noSellerDisputes3": "Revisamos cada disputa individualmente para asegurarnos de que tanto compradores como vendedores tengan la mejor experiencia 👈",
 		"sellerTitle": "Disputas como vendedor",
 		"table": {
 			"showOnlyOpen": "Mostrar solo disputas abiertas",

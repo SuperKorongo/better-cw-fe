@@ -2,12 +2,12 @@
 	import { page } from '$app/state';
 	import CloseButton from '$lib/components/menu/CloseButton.svelte';
 	import { adminMenu } from '$lib/stores/menu/store';
+	import { user } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
 	import { isMobileScreen, onClickInternalLink } from '$lib/utils/utils';
 	import { onMount } from 'svelte';
 	import { swipe } from 'svelte-gestures';
 	import { onClose, onSwipe } from './events';
-	import { user } from '$lib/stores/user/store';
 
 	let menuContainer: HTMLElement;
 
