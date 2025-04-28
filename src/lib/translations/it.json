@@ -80,6 +80,19 @@
 			"submitFailed": "Impossibile inviare il messaggio. Per favore riprova più tardi."
 		}
 	},
+	"disputes": {
+		"buyerTitle": "Controversie come acquirente",
+		"sellerTitle": "Controversie come venditore",
+		"table": {
+			"showOnlyOpen": "Mostra solo controversie aperte",
+			"createdAt": "Data",
+			"updatedAt": "Ultimo aggiornamento",
+			"uuid": "UUID",
+			"status": "Stato",
+			"videoTitle": "Video",
+			"invoiceUuid": "UUID della fattura"
+		}
+	},
 	"headers": {
 		"browsing": "Sfogliando i video ",
 		"member": "caricati da",

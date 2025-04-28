@@ -81,6 +81,19 @@
 			"submitFailed": "Error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde."
 		}
 	},
+	"disputes": {
+		"buyerTitle": "Disputas como comprador",
+		"sellerTitle": "Disputas como vendedor",
+		"table": {
+			"showOnlyOpen": "Mostrar solo disputas abiertas",
+			"createdAt": "Fecha",
+			"updatedAt": "Última actualización",
+			"uuid": "UUID",
+			"status": "Estado",
+			"videoTitle": "Video",
+			"invoiceUuid": "UUID de la factura"
+		}
+	},
 	"headers": {
 		"browsing": "Viendo videos ",
 		"member": "subidos por",

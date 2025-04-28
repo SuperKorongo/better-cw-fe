@@ -81,6 +81,19 @@
 			"submitFailed": "Failed to send message. Please try again later."
 		}
 	},
+	"disputes": {
+		"buyerTitle": "Disputes as buyer",
+		"sellerTitle": "Disputes as seller",
+		"table": {
+			"showOnlyOpen": "Show only open disputes",
+			"createdAt": "Date",
+			"updatedAt": "Last Update",
+			"uuid": "UUID",
+			"status": "Status",
+			"videoTitle": "Video",
+			"invoiceUuid": "Invoice UUID"
+		}
+	},
 	"headers": {
 		"browsing": "Browsing videos ",
 		"member": "uploaded by",
