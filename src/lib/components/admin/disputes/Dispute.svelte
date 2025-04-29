@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Dispute } from '$lib/models/Dispute';
 	import { getFormattedDateWithTime, onClickInternalLink } from '$lib/utils/utils';
+	import { onClickVideo } from './events';
 
 	let { dispute }: { dispute: Dispute } = $props();
 </script>
@@ -24,7 +25,20 @@
 			</div>
 			<div class="info-item">
 				<span class="label">Video</span>
-				<span title={dispute.video.title} class="value video-title">{dispute.video.title}</span>
+				<span title={dispute.video.title} class="value video-title">
+					<a
+						data-sveltekit-preload-data="false"
+						href={`/videos/${dispute.video.uuid}`}
+						onclick={(e) => {
+							onClickVideo(e, dispute.video);
+						}}
+						onauxclick={(e) => {
+							onClickVideo(e, dispute.video);
+						}}
+					>
+						{dispute.video.title}
+					</a>
+				</span>
 			</div>
 			<div class="info-item">
 				<span class="label">Invoice</span>

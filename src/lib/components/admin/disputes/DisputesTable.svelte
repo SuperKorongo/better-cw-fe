@@ -7,6 +7,7 @@
 	import { getTranslation } from '$lib/translations';
 	import { getFormattedDateWithTime, ifNotLoading, onClickInternalLink } from '$lib/utils/utils';
 	import DataTable, { Body, Cell, Head, Row } from '@smui/data-table';
+	import { onClickVideo } from './events';
 
 	let {
 		data,
@@ -55,7 +56,20 @@
 							{dispute.status === OPEN_DISPUTE_STATUS ? `❗` : `✅`}
 						</span>
 					</Cell>
-					<Cell>{dispute.video.title}</Cell>
+					<Cell>
+						<a
+							data-sveltekit-preload-data="false"
+							href={`/videos/${dispute.video.uuid}`}
+							onclick={(e) => {
+								onClickVideo(e, dispute.video);
+							}}
+							onauxclick={(e) => {
+								onClickVideo(e, dispute.video);
+							}}
+						>
+							{dispute.video.title}
+						</a>
+					</Cell>
 					<Cell>
 						<a
 							data-sveltekit-preload-data="false"
@@ -155,7 +169,7 @@
 		text-overflow: ellipsis;
 	}
 
-	.invoice-link:hover {
+	a:hover {
 		text-decoration: underline !important;
 		color: blue !important;
 	}
