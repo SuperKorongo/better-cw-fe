@@ -13,6 +13,7 @@ export type DisputeVideo = {
 
 export type DisputeInvoice = {
 	uuid: string;
+	buyerUuid: string;
 	priceInCentsOfDollar: number;
 	priceInBTC: number;
 	paidAtTimestamp: number;
