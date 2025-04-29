@@ -35,4 +35,9 @@
 	section {
 		padding: 30px 50px;
 	}
+	@media (max-width: 599px) {
+		section {
+			padding: 1rem;
+		}
+	}
 </style>

@@ -58,6 +58,7 @@
 					<Cell>{dispute.video.title}</Cell>
 					<Cell>
 						<a
+							data-sveltekit-preload-data="false"
 							class="invoice-link"
 							onclick={(e: MouseEvent) => {
 								e.stopPropagation();

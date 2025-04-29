@@ -1,6 +1,5 @@
-import { pushState } from '$app/navigation';
 import type { Video } from '$lib/models/Video';
-import { getImageSrc } from '$lib/utils/utils';
+import { getImageSrc, showVideoSidePanel } from '$lib/utils/utils';
 
 const THUMBNAILS_TRANSITION_TIME_IN_MILLISECONDS = 1000;
 
@@ -55,14 +54,7 @@ export const eventFunctions = (filePaths: string[], imgElement: () => HTMLImageE
 
 	const onClick = async (e: MouseEvent, video: Video): Promise<void> => {
 		onMouseOut();
-
-		if (e.shiftKey || e.metaKey || e.ctrlKey || e.button === 1) return;
-
-		e.preventDefault();
-
-		const { href: videoUrl } = e.currentTarget as HTMLAnchorElement;
-
-		pushState(videoUrl, { selectedVideo: video });
+		showVideoSidePanel(e, e.currentTarget as HTMLAnchorElement, video);
 	};
 
 	const setSrc = (img: HTMLImageElement, filePath: string): void => {

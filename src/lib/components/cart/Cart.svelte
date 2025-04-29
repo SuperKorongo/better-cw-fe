@@ -1,8 +1,6 @@
 <script lang="ts">
-	import { pushState } from '$app/navigation';
 	import Button, { Label } from '@smui/button';
 
-	import type { Video } from '$lib/models/Video';
 	import { cart } from '$lib/stores/cart/store';
 	import { getTranslation } from '$lib/translations';
 	import {
@@ -10,23 +8,14 @@
 		getFormattedPrice,
 		getImageSrc,
 		getPlaceholderImageSrc,
-		onClickInternalLink
+		onClickInternalLink,
+		showVideoSidePanel
 	} from '$lib/utils/utils';
 	import { onMount } from 'svelte';
 	import Summary from './Summary.svelte';
 
 	let mounted: boolean = false;
 	onMount(() => (mounted = true));
-
-	const onClickThumbnail = (e: MouseEvent, video: Video): void => {
-		if (e.shiftKey || e.metaKey || e.ctrlKey || e.button === 1) return;
-
-		e.preventDefault();
-
-		const { href: videoUrl } = e.currentTarget as HTMLAnchorElement;
-
-		pushState(videoUrl, { selectedVideo: video });
-	};
 
 	const onRemove = cart.remove;
 </script>
@@ -52,8 +41,8 @@
 					<a
 						data-sveltekit-preload-data="false"
 						href={`/videos/${video.uuid}`}
-						onclick={(e) => onClickThumbnail(e, video)}
-						onauxclick={(e) => onClickThumbnail(e, video)}
+						onclick={(e) => showVideoSidePanel(e, e.currentTarget, video)}
+						onauxclick={(e) => showVideoSidePanel(e, e.currentTarget, video)}
 					>
 						<img
 							src={video.thumbnailFilePaths.length > 0

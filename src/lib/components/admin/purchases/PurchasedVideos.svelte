@@ -1,9 +1,12 @@
 <script lang="ts">
 	import DownloadInstructionsModal from '$lib/components/common/DownloadInstructionsModal.svelte';
-	import type { Payment } from '$lib/models/Payment';
+	import * as toasts from '$lib/components/toasts/toasts';
+	import type { Payment, PurchasedVideo } from '$lib/models/Payment';
 	import { BLOCKCHAIN_CONFIRMED_STATUS, EXPIRED_STATUS } from '$lib/models/Payment';
+	import { getVideoByUUID } from '$lib/services/videos';
+	import { loading } from '$lib/stores/loading/store';
 	import { getTranslation } from '$lib/translations';
-	import { getImageSrc } from '$lib/utils/utils';
+	import { getImageSrc, showVideoSidePanel } from '$lib/utils/utils';
 	import Button, { Label } from '@smui/button';
 	import DataTable, { Body, Cell, Head, Row } from '@smui/data-table';
 	import DisputeModal from './DisputeModal.svelte';
@@ -28,6 +31,19 @@
 
 	const isPaid = payment.status === BLOCKCHAIN_CONFIRMED_STATUS;
 	const isExpired = payment.status === EXPIRED_STATUS;
+
+	const onClickVideo = async (e: MouseEvent, video: PurchasedVideo): Promise<void> => {
+		e.preventDefault();
+		try {
+			loading.set(true);
+			const target = e.currentTarget as HTMLAnchorElement;
+			showVideoSidePanel(e, target, await getVideoByUUID(window.fetch, video.uuid));
+		} catch (e) {
+			toasts.error(getTranslation('common.errors.generic'));
+		} finally {
+			loading.set(false);
+		}
+	};
 </script>
 
 <div class="videos-section">
@@ -48,11 +64,22 @@
 				<Row>
 					<Cell style="text-align: center">
 						{#if video.thumbnailFilePaths && video.thumbnailFilePaths.length > 0}
-							<img
-								src={getImageSrc(video.thumbnailFilePaths[0], true)}
-								alt={video.title}
-								class="video-thumbnail"
-							/>
+							<a
+								data-sveltekit-preload-data="false"
+								href={`/videos/${video.uuid}`}
+								onclick={(e) => {
+									onClickVideo(e, video);
+								}}
+								onauxclick={(e) => {
+									onClickVideo(e, video);
+								}}
+							>
+								<img
+									src={getImageSrc(video.thumbnailFilePaths[0], true)}
+									alt={video.title}
+									class="video-thumbnail"
+								/>
+							</a>
 						{/if}
 					</Cell>
 					<Cell>{video.title}</Cell>

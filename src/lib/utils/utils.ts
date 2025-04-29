@@ -118,3 +118,15 @@ export const ifNotLoading = (action: () => void) => {
 	if (get(loading).value) return;
 	action();
 };
+
+export const showVideoSidePanel = (
+	e: MouseEvent,
+	linkElement: HTMLAnchorElement,
+	video: Video
+): void => {
+	if (e.shiftKey || e.metaKey || e.ctrlKey || e.button === 1) return;
+
+	e.preventDefault();
+
+	pushState(linkElement.href, { selectedVideo: video });
+};
