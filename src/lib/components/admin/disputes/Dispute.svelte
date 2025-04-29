@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Dispute } from '$lib/models/Dispute';
+	import { ADMIN_ROLE } from '$lib/models/User';
 	import { user } from '$lib/stores/user/store';
 	import Claims from './Claims.svelte';
 	import Details from './Details.svelte';
@@ -11,7 +12,7 @@
 	<Details {dispute} />
 	<Claims {dispute} />
 
-	{#if $user.data!.role === 'ADMIN' || dispute.invoice.buyerUuid === $user.data!.uuid}
+	{#if $user.data!.role === ADMIN_ROLE || dispute.invoice.buyerUuid === $user.data!.uuid}
 		<button>Resolve dispute</button>
 	{/if}
 </section>
