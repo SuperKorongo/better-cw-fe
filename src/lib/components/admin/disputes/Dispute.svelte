@@ -5,6 +5,9 @@
 	import Details from './Details.svelte';
 
 	let { dispute }: { dispute: Dispute } = $props();
+	console.log($user.data);
+	console.log(user.isAdmin());
+	console.log(dispute.invoice.buyerUuid);
 </script>
 
 <!-- todo: translations-->
@@ -13,7 +16,7 @@
 	<Details {dispute} />
 	<Claims {dispute} />
 
-	{#if user.isAdmin() || dispute.invoice.buyerUuid === $user.data!.uuid}
+	{#if $user.data && (user.isAdmin() || dispute.invoice.buyerUuid === $user.data.uuid)}
 		<button>Resolve dispute (TODO)</button>
 	{/if}
 </section>

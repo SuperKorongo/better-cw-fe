@@ -10,8 +10,9 @@
 <div class="shadow-box">
 	{#each dispute.claims as claim, index (index)}
 		<div class="claim">
-			<span>{claim.author} - {getFormattedDateWithTime(claim.addedAtTimestamp)}</span>
-			<br />
+			<span class="author-and-date">
+				{claim.author} | {getFormattedDateWithTime(claim.addedAtTimestamp)}
+			</span>
 			<span>{claim.contents}</span>
 		</div>
 	{/each}
@@ -26,6 +27,10 @@
 		margin-bottom: 40px;
 	}
 	.claim {
-		margin: 30px 0px;
+		margin-bottom: 50px;
+	}
+	.author-and-date {
+		display: block;
+		margin-bottom: 10px;
 	}
 </style>

@@ -27,19 +27,23 @@
 </script>
 
 <div class="balance-container">
-	<div class="balance-info">
-		<span class="label">{getTranslation('admin.balance.label')}:</span>
-		<span class="amount">
-			~{balance ? balance.netBalanceInBTC : ''} BTC
-		</span>
-	</div>
-
-	{#if page.route.id !== '/admin/withdraw'}
-		<a onclick={onClickInternalLink} data-sveltekit-preload-data="hover" href="/admin/withdraw">
-			<Button variant="raised" color="primary">{getTranslation('admin.balance.withdraw')}</Button>
-		</a>
+	{#if user.isAdmin()}
+		Admin Mode
 	{:else}
-		<span style="display: block; padding: 18px 0px"></span>
+		<div class="balance-info">
+			<span class="label">{getTranslation('admin.balance.label')}:</span>
+			<span class="amount">
+				~{balance ? balance.netBalanceInBTC : ''} BTC
+			</span>
+		</div>
+
+		{#if page.route.id !== '/admin/withdraw'}
+			<a onclick={onClickInternalLink} data-sveltekit-preload-data="hover" href="/admin/withdraw">
+				<Button variant="raised" color="primary">{getTranslation('admin.balance.withdraw')}</Button>
+			</a>
+		{:else}
+			<span style="display: block; padding: 18px 0px"></span>
+		{/if}
 	{/if}
 </div>
 
