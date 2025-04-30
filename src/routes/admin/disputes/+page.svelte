@@ -121,7 +121,7 @@
 					<DisputesTable
 						data={allDisputes}
 						pagination={allDisputesPagination}
-						onChangePagination={handleBuyerPaginationChange}
+						onChangePagination={handleAllDisputesPaginationChange}
 					/>
 				{:else if allDisputes !== null && allDisputes.data.length === 0}
 					<NoDisputes whose="admin" />
