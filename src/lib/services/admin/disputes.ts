@@ -39,8 +39,9 @@ export const getDisputeByUUID = async (
 	fetch: PageLoadEvent['fetch'],
 	disputeUUID: string
 ): Promise<Dispute> => {
+	const cacheParam = get(cacheInvalidation).myDisputes;
 	const response = await fetchWrapper(fetch)(
-		`${PUBLIC_STORE_API_URL}/api/v1/disputes/mine/${disputeUUID}`
+		`${PUBLIC_STORE_API_URL}/api/v1/disputes/mine/${disputeUUID}${cacheParam ? `?cache=${cacheParam}` : ``}`
 	);
 
 	return await response.json();

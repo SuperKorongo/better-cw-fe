@@ -91,6 +91,8 @@
 		"noSellerDisputes2": "Buyers of your videos can open a dispute if they have any issue with the download or the contents.",
 		"noSellerDisputes3": "We check every dispute individually to make sure both buyers and sellers have the best experience 👈",
 		"sellerTitle": "Disputes as seller",
+		"successfullyAdded": "Comment added successfully",
+		"addComment": "Add comment",
 		"table": {
 			"showOnlyOpen": "Show only open disputes",
 			"createdAt": "Date",
@@ -203,7 +205,8 @@
 				"text2": "Indicate briefly what your issue is, we will review the case carefully and you may be eligible for a refund.",
 				"open": "Open Dispute",
 				"successfullyOpened": "Dispute opened successfully - We will review your case carefully.",
-				"conflict": "There is already an open dispute for this video. Please check the Disputes section in the menu"
+				"conflict": "There is already an open dispute for this video. Please check the Disputes section in the menu",
+				"minClaimLength": "Minimum claim length is 10 characters"
 			}
 		}
 	},

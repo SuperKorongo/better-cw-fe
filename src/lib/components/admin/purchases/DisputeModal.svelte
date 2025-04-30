@@ -29,6 +29,11 @@
 	};
 
 	const onOpenDispute = async (): Promise<void> => {
+		if (claim.length < 10) {
+			toasts.warning(getTranslation('purchases.details.disputeModal.minClaimLength'));
+			return;
+		}
+
 		try {
 			loading.set(true);
 			const dispute = await openDispute(window.fetch, paymentUUID, videoUUID, claim);

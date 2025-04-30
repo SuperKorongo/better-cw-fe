@@ -29,7 +29,7 @@
 		const video = payment!.videos.find((video) => video.uuid === videoUUID);
 		if (!video) return;
 
-		video.confirmedAtTimestamp = new Date().getTime();
+		video.confirmedAtTimestamp = new Date().getTime() / 1000;
 	};
 
 	const onDisputeOpenCallback = (videoUUID: string, disputeUUID: string) => {

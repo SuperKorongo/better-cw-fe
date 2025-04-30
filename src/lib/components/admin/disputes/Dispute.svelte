@@ -5,9 +5,6 @@
 	import Details from './Details.svelte';
 
 	let { dispute }: { dispute: Dispute } = $props();
-	console.log($user.data);
-	console.log(user.isAdmin());
-	console.log(dispute.invoice.buyerUuid);
 </script>
 
 <!-- todo: translations-->

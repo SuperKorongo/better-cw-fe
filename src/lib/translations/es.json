@@ -91,6 +91,8 @@
 		"noSellerDisputes2": "Los compradores de tus videos pueden abrir una disputa si tienen algún problema con la descarga o el contenido.",
 		"noSellerDisputes3": "Revisamos cada disputa individualmente para asegurarnos de que tanto compradores como vendedores tengan la mejor experiencia 👈",
 		"sellerTitle": "Disputas como vendedor",
+		"successfullyAdded": "Comentario añadido correctamente",
+		"addComment": "Añadir comentario",
 		"table": {
 			"showOnlyOpen": "Mostrar solo disputas abiertas",
 			"createdAt": "Fecha",
@@ -203,7 +205,8 @@
 				"text2": "Indica brevemente cuál es tu problema, revisaremos el caso cuidadosamente y podrías ser elegible para un reembolso.",
 				"open": "Abrir Disputa",
 				"successfullyOpened": "Disputa abierta con éxito - Revisaremos tu caso cuidadosamente.",
-				"conflict": "Ya hay una disputa abierta para este video. Por favor, revisa la sección de Disputas en el menú."
+				"conflict": "Ya hay una disputa abierta para este video. Por favor, revisa la sección de Disputas en el menú.",
+				"minClaimLength": "Longitud mínima son 10 caracteres"
 			}
 		}
 	},
