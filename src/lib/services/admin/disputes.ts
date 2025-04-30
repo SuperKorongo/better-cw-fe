@@ -59,7 +59,7 @@ export const closeDispute = async (
 
 export const getDisputes = async (
 	fetch: PageLoadEvent['fetch'],
-	asWho: 'buyer' | 'seller',
+	asWho: 'buyer' | 'seller' | 'admin',
 	pagination: Pagination,
 	status: number[] = []
 ): Promise<PaginatedResponse<Dispute>> => {
@@ -67,8 +67,15 @@ export const getDisputes = async (
 		return acc + `&status[]=${curr}`;
 	}, '');
 
+	let endpoint: string = '';
+	if (asWho === 'admin') {
+		endpoint = '/api/v1/disputes/';
+	} else {
+		endpoint = `/api/v1/disputes/mine/${asWho}`;
+	}
+
 	const response = await fetchWrapper(fetch)(
-		`${PUBLIC_STORE_API_URL}/api/v1/disputes/mine/${asWho}?${getQueryParams(pagination, '', get(cacheInvalidation).myPurchases)}${statusQueryParam ? `${statusQueryParam}` : ``}`
+		`${PUBLIC_STORE_API_URL}${endpoint}?${getQueryParams(pagination, '', get(cacheInvalidation).myPurchases)}${statusQueryParam ? `${statusQueryParam}` : ``}`
 	);
 
 	return await response.json();

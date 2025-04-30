@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type { Dispute } from '$lib/models/Dispute';
-	import { ADMIN_ROLE } from '$lib/models/User';
 	import { user } from '$lib/stores/user/store';
 	import Claims from './Claims.svelte';
 	import Details from './Details.svelte';
@@ -8,12 +7,14 @@
 	let { dispute }: { dispute: Dispute } = $props();
 </script>
 
+<!-- todo: translations-->
+
 <section>
 	<Details {dispute} />
 	<Claims {dispute} />
 
-	{#if $user.data!.role === ADMIN_ROLE || dispute.invoice.buyerUuid === $user.data!.uuid}
-		<button>Resolve dispute</button>
+	{#if user.isAdmin() || dispute.invoice.buyerUuid === $user.data!.uuid}
+		<button>Resolve dispute (TODO)</button>
 	{/if}
 </section>
 

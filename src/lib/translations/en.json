@@ -82,6 +82,7 @@
 		}
 	},
 	"disputes": {
+		"allDisputes": "All Disputes",
 		"buyerTitle": "Disputes as buyer",
 		"noBuyerDisputes1": "You have no disputes - Nice! 🙂",
 		"noBuyerDisputes2": "If you have any issue downloading any of your purchased videos, you can open a dispute from the purchases page.",

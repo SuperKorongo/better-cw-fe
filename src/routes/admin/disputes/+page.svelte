@@ -10,6 +10,7 @@
 	} from '$lib/models/Pagination';
 	import { getDisputes } from '$lib/services/admin/disputes';
 	import { loading } from '$lib/stores/loading/store';
+	import { user } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
 	import { ifNotLoading } from '$lib/utils/utils';
 	import FormField from '@smui/form-field';
@@ -18,6 +19,7 @@
 
 	let disputesAsBuyer: PaginatedResponse<Dispute> | null = $state(null);
 	let disputesAsSeller: PaginatedResponse<Dispute> | null = $state(null);
+	let allDisputes: PaginatedResponse<Dispute> | null = $state(null);
 
 	let initialPagination: PaginationType = {
 		...structuredClone(DEFAULT_PAGINATION),
@@ -28,6 +30,7 @@
 		}
 	};
 
+	let allDisputesPagination: PaginationType = $state({ ...structuredClone(initialPagination) });
 	let disputesAsBuyerPagination: PaginationType = $state({ ...structuredClone(initialPagination) });
 	let disputesAsSellerPagination: PaginationType = $state({
 		...structuredClone(initialPagination)
@@ -36,18 +39,26 @@
 	let showOnlyOpenDisputes = $state(true);
 
 	onMount(async () => {
-		await loadData();
+		if (user.isAdmin()) {
+			await loadAllDisputes();
+		} else {
+			await loadBuyerAndSellerDisputes();
+		}
 	});
 
-	async function loadData() {
+	async function loadBuyerAndSellerDisputes() {
 		[disputesAsBuyer, disputesAsSeller] = await Promise.all([
 			fetchDisputes('buyer', disputesAsBuyerPagination),
 			fetchDisputes('seller', disputesAsSellerPagination)
 		]);
 	}
 
+	async function loadAllDisputes() {
+		allDisputes = await fetchDisputes('admin', allDisputesPagination);
+	}
+
 	async function fetchDisputes(
-		asWho: 'buyer' | 'seller',
+		asWho: 'buyer' | 'seller' | 'admin',
 		pagination: PaginationType
 	): Promise<PaginatedResponse<Dispute> | null> {
 		try {
@@ -64,7 +75,17 @@
 
 	function handleStatusFilterChange(value: boolean) {
 		showOnlyOpenDisputes = value;
-		loadData();
+
+		if (user.isAdmin()) {
+			loadAllDisputes();
+		} else {
+			loadBuyerAndSellerDisputes();
+		}
+	}
+
+	async function handleAllDisputesPaginationChange(newPagination: PaginationType) {
+		allDisputesPagination = newPagination;
+		allDisputes = await fetchDisputes('admin', allDisputesPagination);
 	}
 
 	async function handleBuyerPaginationChange(newPagination: PaginationType) {
@@ -93,30 +114,45 @@
 				<span>{getTranslation('disputes.table.showOnlyOpen')}</span>
 			</FormField>
 		</div>
-		<div class="disputes-container">
-			<h1>{getTranslation('disputes.buyerTitle')}</h1>
-			{#if disputesAsBuyer !== null && disputesAsBuyer.data.length > 0}
-				<DisputesTable
-					data={disputesAsBuyer}
-					pagination={disputesAsBuyerPagination}
-					onChangePagination={handleBuyerPaginationChange}
-				/>
-			{:else if disputesAsBuyer !== null && disputesAsBuyer.data.length === 0}
-				<NoDisputes whose="buyer" />
-			{/if}
-		</div>
-		<div class="disputes-container">
-			<h1>{getTranslation('disputes.sellerTitle')}</h1>
-			{#if disputesAsSeller !== null && disputesAsSeller.data.length > 0}
-				<DisputesTable
-					data={disputesAsSeller}
-					pagination={disputesAsSellerPagination}
-					onChangePagination={handleSellerPaginationChange}
-				/>
-			{:else if disputesAsSeller !== null && disputesAsSeller.data.length === 0}
-				<NoDisputes whose="seller" />
-			{/if}
-		</div>
+		{#if user.isAdmin()}
+			<div class="disputes-container">
+				<h1>{getTranslation('disputes.allDisputes')}</h1>
+				{#if allDisputes !== null && allDisputes.data.length > 0}
+					<DisputesTable
+						data={allDisputes}
+						pagination={allDisputesPagination}
+						onChangePagination={handleBuyerPaginationChange}
+					/>
+				{:else if allDisputes !== null && allDisputes.data.length === 0}
+					<NoDisputes whose="admin" />
+				{/if}
+			</div>
+		{:else}
+			<div class="disputes-container">
+				<h1>{getTranslation('disputes.buyerTitle')}</h1>
+				{#if disputesAsBuyer !== null && disputesAsBuyer.data.length > 0}
+					<DisputesTable
+						data={disputesAsBuyer}
+						pagination={disputesAsBuyerPagination}
+						onChangePagination={handleBuyerPaginationChange}
+					/>
+				{:else if disputesAsBuyer !== null && disputesAsBuyer.data.length === 0}
+					<NoDisputes whose="buyer" />
+				{/if}
+			</div>
+			<div class="disputes-container">
+				<h1>{getTranslation('disputes.sellerTitle')}</h1>
+				{#if disputesAsSeller !== null && disputesAsSeller.data.length > 0}
+					<DisputesTable
+						data={disputesAsSeller}
+						pagination={disputesAsSellerPagination}
+						onChangePagination={handleSellerPaginationChange}
+					/>
+				{:else if disputesAsSeller !== null && disputesAsSeller.data.length === 0}
+					<NoDisputes whose="seller" />
+				{/if}
+			</div>
+		{/if}
 	</div>
 </section>
 

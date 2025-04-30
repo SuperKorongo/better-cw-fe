@@ -1,6 +1,6 @@
-import type { User } from '$lib/models/User';
+import { ADMIN_ROLE, type User } from '$lib/models/User';
 import type { Balance } from '$lib/services/admin/balance';
-import { writable } from 'svelte/store';
+import { get, writable } from 'svelte/store';
 
 type Data = {
 	data: User | null;
@@ -17,6 +17,10 @@ export const user = (() => {
 
 	return {
 		subscribe,
+
+		isAdmin: (): boolean => {
+			return get(user).data?.role === ADMIN_ROLE;
+		},
 
 		setData: (user: Data['data']) =>
 			update((d: Data) => {

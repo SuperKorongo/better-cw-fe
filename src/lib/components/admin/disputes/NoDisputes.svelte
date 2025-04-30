@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { getTranslation } from '$lib/translations';
 
-	let { whose }: { whose: 'buyer' | 'seller' } = $props();
+	let { whose }: { whose: 'buyer' | 'seller' | 'admin' } = $props();
 </script>
 
 <div class="empty-state">

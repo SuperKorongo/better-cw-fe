@@ -82,6 +82,7 @@
 		}
 	},
 	"disputes": {
+		"allDisputes": "Tutte le controversie",
 		"buyerTitle": "Controversie come acquirente",
 		"noBuyerDisputes1": "Non hai controversie - Ottimo! 🙂",
 		"noBuyerDisputes2": "Se hai problemi a scaricare uno dei video acquistati, puoi aprire una controversia dalla pagina degli acquisti.",

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Dispute } from '$lib/models/Dispute';
+	import { getFormattedDateWithTime } from '$lib/utils/utils';
 
 	let { dispute }: { dispute: Dispute } = $props();
 </script>
@@ -9,7 +10,9 @@
 <div class="shadow-box">
 	{#each dispute.claims as claim, index (index)}
 		<div class="claim">
-			<span>{claim.author}:</span>
+			<span>{claim.author} - {getFormattedDateWithTime(claim.addedAtTimestamp)}</span>
+			<br />
+			<span>{claim.contents}</span>
 		</div>
 	{/each}
 </div>
