@@ -21,7 +21,7 @@ export const fetchWrapper = (fetchFunc: typeof window.fetch) => {
 		 * To avoid that we should return empty JSON from nginx on errors.
 		 */
 		toasts.warning(getTranslation('common.errors.tooManyRequests'));
-		return response;
+		throw apiError(response);
 	};
 
 	return async (input: RequestInfo | URL, init: RequestInit = {}): Promise<Response> => {
