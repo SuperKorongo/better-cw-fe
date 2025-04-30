@@ -74,6 +74,9 @@
 	<Button onclick={onAddComment} variant="raised" color="primary">
 		{getTranslation('disputes.addComment')}
 	</Button>
+	<span class="min-seconds-between-comments-disclaimer">
+		{getTranslation('disputes.minSeconds')}
+	</span>
 </div>
 
 <style>
@@ -90,5 +93,11 @@
 	.author-and-date {
 		display: block;
 		margin-bottom: 10px;
+	}
+	.min-seconds-between-comments-disclaimer {
+		display: block;
+		margin-top: 10px;
+		color: #888;
+		font-size: 12px;
 	}
 </style>

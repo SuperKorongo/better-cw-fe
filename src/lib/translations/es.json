@@ -93,6 +93,7 @@
 		"sellerTitle": "Disputas como vendedor",
 		"successfullyAdded": "Comentario añadido correctamente",
 		"addComment": "Añadir comentario",
+		"minSeconds": "Puedes añadir un comentario cada 5 minutos",
 		"table": {
 			"showOnlyOpen": "Mostrar solo disputas abiertas",
 			"createdAt": "Fecha",

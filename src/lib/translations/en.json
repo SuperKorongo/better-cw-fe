@@ -93,6 +93,7 @@
 		"sellerTitle": "Disputes as seller",
 		"successfullyAdded": "Comment added successfully",
 		"addComment": "Add comment",
+		"minSeconds": "You can add one comment every 5 minutes",
 		"table": {
 			"showOnlyOpen": "Show only open disputes",
 			"createdAt": "Date",

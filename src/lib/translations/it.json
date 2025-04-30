@@ -93,6 +93,7 @@
 		"sellerTitle": "Controversie come venditore",
 		"successfullyAdded": "Commento aggiunto con successo",
 		"addComment": "Aggiungi commento",
+		"minSeconds": "Puoi aggiungere un commento ogni 5 minuti",
 		"table": {
 			"showOnlyOpen": "Mostra solo controversie aperte",
 			"createdAt": "Data",
