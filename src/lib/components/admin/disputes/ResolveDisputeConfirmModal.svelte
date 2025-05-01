@@ -3,6 +3,7 @@
 	import * as toasts from '$lib/components/toasts/toasts';
 	import { SELLER_IS_RIGHT_RESOLUTION, type Dispute } from '$lib/models/Dispute';
 	import { closeDispute } from '$lib/services/admin/disputes';
+	import { initLoggedInUser } from '$lib/services/users';
 	import { cacheInvalidation } from '$lib/stores/cache-invalidation/store';
 	import { loading } from '$lib/stores/loading/store';
 	import { getTranslation } from '$lib/translations';
@@ -30,6 +31,8 @@
 			toasts.success(getTranslation('disputes.successfullyResolved'));
 			open = false;
 			goto('/admin/disputes');
+			cacheInvalidation.refreshMe();
+			initLoggedInUser();
 		} catch {
 			toasts.error(getTranslation('common.errors.generic'));
 		} finally {
