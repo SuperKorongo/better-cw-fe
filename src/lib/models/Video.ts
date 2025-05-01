@@ -14,7 +14,6 @@ export type Video = {
 		name: string;
 		rating: number;
 	};
-	uploadedAtTimestamp: number;
 	durationInSeconds: number;
 	model: {
 		uuid: string;
@@ -43,7 +42,6 @@ export const getEmpty = (): Video => {
 			uuid: '',
 			name: ''
 		},
-		uploadedAtTimestamp: 0,
 		durationInSeconds: 0,
 		model: {
 			uuid: '',

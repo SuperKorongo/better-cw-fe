@@ -2,7 +2,7 @@
 	import StarRating from '$lib/components/common/StarRating.svelte';
 	import type { Video } from '$lib/models/Video';
 	import { getTranslation } from '$lib/translations';
-	import { getDurationString, getFormattedDate, onClickInternalLink } from '$lib/utils/utils';
+	import { getDurationString, onClickInternalLink } from '$lib/utils/utils';
 	import UploaderLink from '../../common/UploaderLink.svelte';
 
 	let {
@@ -18,11 +18,6 @@
 <span class="meta-value">
 	<StarRating value={video.rating} />
 </span>
-
-<span class="meta-label">
-	{getTranslation('video.uploadedAt')}
-</span>
-<span class="meta-value">{getFormattedDate(video.uploadedAtTimestamp)}</span>
 
 <span class="meta-label">
 	{getTranslation('video.uploadedBy')}
