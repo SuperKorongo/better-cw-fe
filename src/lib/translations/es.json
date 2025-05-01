@@ -96,6 +96,14 @@
 		"minSeconds": "Puedes añadir un comentario cada 5 minutos",
 		"resolve": "Resolver disputa",
 		"adminResolve": "[solo admin] El comprador tiene razón",
+		"details": {
+			"date": "Fecha de la disputa",
+			"status": "Estado",
+			"statusopen": "Abierto",
+			"statusclosed": "Cerrado",
+			"video": "Video",
+			"invoice": "Factura"
+		},
 		"table": {
 			"showOnlyOpen": "Mostrar solo disputas abiertas",
 			"createdAt": "Fecha",

@@ -96,6 +96,14 @@
 		"minSeconds": "Puoi aggiungere un commento ogni 5 minuti",
 		"resolve": "Risolvere la controversia",
 		"adminResolve": "[solo amministratore] L'acquirente ha ragione",
+		"details": {
+			"date": "Data della disputa",
+			"status": "Stato",
+			"statusopen": "Aperto",
+			"statusclosed": "Chiuso",
+			"video": "Video",
+			"invoice": "Fattura"
+		},
 		"table": {
 			"showOnlyOpen": "Mostra solo controversie aperte",
 			"createdAt": "Data",

@@ -96,6 +96,14 @@
 		"minSeconds": "You can add one comment every 5 minutes",
 		"resolve": "Resolve dispute",
 		"adminResolve": "[admin only] Buyer is right",
+		"details": {
+			"date": "Dispute Date",
+			"status": "Status",
+			"statusopen": "Open",
+			"statusclosed": "Closed",
+			"video": "Video",
+			"invoice": "Invoice"
+		},
 		"table": {
 			"showOnlyOpen": "Show only open disputes",
 			"createdAt": "Date",

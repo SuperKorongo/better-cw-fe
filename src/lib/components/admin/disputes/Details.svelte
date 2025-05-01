@@ -1,17 +1,16 @@
 <script lang="ts">
-	import type { Dispute } from '$lib/models/Dispute';
+	import { type Dispute } from '$lib/models/Dispute';
+	import { getTranslation } from '$lib/translations';
 	import { getFormattedDateWithTime, onClickInternalLink } from '$lib/utils/utils';
 	import { onClickVideo } from './events';
 
 	let { dispute }: { dispute: Dispute } = $props();
 </script>
 
-<!-- todo: translations-->
-
 <div class="shadow-box">
 	<div class="info-grid">
 		<div class="info-item">
-			<span class="label">Dispute Date</span>
+			<span class="label">{getTranslation('disputes.details.date')}</span>
 			<span class="value">{getFormattedDateWithTime(dispute.createdAtTimestamp)}</span>
 		</div>
 		<div class="info-item">
@@ -19,11 +18,11 @@
 			<span class="value uuid">{dispute.uuid}</span>
 		</div>
 		<div class="info-item">
-			<span class="label">Status</span>
-			<span class="value">{dispute.status}</span>
+			<span class="label">{getTranslation(`disputes.details.status`)}</span>
+			<span class="value">{getTranslation(`disputes.details.status${dispute.status}`)}</span>
 		</div>
 		<div class="info-item">
-			<span class="label">Video</span>
+			<span class="label">{getTranslation(`disputes.details.video`)}</span>
 			<span title={dispute.video.title} class="value video-title">
 				<a
 					data-sveltekit-preload-data="false"
@@ -40,7 +39,7 @@
 			</span>
 		</div>
 		<div class="info-item">
-			<span class="label">Invoice</span>
+			<span class="label">{getTranslation(`disputes.details.invoice`)}</span>
 			<span title={dispute.invoice.uuid} class="value uuid">
 				<a onclick={onClickInternalLink} href={`/admin/purchases/${dispute.invoice.uuid}`}>
 					{dispute.invoice.uuid}
