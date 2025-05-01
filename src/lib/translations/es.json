@@ -94,6 +94,8 @@
 		"successfullyAdded": "Comentario añadido correctamente",
 		"addComment": "Añadir comentario",
 		"minSeconds": "Puedes añadir un comentario cada 5 minutos",
+		"resolve": "Resolver disputa",
+		"adminResolve": "[solo admin] El comprador tiene razón",
 		"table": {
 			"showOnlyOpen": "Mostrar solo disputas abiertas",
 			"createdAt": "Fecha",
@@ -103,7 +105,15 @@
 			"videoTitle": "Video",
 			"invoiceUuid": "UUID de la factura",
 			"rowsPerPage": "Disputas por página"
-		}
+		},
+		"confirmationModal": {
+			"title": "Confirmar resolución",
+			"cancel": "Cancelar",
+			"resolve": "Resolver disputa",
+			"disclaimer1": "Al resolver la disputa, confirmo que pude descargar el video y que el contenido del mismo coincidió con lo anunciado.",
+			"disclaimer2": "Entiendo que no podré volver a abrir una disputa por el mismo video después de resolver la disputa."
+		},
+		"successfullyResolved": "La disputa se ha resuelto."
 	},
 	"headers": {
 		"browsing": "Viendo videos ",

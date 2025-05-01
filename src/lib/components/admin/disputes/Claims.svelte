@@ -7,7 +7,7 @@
 	import { user } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
 	import { getFormattedDateWithTime } from '$lib/utils/utils';
-	import Button from '@smui/button';
+	import Button, { Label } from '@smui/button';
 	import Textfield from '@smui/textfield';
 	import CharacterCounter from '@smui/textfield/character-counter';
 
@@ -72,10 +72,10 @@
 		{/snippet}
 	</Textfield>
 	<Button onclick={onAddComment} variant="raised" color="primary">
-		{getTranslation('disputes.addComment')}
+		<Label>{getTranslation('disputes.addComment')}</Label>
 	</Button>
 	<span class="min-seconds-between-comments-disclaimer">
-		{getTranslation('disputes.minSeconds')}
+		<Label>{getTranslation('disputes.minSeconds')}</Label>
 	</span>
 </div>
 

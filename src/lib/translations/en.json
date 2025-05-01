@@ -94,6 +94,8 @@
 		"successfullyAdded": "Comment added successfully",
 		"addComment": "Add comment",
 		"minSeconds": "You can add one comment every 5 minutes",
+		"resolve": "Resolve dispute",
+		"adminResolve": "[admin only] Buyer is right",
 		"table": {
 			"showOnlyOpen": "Show only open disputes",
 			"createdAt": "Date",
@@ -103,7 +105,15 @@
 			"videoTitle": "Video",
 			"invoiceUuid": "Invoice UUID",
 			"rowsPerPage": "Disputes per page"
-		}
+		},
+		"confirmationModal": {
+			"title": "Confirm resolution",
+			"cancel": "Cancel",
+			"resolve": "Resolve dispute",
+			"disclaimer1": "By resolving the dispute I confirm that I was able to download the video and the video contents matched what was advertised.",
+			"disclaimer2": "I understand that I will not be able to open a dispute again for the same video after resolving the dispute."
+		},
+		"successfullyResolved": "The dispute was resolved."
 	},
 	"headers": {
 		"browsing": "Browsing videos ",

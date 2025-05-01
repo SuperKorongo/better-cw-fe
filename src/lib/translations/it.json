@@ -94,6 +94,8 @@
 		"successfullyAdded": "Commento aggiunto con successo",
 		"addComment": "Aggiungi commento",
 		"minSeconds": "Puoi aggiungere un commento ogni 5 minuti",
+		"resolve": "Risolvere la controversia",
+		"adminResolve": "[solo amministratore] L'acquirente ha ragione",
 		"table": {
 			"showOnlyOpen": "Mostra solo controversie aperte",
 			"createdAt": "Data",
@@ -103,7 +105,15 @@
 			"videoTitle": "Video",
 			"invoiceUuid": "UUID della fattura",
 			"rowsPerPage": "Controversie per pagina"
-		}
+		},
+		"confirmationModal": {
+			"title": "Conferma la risoluzione",
+			"cancel": "Annulla",
+			"resolve": "Risolvere la controversia",
+			"disclaimer1": "Risolvendo la controversia, confermo di essere riuscito a scaricare il video e che il contenuto corrisponde a quanto pubblicizzato.",
+			"disclaimer2": "Sono consapevole che non potrò riaprire una controversia per lo stesso video una volta risolta."
+		},
+		"successfullyResolved": "La controversia è stata risolta."
 	},
 	"headers": {
 		"browsing": "Sfogliando i video ",

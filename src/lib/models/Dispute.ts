@@ -29,6 +29,10 @@ export const DISPUTE_STATUS_MAP: Record<DisputeStatus, number> = {
 	closed: 1
 };
 
+export type DisputeResolution = 1 | 2;
+export const SELLER_IS_RIGHT_RESOLUTION: DisputeResolution = 1;
+export const BUYER_IS_RIGHT_RESOLUTION: DisputeResolution = 2;
+
 export type Dispute = {
 	uuid: string;
 	status: DisputeStatus;
