@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as toasts from '$lib/components/toasts/toasts';
-	import type { Dispute } from '$lib/models/Dispute';
+	import { CLOSED_DISPUTE_STATUS, type Dispute } from '$lib/models/Dispute';
 	import { addClaimToDispute } from '$lib/services/admin/disputes';
 	import { cacheInvalidation } from '$lib/stores/cache-invalidation/store';
 	import { loading } from '$lib/stores/loading/store';
@@ -71,7 +71,12 @@
 			<CharacterCounter />
 		{/snippet}
 	</Textfield>
-	<Button onclick={onAddComment} variant="raised" color="primary">
+	<Button
+		disabled={dispute.status === CLOSED_DISPUTE_STATUS}
+		onclick={onAddComment}
+		variant="raised"
+		color="primary"
+	>
 		<Label>{getTranslation('disputes.addComment')}</Label>
 	</Button>
 	<span class="min-seconds-between-comments-disclaimer">
