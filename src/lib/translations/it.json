@@ -131,7 +131,8 @@
 	},
 	"homepage": {
 		"videoBy": "Video di",
-		"loadMore": "Carica più video"
+		"loadMore": "Carica più video",
+		"userRating": "Valutazione del venditore"
 	},
 	"menu": {
 		"home": "Home",

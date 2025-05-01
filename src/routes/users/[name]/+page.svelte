@@ -3,6 +3,7 @@
 	import Thumbnails from '$lib/components/thumbnails/Thumbnails.svelte';
 
 	import { goto } from '$app/navigation';
+	import StarRating from '$lib/components/common/StarRating.svelte';
 	import Header from '$lib/components/header/Header.svelte';
 	import type { Pagination } from '$lib/models/Pagination';
 	import { type Video as VideoType } from '$lib/models/Video';
@@ -32,7 +33,23 @@
 </script>
 
 <Header subject={getTranslation('headers.member')} value={page.params.name} />
+<div class="user-rating">
+	{#if !data.error && data.videos.length > 0}
+		<span>{getTranslation('homepage.userRating')}</span>
+		<StarRating size={50} value={data.videos[0].uploader.rating} totalStars={5} />
+	{/if}
+</div>
 
 {#if !data.error}
 	<Thumbnails videos={data.videos} {getVideosFunc} />
 {/if}
+
+<style>
+	.user-rating {
+		text-align: center;
+		font-weight: bold;
+		font-size: 16px;
+		margin-bottom: 20px;
+		font-variant: small-caps;
+	}
+</style>
