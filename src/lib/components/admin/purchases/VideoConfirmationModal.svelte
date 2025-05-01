@@ -20,6 +20,9 @@
 	} = $props();
 
 	const onConfirm = async () => {
+		if ($loading.value) {
+			return;
+		}
 		try {
 			loading.set(true);
 			await confirmVideo(window.fetch, paymentUUID, videoUUID);

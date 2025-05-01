@@ -12,7 +12,6 @@ export type Video = {
 	uploader: {
 		uuid: string;
 		name: string;
-		avatarUrl: string;
 		rating: number;
 	};
 	uploadedAtTimestamp: number;
@@ -42,8 +41,7 @@ export const getEmpty = (): Video => {
 		uploader: {
 			rating: 0,
 			uuid: '',
-			name: '',
-			avatarUrl: ''
+			name: ''
 		},
 		uploadedAtTimestamp: 0,
 		durationInSeconds: 0,

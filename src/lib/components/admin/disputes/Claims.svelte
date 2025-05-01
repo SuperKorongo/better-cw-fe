@@ -22,6 +22,10 @@
 			return;
 		}
 
+		if ($loading.value) {
+			return;
+		}
+
 		try {
 			loading.set(true);
 			await addClaimToDispute(window.fetch, dispute.uuid, newClaim);

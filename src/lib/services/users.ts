@@ -66,3 +66,13 @@ export const initLoggedInUser = async (): Promise<void> => {
 		throw e;
 	}
 };
+
+export const changePassword = async (
+	currentPassword: string,
+	newPassword: string
+): Promise<void> => {
+	await fetchWrapper(window.fetch)(`${PUBLIC_STORE_API_URL}/api/v1/change-password`, {
+		method: 'PATCH',
+		body: JSON.stringify({ currentPassword, newPassword })
+	});
+};

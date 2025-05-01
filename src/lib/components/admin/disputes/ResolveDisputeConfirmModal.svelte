@@ -24,6 +24,9 @@
 	};
 
 	const onConfirm = async (): Promise<void> => {
+		if ($loading.value) {
+			return;
+		}
 		try {
 			loading.set(true);
 			await closeDispute(window.fetch, dispute.uuid, resolution);

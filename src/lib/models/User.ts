@@ -8,7 +8,8 @@ export type User = {
 	readonly username: string;
 	readonly role: Role;
 	readonly email: string;
-	readonly avatarUrl: string;
 	readonly rating: number;
+	readonly totalRatings: number;
 	readonly hasOpenDisputes: boolean;
+	readonly sinceTimestamp: number;
 };

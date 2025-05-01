@@ -25,6 +25,9 @@
 	let ratingValue = $state(rating ?? 3);
 
 	const onRateVideo = async () => {
+		if ($loading.value) {
+			return;
+		}
 		try {
 			loading.set(true);
 			await rateVideo(invoiceUUID, videoUUID, ratingValue);
