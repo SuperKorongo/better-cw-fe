@@ -1,6 +1,6 @@
 import { goto, pushState } from '$app/navigation';
 import { page } from '$app/state';
-import { PUBLIC_THUMBNAIL_IMAGES_URL } from '$env/static/public';
+import { PUBLIC_DOMAIN, PUBLIC_THUMBNAIL_IMAGES_URL } from '$env/static/public';
 import type { Video } from '$lib/models/Video';
 import { loading } from '$lib/stores/loading/store';
 import { ORDER_BY_QUERY_PARAM, orderBy } from '$lib/stores/order_by/store';
@@ -129,4 +129,15 @@ export const showVideoSidePanel = (
 	e.preventDefault();
 
 	pushState(linkElement.href, { selectedVideo: video });
+};
+
+export const openCryptoWidgetPopup = (uuid: string): void => {
+	const widgetWindow = window.open(
+		`${PUBLIC_DOMAIN}/crypto-widget?uuid=${uuid}`,
+		'popupWindow',
+		'width=750,height=800,scrollbars=no'
+	);
+
+	// todo: add message event listener to widgetWindow and listen for status update changes.
+	// todo: show loading css and animation while the window is loading.
 };

@@ -1,10 +1,10 @@
 import { goto } from '$app/navigation';
-import { PUBLIC_DOMAIN } from '$env/static/public';
 import { newPayment } from '$lib/services/payments';
 import { cacheInvalidation } from '$lib/stores/cache-invalidation/store';
 import { cart } from '$lib/stores/cart/store';
 import { loading } from '$lib/stores/loading/store';
 import { getTranslation } from '$lib/translations';
+import { openCryptoWidgetPopup } from '$lib/utils/utils';
 import { get } from 'svelte/store';
 import * as toasts from '../toasts/toasts';
 
@@ -30,14 +30,7 @@ export const onClickProceedToPayment = async (): Promise<void> => {
 		cacheInvalidation.refreshMyPurchases();
 		cart.clean();
 		goto(`/admin/purchases/${response.uuid}`);
-
-		const widgetWindow = window.open(
-			`${PUBLIC_DOMAIN}/crypto-widget?uuid=${response.cryptoGatewayInvoiceUUID}`,
-			'popupWindow',
-			'width=750,height=800,scrollbars=no'
-		);
-
-		// todo: add message event listener to widgetWindow and listen for status update changes.
+		openCryptoWidgetPopup(response.cryptoGatewayInvoiceUUID);
 	} catch {
 		toasts.error(getTranslation('common.errors.generic'));
 	} finally {

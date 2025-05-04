@@ -7,11 +7,15 @@
 		EXPIRED_STATUS,
 		type Payment
 	} from '$lib/models/Payment';
-	import { getTranslation } from '$lib/translations';
-	import { getFormattedDateWithTime, getFormattedPrice } from '$lib/utils/utils';
 	import { defaultCurrency } from '$lib/stores/currency/store';
-	import { getTranslatedStatus } from './utils';
+	import { getTranslation } from '$lib/translations';
+	import {
+		getFormattedDateWithTime,
+		getFormattedPrice,
+		openCryptoWidgetPopup
+	} from '$lib/utils/utils';
 	import StatusTooltip from './StatusTooltip.svelte';
+	import { getTranslatedStatus } from './utils';
 
 	let { payment }: { payment: Payment } = $props();
 </script>
@@ -59,7 +63,12 @@
 
 {#if payment.status !== BLOCKCHAIN_CONFIRMED_STATUS && payment.status !== EXPIRED_STATUS}
 	<div class="pay-button-container">
-		<button class="pay-button">
+		<button
+			onclick={() => {
+				openCryptoWidgetPopup(payment.externalUuid);
+			}}
+			class="pay-button"
+		>
 			{getTranslation('purchases.details.payInvoice')}
 		</button>
 	</div>
