@@ -1,10 +1,9 @@
 import { goto } from '$app/navigation';
-import { newPayment } from '$lib/services/payments';
+import { newPayment, openCryptoWidgetPopup } from '$lib/services/payments';
 import { cacheInvalidation } from '$lib/stores/cache-invalidation/store';
 import { cart } from '$lib/stores/cart/store';
 import { loading } from '$lib/stores/loading/store';
 import { getTranslation } from '$lib/translations';
-import { openCryptoWidgetPopup } from '$lib/utils/utils';
 import { get } from 'svelte/store';
 import * as toasts from '../toasts/toasts';
 

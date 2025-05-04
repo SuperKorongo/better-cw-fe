@@ -7,13 +7,10 @@
 		EXPIRED_STATUS,
 		type Payment
 	} from '$lib/models/Payment';
+	import { openCryptoWidgetPopup } from '$lib/services/payments';
 	import { defaultCurrency } from '$lib/stores/currency/store';
 	import { getTranslation } from '$lib/translations';
-	import {
-		getFormattedDateWithTime,
-		getFormattedPrice,
-		openCryptoWidgetPopup
-	} from '$lib/utils/utils';
+	import { getFormattedDateWithTime, getFormattedPrice } from '$lib/utils/utils';
 	import StatusTooltip from './StatusTooltip.svelte';
 	import { getTranslatedStatus } from './utils';
 
@@ -65,7 +62,7 @@
 	<div class="pay-button-container">
 		<button
 			onclick={() => {
-				openCryptoWidgetPopup(payment.externalUuid);
+				openCryptoWidgetPopup(payment.uuid, payment.externalUuid);
 			}}
 			class="pay-button"
 		>

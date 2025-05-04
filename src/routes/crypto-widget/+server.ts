@@ -28,7 +28,7 @@ export const GET: RequestHandler = async () => {
             <div id="crypto-widget-container"></div>
             </div>
             <script>
-            CRYPTO_GATEWAY.init("crypto-widget-container");
+                CRYPTO_GATEWAY.init("crypto-widget-container");
             </script>
         </body>
         </html>

@@ -6,6 +6,7 @@
 	import * as toasts from '$lib/components/toasts/toasts';
 	import type { Payment } from '$lib/models/Payment';
 	import { getPaymentByUUID } from '$lib/services/payments';
+	import { cacheInvalidation } from '$lib/stores/cache-invalidation/store';
 	import { loading } from '$lib/stores/loading/store';
 	import { getTranslation } from '$lib/translations';
 	import { onMount } from 'svelte';
@@ -13,6 +14,15 @@
 	let payment: Payment | null = $state(null);
 
 	onMount(async () => {
+		loadData();
+	});
+
+	$effect(() => {
+		$cacheInvalidation.myPurchases;
+		loadData();
+	});
+
+	const loadData = async () => {
 		const { uuid } = page.params;
 
 		try {
@@ -23,7 +33,7 @@
 		} finally {
 			loading.set(false);
 		}
-	});
+	};
 
 	const onConfirmVideoCallback = (videoUUID: string) => {
 		const video = payment!.videos.find((video) => video.uuid === videoUUID);

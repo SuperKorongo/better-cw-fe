@@ -1,6 +1,6 @@
-import { PUBLIC_STORE_API_URL } from '$env/static/public';
+import { PUBLIC_DOMAIN, PUBLIC_STORE_API_URL } from '$env/static/public';
 import type { PaginatedResponse, Pagination } from '$lib/models/Pagination';
-import type { Payment } from '$lib/models/Payment';
+import { BLOCKCHAIN_CONFIRMED_STATUS, type Payment, type PaymentStatus } from '$lib/models/Payment';
 import { cacheInvalidation } from '$lib/stores/cache-invalidation/store';
 import { fetchWrapper } from '$lib/utils/fetch';
 import { get } from 'svelte/store';
@@ -64,4 +64,39 @@ export const newPayment = async (
 	});
 
 	return (await response.json()) as NewPaymentResponse;
+};
+
+export const openCryptoWidgetPopup = (paymentUUID: string, cryptoGatewayUUID: string): void => {
+	const widgetWindow = window.open(
+		`${PUBLIC_DOMAIN}/crypto-widget?uuid=${cryptoGatewayUUID}`,
+		'popupWindow',
+		'width=750,height=800,scrollbars=no'
+	) as WindowProxy;
+
+	window.addEventListener(
+		'message',
+		({
+			data
+		}: MessageEvent<{
+			invoice: {
+				status: PaymentStatus;
+			};
+			type: 'status-update';
+		}>) => {
+			if (data.type !== 'status-update') {
+				return;
+			}
+
+			if (data.invoice.status === BLOCKCHAIN_CONFIRMED_STATUS) {
+				cacheInvalidation.refreshMyPurchases();
+				widgetWindow.close();
+				document.location.href = `/admin/purchases/${paymentUUID}`;
+				return;
+			}
+
+			cacheInvalidation.refreshMyPurchases();
+		}
+	);
+
+	// todo: show loading css and animation while the window is loading.
 };
