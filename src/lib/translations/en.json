@@ -41,7 +41,8 @@
 		"proceed": "Proceed to payment",
 		"loginRequired": "Please login or register to proceed with the payment",
 		"login": "Login",
-		"register": "Register"
+		"register": "Register",
+		"minPrice": "Minimum cart price is $5"
 	},
 	"common": {
 		"errors": {

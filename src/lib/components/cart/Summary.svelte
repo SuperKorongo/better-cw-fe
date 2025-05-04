@@ -7,6 +7,7 @@
 	import { getTranslation } from '$lib/translations';
 	import { onClickInternalLink } from '$lib/utils/utils';
 	import GlowingText from '../common/GlowingText.svelte';
+	import { onClickProceedToPayment } from './events';
 
 	const getTotalFormatted = (): string => {
 		return `${$currency.symbol}${$cart
@@ -26,7 +27,7 @@
 		</div>
 		{#if $user.data !== null}
 			<div class="payment-button">
-				<Button variant="raised" color="secondary">
+				<Button onclick={onClickProceedToPayment} variant="raised" color="secondary">
 					<Label>{getTranslation('cart.proceed')}</Label>
 				</Button>
 			</div>

@@ -47,3 +47,21 @@ export const confirmVideo = async (
 		}
 	);
 };
+
+type NewPaymentResponse = {
+	uuid: string;
+	cryptoGatewayInvoiceUUID: string;
+};
+export const newPayment = async (
+	fetch: PageLoadEvent['fetch'],
+	videoUUIDs: string[]
+): Promise<NewPaymentResponse> => {
+	const response = await fetchWrapper(fetch)(`${PUBLIC_STORE_API_URL}/api/v1/payments`, {
+		method: 'POST',
+		body: JSON.stringify({
+			videos: videoUUIDs
+		})
+	});
+
+	return (await response.json()) as NewPaymentResponse;
+};

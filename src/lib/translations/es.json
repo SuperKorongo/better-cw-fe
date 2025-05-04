@@ -41,7 +41,8 @@
 		"proceed": "Proceder al pago",
 		"loginRequired": "Por favor inicia sesión o regístrate para proceder con el pago",
 		"login": "Iniciar sesión",
-		"register": "Registrarse"
+		"register": "Registrarse",
+		"minPrice": "El precio mínimo del carrito son 5 dólares"
 	},
 	"common": {
 		"errors": {

@@ -41,7 +41,8 @@
 		"proceed": "Procedi al pagamento",
 		"loginRequired": "Per favore accedi o registrati per procedere con il pagamento",
 		"login": "Accedi",
-		"register": "Registrati"
+		"register": "Registrati",
+		"minPrice": "Il prezzo minimo del carrello è di 5 dollari"
 	},
 	"common": {
 		"errors": {

@@ -34,6 +34,12 @@ export const cart = (() => {
 				return cart;
 			}),
 
+		clean: () =>
+			update(() => {
+				updateLocalStorage([]);
+				return [];
+			}),
+
 		init: () =>
 			update((cart) => {
 				const cartInLocalStorage = localStorage.getItem(LOCAL_STORAGE_KEY);
