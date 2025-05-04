@@ -14,7 +14,7 @@
 		"format": "prettier --write ."
 	},
 	"devDependencies": {
-		"@fontsource/fira-mono": "^5.2.5",
+		"@fontsource/fira-mono": "^5.2.6",
 		"@mdi/js": "^7.4.47",
 		"@smui/button": "^8.0.0-beta.3",
 		"@smui/data-table": "^8.0.0-beta.3",
@@ -32,7 +32,7 @@
 		"eslint-config-prettier": "^10.1.2",
 		"eslint-plugin-svelte": "^3.5.1",
 		"flowbite": "^3.1.2",
-		"flowbite-svelte": "^0.48.6",
+		"flowbite-svelte": "^1.0.0",
 		"globals": "^16.0.0",
 		"prettier": "^3.5.3",
 		"prettier-plugin-svelte": "^3.3.3",
