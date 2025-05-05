@@ -1,6 +1,5 @@
 import { getEmpty as getEmptyVideo, type Video } from '$lib/models/Video';
 import { getVideoByUUID } from '$lib/services/videos';
-import { handleApiError } from '$lib/utils/utils';
 import type { PageLoadEvent } from '../../$types';
 
 export const prerender = false;
@@ -14,8 +13,7 @@ export async function load(e: PageLoadEvent): Promise<Data> {
 
 		return { video, error: false };
 	} catch (e: unknown) {
-		// todo: do toasts even work in page.ts code? CHECK IT
-		handleApiError(e);
+		console.error(e);
 		return { video: getEmptyVideo(), error: true };
 	}
 }

@@ -1,10 +1,8 @@
-import * as toasts from '$lib/components/toasts/toasts';
 import { DEFAULT_PAGINATION } from '$lib/models/Pagination';
 import type { Video } from '$lib/models/Video';
 import { getHomepageVideos } from '$lib/services/videos';
 import { getOrderBy } from '$lib/stores/order_by/store';
 import { getFromUrl as getSearchFromURL } from '$lib/stores/search/store';
-import { getTranslation } from '$lib/translations';
 import type { PageLoadEvent } from './$types';
 
 export const prerender = false;
@@ -14,11 +12,13 @@ export async function load({ fetch, url }: PageLoadEvent): Promise<Data> {
 	const pagination = structuredClone(DEFAULT_PAGINATION);
 	pagination.orderBy = getOrderBy(url);
 
+	console.log('server load');
+
 	try {
 		const videos = await getHomepageVideos(fetch, pagination, getSearchFromURL(url) ?? '');
 		return { videos, error: false };
-	} catch {
-		toasts.error(getTranslation('common.errors.generic'));
+	} catch (e: unknown) {
+		console.error(e);
 		return { videos: [], error: true };
 	}
 }

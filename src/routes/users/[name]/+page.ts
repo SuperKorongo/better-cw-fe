@@ -3,7 +3,6 @@ import type { Video } from '$lib/models/Video';
 import { getVideosBy, USERS_ENDPOINT } from '$lib/services/videos';
 import { getOrderBy } from '$lib/stores/order_by/store';
 import { getFromUrl as getSearchFromURL } from '$lib/stores/search/store';
-import { handleApiError } from '$lib/utils/utils';
 import type { PageLoadEvent } from '../../$types';
 
 export const prerender = false;
@@ -25,8 +24,7 @@ export async function load({ params, url, fetch }: PageLoadEvent): Promise<Data>
 
 		return { videos, error: false };
 	} catch (e: unknown) {
-		// todo: do toasts even work in page.ts code? CHECK IT
-		handleApiError(e);
+		console.error(e);
 		return { videos: [], error: true };
 	}
 }
