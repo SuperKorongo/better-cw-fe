@@ -30,6 +30,17 @@
 			"errors": {
 				"fetchError": "Impossibile recuperare il tuo saldo. Per favore riprova più tardi."
 			}
+		},
+		"profile": {
+			"passwordChangedSuccessfully": "Password modificata con successo",
+			"invalidPassword": "Password non valida",
+			"memberSince": "Membro dal",
+			"yourRating": "La tua valutazione",
+			"outOf": "su",
+			"totalRatings": "valutazioni totali",
+			"email": "Email",
+			"changePassword": "Cambia password",
+			"change": "Cambia"
 		}
 	},
 	"cart": {

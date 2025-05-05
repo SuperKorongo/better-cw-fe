@@ -11,9 +11,6 @@
 	import { onMount } from 'svelte';
 
 	onMount(() => loading.set(false));
-	/**
-	 * TODO: Translations
-	 */
 
 	let currentPassword: string = $state('');
 	let newPassword: string = $state('');
@@ -30,13 +27,13 @@
 		try {
 			loading.set(true);
 			await changePassword(currentPassword, newPassword);
-			toasts.success(getTranslation('Password changed successfully'));
+			toasts.success(getTranslation('admin.profile.passwordChangedSuccessfully'));
 			currentPassword = '';
 			newPassword = '';
 		} catch (e: unknown) {
 			const funcMap = new Map<number, () => void>();
 			funcMap.set(409, () => {
-				toasts.error(getTranslation('Invalid password')); // todo: translation, also in the html
+				toasts.error(getTranslation('admin.profile.invalidPassword'));
 			});
 			handleApiError(e, 'signInForm.errors.serverError', funcMap);
 		} finally {
@@ -47,21 +44,27 @@
 
 <section>
 	<h2>Welcome {$user.data!.username}!</h2>
-	<span class="member-since">Member since {getFormattedDate($user.data!.sinceTimestamp)}</span>
+	<span class="member-since">
+		{getTranslation('admin.profile.memberSince')}
+		{getFormattedDate($user.data!.sinceTimestamp)}
+	</span>
 	<div class="your-rating">
-		<h3>Your rating</h3>
+		<h3>{getTranslation('admin.profile.yourRating')}</h3>
 		<div class="stars-container">
 			<StarRating totalStars={5} value={$user.data!.rating} />
 		</div>
 		<span class="total-ratings">
-			({$user.data!.rating.toFixed(2)} out of {$user.data!.totalRatings} total ratings)
+			({$user.data!.rating.toFixed(2)}
+			{getTranslation('admin.profile.outOf')}
+			{$user.data!.totalRatings}
+			{getTranslation('admin.profile.totalRatings')})
 		</span>
 	</div>
 	<div class="data">
-		<h3>Email</h3>
+		<h3>{getTranslation('admin.profile.email')}</h3>
 		<span>{$user.data!.email}</span>
 		<div class="change-password-form">
-			<h3>Change password</h3>
+			<h3>{getTranslation('admin.profile.changePassword')}</h3>
 			<div class="text-field-container">
 				<Textfield
 					type="password"
@@ -78,7 +81,9 @@
 					bind:value={newPassword}
 				/>
 			</div>
-			<Button onclick={onClickChangePassword} variant="raised">Change</Button>
+			<Button onclick={onClickChangePassword} variant="raised">
+				{getTranslation('admin.profile.change')}
+			</Button>
 		</div>
 	</div>
 </section>

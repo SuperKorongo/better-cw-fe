@@ -30,6 +30,17 @@
 			"errors": {
 				"fetchError": "Could not fetch your balance. Please try again later."
 			}
+		},
+		"profile": {
+			"passwordChangedSuccessfully": "Password changed successfully",
+			"invalidPassword": "Invalid password",
+			"memberSince": "Member since",
+			"yourRating": "Your rating",
+			"outOf": "out of",
+			"totalRatings": "total ratings",
+			"email": "Email",
+			"changePassword": "Change password",
+			"change": "Change"
 		}
 	},
 	"cart": {

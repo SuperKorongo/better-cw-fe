@@ -30,6 +30,17 @@
 			"errors": {
 				"fetchError": "No se pudo obtener tu saldo. Por favor, inténtalo de nuevo más tarde."
 			}
+		},
+		"profile": {
+			"passwordChangedSuccessfully": "Contraseña cambiada con éxito",
+			"invalidPassword": "Contraseña inválida",
+			"memberSince": "Miembro desde",
+			"yourRating": "Tu calificación",
+			"outOf": "de",
+			"totalRatings": "calificaciones totales",
+			"email": "Correo electrónico",
+			"changePassword": "Cambiar contraseña",
+			"change": "Cambiar"
 		}
 	},
 	"cart": {
