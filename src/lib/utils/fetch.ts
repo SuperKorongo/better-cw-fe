@@ -13,13 +13,6 @@ export const fetchWrapper = (fetchFunc: typeof window.fetch) => {
 	};
 
 	const handle429 = (response: Response): Response => {
-		// todo
-		/**
-		 * For 429 nginx returns an html
-		 * Then whe caller of this function always does response.json in a try catch,
-		 * triggering the error toast with generic error message.
-		 * To avoid that we should return empty JSON from nginx on errors.
-		 */
 		toasts.warning(getTranslation('common.errors.tooManyRequests'));
 		throw apiError(response);
 	};
