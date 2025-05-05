@@ -1,4 +1,4 @@
-import { PUBLIC_DOMAIN, PUBLIC_STORE_API_URL } from '$env/static/public';
+import { PUBLIC_STORE_API_URL } from '$env/static/public';
 import type { PaginatedResponse, Pagination } from '$lib/models/Pagination';
 import { BLOCKCHAIN_CONFIRMED_STATUS, type Payment, type PaymentStatus } from '$lib/models/Payment';
 import { cacheInvalidation } from '$lib/stores/cache-invalidation/store';
@@ -66,41 +66,64 @@ export const newPayment = async (
 	return (await response.json()) as NewPaymentResponse;
 };
 
+type CryptoWidgetPopupIncomingMessage = {
+	invoice: {
+		status: PaymentStatus;
+	};
+	type: 'status-update';
+};
 export const openCryptoWidgetPopup = (paymentUUID: string, cryptoGatewayUUID: string): void => {
 	const widgetWindow = window.open(
-		`${PUBLIC_DOMAIN}/crypto-widget?uuid=${cryptoGatewayUUID}`,
+		'',
 		'popupWindow',
 		'width=750,height=800,scrollbars=no'
 	) as WindowProxy;
 
-	window.addEventListener(
-		'message',
-		({
-			data
-		}: MessageEvent<{
-			invoice: {
-				status: PaymentStatus;
-			};
-			type: 'status-update';
-		}>) => {
-			if (data.type !== 'status-update') {
-				return;
-			}
+	widgetWindow.document.writeln(`
+		<!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width" />
+            <script src="/widget.js"></script>
+            <style>
+				* {
+					margin: 0;
+					padding: 0;
+				}
+				body {
+					overflow-x: hidden;
+				}
+				#crypto-widget-container-container {
+					padding: 10px 16px;
+					max-width: 750px;
+					margin: 0 auto;
+				}
+            </style>
+        </head>
+        <body>
+            <div id="crypto-widget-container-container">
+            	<div id="crypto-widget-container"></div>
+            </div>
+            <script>
+                CRYPTO_GATEWAY.init("crypto-widget-container", "${cryptoGatewayUUID}");
+            </script>
+        </body>
+        </html>
+	`);
 
-			if (data.invoice.status === BLOCKCHAIN_CONFIRMED_STATUS) {
-				// todo: find a way to refresh the purchase[uuid] page
-				// without relying on $effect on the cache invalidation
-				cacheInvalidation.refreshMyPurchases();
-				widgetWindow.close();
-				document.location.href = `/admin/purchases/${paymentUUID}`;
-				return;
-			}
-
-			// todo: find a way to refresh the purchase[uuid] page
-			// without relying on $effect on the cache invalidation
-			cacheInvalidation.refreshMyPurchases();
+	window.addEventListener('message', ({ data }: MessageEvent<CryptoWidgetPopupIncomingMessage>) => {
+		if (data.type !== 'status-update') {
+			return;
 		}
-	);
 
-	// todo: show loading css and animation while the window is loading.
+		if (data.invoice.status === BLOCKCHAIN_CONFIRMED_STATUS) {
+			cacheInvalidation.refreshMyPurchases();
+			widgetWindow.close();
+			document.location.href = `/admin/purchases/${paymentUUID}`;
+			return;
+		}
+
+		cacheInvalidation.refreshMyPurchases();
+	});
 };

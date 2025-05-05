@@ -17,8 +17,7 @@
 	});
 
 	$effect(() => {
-		// todo: improve this
-		$cacheInvalidation.myPurchases;
+		void $cacheInvalidation.myPurchases;
 		loadData();
 	});
 
