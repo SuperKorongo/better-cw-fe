@@ -1,7 +1,6 @@
 <script lang="ts">
 	import DisputesTable from '$lib/components/admin/disputes/DisputesTable.svelte';
 	import NoDisputes from '$lib/components/admin/disputes/NoDisputes.svelte';
-	import * as toasts from '$lib/components/toasts/toasts';
 	import { DISPUTE_STATUS_MAP, OPEN_DISPUTE_STATUS, type Dispute } from '$lib/models/Dispute';
 	import {
 		DEFAULT_PAGINATION,
@@ -12,7 +11,7 @@
 	import { loading } from '$lib/stores/loading/store';
 	import { user } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
-	import { ifNotLoading } from '$lib/utils/utils';
+	import { handleApiError, ifNotLoading } from '$lib/utils/utils';
 	import FormField from '@smui/form-field';
 	import Switch from '@smui/switch';
 	import { onMount } from 'svelte';
@@ -65,8 +64,8 @@
 			loading.set(true);
 			const statusFilter = showOnlyOpenDisputes ? [DISPUTE_STATUS_MAP[OPEN_DISPUTE_STATUS]] : [];
 			return await getDisputes(window.fetch, asWho, pagination, statusFilter);
-		} catch {
-			toasts.error(getTranslation('common.errors.generic'));
+		} catch (e: unknown) {
+			handleApiError(e);
 		} finally {
 			loading.set(false);
 		}

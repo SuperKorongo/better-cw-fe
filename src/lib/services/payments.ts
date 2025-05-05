@@ -88,12 +88,16 @@ export const openCryptoWidgetPopup = (paymentUUID: string, cryptoGatewayUUID: st
 			}
 
 			if (data.invoice.status === BLOCKCHAIN_CONFIRMED_STATUS) {
+				// todo: find a way to refresh the purchase[uuid] page
+				// without relying on $effect on the cache invalidation
 				cacheInvalidation.refreshMyPurchases();
 				widgetWindow.close();
 				document.location.href = `/admin/purchases/${paymentUUID}`;
 				return;
 			}
 
+			// todo: find a way to refresh the purchase[uuid] page
+			// without relying on $effect on the cache invalidation
 			cacheInvalidation.refreshMyPurchases();
 		}
 	);

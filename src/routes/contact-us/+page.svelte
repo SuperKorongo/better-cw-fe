@@ -1,13 +1,14 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import * as toasts from '$lib/components/toasts/toasts';
-	import { getTranslation } from '$lib/translations';
-	import Button from '@smui/button';
-	import Textfield from '@smui/textfield';
+	import { sendContactMessage } from '$lib/services/contact';
 	import { loading } from '$lib/stores/loading/store';
 	import { user } from '$lib/stores/user/store';
-	import { sendContactMessage } from '$lib/services/contact';
+	import { getTranslation } from '$lib/translations';
+	import { handleApiError } from '$lib/utils/utils';
+	import Button from '@smui/button';
+	import Textfield from '@smui/textfield';
 	import { onMount } from 'svelte';
-	import { goto } from '$app/navigation';
 
 	onMount(() => {
 		loading.set(false);
@@ -51,8 +52,8 @@
 			await sendContactMessage(email, subject, message);
 			toasts.success(getTranslation('contact.success'));
 			goto('/');
-		} catch {
-			toasts.error(getTranslation('contact.errors.submitFailed'));
+		} catch (e: unknown) {
+			handleApiError(e, 'contact.errors.submitFailed');
 		} finally {
 			loading.set(false);
 		}

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import NoPurchases from '$lib/components/admin/purchases/NoPurchases.svelte';
 	import PurchasesTable from '$lib/components/admin/purchases/PurchasesTable.svelte';
-	import * as toasts from '$lib/components/toasts/toasts';
 	import {
 		DEFAULT_PAGINATION,
 		type PaginatedResponse,
@@ -15,6 +14,7 @@
 	import { getMyPayments } from '$lib/services/payments';
 	import { loading } from '$lib/stores/loading/store';
 	import { getTranslation } from '$lib/translations';
+	import { handleApiError } from '$lib/utils/utils';
 	import { onMount } from 'svelte';
 
 	let data: PaginatedResponse<Payment> | null = $state(null);
@@ -43,8 +43,8 @@
 				},
 				statusFilter
 			);
-		} catch {
-			toasts.error(getTranslation('common.errors.generic'));
+		} catch (e: unknown) {
+			handleApiError(e);
 		} finally {
 			loading.set(false);
 		}

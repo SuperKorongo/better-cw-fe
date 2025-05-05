@@ -1,25 +1,22 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import * as toasts from '$lib/components/toasts/toasts';
 	import { getBalance, type Balance } from '$lib/services/admin/balance';
 	import { loading } from '$lib/stores/loading/store';
 	import { user } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
-	import { onClickInternalLink } from '$lib/utils/utils';
+	import { handleApiError, onClickInternalLink } from '$lib/utils/utils';
 	import Button from '@smui/button';
 	import { onMount } from 'svelte';
 
 	let balance: Balance | null = $state(null);
-	let error: string | null = $state(null);
 
 	onMount(async () => {
 		try {
 			loading.set(true);
 			balance = await getBalance();
 			user.setBalance(balance);
-		} catch {
-			error = getTranslation('admin.balance.errors.fetchError');
-			toasts.error(error);
+		} catch (e: unknown) {
+			handleApiError(e, 'admin.balance.errors.fetchError');
 		} finally {
 			loading.set(false);
 		}

@@ -1,12 +1,11 @@
 <script lang="ts">
 	import DownloadInstructionsModal from '$lib/components/common/DownloadInstructionsModal.svelte';
-	import * as toasts from '$lib/components/toasts/toasts';
 	import type { Payment, PurchasedVideo } from '$lib/models/Payment';
 	import { BLOCKCHAIN_CONFIRMED_STATUS, EXPIRED_STATUS } from '$lib/models/Payment';
 	import { getVideoByUUID } from '$lib/services/videos';
 	import { loading } from '$lib/stores/loading/store';
 	import { getTranslation } from '$lib/translations';
-	import { getImageSrc, showVideoSidePanel } from '$lib/utils/utils';
+	import { getImageSrc, handleApiError, showVideoSidePanel } from '$lib/utils/utils';
 	import Button, { Label } from '@smui/button';
 	import DataTable, { Body, Cell, Head, Row } from '@smui/data-table';
 	import DisputeModal from './DisputeModal.svelte';
@@ -38,8 +37,8 @@
 			loading.set(true);
 			const target = e.currentTarget as HTMLAnchorElement;
 			showVideoSidePanel(e, target, await getVideoByUUID(window.fetch, video.uuid));
-		} catch (e) {
-			toasts.error(getTranslation('common.errors.generic'));
+		} catch (e: unknown) {
+			handleApiError(e);
 		} finally {
 			loading.set(false);
 		}

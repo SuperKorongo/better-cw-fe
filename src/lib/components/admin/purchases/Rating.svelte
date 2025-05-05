@@ -4,6 +4,7 @@
 	import { cacheInvalidation } from '$lib/stores/cache-invalidation/store';
 	import { loading } from '$lib/stores/loading/store';
 	import { getTranslation } from '$lib/translations';
+	import { handleApiError } from '$lib/utils/utils';
 	import Button, { Label } from '@smui/button';
 	import Slider from '@smui/slider';
 	import { Rating, Star } from 'flowbite-svelte';
@@ -34,8 +35,8 @@
 			rating = ratingValue;
 			cacheInvalidation.refreshMyPurchases();
 			toasts.success(getTranslation('purchases.details.successfullyRated'));
-		} catch {
-			toasts.error(getTranslation('common.errors.generic'));
+		} catch (e: unknown) {
+			handleApiError(e);
 		} finally {
 			loading.set(false);
 		}

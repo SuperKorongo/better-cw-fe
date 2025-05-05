@@ -3,11 +3,11 @@ import * as toasts from '$lib/components/toasts/toasts';
 import { register } from '$lib/services/users';
 import { loading } from '$lib/stores/loading/store';
 import { menu } from '$lib/stores/menu/store';
+import { navigationHistory } from '$lib/stores/navigation/store';
 import { user as userStore } from '$lib/stores/user/store';
 import { getTranslation } from '$lib/translations';
+import { handleApiError } from '$lib/utils/utils';
 import { get } from 'svelte/store';
-import type { ApiError } from '../../errors/apiError';
-import { navigationHistory } from '$lib/stores/navigation/store';
 
 export const onClickRegisterButton = async (
 	getUsername: () => string,
@@ -53,19 +53,14 @@ export const onClickRegisterButton = async (
 
 		goto(navigationHistory.getAppropiateRedirectAfterLogin());
 	} catch (e: unknown) {
-		const apiError = e as ApiError;
-
-		switch (apiError.getCode()) {
-			case 400:
-			case 401:
-				toasts.error(getTranslation('signInForm.errors.invalidCredentials'));
-				break;
-			case 409:
-				toasts.error(getTranslation('signUpForm.errors.usernameAlreadyExists'));
-				break;
-			default:
-				toasts.error(getTranslation('signInForm.errors.serverError'));
-		}
+		const funcMap = new Map<number, () => void>();
+		funcMap.set(400, () => {
+			toasts.error(getTranslation('signInForm.errors.invalidCredentials'));
+		});
+		funcMap.set(409, () => {
+			toasts.error(getTranslation('signUpForm.errors.usernameAlreadyExists'));
+		});
+		handleApiError(e, 'signInForm.errors.serverError', funcMap);
 	} finally {
 		loading.set(false);
 	}

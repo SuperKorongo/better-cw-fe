@@ -1,10 +1,9 @@
-import * as toasts from '$lib/components/toasts/toasts';
 import { DEFAULT_PAGINATION } from '$lib/models/Pagination';
 import type { Video } from '$lib/models/Video';
 import { getVideosBy, TAGS_ENDPOINT } from '$lib/services/videos';
 import { getOrderBy } from '$lib/stores/order_by/store';
 import { getFromUrl as getSearchFromURL } from '$lib/stores/search/store';
-import { getTranslation } from '$lib/translations';
+import { handleApiError } from '$lib/utils/utils';
 import type { PageLoadEvent } from '../../$types';
 
 export const prerender = false;
@@ -25,8 +24,9 @@ export async function load({ params, url, fetch }: PageLoadEvent): Promise<Data>
 		);
 
 		return { videos, error: false };
-	} catch {
-		toasts.error(getTranslation('common.errors.generic'));
+	} catch (e: unknown) {
+		// todo: do toasts even work in page.ts code? CHECK IT
+		handleApiError(e);
 		return { videos: [], error: true };
 	}
 }

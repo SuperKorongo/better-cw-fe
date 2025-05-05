@@ -5,8 +5,8 @@ import { loading } from '$lib/stores/loading/store';
 import { navigationHistory } from '$lib/stores/navigation/store';
 import { user as userStore } from '$lib/stores/user/store';
 import { getTranslation } from '$lib/translations';
+import { handleApiError } from '$lib/utils/utils';
 import { get } from 'svelte/store';
-import type { ApiError } from '../../errors/apiError';
 
 export const onClickLoginButton = async (getEmail: () => string, getPassword: () => string) => {
 	if (get(loading).value) {
@@ -30,21 +30,11 @@ export const onClickLoginButton = async (getEmail: () => string, getPassword: ()
 
 		goto(navigationHistory.getAppropiateRedirectAfterLogin());
 	} catch (e: unknown) {
-		const apiError = e as ApiError;
-
-		if (!e || !(e as ApiError).getCode) {
-			toasts.error(getTranslation('signInForm.errors.serverError'));
-			return;
-		} else {
-			switch (apiError.getCode()) {
-				case 400:
-				case 401:
-					toasts.error(getTranslation('signInForm.errors.invalidCredentials'));
-					break;
-				default:
-					toasts.error(getTranslation('signInForm.errors.serverError'));
-			}
-		}
+		const funcMap = new Map<number, () => void>();
+		funcMap.set(400, () => {
+			toasts.error(getTranslation('signInForm.errors.invalidCredentials'));
+		});
+		handleApiError(e, 'signInForm.errors.serverError', funcMap);
 	} finally {
 		loading.set(false);
 	}

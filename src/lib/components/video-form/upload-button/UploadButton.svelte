@@ -8,8 +8,8 @@
 	import { loading } from '$lib/stores/loading/store';
 	import { videoForm } from '$lib/stores/video-form/store';
 	import { getTranslation } from '$lib/translations';
+	import { handleApiError } from '$lib/utils/utils';
 	import Button from '@smui/button';
-	import type { ApiError } from '../../../../errors/apiError';
 	import { patchThumbnails } from './patchThumbnails';
 
 	let { type, video }: { type: 'upload' | 'patch'; video?: Video } = $props();
@@ -76,12 +76,13 @@
 			cacheInvalidation.refreshMyVideos();
 			goto('/admin/my-videos');
 		} catch (e: unknown) {
-			const apiError = e as ApiError;
-			if (apiError.getCode() === 409) {
+			const funcMap = new Map<number, () => void>();
+
+			funcMap.set(409, () => {
 				toasts.error(getTranslation('upload.errors.linkAlreadyUsed'));
-				return;
-			}
-			toasts.error(getTranslation('upload.errors.genericServerError'));
+			});
+
+			handleApiError(e, 'upload.errors.genericServerError', funcMap);
 		} finally {
 			loading.set(false);
 		}

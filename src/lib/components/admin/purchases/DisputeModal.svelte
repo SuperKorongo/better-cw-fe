@@ -4,10 +4,10 @@
 	import { cacheInvalidation } from '$lib/stores/cache-invalidation/store';
 	import { loading } from '$lib/stores/loading/store';
 	import { getTranslation } from '$lib/translations';
+	import { handleApiError } from '$lib/utils/utils';
 	import Button, { Label } from '@smui/button';
 	import Textfield from '@smui/textfield';
 	import CharacterCounter from '@smui/textfield/character-counter';
-	import type { ApiError } from '../../../../errors/apiError';
 
 	let {
 		open = $bindable(false),
@@ -43,20 +43,13 @@
 			cacheInvalidation.refreshMyDisputes();
 			onDisputeOpenCallback(videoUUID, dispute.uuid);
 		} catch (e: unknown) {
-			const apiError = e as ApiError;
-			if (!e || !(e as ApiError).getCode) {
-				toasts.error(getTranslation('common.errors.generic'));
-			} else {
-				switch (apiError.getCode()) {
-					case 409:
-						toasts.warning(getTranslation('purchases.details.disputeModal.conflict'), {
-							duration: 15000
-						});
-						break;
-					default:
-						toasts.error(getTranslation('common.errors.generic'));
-				}
-			}
+			const funcMap = new Map<number, () => void>();
+			funcMap.set(409, () => {
+				toasts.warning(getTranslation('purchases.details.disputeModal.conflict'), {
+					duration: 15000
+				});
+			});
+			handleApiError(e, 'common.errors.generic', funcMap);
 		} finally {
 			loading.set(false);
 			open = false;

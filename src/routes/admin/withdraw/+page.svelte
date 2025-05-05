@@ -7,6 +7,7 @@
 	import { loading } from '$lib/stores/loading/store';
 	import { user } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
+	import { handleApiError } from '$lib/utils/utils';
 	import { onMount } from 'svelte';
 
 	let btcAddress: string = $state('');
@@ -43,8 +44,8 @@
 			toasts.success(getTranslation('withdraw.success'));
 			btcAddress = '';
 			amount = 0;
-		} catch {
-			toasts.error(getTranslation('withdraw.errors.serverError'));
+		} catch (e: unknown) {
+			handleApiError(e, 'withdraw.errors.serverError');
 		} finally {
 			loading.set(false);
 		}

@@ -4,7 +4,7 @@
 	import { getWithdrawals } from '$lib/services/admin/withdrawals';
 	import { loading } from '$lib/stores/loading/store';
 	import { getTranslation } from '$lib/translations';
-	import { getFormattedDate } from '$lib/utils/utils';
+	import { getFormattedDate, handleApiError } from '$lib/utils/utils';
 	import { onMount } from 'svelte';
 
 	let withdrawals: Withdrawal[] = $state([]);
@@ -33,8 +33,8 @@
 			const response = await getWithdrawals(pagination);
 			withdrawals = response.data;
 			meta = response.meta;
-		} catch (error) {
-			console.error('Error loading withdrawals:', error);
+		} catch (e: unknown) {
+			handleApiError(e);
 		} finally {
 			loading.set(false);
 		}

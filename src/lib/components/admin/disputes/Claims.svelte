@@ -6,7 +6,7 @@
 	import { loading } from '$lib/stores/loading/store';
 	import { user } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
-	import { getFormattedDateWithTime } from '$lib/utils/utils';
+	import { getFormattedDateWithTime, handleApiError } from '$lib/utils/utils';
 	import Button, { Label } from '@smui/button';
 	import Textfield from '@smui/textfield';
 	import CharacterCounter from '@smui/textfield/character-counter';
@@ -43,8 +43,8 @@
 			window.scrollTo(0, 0);
 			toasts.success(getTranslation('disputes.successfullyAdded'));
 			cacheInvalidation.refreshMyDisputes();
-		} catch {
-			toasts.error(getTranslation('common.errors.generic'));
+		} catch (e: unknown) {
+			handleApiError(e);
 		} finally {
 			loading.set(false);
 		}

@@ -5,11 +5,10 @@
 	import { loading } from '$lib/stores/loading/store';
 	import { user } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
-	import { getFormattedDate } from '$lib/utils/utils';
+	import { getFormattedDate, handleApiError } from '$lib/utils/utils';
 	import Button from '@smui/button';
 	import Textfield from '@smui/textfield';
 	import { onMount } from 'svelte';
-	import type { ApiError } from '../../../errors/apiError';
 
 	onMount(() => loading.set(false));
 	/**
@@ -35,20 +34,11 @@
 			currentPassword = '';
 			newPassword = '';
 		} catch (e: unknown) {
-			const apiError = e as ApiError;
-
-			if (!e || !(e as ApiError).getCode) {
-				toasts.error(getTranslation('signInForm.errors.serverError'));
-				return;
-			} else {
-				switch (apiError.getCode()) {
-					case 409:
-						toasts.error(getTranslation('Invalid password'));
-						break;
-					default:
-						toasts.error(getTranslation('common.errors.generic'));
-				}
-			}
+			const funcMap = new Map<number, () => void>();
+			funcMap.set(409, () => {
+				toasts.error(getTranslation('Invalid password')); // todo: translation, also in the html
+			});
+			handleApiError(e, 'signInForm.errors.serverError', funcMap);
 		} finally {
 			loading.set(false);
 		}

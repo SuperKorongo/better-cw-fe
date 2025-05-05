@@ -3,12 +3,11 @@
 	import { page } from '$app/state';
 	import PaymentDetails from '$lib/components/admin/purchases/PaymentDetails.svelte';
 	import PurchasedVideos from '$lib/components/admin/purchases/PurchasedVideos.svelte';
-	import * as toasts from '$lib/components/toasts/toasts';
 	import type { Payment } from '$lib/models/Payment';
 	import { getPaymentByUUID } from '$lib/services/payments';
 	import { cacheInvalidation } from '$lib/stores/cache-invalidation/store';
 	import { loading } from '$lib/stores/loading/store';
-	import { getTranslation } from '$lib/translations';
+	import { handleApiError } from '$lib/utils/utils';
 	import { onMount } from 'svelte';
 
 	let payment: Payment | null = $state(null);
@@ -18,6 +17,7 @@
 	});
 
 	$effect(() => {
+		// todo: improve this
 		$cacheInvalidation.myPurchases;
 		loadData();
 	});
@@ -27,8 +27,8 @@
 
 		try {
 			payment = await getPaymentByUUID(window.fetch, uuid);
-		} catch {
-			toasts.error(getTranslation('common.errors.generic'));
+		} catch (e: unknown) {
+			handleApiError(e);
 			goto('/admin/purchases');
 		} finally {
 			loading.set(false);

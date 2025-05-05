@@ -2,7 +2,6 @@
 	import { goto } from '$app/navigation';
 	import HeaderCell from '$lib/components/table/HeaderCell.svelte';
 	import Pagination from '$lib/components/table/Pagination.svelte';
-	import * as toasts from '$lib/components/toasts/toasts';
 	import {
 		type PaginatedResponse,
 		type Pagination as PaginationType
@@ -11,8 +10,12 @@
 	import { patch } from '$lib/services/admin/videos';
 	import { loading } from '$lib/stores/loading/store';
 	import { user } from '$lib/stores/user/store';
-	import { getTranslation } from '$lib/translations';
-	import { getFormattedDate, getFormattedPrice, ifNotLoading } from '$lib/utils/utils';
+	import {
+		getFormattedDate,
+		getFormattedPrice,
+		handleApiError,
+		ifNotLoading
+	} from '$lib/utils/utils';
 	import DataTable, { Body, Cell, Head, Row } from '@smui/data-table';
 	import Switch from '@smui/switch';
 	import { allowedRowsPerPage, tableHeader } from './data';
@@ -30,8 +33,8 @@
 	const onToggleActive = async (video: AdminListVideo): Promise<void> => {
 		try {
 			await patch(video.uuid, { active: !video.active });
-		} catch {
-			toasts.error(getTranslation('common.errors.generic'));
+		} catch (e: unknown) {
+			handleApiError(e);
 		}
 	};
 </script>

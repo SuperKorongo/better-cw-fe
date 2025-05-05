@@ -1,11 +1,14 @@
 import { goto, pushState } from '$app/navigation';
 import { page } from '$app/state';
 import { PUBLIC_THUMBNAIL_IMAGES_URL } from '$env/static/public';
+import * as toasts from '$lib/components/toasts/toasts';
 import type { Video } from '$lib/models/Video';
 import { loading } from '$lib/stores/loading/store';
 import { ORDER_BY_QUERY_PARAM, orderBy } from '$lib/stores/order_by/store';
 import { search, SEARCH_QUERY_PARAM } from '$lib/stores/search/store';
+import { getTranslation } from '$lib/translations';
 import { get } from 'svelte/store';
+import type { ApiError } from '../../errors/apiError';
 
 export const MOBILE_BREAKPOINT_PX = 900;
 
@@ -129,4 +132,32 @@ export const showVideoSidePanel = (
 	e.preventDefault();
 
 	pushState(linkElement.href, { selectedVideo: video });
+};
+
+export const handleApiError = (
+	e: unknown,
+	errorMessageKey: string = 'common.errors.generic',
+	httpCodeFunctionMap: Map<number, () => void> | null = null
+): void => {
+	const apiError = e as ApiError;
+	if (!e || !(e as ApiError).getCode) {
+		toasts.error(getTranslation(errorMessageKey));
+		return;
+	}
+	if (apiError.getCode() === 429 || apiError.getCode() === 401) {
+		return; // Already handled in fetchWrapper
+	}
+
+	if (httpCodeFunctionMap === null) {
+		toasts.error(getTranslation(errorMessageKey));
+		return;
+	}
+
+	const func = httpCodeFunctionMap.get(apiError.getCode());
+	if (func) {
+		func();
+		return;
+	}
+
+	toasts.error(getTranslation(errorMessageKey));
 };

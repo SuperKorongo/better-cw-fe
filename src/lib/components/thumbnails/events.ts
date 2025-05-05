@@ -2,10 +2,8 @@ import { DEFAULT_PAGINATION, type OrderBy, type Pagination } from '$lib/models/P
 import type { Video } from '$lib/models/Video';
 import { loading } from '$lib/stores/loading/store';
 import { search } from '$lib/stores/search/store';
-import { getTranslation } from '$lib/translations';
-import { isVideoDisplayRoute } from '$lib/utils/utils';
+import { handleApiError, isVideoDisplayRoute } from '$lib/utils/utils';
 import { get } from 'svelte/store';
-import * as toasts from '../toasts/toasts';
 
 const VIDEOS_TO_LOAD_ON_SCROLL = 10;
 const VIDEOS_TO_LOAD_ON_BUTTON = 25;
@@ -53,7 +51,7 @@ export const events = (
 				});
 				onNewVideosLoaded({ videos: newVideos, error: null });
 			} catch (e: unknown) {
-				toasts.error(getTranslation('common.errors.generic'));
+				handleApiError(e);
 				onNewVideosLoaded({ videos: [], error: e as Error });
 			} finally {
 				loading.set(false);
@@ -77,7 +75,7 @@ export const events = (
 			});
 			onNewVideosLoaded({ videos, error: null });
 		} catch (e: unknown) {
-			toasts.error(getTranslation('common.errors.generic'));
+			handleApiError(e);
 			onNewVideosLoaded({ videos: [], error: e as Error });
 		} finally {
 			loading.set(false);
@@ -101,8 +99,8 @@ export const events = (
 				orderBy: newOrderBy
 			});
 			newVideos(videos);
-		} catch {
-			toasts.error(getTranslation('common.errors.generic'));
+		} catch (e: unknown) {
+			handleApiError(e);
 		} finally {
 			loading.set(false);
 		}
@@ -130,8 +128,8 @@ export const events = (
 			});
 
 			newVideos(videos);
-		} catch {
-			toasts.error(getTranslation('common.errors.generic'));
+		} catch (e: unknown) {
+			handleApiError(e);
 		} finally {
 			loading.set(false);
 		}

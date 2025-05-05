@@ -1,12 +1,11 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
-	import * as toasts from '$lib/components/toasts/toasts';
 	import VideoForm from '$lib/components/video-form/VideoForm.svelte';
 	import { getEmpty } from '$lib/models/Video';
 	import { getUserVideoByUUID, type AdminVideo } from '$lib/services/admin/videos';
 	import { loading } from '$lib/stores/loading/store';
-	import { getTranslation } from '$lib/translations';
+	import { handleApiError } from '$lib/utils/utils';
 	import { onMount } from 'svelte';
 
 	let video: AdminVideo = $state({
@@ -20,8 +19,8 @@
 
 		try {
 			video = await getUserVideoByUUID(window.fetch, uuid);
-		} catch {
-			toasts.error(getTranslation('common.errors.generic'));
+		} catch (e: unknown) {
+			handleApiError(e);
 			goto('/admin/my-videos/');
 		} finally {
 			loading.set(false);

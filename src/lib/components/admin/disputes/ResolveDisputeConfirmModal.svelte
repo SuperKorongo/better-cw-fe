@@ -7,6 +7,7 @@
 	import { cacheInvalidation } from '$lib/stores/cache-invalidation/store';
 	import { loading } from '$lib/stores/loading/store';
 	import { getTranslation } from '$lib/translations';
+	import { handleApiError } from '$lib/utils/utils';
 	import Button, { Label } from '@smui/button';
 
 	let {
@@ -36,8 +37,8 @@
 			goto('/admin/disputes');
 			cacheInvalidation.refreshMe();
 			initLoggedInUser();
-		} catch {
-			toasts.error(getTranslation('common.errors.generic'));
+		} catch (e: unknown) {
+			handleApiError(e);
 		} finally {
 			loading.set(false);
 		}
