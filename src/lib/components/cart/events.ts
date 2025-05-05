@@ -29,7 +29,7 @@ export const onClickProceedToPayment = async (): Promise<void> => {
 		cacheInvalidation.refreshMyPurchases();
 		cart.clean();
 		goto(`/admin/purchases/${response.uuid}`);
-		openCryptoWidgetPopup(response.cryptoGatewayInvoiceUUID);
+		openCryptoWidgetPopup(response.uuid, response.cryptoGatewayInvoiceUUID);
 	} catch {
 		toasts.error(getTranslation('common.errors.generic'));
 	} finally {

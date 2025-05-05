@@ -19,14 +19,7 @@
 
 {#if isMounted}
 	<div class="container">
-		<Rating
-			iconStrokeColor="white"
-			iconFillColor="gold"
-			icon={Star}
-			total={totalStars}
-			{size}
-			rating={value}
-		/>
+		<Rating icon={Star} total={totalStars} {size} rating={value} />
 	</div>
 {/if}
 

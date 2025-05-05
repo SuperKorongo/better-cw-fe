@@ -62,14 +62,7 @@
 		</div>
 	{:else}
 		<span>{getTranslation('purchases.details.yourRating')}</span>
-		<Rating
-			iconStrokeColor="black"
-			iconFillColor="gold"
-			icon={Star}
-			total={totalStars}
-			{size}
-			{rating}
-		/>
+		<Rating icon={Star} total={totalStars} {size} {rating} />
 	{/if}
 </div>
 
