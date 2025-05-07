@@ -1,7 +1,4 @@
-SERVER_IP = "142.93.162.193"
-SSH_USER = "root"
-SSH_KEY = "~/.ssh/sporestack/id_rsa"
-REMOTE_FOLDER = "/root/repo/store-frontend"
+include .env
 
 build-docker:
 	docker build --no-cache . -f ./docker/NodeDockerfile -t store-frontend
@@ -14,16 +11,26 @@ generate-prod-certs:
 	docker compose exec nginx certbot certonly --nginx
 
 deploy:
-	git push origin master
+	mkdir -p .git-zip
+	cp -r .git .git-zip/
+	zip -r repo.zip .git-zip
+	rm -rf .git-zip
 	npm run build
 	zip -r build.zip build 
-	ssh -i ${SSH_KEY} ${SSH_USER}@${SERVER_IP} "cd ${REMOTE_FOLDER}; git pull origin master;"
-	scp -i ${SSH_KEY} build.zip ${SSH_USER}@${SERVER_IP}:${REMOTE_FOLDER}/build.zip
-	scp -i ${SSH_KEY} .env.production ${SSH_USER}@${SERVER_IP}:${REMOTE_FOLDER}/.env
+	scp -i ${SSH_KEY_FILE_PATH} build.zip ${SSH_USER}@${SERVER_IP}:${REMOTE_FOLDER}/build.zip
 	rm build.zip
-	ssh -i ${SSH_KEY} ${SSH_USER}@${SERVER_IP} "cd ${REMOTE_FOLDER}; make run-prod;"
+	scp -i ${SSH_KEY_FILE_PATH} repo.zip ${SSH_USER}@${SERVER_IP}:${REMOTE_FOLDER}/repo.zip
+	rm repo.zip
+	scp -i ${SSH_KEY_FILE_PATH} .env.production ${SSH_USER}@${SERVER_IP}:${REMOTE_FOLDER}/.env
+	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "cd ${REMOTE_FOLDER}; make run-prod;"
 
 run-prod:
+	rm -rf .git
+	unzip repo.zip
+	mv .git-zip/.git .
+	rm -rf .git-zip
+	git checkout -- .
+	rm repo.zip
 	rm -rf build
 	unzip build.zip
 	rm build.zip
