@@ -53,8 +53,9 @@ vps-initial-setup:
 # Run containers
 	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "cd ${REMOTE_FOLDER}; docker compose up -d;"
 # Generate ssl certificates and update nginx conf
+	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "cd ${REMOTE_FOLDER}; make vps-setup-nginx-conf-domain-name"
 	ssh -t -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "cd ${REMOTE_FOLDER}; make generate-prod-certs"
-	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "cd ${REMOTE_FOLDER}; make vps-setup-nginx-conf"
+	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "cd ${REMOTE_FOLDER}; make vps-setup-nginx-conf-ssl-certificates"
 	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "cd ${REMOTE_FOLDER}; docker compose stop; docker compose up -d;"
 # Run deploy script to finalize the setup
 	make deploy
@@ -69,7 +70,9 @@ vps-update-repo:
 	rm repo.zip
 	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "cd ${REMOTE_FOLDER}; rm -rf .git; unzip repo.zip; mv .git-zip/.git .; rm -rf .git-zip; git checkout -- .; rm repo.zip;"
 
-vps-setup-nginx-conf:
+vps-setup-nginx-conf-domain-name:
 	sed -i "s/server_name localhost;/server_name ${DOMAIN_NAME};/g" nginx/nginx.conf
+
+vps-setup-nginx-conf-ssl-certificates:
 	sed -i 's|ssl_certificate /etc/nginx/localhost.crt;|ssl_certificate /etc/letsencrypt/live/${DOMAIN_NAME}/fullchain.pem;|g' nginx/nginx.conf
 	sed -i 's|ssl_certificate_key /etc/nginx/localhost.key;|ssl_certificate /etc/letsencrypt/live/${DOMAIN_NAME}/privkey.pem;|g' nginx/nginx.conf
