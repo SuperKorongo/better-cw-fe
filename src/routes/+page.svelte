@@ -17,7 +17,7 @@
 		getHomepageVideos(fetch, pagination, $search.value ?? '');
 </script>
 
-<Header mainText="TODO: Some cool and short description" />
+<Header mainText="TODO: Some cool and short description - TEST DEPLOY" />
 
 {#if !data.error}
 	<Thumbnails videos={data.videos} {getVideosFunc} />
