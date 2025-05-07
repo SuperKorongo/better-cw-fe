@@ -34,7 +34,7 @@ run-prod:
 	rm -rf build
 	unzip build.zip
 	rm build.zip
-	docker compose exec frontend bash -c 'npm install; pm2 restart build/index.js --update-env'
+	docker compose exec frontend bash -c 'npm install --verbose; pm2 restart build/index.js --update-env'
 
 error-logs:
 	docker compose exec frontend bash -c 'tail -f ~/.pm2/logs/index-error.log'
