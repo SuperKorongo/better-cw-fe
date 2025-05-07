@@ -64,9 +64,10 @@ vps-update-repo:
 	cp -r .git .git-zip/
 	zip -r repo.zip .git-zip
 	rm -rf .git-zip
+	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "mkdir -p ${REMOTE_FOLDER};"
 	scp -i ${SSH_KEY_FILE_PATH} repo.zip ${SSH_USER}@${SERVER_IP}:${REMOTE_FOLDER}/repo.zip
 	rm repo.zip
-	ssh -i $
+	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "cd ${REMOTE_FOLDER}; rm -rf .git; unzip repo.zip; mv .git-zip/.git .; rm -rf .git-zip; git checkout -- .; rm repo.zip;"
 
 vps-setup-nginx-conf:
 	sed -i "s/server_name localhost;/server_name ${DOMAIN_NAME};/g" nginx/nginx.conf
