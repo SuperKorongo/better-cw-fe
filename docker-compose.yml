@@ -20,6 +20,4 @@ services:
     working_dir: /store-fe
     volumes:
       - ./:/store-fe
-    ports:
-      - '3000:3000'
     command: bash -c "pm2 start build/index.js && tail -f /dev/null"
