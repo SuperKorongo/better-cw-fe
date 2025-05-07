@@ -11,26 +11,15 @@ generate-prod-certs:
 	docker compose exec nginx certbot certonly --nginx
 
 deploy:
-	mkdir -p .git-zip
-	cp -r .git .git-zip/
-	zip -r repo.zip .git-zip
-	rm -rf .git-zip
+	make vps-update-repo
 	npm run build
 	zip -r build.zip build 
 	scp -i ${SSH_KEY_FILE_PATH} build.zip ${SSH_USER}@${SERVER_IP}:${REMOTE_FOLDER}/build.zip
 	rm build.zip
-	scp -i ${SSH_KEY_FILE_PATH} repo.zip ${SSH_USER}@${SERVER_IP}:${REMOTE_FOLDER}/repo.zip
-	rm repo.zip
 	scp -i ${SSH_KEY_FILE_PATH} .env.production ${SSH_USER}@${SERVER_IP}:${REMOTE_FOLDER}/.env
 	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "cd ${REMOTE_FOLDER}; make run-prod;"
 
 run-prod:
-	rm -rf .git
-	unzip repo.zip
-	mv .git-zip/.git .
-	rm -rf .git-zip
-	git checkout -- .
-	rm repo.zip
 	rm -rf build
 	unzip build.zip
 	rm build.zip
@@ -38,3 +27,12 @@ run-prod:
 
 error-logs:
 	docker compose exec frontend bash -c 'tail -f ~/.pm2/logs/index-error.log'
+
+vps-update-repo: 
+	mkdir -p .git-zip
+	cp -r .git .git-zip/
+	zip -r repo.zip .git-zip
+	rm -rf .git-zip
+	scp -i ${SSH_KEY_FILE_PATH} repo.zip ${SSH_USER}@${SERVER_IP}:${REMOTE_FOLDER}/repo.zip
+	rm repo.zip
+	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "cd ${REMOTE_FOLDER}; rm -rf .git; unzip repo.zip; mv .git-zip/.git .; rm -rf .git-zip; git checkout -- .; rm repo.zip;"
