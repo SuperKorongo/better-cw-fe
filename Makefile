@@ -51,14 +51,14 @@ vps-initial-setup:
 	scp -i ${SSH_KEY_FILE_PATH} .env.production ${SSH_USER}@${SERVER_IP}:${REMOTE_FOLDER}/.env
 	ssh -t -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "cd ${REMOTE_FOLDER}; make generate-local-certs"
 # Run containers
+	make deploy || true
 	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "cd ${REMOTE_FOLDER}; docker compose up -d;"
 # Generate ssl certificates and update nginx conf
 	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "cd ${REMOTE_FOLDER}; make vps-setup-nginx-conf-domain-name"
 	ssh -t -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "cd ${REMOTE_FOLDER}; make generate-prod-certs"
 	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "cd ${REMOTE_FOLDER}; make vps-setup-nginx-conf-ssl-certificates"
 	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "cd ${REMOTE_FOLDER}; docker compose stop; docker compose up -d;"
-# Run deploy script to finalize the setup
-	make deploy
+
 
 vps-update-repo: 
 	mkdir -p .git-zip
