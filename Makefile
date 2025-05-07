@@ -75,4 +75,4 @@ vps-setup-nginx-conf-domain-name:
 
 vps-setup-nginx-conf-ssl-certificates:
 	sed -i 's|ssl_certificate /etc/nginx/localhost.crt;|ssl_certificate /etc/letsencrypt/live/${DOMAIN_NAME}/fullchain.pem;|g' nginx/nginx.conf
-	sed -i 's|ssl_certificate_key /etc/nginx/localhost.key;|ssl_certificate /etc/letsencrypt/live/${DOMAIN_NAME}/privkey.pem;|g' nginx/nginx.conf
+	sed -i 's|ssl_certificate_key /etc/nginx/localhost.key;|ssl_certificate_key /etc/letsencrypt/live/${DOMAIN_NAME}/privkey.pem;|g' nginx/nginx.conf
