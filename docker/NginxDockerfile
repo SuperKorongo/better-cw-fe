@@ -20,8 +20,3 @@ RUN apt install wget -y && \
 # Update bots blocker conf files periodically
 RUN apt install cron -y && \
     echo "00 22 * * * /usr/local/sbin/update-ngxblocker -n" >> /var/spool/cron/crontabs/root
-
-# Copy nginx configuration
-COPY nginx/nginx.conf /etc/nginx/nginx.conf
-COPY nginx/localhost.crt /etc/nginx/localhost.crt
-COPY nginx/localhost.key /etc/nginx/localhost.key
