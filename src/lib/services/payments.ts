@@ -1,4 +1,4 @@
-import { PUBLIC_STORE_API_URL } from '$env/static/public';
+import { PUBLIC_CRYPTO_GATEWAY_URL, PUBLIC_STORE_API_URL } from '$env/static/public';
 import type { PaginatedResponse, Pagination } from '$lib/models/Pagination';
 import { BLOCKCHAIN_CONFIRMED_STATUS, type Payment, type PaymentStatus } from '$lib/models/Payment';
 import { cacheInvalidation } from '$lib/stores/cache-invalidation/store';
@@ -106,7 +106,7 @@ export const openCryptoWidgetPopup = (paymentUUID: string, cryptoGatewayUUID: st
             	<div id="crypto-widget-container"></div>
             </div>
             <script>
-                CRYPTO_GATEWAY.init("crypto-widget-container", "${cryptoGatewayUUID}");
+                CRYPTO_GATEWAY.init("${PUBLIC_CRYPTO_GATEWAY_URL}", "crypto-widget-container", "${cryptoGatewayUUID}");
             </script>
         </body>
         </html>
