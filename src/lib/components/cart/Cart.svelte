@@ -70,7 +70,7 @@
 
 <style>
 	section {
-		height: calc(100% - var(--navbar-height) + 10px);
+		height: calc(100% - var(--navbar-height) + 18px);
 		color: black;
 		padding: 20px 35px;
 		overflow-y: auto;
