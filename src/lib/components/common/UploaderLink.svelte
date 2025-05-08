@@ -8,7 +8,7 @@
 <a
 	data-sveltekit-preload-data="tap"
 	onclick={onClickInternalLink}
-	href={`/users/${uploader.name}`}
+	href={`/users/${uploader.slug}`}
 	class="uploader"
 >
 	{uploader.name}

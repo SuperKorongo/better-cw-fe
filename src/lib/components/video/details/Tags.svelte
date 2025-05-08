@@ -1,24 +1,25 @@
 <script lang="ts">
+	import type { Video } from '$lib/models/Video';
 	import { onClickInternalLink } from '$lib/utils/utils';
 
 	let {
 		tags
 	}: {
-		tags: string[];
+		tags: Video['tags'];
 	} = $props();
 
 	const getFormattedTag = (tag: string): string => `#${tag} `; // Trailing space is important for beautiful text wrapping on smaller devices.
 </script>
 
 <div class="tags">
-	{#each tags as tag (tag)}
+	{#each tags as tag (tag.name)}
 		<a
 			onclick={onClickInternalLink}
 			class="tag"
 			data-sveltekit-preload-data="tap"
-			href={`/tags/${tag}`}
+			href={`/tags/${tag.slug}`}
 		>
-			{getFormattedTag(tag)}
+			{getFormattedTag(tag.name)}
 		</a>
 	{/each}
 </div>

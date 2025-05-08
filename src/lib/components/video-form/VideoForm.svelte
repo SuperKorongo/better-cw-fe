@@ -59,7 +59,7 @@
 	</section>
 	<section class="tags">
 		<h1>{getTranslation('upload.tags')}</h1>
-		<Tags tags={video.tags} />
+		<Tags tags={video.tags.map((t) => t.name)} />
 	</section>
 	<section class="price">
 		<h1>{getTranslation('upload.price')}</h1>

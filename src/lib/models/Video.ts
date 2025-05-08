@@ -12,14 +12,19 @@ export type Video = {
 	uploader: {
 		uuid: string;
 		name: string;
+		slug: string;
 		rating: number;
 	};
 	durationInSeconds: number;
 	model: {
 		uuid: string;
 		name: string;
+		slug: string;
 	} | null;
-	tags: string[];
+	tags: {
+		name: string;
+		slug: string;
+	}[];
 	rating: number;
 };
 
@@ -40,12 +45,14 @@ export const getEmpty = (): Video => {
 		uploader: {
 			rating: 0,
 			uuid: '',
-			name: ''
+			name: '',
+			slug: ''
 		},
 		durationInSeconds: 0,
 		model: {
 			uuid: '',
-			name: ''
+			name: '',
+			slug: ''
 		},
 		tags: [],
 		rating: 0

@@ -33,7 +33,7 @@
 	<a
 		data-sveltekit-preload-data="tap"
 		onclick={onClickInternalLink}
-		href={`/models/${video.model.name}`}
+		href={`/models/${video.model.slug}`}
 		class="meta-value"
 	>
 		{video.model.name}
