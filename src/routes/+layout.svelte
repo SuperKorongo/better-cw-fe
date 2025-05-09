@@ -12,11 +12,11 @@
 	import ToastsContainer from '$lib/components/toasts/ToastsContainer.svelte';
 	import Video from '$lib/components/video/Video.svelte';
 	import { initLoggedInUser } from '$lib/services/users';
+	import { cacheInvalidation } from '$lib/stores/cache-invalidation/store';
 	import { language } from '$lib/stores/language/store';
 	import { menu } from '$lib/stores/menu/store';
-	import './styles.css';
 	import { navigationHistory } from '$lib/stores/navigation/store';
-	import { cacheInvalidation } from '$lib/stores/cache-invalidation/store';
+	import './styles.css';
 
 	let { children } = $props();
 
@@ -55,7 +55,7 @@
 </script>
 
 <svelte:head>
-	<title>TODO</title>
+	<title>todo</title>
 	<meta name="description" content="TODO - Description" />
 </svelte:head>
 
