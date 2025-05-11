@@ -2,7 +2,7 @@ import { PUBLIC_STORE_API_URL } from '$env/static/public';
 import type { PaginatedResponse, Pagination } from '$lib/models/Pagination';
 import type { Data as VideoData } from '$lib/stores/video-form/store';
 import { fetchWrapper } from '$lib/utils/fetch';
-import type { PageLoadEvent } from '../../routes/$types';
+import type { PageLoadEvent } from '../../routes/[language]/$types';
 import type { Video } from '../models/Video';
 import { getQueryParams } from './common';
 

@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { language } from '$lib/stores/language/store';
+	import { loading } from '$lib/stores/loading/store';
 	import { search } from '$lib/stores/search/store';
 	import { getTranslation } from '$lib/translations';
 	import {
@@ -17,7 +19,8 @@
 		if (isVideoDisplayRoute()) {
 			goto(getSearchAndOrderQueryParams());
 		} else {
-			goto('/' + getSearchAndOrderQueryParams());
+			loading.set(true);
+			goto(`/${$language}` + getSearchAndOrderQueryParams());
 		}
 	}
 

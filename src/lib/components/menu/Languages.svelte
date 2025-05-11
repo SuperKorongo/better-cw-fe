@@ -1,12 +1,19 @@
 <script lang="ts">
-	import { language as languageStore } from '$lib/stores/language/store';
+	import { page } from '$app/state';
+	import { language } from '$lib/stores/language/store';
 	import { type Language } from '$lib/translations';
 	import ItalianFlag from '../icons/flags/ItalianFlag.svelte';
 	import SpanishFlag from '../icons/flags/SpanishFlag.svelte';
 	import UkFlag from '../icons/flags/UKFlag.svelte';
 
-	const changeLanguage = (language: Language) => {
-		languageStore.set(language);
+	const changeLanguage = (newLanguage: Language): void => {
+		if (page.url.pathname === `/${$language}`) {
+			document.location.href = `/${newLanguage}`;
+			return;
+		}
+
+		document.location.href = page.url.pathname.replace(`/${$language}/`, `/${newLanguage}/`);
+		return;
 	};
 </script>
 

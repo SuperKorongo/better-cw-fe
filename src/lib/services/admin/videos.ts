@@ -4,7 +4,7 @@ import { cacheInvalidation } from '$lib/stores/cache-invalidation/store';
 import type { Data as VideoData } from '$lib/stores/video-form/store';
 import { fetchWrapper } from '$lib/utils/fetch';
 import { get } from 'svelte/store';
-import type { PageLoadEvent } from '../../../routes/$types';
+import type { PageLoadEvent } from '../../../routes/[language]/$types';
 import type { AdminListVideo, Video } from '../../models/Video';
 import { getQueryParams } from '../common';
 import type { UploadVideoRequest } from '../videos';

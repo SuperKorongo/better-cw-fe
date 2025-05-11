@@ -21,7 +21,7 @@ export const navigationHistory = (() => {
 		getAppropiateRedirectAfterLogin: (): string => {
 			const history = get(navigationHistory).history;
 			for (let i = history.length - 1; i >= 0; i--) {
-				if (['/sign-in', '/register', '/logout'].includes(history[i])) {
+				if (['/[language]/sign-in', '/[language]/register', '/logout'].includes(history[i])) {
 					continue;
 				}
 				return history[i];

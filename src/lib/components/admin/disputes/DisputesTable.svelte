@@ -1,11 +1,14 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
 	import Pagination from '$lib/components/table/Pagination.svelte';
 	import { CLOSED_DISPUTE_STATUS, OPEN_DISPUTE_STATUS, type Dispute } from '$lib/models/Dispute';
 	import type { PaginatedResponse, Pagination as PaginationType } from '$lib/models/Pagination';
-	import { loading } from '$lib/stores/loading/store';
 	import { getTranslation } from '$lib/translations';
-	import { getFormattedDateWithTime, ifNotLoading, onClickInternalLink } from '$lib/utils/utils';
+	import {
+		getFormattedDateWithTime,
+		goToInternalLink,
+		ifNotLoading,
+		onClickInternalLink
+	} from '$lib/utils/utils';
 	import DataTable, { Body, Cell, Head, Row } from '@smui/data-table';
 	import { onClickVideo } from './events';
 
@@ -19,9 +22,8 @@
 		onChangePagination: (pagination: PaginationType) => void;
 	} = $props();
 
-	const onRowClick = (uuid: string) => {
-		loading.set(true);
-		goto(`/admin/disputes/${uuid}`);
+	const onRowClick = (e: MouseEvent, uuid: string) => {
+		goToInternalLink(e, `/admin/disputes/${uuid}`);
 	};
 </script>
 
@@ -39,7 +41,7 @@
 		</Head>
 		<Body>
 			{#each data.data as dispute (dispute.uuid)}
-				<Row style="cursor: pointer" onclick={() => onRowClick(dispute.uuid)}>
+				<Row style="cursor: pointer" onclick={(e) => onRowClick(e, dispute.uuid)}>
 					<Cell>{getFormattedDateWithTime(dispute.createdAtTimestamp)}</Cell>
 					<Cell>{getFormattedDateWithTime(dispute.updatedAtTimestamp)}</Cell>
 					<Cell

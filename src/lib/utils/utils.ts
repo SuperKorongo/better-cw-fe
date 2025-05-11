@@ -3,6 +3,7 @@ import { page } from '$app/state';
 import { PUBLIC_THUMBNAIL_IMAGES_URL } from '$env/static/public';
 import * as toasts from '$lib/components/toasts/toasts';
 import type { Video } from '$lib/models/Video';
+import { language } from '$lib/stores/language/store';
 import { loading } from '$lib/stores/loading/store';
 import { ORDER_BY_QUERY_PARAM, orderBy } from '$lib/stores/order_by/store';
 import { search, SEARCH_QUERY_PARAM } from '$lib/stores/search/store';
@@ -61,9 +62,22 @@ export function onClickInternalLink(e: MouseEvent): void {
 
 	document.body.style.overflowY = 'scroll';
 
-	if (page.url.pathname !== pathname) loading.set(true);
+	if (page.url.pathname.replace(`${get(language)}/`, '') !== pathname) loading.set(true);
 
-	goto(href);
+	goto(`/${get(language)}${pathname}`);
+}
+
+export function goToInternalLink(e: MouseEvent, href: string): void {
+	loading.set(true);
+
+	const anchor = document.createElement('a');
+	anchor.setAttribute('href', href);
+
+	onClickInternalLink({
+		...e,
+		preventDefault() {},
+		currentTarget: anchor
+	});
 }
 
 export function getSearchAndOrderQueryParams() {
@@ -104,7 +118,12 @@ export const isMobileScreen = (): boolean => {
 };
 
 export const isVideoDisplayRoute = (): boolean => {
-	return ['/', '/users/[name]', '/models/[name]', '/tags/[name]'].includes(page.route.id!);
+	return [
+		'/[language]',
+		'/[language]/users/[name]',
+		'/[language]/models/[name]',
+		'/[language]/tags/[name]'
+	].includes(page.route.id!);
 };
 
 export const getFormattedDate = (timestampInSeconds: number): string => {

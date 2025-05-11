@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
 	import HeaderCell from '$lib/components/table/HeaderCell.svelte';
 	import Pagination from '$lib/components/table/Pagination.svelte';
 	import {
@@ -8,11 +7,11 @@
 	} from '$lib/models/Pagination';
 	import type { AdminListVideo } from '$lib/models/Video';
 	import { patch } from '$lib/services/admin/videos';
-	import { loading } from '$lib/stores/loading/store';
 	import { user } from '$lib/stores/user/store';
 	import {
 		getFormattedDate,
 		getFormattedPrice,
+		goToInternalLink,
 		handleApiError,
 		ifNotLoading
 	} from '$lib/utils/utils';
@@ -67,9 +66,8 @@
 			<Body>
 				{#each data.data as video, index (index)}
 					<Row
-						onclick={() => {
-							loading.set(true);
-							goto(`/admin/my-videos/${video.uuid}`);
+						onclick={(e) => {
+							goToInternalLink(e, `/admin/my-videos/${video.uuid}`);
 						}}
 						style="cursor: pointer"
 					>

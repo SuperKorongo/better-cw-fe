@@ -1,7 +1,7 @@
 <script lang="ts">
-	import Button from '@smui/button';
-	import { goto } from '$app/navigation';
 	import { getTranslation } from '$lib/translations';
+	import { goToInternalLink } from '$lib/utils/utils';
+	import Button from '@smui/button';
 </script>
 
 <div class="empty-state">
@@ -24,7 +24,7 @@
 			</div>
 		</div>
 
-		<Button variant="raised" class="browse-button" onclick={() => goto('/')}>
+		<Button variant="raised" class="browse-button" onclick={(e) => goToInternalLink(e, '/')}>
 			{getTranslation('purchases.browseCTA')}
 		</Button>
 	</div>

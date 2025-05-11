@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
 	import * as toasts from '$lib/components/toasts/toasts';
 	import { SELLER_IS_RIGHT_RESOLUTION, type Dispute } from '$lib/models/Dispute';
 	import { closeDispute } from '$lib/services/admin/disputes';
@@ -7,7 +6,7 @@
 	import { cacheInvalidation } from '$lib/stores/cache-invalidation/store';
 	import { loading } from '$lib/stores/loading/store';
 	import { getTranslation } from '$lib/translations';
-	import { handleApiError } from '$lib/utils/utils';
+	import { goToInternalLink, handleApiError } from '$lib/utils/utils';
 	import Button, { Label } from '@smui/button';
 
 	let {
@@ -24,7 +23,7 @@
 		open = false;
 	};
 
-	const onConfirm = async (): Promise<void> => {
+	const onConfirm = async (e: MouseEvent): Promise<void> => {
 		if ($loading.value) {
 			return;
 		}
@@ -34,7 +33,7 @@
 			cacheInvalidation.refreshMyDisputes();
 			toasts.success(getTranslation('disputes.successfullyResolved'));
 			open = false;
-			goto('/admin/disputes');
+			goToInternalLink(e, '/admin/disputes');
 			cacheInvalidation.refreshMe();
 			initLoggedInUser();
 		} catch (e: unknown) {

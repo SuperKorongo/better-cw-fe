@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
 	import * as toasts from '$lib/components/toasts/toasts';
 	import type { Video } from '$lib/models/Video';
 	import { patch } from '$lib/services/admin/videos';
@@ -8,7 +7,7 @@
 	import { loading } from '$lib/stores/loading/store';
 	import { videoForm } from '$lib/stores/video-form/store';
 	import { getTranslation } from '$lib/translations';
-	import { handleApiError } from '$lib/utils/utils';
+	import { goToInternalLink, handleApiError } from '$lib/utils/utils';
 	import Button from '@smui/button';
 	import { patchThumbnails } from './patchThumbnails';
 
@@ -22,7 +21,7 @@
 			? getTranslation('upload.disclaimer')
 			: getTranslation('upload.editDisclaimer');
 
-	const onClick = async () => {
+	const onClick = async (e: MouseEvent) => {
 		if ($loading.value) {
 			return;
 		}
@@ -74,7 +73,7 @@
 			}
 
 			cacheInvalidation.refreshMyVideos();
-			goto('/admin/my-videos');
+			goToInternalLink(e, '/admin/my-videos');
 		} catch (e: unknown) {
 			const funcMap = new Map<number, () => void>();
 

@@ -18,7 +18,7 @@
 		open: boolean;
 		paymentUUID: string;
 		videoUUID: string;
-		onDisputeOpenCallback: (videoUUID: string, disputeUUID: string) => void;
+		onDisputeOpenCallback: (e: MouseEvent, videoUUID: string, disputeUUID: string) => void;
 	} = $props();
 
 	const MAX_CLAIM_LENGTH: number = 500;
@@ -28,7 +28,7 @@
 		open = false;
 	};
 
-	const onOpenDispute = async (): Promise<void> => {
+	const onOpenDispute = async (e: MouseEvent): Promise<void> => {
 		if (claim.length < 10) {
 			toasts.warning(getTranslation('purchases.details.disputeModal.minClaimLength'));
 			return;
@@ -41,7 +41,7 @@
 				duration: 15000
 			});
 			cacheInvalidation.refreshMyDisputes();
-			onDisputeOpenCallback(videoUUID, dispute.uuid);
+			onDisputeOpenCallback(e, videoUUID, dispute.uuid);
 		} catch (e: unknown) {
 			const funcMap = new Map<number, () => void>();
 			funcMap.set(409, () => {

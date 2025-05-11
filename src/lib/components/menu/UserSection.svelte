@@ -7,7 +7,7 @@
 <section>
 	{#if $user.data !== null}
 		<button class="logout-button">
-			<a onclick={onClickInternalLink} data-sveltekit-preload-data="tap" href="/logout">
+			<a data-sveltekit-preload-data="tap" href="/logout">
 				{getTranslation('menu.logout')}
 			</a>
 		</button>

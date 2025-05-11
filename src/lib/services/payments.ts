@@ -4,7 +4,7 @@ import { BLOCKCHAIN_CONFIRMED_STATUS, type Payment, type PaymentStatus } from '$
 import { cacheInvalidation } from '$lib/stores/cache-invalidation/store';
 import { fetchWrapper } from '$lib/utils/fetch';
 import { get } from 'svelte/store';
-import type { PageLoadEvent } from '../../routes/$types';
+import type { PageLoadEvent } from '../../routes/[language]/$types';
 import { getQueryParams } from './common';
 
 export const getMyPayments = async (

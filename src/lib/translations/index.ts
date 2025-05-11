@@ -4,6 +4,7 @@ import * as itTranslations from './it.json';
 
 type TranslationsJSON = { [key: string]: TranslationsJSON | string };
 export type Language = 'en' | 'es' | 'it';
+export const availableLanguages: Language[] = ['en', 'es', 'it'];
 
 export const translations: { [key in Language]: TranslationsJSON } = {
 	en: enTranslations,

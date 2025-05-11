@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
 	import Pagination from '$lib/components/table/Pagination.svelte';
 	import type { PaginatedResponse, Pagination as PaginationType } from '$lib/models/Pagination';
 	import {
@@ -11,9 +10,13 @@
 		type Payment
 	} from '$lib/models/Payment';
 	import { defaultCurrency } from '$lib/stores/currency/store';
-	import { loading } from '$lib/stores/loading/store';
 	import { getTranslation } from '$lib/translations';
-	import { getFormattedDateWithTime, getFormattedPrice, ifNotLoading } from '$lib/utils/utils';
+	import {
+		getFormattedDateWithTime,
+		getFormattedPrice,
+		goToInternalLink,
+		ifNotLoading
+	} from '$lib/utils/utils';
 	import DataTable, { Body, Cell, Head, Row } from '@smui/data-table';
 	import FormField from '@smui/form-field';
 	import Switch from '@smui/switch';
@@ -34,9 +37,8 @@
 		onChangeStatusFilter: (showPaidOnly: boolean) => void;
 	} = $props();
 
-	const onRowClick = (uuid: string) => {
-		loading.set(true);
-		goto(`/admin/purchases/${uuid}`);
+	const onRowClick = (e: MouseEvent, uuid: string) => {
+		goToInternalLink(e, `/admin/purchases/${uuid}`);
 	};
 
 	let statusModalOpen = $state(false);
@@ -82,7 +84,7 @@
 		</Head>
 		<Body>
 			{#each data.data as payment (payment.uuid)}
-				<Row style="cursor: pointer" onclick={() => onRowClick(payment.uuid)}>
+				<Row style="cursor: pointer" onclick={(e) => onRowClick(e, payment.uuid)}>
 					<Cell>{getFormattedDateWithTime(payment.createdAtTimestamp)}</Cell>
 					<Cell>{payment.uuid}</Cell>
 					<Cell>
