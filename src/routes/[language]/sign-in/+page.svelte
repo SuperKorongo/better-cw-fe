@@ -16,8 +16,6 @@
 			loading.set(false);
 		}
 		if ($userStore.data !== null) {
-			console.log('hi>', navigationHistory.getAppropiateRedirectAfterLogin());
-
 			goto(navigationHistory.getAppropiateRedirectAfterLogin());
 		}
 	});
