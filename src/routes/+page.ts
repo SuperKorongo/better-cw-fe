@@ -12,8 +12,6 @@ export async function load({ fetch, url }: PageLoadEvent): Promise<Data> {
 	const pagination = structuredClone(DEFAULT_PAGINATION);
 	pagination.orderBy = getOrderBy(url);
 
-	console.log('server load');
-
 	try {
 		const videos = await getHomepageVideos(fetch, pagination, getSearchFromURL(url) ?? '');
 		return { videos, error: false };
