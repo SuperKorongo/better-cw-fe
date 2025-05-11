@@ -12,6 +12,7 @@
 		await logout();
 		user.setData(null);
 		cacheInvalidation.refreshAll();
+		console.log(`${$language}/sign-in`);
 		goto(`${$language}/sign-in`);
 	});
 </script>

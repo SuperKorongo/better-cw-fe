@@ -53,7 +53,7 @@
 	});
 
 	$effect(() => {
-		navigationHistory.push(page.route.id!);
+		navigationHistory.push(page.url.pathname);
 	});
 </script>
 

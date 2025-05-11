@@ -1,4 +1,5 @@
 import { get, writable } from 'svelte/store';
+import { language } from '../language/store';
 
 type NavigationHistory = {
 	history: string[];
@@ -20,14 +21,20 @@ export const navigationHistory = (() => {
 
 		getAppropiateRedirectAfterLogin: (): string => {
 			const history = get(navigationHistory).history;
+			console.log(history);
+
 			for (let i = history.length - 1; i >= 0; i--) {
-				if (['/[language]/sign-in', '/[language]/register', '/logout'].includes(history[i])) {
+				if (
+					[`/${get(language)}/sign-in`, `/${get(language)}/register`, '/logout'].includes(
+						history[i]
+					)
+				) {
 					continue;
 				}
 				return history[i];
 			}
 
-			return '/';
+			return '/' + get(language);
 		}
 	};
 })();
