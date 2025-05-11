@@ -16,6 +16,7 @@
 	import { language } from '$lib/stores/language/store';
 	import { menu } from '$lib/stores/menu/store';
 	import { navigationHistory } from '$lib/stores/navigation/store';
+	import { getTranslation } from '$lib/translations';
 	import './styles.css';
 
 	let { children } = $props();
@@ -55,8 +56,8 @@
 </script>
 
 <svelte:head>
-	<title>todo</title>
-	<meta name="description" content="TODO - Description" />
+	<title>{getTranslation('homepage.htmlTitle')}</title>
+	<meta name="description" content={getTranslation('homepage.metaDescription')} />
 </svelte:head>
 
 {#key mounted}
