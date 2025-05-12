@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Video } from '$lib/models/Video';
+	import { language } from '$lib/stores/language/store';
 	import { onClickInternalLink } from '$lib/utils/utils';
 
 	let { uploader }: { uploader: Video['uploader'] } = $props();
@@ -8,7 +9,7 @@
 <a
 	data-sveltekit-preload-data="tap"
 	onclick={onClickInternalLink}
-	href={`/users/${uploader.slug}`}
+	href={`/${$language}/users/${uploader.slug}`}
 	class="uploader"
 >
 	{uploader.name}

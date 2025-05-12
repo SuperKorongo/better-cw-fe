@@ -33,7 +33,7 @@
 			cacheInvalidation.refreshMyDisputes();
 			toasts.success(getTranslation('disputes.successfullyResolved'));
 			open = false;
-			goToInternalLink(e, '/admin/disputes');
+			goToInternalLink(e, `/admin/disputes`);
 			cacheInvalidation.refreshMe();
 			initLoggedInUser();
 		} catch (e: unknown) {

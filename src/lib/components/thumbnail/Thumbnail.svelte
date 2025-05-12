@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { getEmpty as getEmptyVideo, type Video } from '$lib/models/Video';
+	import { language } from '$lib/stores/language/store';
 	import { getTranslation } from '$lib/translations';
 	import {
 		getDurationString,
@@ -35,7 +36,7 @@
 <figure>
 	<a
 		data-sveltekit-preload-data="false"
-		href={`/videos/${video.uuid}`}
+		href={`/${$language}/videos/${video.uuid}`}
 		onclick={_onClick}
 		onauxclick={_onClick}
 	>
@@ -64,7 +65,7 @@
 		<div>
 			<a
 				data-sveltekit-preload-data="tap"
-				href={`/videos/${video.uuid}`}
+				href={`/${$language}/videos/${video.uuid}`}
 				onclick={_onClick}
 				onauxclick={_onClick}
 				class="title"

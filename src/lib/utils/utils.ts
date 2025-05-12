@@ -62,16 +62,16 @@ export function onClickInternalLink(e: MouseEvent): void {
 
 	document.body.style.overflowY = 'scroll';
 
-	if (page.url.pathname.replace(`${get(language)}/`, '') !== pathname) loading.set(true);
+	if (page.url.pathname !== pathname) loading.set(true);
 
-	goto(`/${get(language)}${pathname}`);
+	goto(pathname);
 }
 
 export function goToInternalLink(e: MouseEvent, href: string): void {
 	loading.set(true);
 
 	const anchor = document.createElement('a');
-	anchor.setAttribute('href', href);
+	anchor.setAttribute('href', `/${get(language)}${href}`);
 
 	onClickInternalLink({
 		...e,

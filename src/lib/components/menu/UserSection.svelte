@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { language } from '$lib/stores/language/store';
 	import { user } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
 	import { onClickInternalLink } from '$lib/utils/utils';
@@ -13,12 +14,20 @@
 		</button>
 	{:else}
 		<button class="sign-in-button">
-			<a onclick={onClickInternalLink} data-sveltekit-preload-data="tap" href="/sign-in">
+			<a
+				onclick={onClickInternalLink}
+				data-sveltekit-preload-data="tap"
+				href={`/${$language}/sign-in`}
+			>
 				{getTranslation('menu.signIn')}
 			</a>
 		</button>
 		<button class="register-button">
-			<a onclick={onClickInternalLink} data-sveltekit-preload-data="tap" href="/register">
+			<a
+				onclick={onClickInternalLink}
+				data-sveltekit-preload-data="tap"
+				href={`/${$language}/register`}
+			>
 				{getTranslation('menu.register')}
 			</a>
 		</button>

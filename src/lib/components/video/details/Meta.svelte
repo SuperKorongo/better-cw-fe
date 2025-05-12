@@ -1,6 +1,7 @@
 <script lang="ts">
 	import StarRating from '$lib/components/common/StarRating.svelte';
 	import type { Video } from '$lib/models/Video';
+	import { language } from '$lib/stores/language/store';
 	import { getTranslation } from '$lib/translations';
 	import { getDurationString, onClickInternalLink } from '$lib/utils/utils';
 	import UploaderLink from '../../common/UploaderLink.svelte';
@@ -33,7 +34,7 @@
 	<a
 		data-sveltekit-preload-data="tap"
 		onclick={onClickInternalLink}
-		href={`/models/${video.model.slug}`}
+		href={`/${$language}/models/${video.model.slug}`}
 		class="meta-value"
 	>
 		{video.model.name}

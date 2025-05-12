@@ -2,6 +2,7 @@
 	import GlowingText from '$lib/components/common/GlowingText.svelte';
 	import Upload from '$lib/components/video-form/VideoForm.svelte';
 	import { getEmpty } from '$lib/models/Video';
+	import { language } from '$lib/stores/language/store';
 	import { loading } from '$lib/stores/loading/store';
 	import { user } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
@@ -25,10 +26,18 @@
 				<span class="sign-in-first">
 					{getTranslation('upload.signInFirst')}
 				</span>
-				<a onclick={onClickInternalLink} data-sveltekit-preload-data="tap" href="/sign-in">
+				<a
+					onclick={onClickInternalLink}
+					data-sveltekit-preload-data="tap"
+					href={`/${$language}/sign-in`}
+				>
 					<Button color="secondary">{getTranslation('upload.signIn')}</Button>
 				</a>
-				<a onclick={onClickInternalLink} data-sveltekit-preload-data="tap" href="/register">
+				<a
+					onclick={onClickInternalLink}
+					data-sveltekit-preload-data="tap"
+					href={`/${$language}/register`}
+				>
 					<Button variant="raised">{getTranslation('upload.register')}</Button>
 				</a>
 			</div>

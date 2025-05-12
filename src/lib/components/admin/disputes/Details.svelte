@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { type Dispute } from '$lib/models/Dispute';
+	import { language } from '$lib/stores/language/store';
 	import { getTranslation } from '$lib/translations';
 	import { getFormattedDateWithTime, onClickInternalLink } from '$lib/utils/utils';
 	import { onClickVideo } from './events';
@@ -26,7 +27,7 @@
 			<span title={dispute.video.title} class="value video-title">
 				<a
 					data-sveltekit-preload-data="false"
-					href={`/videos/${dispute.video.uuid}`}
+					href={`/${$language}/videos/${dispute.video.uuid}`}
 					onclick={(e) => {
 						onClickVideo(e, dispute.video);
 					}}

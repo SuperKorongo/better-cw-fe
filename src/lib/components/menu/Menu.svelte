@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { cart } from '$lib/stores/cart/store';
+	import { language } from '$lib/stores/language/store';
 	import { menu } from '$lib/stores/menu/store';
 	import { user } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
@@ -37,7 +38,11 @@
 							<path d={mdiAccount} fill="currentColor" />
 						</svg>
 					</div>
-					<a onclick={onClickInternalLink} data-sveltekit-preload-data="tap" href="/admin/profile">
+					<a
+						onclick={onClickInternalLink}
+						data-sveltekit-preload-data="tap"
+						href={`/${$language}/admin/profile`}
+					>
 						{getTranslation('menu.profile')}
 					</a>
 				</div>
@@ -48,7 +53,7 @@
 						<path d={mdiHome} fill="currentColor" />
 					</svg>
 				</div>
-				<a onclick={onClickInternalLink} data-sveltekit-preload-data="tap" href="/">
+				<a onclick={onClickInternalLink} data-sveltekit-preload-data="tap" href={`/${$language}`}>
 					{getTranslation('menu.home')}
 				</a>
 			</div>
@@ -59,7 +64,11 @@
 					</svg>
 				</div>
 				<div>
-					<a onclick={onClickInternalLink} data-sveltekit-preload-data="tap" href="/cart">
+					<a
+						onclick={onClickInternalLink}
+						data-sveltekit-preload-data="tap"
+						href={`/${$language}/cart`}
+					>
 						{getTranslation('menu.cart')}
 					</a>
 					{#key $cart}
@@ -75,7 +84,11 @@
 						<path d={mdiInformation} fill="currentColor" />
 					</svg>
 				</div>
-				<a onclick={onClickInternalLink} data-sveltekit-preload-data="tap" href="/about-us">
+				<a
+					onclick={onClickInternalLink}
+					data-sveltekit-preload-data="tap"
+					href={`/${$language}/about-us`}
+				>
 					{getTranslation('menu.aboutUs')}
 				</a>
 			</div>
@@ -85,7 +98,11 @@
 						<path d={mdiEmail} fill="currentColor" />
 					</svg>
 				</div>
-				<a onclick={onClickInternalLink} data-sveltekit-preload-data="tap" href="/contact-us">
+				<a
+					onclick={onClickInternalLink}
+					data-sveltekit-preload-data="tap"
+					href={`/${$language}/contact-us`}
+				>
 					{getTranslation('menu.contactUs')}
 				</a>
 			</div>
@@ -95,7 +112,11 @@
 						<path d={mdiCash} fill="currentColor" />
 					</svg>
 				</div>
-				<a onclick={onClickInternalLink} data-sveltekit-preload-data="tap" href="/upload">
+				<a
+					onclick={onClickInternalLink}
+					data-sveltekit-preload-data="tap"
+					href={`/${$language}/upload`}
+				>
 					<GlowingText text={getTranslation('menu.uploadVideos')} />
 				</a>
 			</div>

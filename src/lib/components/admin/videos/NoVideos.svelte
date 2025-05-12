@@ -1,5 +1,6 @@
 <script lang="ts">
 	import GlowingText from '$lib/components/common/GlowingText.svelte';
+	import { language } from '$lib/stores/language/store';
 	import { getTranslation } from '$lib/translations';
 	import { onClickInternalLink } from '$lib/utils/utils';
 	import Button from '@smui/button';
@@ -14,7 +15,11 @@
 		<GlowingText text={title} />
 	</h1>
 	<p class="description">{description}</p>
-	<a onclick={onClickInternalLink} data-sveltekit-preload-data="hover" href="/upload">
+	<a
+		onclick={onClickInternalLink}
+		data-sveltekit-preload-data="hover"
+		href={`/${$language}/upload`}
+	>
 		<Button variant="raised" color="primary">{cta}</Button>
 	</a>
 </div>

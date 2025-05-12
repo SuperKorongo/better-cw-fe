@@ -2,6 +2,7 @@
 	import GlowingText from '$lib/components/common/GlowingText.svelte';
 	import type { Video } from '$lib/models/Video';
 	import { cart } from '$lib/stores/cart/store';
+	import { language } from '$lib/stores/language/store';
 	import { getTranslation } from '$lib/translations';
 	import { getFormattedPrice, onClickInternalLink } from '$lib/utils/utils';
 	import Button, { Label } from '@smui/button';
@@ -27,7 +28,7 @@
 			onclick={onClickInternalLink}
 			class="go-to-cart-button"
 			data-sveltekit-preload-data="tap"
-			href="/cart"
+			href={`/${$language}/cart`}
 		>
 			<Button variant="raised" color="secondary">
 				<Label>{getTranslation('video.gotoCart')}</Label>

@@ -7,6 +7,7 @@
 	import { onMount } from 'svelte';
 
 	import { afterNavigate } from '$app/navigation';
+	import { PUBLIC_DOMAIN } from '$env/static/public';
 	import { onClose as closeMenu } from '$lib/components/menu/events';
 	import Menu from '$lib/components/menu/Menu.svelte';
 	import ToastsContainer from '$lib/components/toasts/ToastsContainer.svelte';
@@ -16,7 +17,7 @@
 	import { language } from '$lib/stores/language/store';
 	import { menu } from '$lib/stores/menu/store';
 	import { navigationHistory } from '$lib/stores/navigation/store';
-	import { getTranslation, type Language } from '$lib/translations';
+	import { availableLanguages, getTranslation, type Language } from '$lib/translations';
 	import '../styles.css';
 
 	let { children } = $props();
@@ -41,7 +42,7 @@
 
 		window.addEventListener('popstate', (e) => {
 			if ((e.target as Window).location.pathname.includes('/videos/')) {
-				document.location.href = '/';
+				document.location.href = `/${$language}`;
 			}
 		});
 
@@ -55,11 +56,35 @@
 	$effect(() => {
 		navigationHistory.push(page.url.pathname);
 	});
+
+	/**
+	 * TODO: meta description tailored to each page
+	 * for example in user page, BROWSING VIDEOS FROM USER X
+	 * in tag page: BROWSING VIDEOS FOR TAG WHATEVER etc
+	 *
+	 * Also check OG (Open Graph) & Twitter Cards:
+	 */
 </script>
 
 <svelte:head>
 	<title>{getTranslation('homepage.htmlTitle')}</title>
 	<meta name="description" content={getTranslation('homepage.metaDescription')} />
+	<link rel="canonical" href={`${PUBLIC_DOMAIN}${page.url.pathname}`} />
+	{#each availableLanguages as availableLanguage (availableLanguage)}
+		{#if page.url.pathname === `/${$language}`}
+			<link
+				rel="alternate"
+				hreflang={availableLanguage}
+				href={`${PUBLIC_DOMAIN}/${availableLanguage}`}
+			/>
+		{:else}
+			<link
+				rel="alternate"
+				hreflang={availableLanguage}
+				href={`${PUBLIC_DOMAIN}${page.url.pathname.replace(`/${$language}/`, `/${availableLanguage}/`)}`}
+			/>
+		{/if}
+	{/each}
 </svelte:head>
 
 {#key mounted}

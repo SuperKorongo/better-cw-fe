@@ -3,6 +3,7 @@
 	import type { Payment, PurchasedVideo } from '$lib/models/Payment';
 	import { BLOCKCHAIN_CONFIRMED_STATUS, EXPIRED_STATUS } from '$lib/models/Payment';
 	import { getVideoByUUID } from '$lib/services/videos';
+	import { language } from '$lib/stores/language/store';
 	import { loading } from '$lib/stores/loading/store';
 	import { getTranslation } from '$lib/translations';
 	import { getImageSrc, handleApiError, showVideoSidePanel } from '$lib/utils/utils';
@@ -65,7 +66,7 @@
 						{#if video.thumbnailFilePaths && video.thumbnailFilePaths.length > 0}
 							<a
 								data-sveltekit-preload-data="false"
-								href={`/videos/${video.uuid}`}
+								href={`/${$language}/videos/${video.uuid}`}
 								onclick={(e) => {
 									onClickVideo(e, video);
 								}}

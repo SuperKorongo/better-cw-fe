@@ -2,6 +2,7 @@
 	import Pagination from '$lib/components/table/Pagination.svelte';
 	import { CLOSED_DISPUTE_STATUS, OPEN_DISPUTE_STATUS, type Dispute } from '$lib/models/Dispute';
 	import type { PaginatedResponse, Pagination as PaginationType } from '$lib/models/Pagination';
+	import { language } from '$lib/stores/language/store';
 	import { getTranslation } from '$lib/translations';
 	import {
 		getFormattedDateWithTime,
@@ -61,7 +62,7 @@
 					<Cell>
 						<a
 							data-sveltekit-preload-data="false"
-							href={`/videos/${dispute.video.uuid}`}
+							href={`/${$language}/videos/${dispute.video.uuid}`}
 							onclick={(e) => {
 								onClickVideo(e, dispute.video);
 							}}
@@ -80,7 +81,7 @@
 								e.stopPropagation();
 								onClickInternalLink(e);
 							}}
-							href={`/admin/purchases/${dispute.invoice.uuid}`}
+							href={`/${$language}/admin/purchases/${dispute.invoice.uuid}`}
 						>
 							{dispute.invoice.uuid}
 						</a>

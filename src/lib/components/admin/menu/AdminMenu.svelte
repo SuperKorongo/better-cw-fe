@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import CloseButton from '$lib/components/menu/CloseButton.svelte';
+	import { language } from '$lib/stores/language/store';
 	import { adminMenu } from '$lib/stores/menu/store';
 	import { user } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
@@ -31,23 +32,23 @@
 
 	const menu = [
 		{
-			href: '/admin/profile',
+			href: `/${$language}/admin/profile`,
 			label: getTranslation('admin.menu.profile')
 		},
 		{
-			href: '/admin/my-videos',
+			href: `/${$language}/admin/my-videos`,
 			label: getTranslation('admin.menu.myVideos')
 		},
 		{
-			href: '/admin/disputes',
+			href: `/${$language}/admin/disputes`,
 			label: getTranslation('admin.menu.disputes')
 		},
 		{
-			href: '/admin/purchases',
+			href: `/${$language}/admin/purchases`,
 			label: getTranslation('admin.menu.purchases')
 		},
 		{
-			href: '/admin/withdraw',
+			href: `/${$language}/admin/withdraw`,
 			label: getTranslation('admin.menu.withdraw')
 		}
 	];
@@ -67,7 +68,7 @@
 				<div class={getClass(item.href)}>
 					<a onclick={onClickMenuLink} data-sveltekit-preload-data="tap" href={item.href}>
 						{item.label}
-						{#if item.href === '/admin/disputes' && $user.data?.hasOpenDisputes}
+						{#if item.href === `/${$language}/admin/disputes` && $user.data?.hasOpenDisputes}
 							<span class="disputes-indicator"></span>
 						{/if}
 					</a>

@@ -2,6 +2,7 @@ import { PUBLIC_CRYPTO_GATEWAY_URL, PUBLIC_STORE_API_URL } from '$env/static/pub
 import type { PaginatedResponse, Pagination } from '$lib/models/Pagination';
 import { BLOCKCHAIN_CONFIRMED_STATUS, type Payment, type PaymentStatus } from '$lib/models/Payment';
 import { cacheInvalidation } from '$lib/stores/cache-invalidation/store';
+import { language } from '$lib/stores/language/store';
 import { fetchWrapper } from '$lib/utils/fetch';
 import { get } from 'svelte/store';
 import type { PageLoadEvent } from '../../routes/[language]/$types';
@@ -120,7 +121,7 @@ export const openCryptoWidgetPopup = (paymentUUID: string, cryptoGatewayUUID: st
 		if (data.invoice.status === BLOCKCHAIN_CONFIRMED_STATUS) {
 			cacheInvalidation.refreshMyPurchases();
 			widgetWindow.close();
-			document.location.href = `/admin/purchases/${paymentUUID}`;
+			document.location.href = `/${get(language)}/admin/purchases/${paymentUUID}`;
 			return;
 		}
 

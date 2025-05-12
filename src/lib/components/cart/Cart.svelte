@@ -2,6 +2,7 @@
 	import Button, { Label } from '@smui/button';
 
 	import { cart } from '$lib/stores/cart/store';
+	import { language } from '$lib/stores/language/store';
 	import { getTranslation } from '$lib/translations';
 	import {
 		getDurationString,
@@ -26,7 +27,7 @@
 			{getTranslation('cart.empty')}
 			<br />
 			<br />
-			<a onclick={onClickInternalLink} data-sveltekit-preload-data="tap" href="/">
+			<a onclick={onClickInternalLink} data-sveltekit-preload-data="tap" href={`/${$language}`}>
 				<Button variant="raised">
 					<Label>{getTranslation('cart.browseVideos')}</Label>
 				</Button>
@@ -40,7 +41,7 @@
 				<article class="cart-item-container">
 					<a
 						data-sveltekit-preload-data="false"
-						href={`/videos/${video.uuid}`}
+						href={`/${$language}/videos/${video.uuid}`}
 						onclick={(e) => showVideoSidePanel(e, e.currentTarget, video)}
 						onauxclick={(e) => showVideoSidePanel(e, e.currentTarget, video)}
 					>

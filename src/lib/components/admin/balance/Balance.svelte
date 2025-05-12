@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { getBalance, type Balance } from '$lib/services/admin/balance';
+	import { language } from '$lib/stores/language/store';
 	import { loading } from '$lib/stores/loading/store';
 	import { user } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
@@ -35,7 +36,11 @@
 		</div>
 
 		{#if page.route.id !== '/admin/withdraw'}
-			<a onclick={onClickInternalLink} data-sveltekit-preload-data="hover" href="/admin/withdraw">
+			<a
+				onclick={onClickInternalLink}
+				data-sveltekit-preload-data="hover"
+				href={`/${$language}/admin/withdraw`}
+			>
 				<Button variant="raised" color="primary">{getTranslation('admin.balance.withdraw')}</Button>
 			</a>
 		{:else}

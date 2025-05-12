@@ -3,6 +3,7 @@
 
 	import { cart } from '$lib/stores/cart/store';
 	import { currency } from '$lib/stores/currency/store';
+	import { language } from '$lib/stores/language/store';
 	import { user } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
 	import { onClickInternalLink } from '$lib/utils/utils';
@@ -35,12 +36,20 @@
 			<div class="auth-cta">
 				<p>{getTranslation('cart.loginRequired')}</p>
 				<div class="auth-buttons">
-					<a onclick={onClickInternalLink} data-sveltekit-preload-data="tap" href="/sign-in">
+					<a
+						onclick={onClickInternalLink}
+						data-sveltekit-preload-data="tap"
+						href={`/${$language}/sign-in`}
+					>
 						<Button variant="outlined" color="secondary">
 							<Label>{getTranslation('cart.login')}</Label>
 						</Button>
 					</a>
-					<a onclick={onClickInternalLink} data-sveltekit-preload-data="tap" href="/register">
+					<a
+						onclick={onClickInternalLink}
+						data-sveltekit-preload-data="tap"
+						href={`/${$language}/register`}
+					>
 						<Button variant="outlined" color="secondary">
 							<Label>{getTranslation('cart.register')}</Label>
 						</Button>
