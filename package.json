@@ -4,7 +4,7 @@
 	"scripts": {
 		"update-everything-to-latest-versions": "npx npm-check-updates -u; npm install --verbose",
 		"pre-build": "npm install; npm run copy-static; npm run lint; npm run ts-check",
-		"dev": "npm run pre-build; vite dev --host",
+		"dev": "npm run pre-build; NODE_TLS_REJECT_UNAUTHORIZED=0 vite dev --host",
 		"build": "npm run pre-build; vite build",
 		"copy-static": "cp ./node_modules/svelte-material-ui/bare.css ./static/svelte-material-ui.css",
 		"preview": "npm run build; vite preview --host",
