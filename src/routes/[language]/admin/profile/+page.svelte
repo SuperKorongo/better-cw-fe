@@ -68,7 +68,7 @@
 			<div class="text-field-container">
 				<Textfield
 					type="password"
-					label="Current password"
+					label={getTranslation('admin.profile.currentPassword')}
 					style="width: 100%"
 					bind:value={currentPassword}
 				/>
@@ -76,7 +76,7 @@
 			<div class="text-field-container">
 				<Textfield
 					type="password"
-					label="New password"
+					label={getTranslation('admin.profile.newPassword')}
 					style="width: 100%"
 					bind:value={newPassword}
 				/>

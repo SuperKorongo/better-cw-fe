@@ -40,7 +40,9 @@
 			"totalRatings": "calificaciones totales",
 			"email": "Correo electrónico",
 			"changePassword": "Cambiar contraseña",
-			"change": "Cambiar"
+			"change": "Cambiar",
+			"currentPassword": "Contrasña actual",
+			"newPassword": "Nueva contraseña"
 		}
 	},
 	"cart": {

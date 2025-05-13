@@ -40,7 +40,9 @@
 			"totalRatings": "total ratings",
 			"email": "Email",
 			"changePassword": "Change password",
-			"change": "Change"
+			"change": "Change",
+			"currentPassword": "Current password",
+			"newPassword": "New password"
 		}
 	},
 	"cart": {
