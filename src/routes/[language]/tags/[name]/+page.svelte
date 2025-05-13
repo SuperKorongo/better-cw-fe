@@ -30,9 +30,24 @@
 			return;
 		}
 	});
+
+	function getTagName(): string {
+		return data.videos && data.videos.length
+			? data.videos[0].tags.find((t) => t.slug === page.params.name)?.name || page.params.name
+			: page.params.name;
+	}
 </script>
 
-<Header subject={getTranslation('headers.tag')} value={page.params.name} />
+<svelte:head>
+	<meta
+		name="description"
+		content={getTranslation('homepage.metaDescriptionTagPage').replace('$TAG', getTagName()) +
+			' ' +
+			getTranslation('homepage.metaDescription')}
+	/>
+</svelte:head>
+
+<Header subject={getTranslation('headers.tag')} value={getTagName()} />
 
 {#if !data.error}
 	<Thumbnails videos={data.videos} {getVideosFunc} />

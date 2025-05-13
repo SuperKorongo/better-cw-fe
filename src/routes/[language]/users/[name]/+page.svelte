@@ -31,9 +31,22 @@
 			return;
 		}
 	});
+
+	function getUserName(): string {
+		return data.videos && data.videos.length ? data.videos[0].uploader.name : page.params.name;
+	}
 </script>
 
-<Header subject={getTranslation('headers.member')} value={page.params.name} />
+<svelte:head>
+	<meta
+		name="description"
+		content={getTranslation('homepage.metaDescriptionUserPage').replace('$USER', getUserName()) +
+			' ' +
+			getTranslation('homepage.metaDescription')}
+	/>
+</svelte:head>
+
+<Header subject={getTranslation('headers.member')} value={getUserName()} />
 <div class="user-rating">
 	{#if !data.error && data.videos.length > 0}
 		<span>{getTranslation('homepage.userRating')}</span>

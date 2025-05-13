@@ -30,9 +30,24 @@
 			return;
 		}
 	});
+
+	function getModelName(): string {
+		return data.videos && data.videos.length
+			? data.videos[0].model?.name || page.params.name
+			: page.params.name;
+	}
 </script>
 
-<Header subject={getTranslation('headers.model')} value={page.params.name} />
+<svelte:head>
+	<meta
+		name="description"
+		content={getTranslation('homepage.metaDescriptionModelPage').replace('$MODEL', getModelName()) +
+			' ' +
+			getTranslation('homepage.metaDescription')}
+	/>
+</svelte:head>
+
+<Header subject={getTranslation('headers.model')} value={getModelName()} />
 
 {#if !data.error}
 	<Thumbnails videos={data.videos} {getVideosFunc} />

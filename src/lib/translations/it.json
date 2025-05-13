@@ -154,7 +154,10 @@
 		"desc3": "⚡ Consegna veloce - Download immediato dopo l'acquisto",
 		"desc4": "🌍 Globale - Aperto a compratori e venditori in tutto il mondo",
 		"htmlTitle": "Il miglior marketplace di contenuti per adulti alimentato da Bitcoin | Clipz4BTC",
-		"metaDescription": "Compra e vendi video per adulti in modo sicuro con Bitcoin. Completamente anonimo. Unisciti al miglior marketplace per contenuti premium per adulti. Transazioni veloci, privacy totale e un'esperienza senza intoppi"
+		"metaDescription": "Compra e vendi video per adulti in modo sicuro con Bitcoin. Completamente anonimo. Unisciti al miglior marketplace per contenuti premium per adulti. Transazioni veloci, privacy totale e un'esperienza senza intoppi",
+		"metaDescriptionUserPage": "Scopri i migliori clip condivisi da $USER.",
+		"metaDescriptionModelPage": "Esplora i migliori clip di $MODEL.",
+		"metaDescriptionTagPage": "Guarda i clip più sorprendenti di $TAG."
 	},
 	"menu": {
 		"home": "Home",

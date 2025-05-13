@@ -58,17 +58,22 @@
 	});
 
 	/**
-	 * TODO: meta description tailored to each page
-	 * for example in user page, BROWSING VIDEOS FROM USER X
-	 * in tag page: BROWSING VIDEOS FOR TAG WHATEVER etc
-	 *
-	 * Also check OG (Open Graph) & Twitter Cards:
+	 * TODO: Check OG (Open Graph) & Twitter Cards
 	 */
+	function shouldAddMetaDescription(): boolean {
+		return ![
+			'/[language]/users/[name]',
+			'/[language]/tags/[name]',
+			'/[language]/models/[name]'
+		].includes(page.route.id || '');
+	}
 </script>
 
 <svelte:head>
 	<title>{getTranslation('homepage.htmlTitle')}</title>
-	<meta name="description" content={getTranslation('homepage.metaDescription')} />
+	{#if shouldAddMetaDescription()}
+		<meta name="description" content={getTranslation('homepage.metaDescription')} />
+	{/if}
 	<link rel="canonical" href={`${PUBLIC_DOMAIN}${page.url.pathname}`} />
 	{#each availableLanguages as availableLanguage (availableLanguage)}
 		{#if page.url.pathname === `/${$language}`}
