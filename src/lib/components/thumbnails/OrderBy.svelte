@@ -6,7 +6,7 @@
 	import { getSearchAndOrderQueryParams } from '$lib/utils/utils';
 	import Select, { Option } from '@smui/select';
 	import { onMount } from 'svelte';
-	import { ORDER_BYS } from './order_bys';
+	import { getOrderBys } from './order_bys';
 
 	let mounted: boolean = $state(false);
 	let initialValue = `${$orderBy.column}|${$orderBy.direction}`;
@@ -40,7 +40,7 @@
 	{#if mounted}
 		{#key $orderBy}
 			<Select bind:value label={getTranslation('common.orderBy.label')}>
-				{#each ORDER_BYS as orderByOption (orderByOption.value)}
+				{#each getOrderBys() as orderByOption (orderByOption.value)}
 					<Option value={orderByOption.value}>{orderByOption.label}</Option>
 				{/each}
 			</Select>
