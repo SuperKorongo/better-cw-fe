@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { getEmpty as getEmptyVideo, type Video } from '$lib/models/Video';
-	import { language } from '$lib/stores/language/store';
 	import { getTranslation } from '$lib/translations';
 	import {
 		getDurationString,
 		getFormattedPrice,
+		getHrefWithLanguage,
 		getImageSrc,
 		getPlaceholderImageSrc
 	} from '$lib/utils/utils';
@@ -36,7 +36,7 @@
 <figure>
 	<a
 		data-sveltekit-preload-data="false"
-		href={`/${$language}/videos/${video.uuid}`}
+		href={getHrefWithLanguage(`/videos/${video.uuid}`)}
 		onclick={_onClick}
 		onauxclick={_onClick}
 	>
@@ -65,7 +65,7 @@
 		<div>
 			<a
 				data-sveltekit-preload-data="tap"
-				href={`/${$language}/videos/${video.uuid}`}
+				href={getHrefWithLanguage(`/videos/${video.uuid}`)}
 				onclick={_onClick}
 				onauxclick={_onClick}
 				class="title"

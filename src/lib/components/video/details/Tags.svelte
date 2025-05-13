@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { Video } from '$lib/models/Video';
-	import { language } from '$lib/stores/language/store';
-	import { onClickInternalLink } from '$lib/utils/utils';
+	import { getHrefWithLanguage, onClickInternalLink } from '$lib/utils/utils';
 
 	let {
 		tags
@@ -18,7 +17,7 @@
 			onclick={onClickInternalLink}
 			class="tag"
 			data-sveltekit-preload-data="tap"
-			href={`/${$language}/tags/${tag.slug}`}
+			href={getHrefWithLanguage(`/tags/${tag.slug}`)}
 		>
 			{getFormattedTag(tag.name)}
 		</a>

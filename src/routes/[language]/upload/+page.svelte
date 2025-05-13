@@ -6,7 +6,7 @@
 	import { loading } from '$lib/stores/loading/store';
 	import { user } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
-	import { onClickInternalLink } from '$lib/utils/utils';
+	import { getHrefWithLanguage, onClickInternalLink } from '$lib/utils/utils';
 	import Button from '@smui/button';
 
 	$effect(() => {
@@ -29,14 +29,14 @@
 				<a
 					onclick={onClickInternalLink}
 					data-sveltekit-preload-data="tap"
-					href={`/${$language}/sign-in`}
+					href={getHrefWithLanguage(`/${$language}/sign-in`)}
 				>
 					<Button color="secondary">{getTranslation('upload.signIn')}</Button>
 				</a>
 				<a
 					onclick={onClickInternalLink}
 					data-sveltekit-preload-data="tap"
-					href={`/${$language}/register`}
+					href={getHrefWithLanguage(`/${$language}/register`)}
 				>
 					<Button variant="raised">{getTranslation('upload.register')}</Button>
 				</a>

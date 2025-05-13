@@ -1,11 +1,10 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { getBalance, type Balance } from '$lib/services/admin/balance';
-	import { language } from '$lib/stores/language/store';
 	import { loading } from '$lib/stores/loading/store';
 	import { user } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
-	import { handleApiError, onClickInternalLink } from '$lib/utils/utils';
+	import { getHrefWithLanguage, handleApiError, onClickInternalLink } from '$lib/utils/utils';
 	import Button from '@smui/button';
 	import { onMount } from 'svelte';
 
@@ -39,7 +38,7 @@
 			<a
 				onclick={onClickInternalLink}
 				data-sveltekit-preload-data="hover"
-				href={`/${$language}/admin/withdraw`}
+				href={getHrefWithLanguage('/admin/withdraw')}
 			>
 				<Button variant="raised" color="primary">{getTranslation('admin.balance.withdraw')}</Button>
 			</a>

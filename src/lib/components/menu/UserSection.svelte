@@ -1,8 +1,7 @@
 <script lang="ts">
-	import { language } from '$lib/stores/language/store';
 	import { user } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
-	import { onClickInternalLink } from '$lib/utils/utils';
+	import { getHrefWithLanguage, onClickInternalLink } from '$lib/utils/utils';
 </script>
 
 <section>
@@ -17,7 +16,7 @@
 			<a
 				onclick={onClickInternalLink}
 				data-sveltekit-preload-data="tap"
-				href={`/${$language}/sign-in`}
+				href={getHrefWithLanguage(`/sign-in`)}
 			>
 				{getTranslation('menu.signIn')}
 			</a>
@@ -26,7 +25,7 @@
 			<a
 				onclick={onClickInternalLink}
 				data-sveltekit-preload-data="tap"
-				href={`/${$language}/register`}
+				href={getHrefWithLanguage(`/register`)}
 			>
 				{getTranslation('menu.register')}
 			</a>

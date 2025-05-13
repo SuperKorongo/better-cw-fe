@@ -71,13 +71,17 @@ export function goToInternalLink(e: MouseEvent, href: string): void {
 	loading.set(true);
 
 	const anchor = document.createElement('a');
-	anchor.setAttribute('href', `/${get(language)}${href}`);
+	anchor.setAttribute('href', getHrefWithLanguage(href));
 
 	onClickInternalLink({
 		...e,
 		preventDefault() {},
 		currentTarget: anchor
 	});
+}
+
+export function getHrefWithLanguage(href: string): string {
+	return `/${get(language)}${href}`;
 }
 
 export function getSearchAndOrderQueryParams() {

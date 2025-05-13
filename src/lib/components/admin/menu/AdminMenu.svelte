@@ -5,7 +5,7 @@
 	import { adminMenu } from '$lib/stores/menu/store';
 	import { user } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
-	import { isMobileScreen, onClickInternalLink } from '$lib/utils/utils';
+	import { getHrefWithLanguage, isMobileScreen, onClickInternalLink } from '$lib/utils/utils';
 	import { onMount } from 'svelte';
 	import { swipe } from 'svelte-gestures';
 	import { onClose, onSwipe } from './events';
@@ -24,7 +24,7 @@
 	};
 
 	const getClass = (href: string): string => {
-		if (page.route.id && page.route.id.includes(href)) {
+		if (page.url.href.includes(href)) {
 			return 'active';
 		}
 		return '';
@@ -32,23 +32,23 @@
 
 	const menu = [
 		{
-			href: `/${$language}/admin/profile`,
+			href: getHrefWithLanguage(`/admin/profile`),
 			label: getTranslation('admin.menu.profile')
 		},
 		{
-			href: `/${$language}/admin/my-videos`,
+			href: getHrefWithLanguage(`/admin/my-videos`),
 			label: getTranslation('admin.menu.myVideos')
 		},
 		{
-			href: `/${$language}/admin/disputes`,
+			href: getHrefWithLanguage(`/admin/disputes`),
 			label: getTranslation('admin.menu.disputes')
 		},
 		{
-			href: `/${$language}/admin/purchases`,
+			href: getHrefWithLanguage(`/admin/purchases`),
 			label: getTranslation('admin.menu.purchases')
 		},
 		{
-			href: `/${$language}/admin/withdraw`,
+			href: getHrefWithLanguage(`/admin/withdraw`),
 			label: getTranslation('admin.menu.withdraw')
 		}
 	];

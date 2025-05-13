@@ -3,12 +3,11 @@
 	import AdminMenu from '$lib/components/admin/menu/AdminMenu.svelte';
 	import GlowingText from '$lib/components/common/GlowingText.svelte';
 	import RightArrows from '$lib/components/icons/RightArrows.svelte';
-	import { language } from '$lib/stores/language/store';
 	import { loading } from '$lib/stores/loading/store';
 	import { adminMenu } from '$lib/stores/menu/store';
 	import { user } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
-	import { isMobileScreen, onClickInternalLink } from '$lib/utils/utils';
+	import { getHrefWithLanguage, isMobileScreen, onClickInternalLink } from '$lib/utils/utils';
 	import Button from '@smui/button';
 
 	$effect.pre(() => {
@@ -51,14 +50,14 @@
 			<a
 				onclick={onClickInternalLink}
 				data-sveltekit-preload-data="tap"
-				href={`/${$language}/sign-in`}
+				href={getHrefWithLanguage(`/sign-in`)}
 			>
 				<Button color="secondary">{getTranslation('upload.signIn')}</Button>
 			</a>
 			<a
 				onclick={onClickInternalLink}
 				data-sveltekit-preload-data="tap"
-				href={`/${$language}/register`}
+				href={getHrefWithLanguage(`/register`)}
 			>
 				<Button variant="raised">{getTranslation('upload.register')}</Button>
 			</a>

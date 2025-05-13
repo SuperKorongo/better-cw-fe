@@ -1,10 +1,9 @@
 <script lang="ts">
 	import { cart } from '$lib/stores/cart/store';
-	import { language } from '$lib/stores/language/store';
 	import { menu } from '$lib/stores/menu/store';
 	import { user } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
-	import { onClickInternalLink } from '$lib/utils/utils';
+	import { getHrefWithLanguage, onClickInternalLink } from '$lib/utils/utils';
 	import { mdiAccount, mdiCart, mdiCash, mdiEmail, mdiHome, mdiInformation } from '@mdi/js';
 	import { onMount } from 'svelte';
 	import { swipe } from 'svelte-gestures';
@@ -41,7 +40,7 @@
 					<a
 						onclick={onClickInternalLink}
 						data-sveltekit-preload-data="tap"
-						href={`/${$language}/admin/profile`}
+						href={getHrefWithLanguage(`/admin/profile`)}
 					>
 						{getTranslation('menu.profile')}
 					</a>
@@ -53,7 +52,11 @@
 						<path d={mdiHome} fill="currentColor" />
 					</svg>
 				</div>
-				<a onclick={onClickInternalLink} data-sveltekit-preload-data="tap" href={`/${$language}`}>
+				<a
+					onclick={onClickInternalLink}
+					data-sveltekit-preload-data="tap"
+					href={getHrefWithLanguage(`/`)}
+				>
 					{getTranslation('menu.home')}
 				</a>
 			</div>
@@ -67,7 +70,7 @@
 					<a
 						onclick={onClickInternalLink}
 						data-sveltekit-preload-data="tap"
-						href={`/${$language}/cart`}
+						href={getHrefWithLanguage(`/cart`)}
 					>
 						{getTranslation('menu.cart')}
 					</a>
@@ -87,7 +90,7 @@
 				<a
 					onclick={onClickInternalLink}
 					data-sveltekit-preload-data="tap"
-					href={`/${$language}/about-us`}
+					href={getHrefWithLanguage(`/about-us`)}
 				>
 					{getTranslation('menu.aboutUs')}
 				</a>
@@ -101,7 +104,7 @@
 				<a
 					onclick={onClickInternalLink}
 					data-sveltekit-preload-data="tap"
-					href={`/${$language}/contact-us`}
+					href={getHrefWithLanguage(`/contact-us`)}
 				>
 					{getTranslation('menu.contactUs')}
 				</a>
@@ -115,7 +118,7 @@
 				<a
 					onclick={onClickInternalLink}
 					data-sveltekit-preload-data="tap"
-					href={`/${$language}/upload`}
+					href={getHrefWithLanguage(`/upload`)}
 				>
 					<GlowingText text={getTranslation('menu.uploadVideos')} />
 				</a>

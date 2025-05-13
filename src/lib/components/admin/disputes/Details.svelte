@@ -1,8 +1,11 @@
 <script lang="ts">
 	import { type Dispute } from '$lib/models/Dispute';
-	import { language } from '$lib/stores/language/store';
 	import { getTranslation } from '$lib/translations';
-	import { getFormattedDateWithTime, onClickInternalLink } from '$lib/utils/utils';
+	import {
+		getFormattedDateWithTime,
+		getHrefWithLanguage,
+		onClickInternalLink
+	} from '$lib/utils/utils';
 	import { onClickVideo } from './events';
 
 	let { dispute }: { dispute: Dispute } = $props();
@@ -27,7 +30,7 @@
 			<span title={dispute.video.title} class="value video-title">
 				<a
 					data-sveltekit-preload-data="false"
-					href={`/${$language}/videos/${dispute.video.uuid}`}
+					href={getHrefWithLanguage(`/videos/${dispute.video.uuid}`)}
 					onclick={(e) => {
 						onClickVideo(e, dispute.video);
 					}}
@@ -42,7 +45,10 @@
 		<div class="info-item">
 			<span class="label">{getTranslation(`disputes.details.invoice`)}</span>
 			<span title={dispute.invoice.uuid} class="value uuid">
-				<a onclick={onClickInternalLink} href={`/admin/purchases/${dispute.invoice.uuid}`}>
+				<a
+					onclick={onClickInternalLink}
+					href={getHrefWithLanguage(`/admin/purchases/${dispute.invoice.uuid}`)}
+				>
 					{dispute.invoice.uuid}
 				</a>
 			</span>

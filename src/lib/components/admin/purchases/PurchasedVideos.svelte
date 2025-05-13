@@ -3,10 +3,14 @@
 	import type { Payment, PurchasedVideo } from '$lib/models/Payment';
 	import { BLOCKCHAIN_CONFIRMED_STATUS, EXPIRED_STATUS } from '$lib/models/Payment';
 	import { getVideoByUUID } from '$lib/services/videos';
-	import { language } from '$lib/stores/language/store';
 	import { loading } from '$lib/stores/loading/store';
 	import { getTranslation } from '$lib/translations';
-	import { getImageSrc, handleApiError, showVideoSidePanel } from '$lib/utils/utils';
+	import {
+		getHrefWithLanguage,
+		getImageSrc,
+		handleApiError,
+		showVideoSidePanel
+	} from '$lib/utils/utils';
 	import Button, { Label } from '@smui/button';
 	import DataTable, { Body, Cell, Head, Row } from '@smui/data-table';
 	import DisputeModal from './DisputeModal.svelte';
@@ -66,7 +70,7 @@
 						{#if video.thumbnailFilePaths && video.thumbnailFilePaths.length > 0}
 							<a
 								data-sveltekit-preload-data="false"
-								href={`/${$language}/videos/${video.uuid}`}
+								href={getHrefWithLanguage(`/videos/${video.uuid}`)}
 								onclick={(e) => {
 									onClickVideo(e, video);
 								}}

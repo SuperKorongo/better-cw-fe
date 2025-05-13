@@ -3,13 +3,16 @@
 	import HomeIcon from '../icons/HomeIcon.svelte';
 	import Search from './search/Search.svelte';
 
-	import { language } from '$lib/stores/language/store';
-	import { onClickInternalLink } from '$lib/utils/utils';
+	import { getHrefWithLanguage, onClickInternalLink } from '$lib/utils/utils';
 </script>
 
 <nav>
 	<div class="home-container">
-		<a onclick={onClickInternalLink} data-sveltekit-preload-data="tap" href={`/${$language}`}>
+		<a
+			onclick={onClickInternalLink}
+			data-sveltekit-preload-data="tap"
+			href={getHrefWithLanguage(`/`)}
+		>
 			<HomeIcon />
 		</a>
 	</div>
