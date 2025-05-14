@@ -66,14 +66,14 @@
 		"noMoreVideos": "Non ci sono più video da mostrare",
 		"orderBy": {
 			"label": "Ordina per",
-			"uploadedAtAsc": "Data di caricamento (più vecchi prima)",
-			"uploadedAtDesc": "Data di caricamento (più recenti prima)",
-			"priceAsc": "Prezzo (dal più basso)",
-			"priceDesc": "Prezzo (dal più alto)",
-			"ratingAsc": "Valutazione (peggiori prima)",
-			"ratingDesc": "Valutazione (migliori prima)",
-			"totalRatingsAsc": "Numero di valutazioni (meno valutazioni prima)",
-			"totalRatingsDesc": "Numero di valutazioni (più valutazioni prima)"
+			"uploadedAtAsc": "Data di caricamento ⬇️",
+			"uploadedAtDesc": "Data di caricamento ⬆️",
+			"priceAsc": "Prezzo ⬇️",
+			"priceDesc": "Prezzo ⬆️",
+			"ratingAsc": "Valutazione ⬇️",
+			"ratingDesc": "Valutazione ⬆️",
+			"totalRatingsAsc": "Numero di valutazioni ⬇️",
+			"totalRatingsDesc": "Numero di valutazioni ⬆️"
 		},
 		"downloadInstructions": {
 			"title": "Istruzioni per il Download",
@@ -162,7 +162,7 @@
 	"menu": {
 		"home": "Home",
 		"cart": "Carrello",
-		"aboutUs": "Chi siamo",
+		"aboutUs": "Info su Clipz4BTC",
 		"contactUs": "Contattaci",
 		"uploadVideos": "Carica video",
 		"signIn": "Accedi",

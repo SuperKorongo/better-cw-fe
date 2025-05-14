@@ -48,10 +48,16 @@
 </svelte:head>
 
 <Header subject={getTranslation('headers.model')} value={getModelName()} />
+<article>
+	<h2>👀{getTranslation('homepage.metaDescriptionModelPage').replace('$MODEL', getModelName())}</h2>
+</article>
 
 {#if !data.error}
 	<Thumbnails videos={data.videos} {getVideosFunc} />
 {/if}
 
 <style>
+	article {
+		text-align: center;
+	}
 </style>
