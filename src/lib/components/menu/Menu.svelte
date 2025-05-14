@@ -27,11 +27,7 @@
 >
 	<main>
 		<Languages />
-		<CloseButton
-			onClick={() => {
-				onClose();
-			}}
-		/>
+		<CloseButton onClick={onClose} />
 
 		<section class="main-section">
 			{#if $user.data !== null}

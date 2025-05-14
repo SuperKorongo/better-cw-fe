@@ -4,31 +4,38 @@ type Data = {
 	isVisible: boolean;
 	forceOpenAfterNavigate?: boolean;
 	container: HTMLElement | null;
+	overlay: HTMLElement | null;
 };
 
 export const menu = (() => {
 	const { subscribe, update } = writable<Data>({
 		isVisible: false,
 		forceOpenAfterNavigate: false,
-		container: null
+		container: null,
+		overlay: null
 	});
 
 	return {
 		subscribe,
 
 		setVisibility: (isVisible: boolean) =>
-			update(({ container, forceOpenAfterNavigate }) => {
-				return { isVisible, container, forceOpenAfterNavigate };
+			update(({ container, forceOpenAfterNavigate, overlay }) => {
+				return { isVisible, container, forceOpenAfterNavigate, overlay };
 			}),
 
 		forceOpenAfterNavigate: (value: boolean) =>
-			update(({ container, isVisible }) => {
-				return { isVisible, container, forceOpenAfterNavigate: value };
+			update(({ container, isVisible, overlay }) => {
+				return { isVisible, overlay, container, forceOpenAfterNavigate: value };
 			}),
 
 		setContainer: (container: HTMLElement) =>
-			update(({ isVisible, forceOpenAfterNavigate }) => {
-				return { isVisible, container, forceOpenAfterNavigate };
+			update(({ isVisible, forceOpenAfterNavigate, overlay }) => {
+				return { isVisible, overlay, container, forceOpenAfterNavigate };
+			}),
+
+		setOverlay: (overlay: HTMLElement) =>
+			update(({ isVisible, forceOpenAfterNavigate, container }) => {
+				return { isVisible, overlay, container, forceOpenAfterNavigate };
 			})
 	};
 })();
@@ -36,20 +43,21 @@ export const menu = (() => {
 export const adminMenu = (() => {
 	const { subscribe, update } = writable<Data>({
 		isVisible: false,
-		container: null
+		container: null,
+		overlay: null
 	});
 
 	return {
 		subscribe,
 
 		setVisibility: (isVisible: boolean) =>
-			update(({ container }) => {
-				return { isVisible, container };
+			update(({ container, overlay }) => {
+				return { isVisible, container, overlay };
 			}),
 
 		setContainer: (container: HTMLElement) =>
-			update(({ isVisible }) => {
-				return { isVisible, container };
+			update(({ isVisible, overlay }) => {
+				return { isVisible, container, overlay };
 			})
 	};
 })();

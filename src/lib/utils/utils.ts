@@ -5,6 +5,7 @@ import * as toasts from '$lib/components/toasts/toasts';
 import type { Video } from '$lib/models/Video';
 import { language } from '$lib/stores/language/store';
 import { loading } from '$lib/stores/loading/store';
+import { menu } from '$lib/stores/menu/store';
 import { ORDER_BY_QUERY_PARAM, orderBy } from '$lib/stores/order_by/store';
 import { search, SEARCH_QUERY_PARAM } from '$lib/stores/search/store';
 import { getTranslation } from '$lib/translations';
@@ -64,6 +65,11 @@ export function onClickInternalLink(e: MouseEvent): void {
 
 	if (page.url.pathname !== pathname) loading.set(true);
 
+	console.log(get(menu).overlay);
+
+	if (get(menu).overlay) {
+		get(menu).overlay!.style.display = 'none';
+	}
 	goto(pathname);
 }
 

@@ -33,6 +33,8 @@
 		document.body.scrollTop = -9999999;
 	});
 
+	let menuOverlayModal: HTMLElement | null = $state(null);
+
 	let mounted: boolean = $state(false);
 	onMount(() => {
 		mounted = true;
@@ -56,6 +58,9 @@
 	$effect(() => {
 		navigationHistory.push(page.url.pathname);
 	});
+	$effect(() => {
+		menu.setOverlay(menuOverlayModal!);
+	});
 
 	/**
 	 * TODO: Check OG (Open Graph) & Twitter Cards
@@ -67,8 +72,6 @@
 			'/[language]/models/[name]'
 		].includes(page.route.id || '');
 	}
-
-	let menuOverlayModal: HTMLDivElement;
 </script>
 
 <svelte:head>
@@ -112,14 +115,7 @@
 
 		{#key $menu.isVisible}
 			{#if $menu.isVisible && !page.state.selectedVideo}
-				<div
-					bind:this={menuOverlayModal}
-					class="menu-overlay"
-					role="none"
-					onclick={() => {
-						onClose(menuOverlayModal);
-					}}
-				></div>
+				<div bind:this={menuOverlayModal} class="menu-overlay" role="none" onclick={onClose}></div>
 				<Menu />
 			{/if}
 		{/key}
