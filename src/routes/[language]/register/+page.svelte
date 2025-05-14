@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import GlowingText from '$lib/components/common/GlowingText.svelte';
 	import { loading } from '$lib/stores/loading/store';
 	import { navigationHistory } from '$lib/stores/navigation/store';
 	import { user as userStore } from '$lib/stores/user/store';
@@ -29,7 +30,17 @@
 
 <main>
 	<div class="register-container">
-		<h2 class="register-title">{getTranslation('signUpForm.title')}</h2>
+		<header>
+			<h2 class="register-title">
+				<GlowingText text={getTranslation('signUpForm.title1')} />
+			</h2>
+			<h3>
+				{getTranslation('signUpForm.title2')}
+			</h3>
+			<h3>
+				{getTranslation('signUpForm.title3')}
+			</h3>
+		</header>
 
 		<div class="form-group">
 			<input
@@ -162,13 +173,19 @@
 		align-items: center;
 		padding: 20px;
 		font-family: Arial, sans-serif;
+		color: #333;
+	}
+	header {
+		text-align: center;
+		margin-bottom: 20px;
 	}
 
 	.register-title {
-		font-size: 24px;
+		font-size: 30px;
 		font-weight: bold;
 		margin-bottom: 20px;
 		color: #333;
+		text-align: center;
 	}
 
 	.form-group {

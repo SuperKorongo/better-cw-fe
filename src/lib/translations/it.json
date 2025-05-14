@@ -260,7 +260,8 @@
 	},
 	"signInForm": {
 		"welcome": "Benvenuto!",
-		"title": "TODO: Un bel titolo e sottotitolo",
+		"title1": "Accedi a Clipz4BTC",
+		"title2": "Clipz4BTC - Dove Privacy, Contenuti e Transazioni Bitcoin Si Incontrano.",
 		"loginButtonLabel": "Accedi",
 		"email": "Email",
 		"password": "Password",
@@ -272,7 +273,9 @@
 		}
 	},
 	"signUpForm": {
-		"title": "TODO: Un bel titolo e sottotitolo",
+		"title1": "Unisciti a Clipz4BTC Oggi",
+		"title2": "Il Tuo Marketplace Privato di Contenuti Adulti - alimentato da Bitcoin.",
+		"title3": "Goditi la Privacy Completa e Pagamenti Bitcoin Senza Complicazioni.",
 		"registerButtonLabel": "Registrati",
 		"username": "Nome utente",
 		"email": "Email",
