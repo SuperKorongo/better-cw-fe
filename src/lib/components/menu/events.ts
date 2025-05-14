@@ -2,7 +2,7 @@ import { menu } from '$lib/stores/menu/store';
 import type { SwipeCustomEvent } from 'svelte-gestures';
 import { get } from 'svelte/store';
 
-export const onClose = async () => {
+export const onClose = async (menuOverlayModal: HTMLDivElement | null = null) => {
 	const container = get(menu).container;
 	if (!container) return;
 
@@ -21,6 +21,10 @@ export const onClose = async () => {
 			setTimeout(resolve, hideAnimationDurationInMs);
 		});
 	};
+
+	if (menuOverlayModal) {
+		menuOverlayModal.style.display = 'none';
+	}
 
 	await hideAnimation();
 	menu.setVisibility(false);

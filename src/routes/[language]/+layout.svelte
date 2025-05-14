@@ -67,6 +67,8 @@
 			'/[language]/models/[name]'
 		].includes(page.route.id || '');
 	}
+
+	let menuOverlayModal: HTMLDivElement;
 </script>
 
 <svelte:head>
@@ -110,7 +112,14 @@
 
 		{#key $menu.isVisible}
 			{#if $menu.isVisible && !page.state.selectedVideo}
-				<div class="menu-overlay" role="none" onclick={onClose}></div>
+				<div
+					bind:this={menuOverlayModal}
+					class="menu-overlay"
+					role="none"
+					onclick={() => {
+						onClose(menuOverlayModal);
+					}}
+				></div>
 				<Menu />
 			{/if}
 		{/key}
