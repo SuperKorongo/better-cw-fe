@@ -48,10 +48,16 @@
 </svelte:head>
 
 <Header subject={getTranslation('headers.tag')} value={getTagName()} />
+<article>
+	<h2>👀{getTranslation('homepage.metaDescriptionTagPage').replace('$TAG', getTagName())}</h2>
+</article>
 
 {#if !data.error}
 	<Thumbnails videos={data.videos} {getVideosFunc} />
 {/if}
 
 <style>
+	article {
+		text-align: center;
+	}
 </style>
