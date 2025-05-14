@@ -8,7 +8,7 @@
 
 	import { afterNavigate } from '$app/navigation';
 	import { PUBLIC_DOMAIN } from '$env/static/public';
-	import { onClose as closeMenu } from '$lib/components/menu/events';
+	import { onClose as closeMenu, onClose } from '$lib/components/menu/events';
 	import Menu from '$lib/components/menu/Menu.svelte';
 	import ToastsContainer from '$lib/components/toasts/ToastsContainer.svelte';
 	import Video from '$lib/components/video/Video.svelte';
@@ -110,6 +110,7 @@
 
 		{#key $menu.isVisible}
 			{#if $menu.isVisible && !page.state.selectedVideo}
+				<div class="menu-overlay" role="none" onclick={onClose}></div>
 				<Menu />
 			{/if}
 		{/key}
@@ -120,5 +121,14 @@
 <style>
 	main :global(*) {
 		--navbar-height: 60px;
+	}
+	.menu-overlay {
+		position: fixed;
+		background-color: rgba(0, 0, 0, 0.642);
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 10;
 	}
 </style>
