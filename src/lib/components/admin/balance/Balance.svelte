@@ -37,7 +37,7 @@
 		{#if page.route.id !== '/admin/withdraw'}
 			<a
 				onclick={onClickInternalLink}
-				data-sveltekit-preload-data="hover"
+				data-sveltekit-preload-data="false"
 				href={getHrefWithLanguage('/admin/withdraw')}
 			>
 				<Button variant="raised" color="primary">{getTranslation('admin.balance.withdraw')}</Button>

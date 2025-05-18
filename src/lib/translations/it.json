@@ -1,4 +1,65 @@
 {
+	"aboutUs": {
+		"howCanIEarnMoney": {
+			"title": "💰 Come Posso Guadagnare Soldi?",
+			"t1": "È semplice!",
+			"t2": "Puoi guadagnare soldi condividendo i tuoi video straordinari e impostando il tuo prezzo.",
+			"t3": "Non c'è limite al numero di video che puoi condividere!",
+			"t4": "Passo 1",
+			"t5": "Vai alla sezione di",
+			"t6": "Caricamento",
+			"t7": ".",
+			"t8": "Passo 2",
+			"t9": "Compila il modulo di caricamento con tutti i dettagli necessari.",
+			"t10": "Passo 3",
+			"t11": "Imposta il tuo prezzo e preparati a vendere!"
+		},
+		"howToWithdraw": {
+			"title": "💸 Come Ritirare i Tuoi Guadagni",
+			"t1": "Come venditore su Clipz4BTC, quando qualcuno acquista uno o più dei tuoi video, l'importo corrispondente in Bitcoin sarà accreditato sul tuo account.",
+			"t2": "Ritirare i tuoi guadagni è facile:",
+			"t3": "Passo 1",
+			"t4": "Vai alla sezione di",
+			"t5": "Prelievo",
+			"t6": ".",
+			"t7": "Passo 2",
+			"t8": "Inserisci il tuo indirizzo Bitcoin.",
+			"t9": "Passo 3",
+			"t10": "Specifica l'importo di Bitcoin che desideri ritirare.",
+			"t11": "Non ci sono limiti su quanto puoi ritirare, e puoi richiedere un prelievo in qualsiasi momento."
+		},
+		"buyerProtection": {
+			"title": "🔒 Protezione dell'Acquirente",
+			"t1": "Prendiamo sul serio la protezione dell'acquirente. Ecco come funziona:",
+			"t2": "- Come acquirente, hai 24 ore per confermare che sei riuscito a scaricare il video e che il contenuto è corretto.",
+			"t3": "- Se qualcosa va storto (ad esempio, non riesci a scaricare il video o il contenuto non è quello che ti aspettavi), puoi aprire una disputa direttamente dalla pagina di acquisto.",
+			"t4": "Esaminiamo ogni disputa singolarmente, e se necessario, riceverai un rimborso."
+		},
+		"disclaimer": {
+			"title": "👉 Importante Avviso Legale",
+			"t1": "Noi",
+			"t2": "non",
+			"t3": "memorizziamo video sui nostri server.",
+			"t4": "Tutti i video devono essere caricati su",
+			"t5": "prima. Una volta caricati, condividerai il link per il download su Clipz4BTC.",
+			"t6": "Per vendere un video",
+			"t7": "- Carica il tuo video su mega.nz",
+			"t8": "- Fornisci il link per il download nel modulo di caricamento su Clipz4BTC."
+		},
+		"anyMegaLink": {
+			"title": "🤔 Posso Condividere Qualsiasi Link di Mega.nz?",
+			"t1": "Sì, puoi!",
+			"t2": "Ma ecco la parte importante: Quando qualcuno acquista il tuo video, deve confermare di essere riuscito a scaricarlo e che il contenuto è corretto.",
+			"t3": "- Se un acquirente non riesce a scaricare il video o se il contenuto del video è sbagliato, può aprire una disputa.",
+			"t4": "- Come venditore, riceverai i tuoi Bitcoin solo dopo che l'acquirente avrà confermato l'acquisto."
+		},
+		"buyerNeverConfirms": {
+			"title": "😨 Cosa Succede Se l'Acquirente Non Conferma Mai l'Acquisto?",
+			"t1": "Nessun problema!",
+			"t2": "L'acquirente ha 24 ore per confermare l'acquisto.",
+			"t3": "Se non conferma o disputa l'acquisto entro quel tempo, la transazione sarà automaticamente contrassegnata come confermata e riceverai il pagamento."
+		}
+	},
 	"admin": {
 		"onlyRegistered": "Registrati o accedi prima di entrare nella sezione amministrativa",
 		"menu": {
@@ -149,7 +210,7 @@
 		"userRating": "Valutazione del venditore",
 		"title": "Compra e Vendi Video per Adulti – Alimentato da Bitcoin",
 		"subTitle": "Benvenuto su Clipz4BTC – Il tuo marketplace n.1 per contenuti per adulti!",
-		"desc1": "🔒 Pagamenti sicuri - Transazioni 100% Bitcoin",
+		"desc1": "🔒 Pagamenti sicuri - Transazioni 100% Bitcoin, con protezione per acquirente e venditore",
 		"desc2": "🕶️ Anonimo - Nessun dato personale richiesto",
 		"desc3": "⚡ Consegna veloce - Download immediato dopo l'acquisto",
 		"desc4": "🌍 Globale - Aperto a compratori e venditori in tutto il mondo",

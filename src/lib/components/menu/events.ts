@@ -22,8 +22,6 @@ export const onClose = async () => {
 		});
 	};
 
-	console.log(get(menu).overlay);
-
 	if (get(menu).overlay) {
 		get(menu).overlay!.style.display = 'none';
 	}

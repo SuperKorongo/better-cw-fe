@@ -65,8 +65,6 @@ export function onClickInternalLink(e: MouseEvent): void {
 
 	if (page.url.pathname !== pathname) loading.set(true);
 
-	console.log(get(menu).overlay);
-
 	if (get(menu).overlay) {
 		get(menu).overlay!.style.display = 'none';
 	}
