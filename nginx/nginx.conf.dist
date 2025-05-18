@@ -1,8 +1,7 @@
-# Worker processes and connections
 worker_processes auto;
-worker_connections 1024;
 
 events {
+    worker_connections 1024;
     use epoll; # Linux-specific for better performance
     multi_accept on;
 }
