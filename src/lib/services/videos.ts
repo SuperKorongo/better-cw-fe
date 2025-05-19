@@ -80,15 +80,12 @@ export const upload = async (data: VideoData): Promise<string> => {
 	const uuid = uuids[0];
 
 	try {
-		const uploadThumbnailPromises: Promise<void>[] = [];
 		for (const thumbnail of data.thumbnails) {
 			if (thumbnail === null) {
 				continue;
 			}
-			uploadThumbnailPromises.push(uploadThumbnail(uuid, thumbnail.blob));
+			await uploadThumbnail(uuid, thumbnail.blob);
 		}
-
-		await Promise.all(uploadThumbnailPromises);
 	} catch (e: unknown) {
 		console.error(e);
 	}
