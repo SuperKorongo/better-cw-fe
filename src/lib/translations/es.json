@@ -329,7 +329,7 @@
 		"errors": {
 			"invalidCredentials": "El email o la contraseña no son correctos",
 			"serverError": "Error del servidor - Por favor inténtalo más tarde",
-			"emptyEmail": "Introduce en email válido",
+			"emptyEmail": "Introduce un email válido",
 			"invalidPassword": "La contraseña debe tener al menos 8 caracteres"
 		}
 	},
