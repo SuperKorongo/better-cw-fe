@@ -8,7 +8,7 @@
 
 	function onLoadingData() {
 		opacity.set(1, { duration: 0 });
-		progress.set(0.8, { duration: 5000 });
+		progress.set(0.8, { duration: 10000 });
 	}
 
 	function onFinishedLoadingData() {
