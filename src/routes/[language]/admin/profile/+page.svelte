@@ -43,7 +43,7 @@
 </script>
 
 <section>
-	<h2>Welcome {$user.data!.username}!</h2>
+	<h2>{getTranslation('admin.profile.welcome')} {$user.data!.username}!</h2>
 	<span class="member-since">
 		{getTranslation('admin.profile.memberSince')}
 		{getFormattedDate($user.data!.sinceTimestamp)}

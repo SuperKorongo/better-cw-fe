@@ -103,7 +103,8 @@
 			"changePassword": "Cambia password",
 			"change": "Cambia",
 			"currentPassword": "Password attuale",
-			"newPassword": "Nuova password"
+			"newPassword": "Nuova password",
+			"welcome": "Benvenuto"
 		}
 	},
 	"cart": {
