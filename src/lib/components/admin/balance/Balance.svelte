@@ -21,6 +21,8 @@
 			loading.set(false);
 		}
 	});
+
+	console.log(page.route.id);
 </script>
 
 <div class="balance-container">
@@ -34,7 +36,7 @@
 			</span>
 		</div>
 
-		{#if page.route.id !== '/admin/withdraw'}
+		{#if page.route.id !== '/[language]/admin/withdraw'}
 			<a
 				onclick={onClickInternalLink}
 				data-sveltekit-preload-data="false"
