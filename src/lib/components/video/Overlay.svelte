@@ -4,9 +4,20 @@
 	}: {
 		onClick: () => void;
 	} = $props();
+
+	let clicked: boolean = false;
 </script>
 
-<div class="overlay" onclick={onClick} role="none"></div>
+<div
+	class="overlay"
+	onclick={() => {
+		if (clicked) return;
+
+		onClick();
+		clicked = true;
+	}}
+	role="none"
+></div>
 
 <style>
 	.overlay {
