@@ -71,6 +71,6 @@ vps-update-repo:
 	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "cd ${REMOTE_FOLDER}; rm -rf .git; unzip repo.zip; mv .git-zip/.git .; rm -rf .git-zip; git checkout -- .; rm repo.zip;"
 
 vps-setup-nginx-conf:
-	sed -i "s/server_name localhost;/server_name ${DOMAIN_NAME};/g" nginx/nginx.conf
+	sed -i "s/server_name localhost;/server_name ${DOMAIN_NAME} www.${DOMAIN_NAME};/g" nginx/nginx.conf
 	sed -i 's|ssl_certificate /etc/nginx/localhost.crt;|ssl_certificate /etc/letsencrypt/live/${DOMAIN_NAME}/fullchain.pem;|g' nginx/nginx.conf
 	sed -i 's|ssl_certificate_key /etc/nginx/localhost.key;|ssl_certificate_key /etc/letsencrypt/live/${DOMAIN_NAME}/privkey.pem;|g' nginx/nginx.conf
