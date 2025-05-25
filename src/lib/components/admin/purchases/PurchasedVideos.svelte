@@ -2,7 +2,7 @@
 	import DownloadInstructionsModal from '$lib/components/common/DownloadInstructionsModal.svelte';
 	import type { Payment, PurchasedVideo } from '$lib/models/Payment';
 	import { BLOCKCHAIN_CONFIRMED_STATUS, EXPIRED_STATUS } from '$lib/models/Payment';
-	import { getVideoByUUID } from '$lib/services/videos';
+	import { getVideoByUUID, MEGA_PREFIX } from '$lib/services/videos';
 	import { loading } from '$lib/stores/loading/store';
 	import { getTranslation } from '$lib/translations';
 	import {
@@ -91,7 +91,11 @@
 					<Cell>
 						{#if isPaid}
 							{#if video.downloadLink}
-								<a href={video.downloadLink} target="_blank" rel="noopener noreferrer">
+								<a
+									href={`${MEGA_PREFIX}${video.downloadLink}`}
+									target="_blank"
+									rel="noopener noreferrer"
+								>
 									{getTranslation('purchases.details.downloadLink')}
 								</a>
 							{:else}
