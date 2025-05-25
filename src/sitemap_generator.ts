@@ -2,7 +2,9 @@ import { config } from 'dotenv';
 import { createWriteStream } from 'fs';
 
 // Load environment variables from .env file
-config();
+config({
+	path: '.env.production'
+});
 
 // Define interfaces for API response
 interface ApiItem {
