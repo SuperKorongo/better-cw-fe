@@ -26,6 +26,7 @@
 		"@sveltejs/kit": "^2.21.1",
 		"@sveltejs/vite-plugin-svelte": "^5.0.3",
 		"@types/eslint": "^9.6.1",
+		"@types/node": "^22.15.21",
 		"@types/uuid": "^10.0.0",
 		"@zerodevx/svelte-toast": "^0.9.6",
 		"eslint": "^9.27.0",
@@ -45,6 +46,7 @@
 	"type": "module",
 	"dependencies": {
 		"bitcoin-address-validation": "^3.0.0",
+		"dotenv": "^16.5.0",
 		"svelte-carousel": "^1.0.25",
 		"svelte-gestures": "^5.1.4",
 		"svelte-material-ui": "^8.0.0-beta.3",
