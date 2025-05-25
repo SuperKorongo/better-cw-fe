@@ -51,10 +51,6 @@ http {
         http2 on;
         server_name localhost;
 
-        if ($host != $server_name) {
-            return 444;
-        }
-
         # Bots blocker
         include /etc/nginx/bots.d/ddos.conf;
         include /etc/nginx/bots.d/blockbots.conf;
