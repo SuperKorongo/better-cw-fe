@@ -4,6 +4,20 @@ import { createWriteStream } from 'fs';
 // Load environment variables from .env file
 config();
 
+// Define interfaces for API response
+interface ApiItem {
+	slug: string;
+}
+
+interface ApiResponse {
+	data: ApiItem[];
+	meta: {
+		page: number;
+		totalPages: number;
+		totalItems: number;
+	};
+}
+
 // Configuration
 const API_URL = process.env.PUBLIC_STORE_API_URL;
 const BASE_URL = process.env.PUBLIC_DOMAIN;
@@ -20,7 +34,7 @@ if (!API_URL || !BASE_URL) {
 }
 
 // Function to generate XML for a single item (tag or model)
-function generateItemXml(item, type) {
+function generateItemXml(item: string, type: 'tags' | 'models'): string {
 	const mainUrl = `${BASE_URL}/${DEFAULT_LANGUAGE}/${type}/${item}`;
 	let xml = `  <url>\n`;
 	xml += `    <loc>${mainUrl}</loc>\n`;
@@ -38,7 +52,12 @@ function generateItemXml(item, type) {
 }
 
 // Function to fetch and process paginated data, writing to stream
-async function processPaginatedData(endpoint, type, maxItems, writeStream) {
+async function processPaginatedData(
+	endpoint: string,
+	type: 'tags' | 'models',
+	maxItems: number,
+	writeStream: NodeJS.WritableStream
+): Promise<number> {
 	let itemCount = 0;
 	let page = 1;
 	let hasMore = true;
@@ -51,7 +70,7 @@ async function processPaginatedData(endpoint, type, maxItems, writeStream) {
 			if (!response.ok) {
 				throw new Error(`HTTP error! status: ${response.status}`);
 			}
-			const { data, meta } = await response.json();
+			const { data, meta }: ApiResponse = await response.json();
 
 			// Process each item in the current page
 			for (const item of data) {

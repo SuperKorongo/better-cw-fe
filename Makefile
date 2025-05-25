@@ -11,6 +11,11 @@ generate-prod-certs:
 	docker compose exec -it nginx certbot certonly --nginx
 
 deploy:
+	mv .env .env.backup
+	cp .env.production .env
+	node src/sitemap_generator.ts
+	rm .env
+	mv .env.backup .env
 	make vps-update-repo
 	npm run build
 	zip -r build.zip build 
@@ -18,7 +23,6 @@ deploy:
 	rm build.zip
 	scp -i ${SSH_KEY_FILE_PATH} .env.production ${SSH_USER}@${SERVER_IP}:${REMOTE_FOLDER}/.env
 	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "cd ${REMOTE_FOLDER}; make run-prod;"
-	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "cd ${REMOTE_FOLDER}; docker exec store-frontend-frontend-1 bash -c 'node src/sitemap_generator.js'"
 
 run-prod:
 	rm -rf build
