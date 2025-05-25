@@ -14,6 +14,7 @@ deploy:
 	mv .env .env.backup
 	cp .env.production .env
 	node src/sitemap_generator.ts
+	./update-robots.sh
 	rm .env
 	mv .env.backup .env
 	make vps-update-repo
