@@ -30,6 +30,9 @@ run-prod:
 error-logs:
 	docker compose exec frontend bash -c 'tail -f ~/.pm2/logs/index-error.log'
 
+nginx-logs:
+	docker logs store-frontend-nginx --tail 5 --follow | jq
+
 vps-initial-setup:
 # Install docker and unzip and make
 	scp -i ${SSH_KEY_FILE_PATH} vps-setup.sh ${SSH_USER}@${SERVER_IP}:/root/vps-setup.sh
