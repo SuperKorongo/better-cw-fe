@@ -7,10 +7,9 @@ events {
 }
 
 http {
-    log_format custom_headers '[$time_local] - $remote_addr - $remote_user '
-                                '"$request" $status $body_bytes_sent '
-                                '"$http_referer" "$http_user_agent" '
-                                '"$http_x_forwarded_for" "$http_host"';
+    log_format custom_headers '{"date":"$time_local","clientIp":"$remote_addr","path":"$request","requestSizeInBytes":"$request_length","status":"$status","responseSizeInBytes":"$body_bytes_sent","referer":"$http_referer","userAgent":"$http_user_agent","host":"$http_host"}';
+
+    access_log /var/log/nginx/access.log custom_headers;
 
     # General performance optimizations
     sendfile on;
