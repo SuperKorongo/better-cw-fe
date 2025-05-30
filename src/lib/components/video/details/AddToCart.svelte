@@ -21,24 +21,28 @@
 </span>
 
 {#key $cart}
-	{#if isInCart()}
-		<span class="video-in-cart-info">{getTranslation('video.alreadyInCart')}✅</span>
-		<a
-			onclick={onClickInternalLink}
-			class="go-to-cart-button"
-			data-sveltekit-preload-data="tap"
-			href={getHrefWithLanguage(`/cart`)}
-		>
-			<Button variant="raised" color="secondary">
-				<Label>{getTranslation('video.gotoCart')}</Label>
-			</Button>
-		</a>
+	{#if video.price.value}
+		{#if isInCart()}
+			<span class="video-in-cart-info">{getTranslation('video.alreadyInCart')}✅</span>
+			<a
+				onclick={onClickInternalLink}
+				class="go-to-cart-button"
+				data-sveltekit-preload-data="tap"
+				href={getHrefWithLanguage(`/cart`)}
+			>
+				<Button variant="raised" color="secondary">
+					<Label>{getTranslation('video.gotoCart')}</Label>
+				</Button>
+			</a>
+		{:else}
+			<div class="add-to-cart-container">
+				<Button onclick={onClick} variant="raised">
+					<Label>{getTranslation('video.addToCart')}</Label>
+				</Button>
+			</div>
+		{/if}
 	{:else}
-		<div class="add-to-cart-container">
-			<Button onclick={onClick} variant="raised">
-				<Label>{getTranslation('video.addToCart')}</Label>
-			</Button>
-		</div>
+		<div>TODO: RATE VIDEO HERE IF USER IS LOGGED IN</div>
 	{/if}
 {/key}
 
@@ -50,6 +54,7 @@
 		display: block;
 		margin-bottom: 15px;
 		text-wrap: nowrap;
+		font-variant: small-caps;
 	}
 	.video-in-cart-info {
 		font-weight: bold;

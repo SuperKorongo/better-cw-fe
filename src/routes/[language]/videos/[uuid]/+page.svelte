@@ -1,9 +1,11 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
+	import type { GetVideosFunc, GetVideosFuncParams } from '$lib/components/thumbnails/events';
 	import Thumbnails from '$lib/components/thumbnails/Thumbnails.svelte';
 	import Video from '$lib/components/video/Video.svelte';
-	import { DEFAULT_PAGINATION, type Pagination } from '$lib/models/Pagination';
+	import { DEFAULT_PAGINATION } from '$lib/models/Pagination';
+	import { type Video as VideoType } from '$lib/models/Video';
 	import { getHomepageVideos } from '$lib/services/videos';
 	import { language } from '$lib/stores/language/store';
 	import { onMount } from 'svelte';
@@ -19,11 +21,13 @@
 			goto(`/${$language}`);
 			return;
 		}
-		homepageVideos = await getHomepageVideos(window.fetch, DEFAULT_PAGINATION, '');
+		homepageVideos = await getHomepageVideos(window.fetch, DEFAULT_PAGINATION, '', null);
 		mounted = true;
 	});
 
-	const getVideosFunc = (pagination: Pagination) => getHomepageVideos(fetch, pagination, '');
+	const getVideosFunc: GetVideosFunc = (params: GetVideosFuncParams): Promise<VideoType[]> => {
+		return getHomepageVideos(fetch, params.pagination, '', params.filters);
+	};
 </script>
 
 {#key mounted}

@@ -19,7 +19,8 @@ export async function load({ params, url, fetch }: PageLoadEvent): Promise<Data>
 			MODELS_ENDPOINT,
 			typedParams.name,
 			pagination,
-			getSearchFromURL(url) ?? ''
+			getSearchFromURL(url) ?? '',
+			null
 		);
 
 		return { videos, error: false };

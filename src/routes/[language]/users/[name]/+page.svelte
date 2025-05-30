@@ -5,7 +5,7 @@
 	import { goto } from '$app/navigation';
 	import StarRating from '$lib/components/common/StarRating.svelte';
 	import Header from '$lib/components/header/Header.svelte';
-	import type { Pagination } from '$lib/models/Pagination';
+	import type { GetVideosFunc, GetVideosFuncParams } from '$lib/components/thumbnails/events';
 	import { type Video as VideoType } from '$lib/models/Video';
 	import { getVideosBy, USERS_ENDPOINT } from '$lib/services/videos';
 	import { language } from '$lib/stores/language/store';
@@ -20,9 +20,16 @@
 		data: Data;
 	} = $props();
 
-	let getVideosFunc = (pagination: Pagination): Promise<VideoType[]> => {
-		const params = page.params as { name: string };
-		return getVideosBy(fetch, USERS_ENDPOINT, params.name, pagination, $search.value ?? '');
+	let getVideosFunc: GetVideosFunc = (params: GetVideosFuncParams): Promise<VideoType[]> => {
+		const pageParams = page.params as { name: string };
+		return getVideosBy(
+			fetch,
+			USERS_ENDPOINT,
+			pageParams.name,
+			params.pagination,
+			$search.value ?? '',
+			params.filters
+		);
 	};
 
 	onMount(() => {

@@ -1,4 +1,5 @@
 import { PUBLIC_STORE_API_URL } from '$env/static/public';
+import type { GetVideosFuncParams } from '$lib/components/thumbnails/events';
 import type { PaginatedResponse, Pagination } from '$lib/models/Pagination';
 import type { Data as VideoData } from '$lib/stores/video-form/store';
 import { fetchWrapper } from '$lib/utils/fetch';
@@ -11,10 +12,11 @@ export const MEGA_PREFIX = 'https://mega.nz/file/';
 export const getHomepageVideos = async (
 	fetch: PageLoadEvent['fetch'],
 	pagination: Pagination,
-	search: string
+	search: string,
+	filters: GetVideosFuncParams['filters'] | null
 ): Promise<Video[]> => {
 	const response = await fetchWrapper(fetch)(
-		`${PUBLIC_STORE_API_URL}/api/v1/videos/?${getQueryParams(pagination, search)}`
+		`${PUBLIC_STORE_API_URL}/api/v1/videos/?${getQueryParams(pagination, search, filters)}`
 	);
 
 	const paginatedResponse = (await response.json()) as PaginatedResponse<Video>;
@@ -41,10 +43,11 @@ export const getVideosBy = async (
 	endpoint: VideosEndpoint,
 	name: string,
 	pagination: Pagination,
-	search: string
+	search: string,
+	filters: GetVideosFuncParams['filters'] | null
 ): Promise<Video[]> => {
 	const response = await fetchWrapper(fetch)(
-		`${PUBLIC_STORE_API_URL}/api/v1/videos/${endpoint}/${name}/?${getQueryParams(pagination, search)}`
+		`${PUBLIC_STORE_API_URL}/api/v1/videos/${endpoint}/${name}/?${getQueryParams(pagination, search, filters)}`
 	);
 
 	const paginatedResponse = (await response.json()) as PaginatedResponse<Video>;

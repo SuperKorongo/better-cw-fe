@@ -15,7 +15,7 @@ export const getUserVideos = async (
 	search: string
 ): Promise<PaginatedResponse<AdminListVideo>> => {
 	const response = await fetchWrapper(fetch)(
-		`${PUBLIC_STORE_API_URL}/api/v1/videos/mine/?${getQueryParams(pagination, search, get(cacheInvalidation).myVideos)}`
+		`${PUBLIC_STORE_API_URL}/api/v1/videos/mine/?${getQueryParams(pagination, search, null, get(cacheInvalidation).myVideos)}`
 	);
 
 	return await response.json();

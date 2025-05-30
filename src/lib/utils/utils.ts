@@ -41,7 +41,7 @@ export function getFormattedDuration(duration: number): string {
 
 export function getFormattedPrice(price: Video['price']): string {
 	if (!price) return '';
-	return `${price.currency.symbol}${price.value}`;
+	return price.value ? `${price.currency.symbol}${price.value}` : getTranslation('video.free');
 }
 
 export function onClickInternalLink(e: MouseEvent): void {

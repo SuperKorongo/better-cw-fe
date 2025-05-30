@@ -1,8 +1,10 @@
+import type { GetVideosFuncParams } from '$lib/components/thumbnails/events';
 import type { Pagination } from '$lib/models/Pagination';
 
 export const getQueryParams = (
 	{ limit, offset, orderBy }: Pagination,
 	search: string = '',
+	filters: GetVideosFuncParams['filters'] | null = null,
 	cacheBypass: number | null = null
 ): string => {
 	const urlSearchParams: Record<string, string> = {
@@ -15,7 +17,10 @@ export const getQueryParams = (
 	if (search) {
 		urlSearchParams['text'] = search;
 	}
-	if (cacheBypass) {
+	if (filters !== null) {
+		urlSearchParams['free'] = filters.freeVideosOnly ? '1' : '0';
+	}
+	if (cacheBypass !== null) {
 		urlSearchParams['cache'] = cacheBypass.toString();
 	}
 

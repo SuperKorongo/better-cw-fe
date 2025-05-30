@@ -208,7 +208,7 @@
 	"homepage": {
 		"videoBy": "Video di",
 		"loadMore": "Carica più video",
-		"userRating": "Valutazione del venditore",
+		"userRating": "Valutazione del utente",
 		"title": "Compra e Vendi Video per Adulti – Alimentato da Bitcoin",
 		"subTitle": "Benvenuto su Clipz4BTC – Il tuo marketplace n.1 per contenuti per adulti!",
 		"desc1": "🔒 Pagamenti sicuri - Transazioni 100% Bitcoin, con protezione per acquirente e venditore",
@@ -402,7 +402,8 @@
 		"uploadedBy": "Caricato da",
 		"videoRating": "Valutazione del video",
 		"modelName": "Nome del modello",
-		"duration": "Durata"
+		"duration": "Durata",
+		"free": "Gratuito"
 	},
 	"withdraw": {
 		"title": "Preleva fondi",

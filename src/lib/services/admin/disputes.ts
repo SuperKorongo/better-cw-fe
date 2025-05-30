@@ -76,7 +76,7 @@ export const getDisputes = async (
 	}
 
 	const response = await fetchWrapper(fetch)(
-		`${PUBLIC_STORE_API_URL}${endpoint}?${getQueryParams(pagination, '', get(cacheInvalidation).myDisputes)}${statusQueryParam ? `${statusQueryParam}` : ``}`
+		`${PUBLIC_STORE_API_URL}${endpoint}?${getQueryParams(pagination, '', null, get(cacheInvalidation).myDisputes)}${statusQueryParam ? `${statusQueryParam}` : ``}`
 	);
 
 	return await response.json();

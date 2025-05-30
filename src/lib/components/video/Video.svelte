@@ -6,6 +6,7 @@
 	import Carousel from './Carousel.svelte';
 	import CloseButton from './CloseButton.svelte';
 	import Details from './details/Details.svelte';
+	import Player from './details/Player.svelte';
 	import { events } from './events';
 	import ImageModal from './ImageModal.svelte';
 	import Overlay from './Overlay.svelte';
@@ -38,9 +39,14 @@
 	<CloseButton onClick={onClose} />
 	<main>
 		<h1>Model video</h1>
+		<!-- TODO: TRANSLATION - TODO: IFRAME TO MEGA FOR FREE VIDEOS -->
 		<article>
 			<h2>{video.title}</h2>
-			<Carousel onClickImage={onClickCarouselImage} imageUrls={video.thumbnailFilePaths} />
+			{#if video.price.value}
+				<Carousel onClickImage={onClickCarouselImage} imageUrls={video.thumbnailFilePaths} />
+			{:else}
+				<Player />
+			{/if}
 			<Details {video} />
 		</article>
 	</main>

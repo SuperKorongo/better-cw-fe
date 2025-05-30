@@ -9,6 +9,7 @@
 		getPlaceholderImageSrc
 	} from '$lib/utils/utils';
 	import { onMount } from 'svelte';
+	import GlowingText from '../common/GlowingText.svelte';
 	import StarRating from '../common/StarRating.svelte';
 	import UploaderLink from '../common/UploaderLink.svelte';
 	import { eventFunctions } from './thumbnail';
@@ -75,7 +76,13 @@
 				{getTranslation('homepage.videoBy')}
 				<UploaderLink uploader={video.uploader} />
 			</span>
-			<span class="price">{getFormattedPrice(video.price)}</span>
+			<span class="price">
+				{#if video.price.value}
+					{getFormattedPrice(video.price)}
+				{:else}
+					<GlowingText text={getTranslation('video.free')} />
+				{/if}
+			</span>
 		</div>
 	</figcaption>
 </figure>
@@ -143,5 +150,6 @@
 		padding-right: 10px;
 		font-size: 16px;
 		color: #dddddd;
+		font-weight: bold;
 	}
 </style>

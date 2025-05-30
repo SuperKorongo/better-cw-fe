@@ -208,7 +208,7 @@
 	"homepage": {
 		"videoBy": "Video by",
 		"loadMore": "Load more videos",
-		"userRating": "Seller rating",
+		"userRating": "User rating",
 		"title": "Buy & Sell Adult Videos – Powered by Bitcoin",
 		"subTitle": "Welcome to Clipz4BTC – Your #1 Marketplace for adult content!",
 		"desc1": "🔒 Secure Payments - 100% Bitcoin transactions with buyers and sellers protection",
@@ -402,7 +402,8 @@
 		"uploadedBy": "Uploaded by",
 		"videoRating": "Video rating",
 		"modelName": "Model name",
-		"duration": "Duration"
+		"duration": "Duration",
+		"free": "Free"
 	},
 	"withdraw": {
 		"title": "Withdraw funds",

@@ -208,7 +208,7 @@
 	"homepage": {
 		"videoBy": "Video por",
 		"loadMore": "Cargar más vídeos",
-		"userRating": "Valoración del vendedor",
+		"userRating": "Valoración del usuario",
 		"title": "Compra y Vende Videos para Adultos – Impulsado por Bitcoin",
 		"subTitle": "Bienvenido a Clipz4BTC – ¡Tu mercado nº 1 para contenido para adultos!",
 		"desc1": "🔒 Pagos seguros - Transacciones 100% Bitcoin, con protección para compradores y vendedores",
@@ -402,7 +402,8 @@
 		"uploadedBy": "Subido por",
 		"videoRating": "Video rating",
 		"modelName": "Modelo",
-		"duration": "Duración"
+		"duration": "Duración",
+		"free": "Gratis"
 	},
 	"withdraw": {
 		"title": "Retirar fondos",

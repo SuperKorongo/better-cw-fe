@@ -68,6 +68,6 @@
 		fill: none;
 	}
 	.container :global(.mdc-select) {
-		width: 250px;
+		width: 200px;
 	}
 </style>

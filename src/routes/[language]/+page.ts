@@ -24,7 +24,12 @@ export async function load(e: PageLoadEvent): Promise<Data> {
 	pagination.orderBy = getOrderBy(e.url);
 
 	try {
-		const videos = await getHomepageVideos(e.fetch, pagination, getSearchFromURL(e.url) ?? '');
+		const videos = await getHomepageVideos(
+			e.fetch,
+			pagination,
+			getSearchFromURL(e.url) ?? '',
+			null
+		);
 		return { videos, error: false };
 	} catch (e: unknown) {
 		console.error(e);

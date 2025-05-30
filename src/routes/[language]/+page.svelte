@@ -1,7 +1,8 @@
 <script lang="ts">
 	import GlowingText from '$lib/components/common/GlowingText.svelte';
+	import type { GetVideosFunc, GetVideosFuncParams } from '$lib/components/thumbnails/events';
 	import Thumbnails from '$lib/components/thumbnails/Thumbnails.svelte';
-	import type { Pagination } from '$lib/models/Pagination';
+	import { type Video as VideoType } from '$lib/models/Video';
 
 	import { getHomepageVideos } from '$lib/services/videos';
 	import { search } from '$lib/stores/search/store';
@@ -14,8 +15,9 @@
 		data: Data;
 	} = $props();
 
-	const getVideosFunc = (pagination: Pagination) =>
-		getHomepageVideos(fetch, pagination, $search.value ?? '');
+	const getVideosFunc: GetVideosFunc = (params: GetVideosFuncParams): Promise<VideoType[]> => {
+		return getHomepageVideos(fetch, params.pagination, $search.value ?? '', params.filters);
+	};
 </script>
 
 <header>

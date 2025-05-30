@@ -2,14 +2,14 @@
 	import Button, { Label } from '@smui/button';
 	import { onMount } from 'svelte';
 
-	import type { Pagination } from '$lib/models/Pagination';
 	import type { Video } from '$lib/models/Video';
 	import { loading } from '$lib/stores/loading/store';
 	import { orderBy } from '$lib/stores/order_by/store';
 	import { search } from '$lib/stores/search/store';
 	import { getTranslation } from '$lib/translations';
 	import Thumbnail from '../thumbnail/Thumbnail.svelte';
-	import { events } from './events';
+	import { events, type GetVideosFunc } from './events';
+	import FreeOnlyToggle from './FreeOnlyToggle.svelte';
 	import OrderBy from './OrderBy.svelte';
 
 	let {
@@ -17,16 +17,21 @@
 		getVideosFunc
 	}: {
 		videos: Video[];
-		getVideosFunc: (pagination: Pagination) => Promise<Video[]>;
+		getVideosFunc: GetVideosFunc;
 	} = $props();
 
 	let noMoreVideos: boolean = $state(false);
+	let freeVideosOnly: boolean = $state(false);
 
-	const { onScroll, onClickLoadMore, onOrderByChanged, onSearchChanged } = events(
-		() => $orderBy,
-		() => videos,
-		getVideosFunc
-	);
+	const { onScroll, onClickLoadMore, onOrderByChanged, onSearchChanged, onToggleFreeVideosOnly } =
+		events(
+			() => $orderBy,
+			() => {
+				return { freeVideosOnly };
+			},
+			() => videos,
+			getVideosFunc
+		);
 
 	onMount(() => {
 		window.onscroll = () => onScroll(addNewVideos, !noMoreVideos);
@@ -65,14 +70,19 @@
 	$effect(() => {
 		onSearchChanged($search.value ?? '', setNewVideos);
 	});
+
+	$effect(() => {
+		onToggleFreeVideosOnly(freeVideosOnly, setNewVideos);
+	});
 </script>
 
 <section>
-	<div class="order-by-container">
-		{#if videos.length > 0}
+	{#if videos.length > 0}
+		<div class="filters-container">
 			<OrderBy />
-		{/if}
-	</div>
+			<FreeOnlyToggle bind:value={freeVideosOnly} />
+		</div>
+	{/if}
 	<div class="thumbnails-container">
 		{#each videos as video (video.uuid)}
 			<Thumbnail {video} />
@@ -114,6 +124,12 @@
 	.load-more-container {
 		margin-top: 100px;
 		text-align: center;
+	}
+
+	.filters-container {
+		display: flex;
+		align-items: baseline;
+		margin-bottom: 20px;
 	}
 
 	@media (max-width: 600px) {
