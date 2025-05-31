@@ -7,9 +7,23 @@ import { get } from 'svelte/store';
 const replacedIndexes: number[] = [];
 
 export const patchThumbnails = async (video: Video): Promise<void> => {
-	await replaceThumbnails(video);
-	await deleteThumbnails(video);
-	await addThumbnails(video);
+	try {
+		await replaceThumbnails(video);
+	} catch (e: unknown) {
+		// todo
+	}
+
+	try {
+		await deleteThumbnails(video);
+	} catch (e: unknown) {
+		// todo
+	}
+
+	try {
+		await addThumbnails(video);
+	} catch (e: unknown) {
+		// todo
+	}
 };
 
 async function replaceThumbnails(video: Video): Promise<void> {

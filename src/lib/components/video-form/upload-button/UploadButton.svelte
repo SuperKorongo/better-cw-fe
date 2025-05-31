@@ -66,11 +66,7 @@
 					break;
 				case 'patch':
 					await patch(video!.uuid, $videoForm);
-					try {
-						await patchThumbnails(video!);
-					} catch (e: unknown) {
-						// todo
-					}
+					await patchThumbnails(video!);
 
 					toasts.success(getTranslation('admin.myVideos.editedSuccessfully'));
 					break;
