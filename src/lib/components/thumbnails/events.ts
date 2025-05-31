@@ -29,7 +29,6 @@ export const events = (
 	let lastLoadDate: Date = new Date();
 	let lastOrderByChangedDate: Date = new Date();
 	let lastSearchDate: Date = new Date();
-	let lastFilterChangeDate: Date = new Date();
 
 	const onScroll = async (
 		onNewVideosLoaded: (result: { videos: Video[]; error: Error | null }) => void,
@@ -161,8 +160,6 @@ export const events = (
 		newValue: boolean,
 		newVideos: (newVideos: Video[]) => void
 	) => {
-		lastFilterChangeDate = new Date();
-
 		loading.set(true);
 		try {
 			const videos = await getVideosFunc({

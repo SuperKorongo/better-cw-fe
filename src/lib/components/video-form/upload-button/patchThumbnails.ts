@@ -9,19 +9,19 @@ const replacedIndexes: number[] = [];
 export const patchThumbnails = async (video: Video): Promise<void> => {
 	try {
 		await replaceThumbnails(video);
-	} catch (e: unknown) {
+	} catch {
 		// todo
 	}
 
 	try {
 		await deleteThumbnails(video);
-	} catch (e: unknown) {
+	} catch {
 		// todo
 	}
 
 	try {
 		await addThumbnails(video);
-	} catch (e: unknown) {
+	} catch {
 		// todo
 	}
 };
@@ -38,7 +38,7 @@ async function replaceThumbnails(video: Video): Promise<void> {
 			replacedIndexes.push(index);
 			try {
 				await replaceThumbnail(video.uuid, index + 1, thumbnail.blob);
-			} catch (e: unknown) {
+			} catch {
 				// TODO
 			}
 		}
@@ -58,7 +58,7 @@ async function deleteThumbnails(video: Video): Promise<void> {
 	for (let i = toDelete.length - 1; i >= 0; i--) {
 		try {
 			await deleteThumbnail(video.uuid, toDelete[i]);
-		} catch (e: unknown) {
+		} catch {
 			// TODO
 		}
 	}
@@ -76,7 +76,7 @@ async function addThumbnails(video: Video): Promise<void> {
 		) {
 			try {
 				await uploadThumbnail(video.uuid, thumbnail.blob);
-			} catch (e: unknown) {
+			} catch {
 				// TODO
 			}
 		}
