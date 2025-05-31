@@ -21,4 +21,7 @@
 </div>
 
 <style>
+	.container {
+		display: none; /* TODO: Better label */
+	}
 </style>
