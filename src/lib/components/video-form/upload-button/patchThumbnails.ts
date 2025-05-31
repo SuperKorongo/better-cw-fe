@@ -36,7 +36,11 @@ async function replaceThumbnails(video: Video): Promise<void> {
 			!isSameImage(video.thumbnailFilePaths[index] ?? '', thumbnail.src)
 		) {
 			replacedIndexes.push(index);
-			await replaceThumbnail(video.uuid, index + 1, thumbnail.blob);
+			try {
+				await replaceThumbnail(video.uuid, index + 1, thumbnail.blob);
+			} catch (e: unknown) {
+				// TODO
+			}
 		}
 	}
 }
@@ -52,7 +56,11 @@ async function deleteThumbnails(video: Video): Promise<void> {
 	}
 
 	for (let i = toDelete.length - 1; i >= 0; i--) {
-		await deleteThumbnail(video.uuid, toDelete[i]);
+		try {
+			await deleteThumbnail(video.uuid, toDelete[i]);
+		} catch (e: unknown) {
+			// TODO
+		}
 	}
 }
 
@@ -66,7 +74,11 @@ async function addThumbnails(video: Video): Promise<void> {
 			!replacedIndexes.includes(index) &&
 			video.thumbnailFilePaths.filter((p) => isSameImage(p, thumbnail.src)).length === 0
 		) {
-			await uploadThumbnail(video.uuid, thumbnail.blob);
+			try {
+				await uploadThumbnail(video.uuid, thumbnail.blob);
+			} catch (e: unknown) {
+				// TODO
+			}
 		}
 	}
 }
