@@ -7,7 +7,11 @@
 	import { onMount } from 'svelte';
 
 	import { afterNavigate } from '$app/navigation';
-	import { PUBLIC_DOMAIN } from '$env/static/public';
+	import {
+		PUBLIC_ANALYTICS_ID,
+		PUBLIC_ANALYTICS_SCRIPT_URL,
+		PUBLIC_DOMAIN
+	} from '$env/static/public';
 	import { onClose as closeMenu, onClose } from '$lib/components/menu/events';
 	import Menu from '$lib/components/menu/Menu.svelte';
 	import ToastsContainer from '$lib/components/toasts/ToastsContainer.svelte';
@@ -75,6 +79,11 @@
 </script>
 
 <svelte:head>
+	<script
+		defer
+		src={`${PUBLIC_ANALYTICS_SCRIPT_URL}`}
+		data-website-id={`${PUBLIC_ANALYTICS_ID}`}
+	></script>
 	<title>{getTranslation('homepage.htmlTitle')}</title>
 	{#if shouldAddMetaDescription()}
 		<meta name="description" content={getTranslation('homepage.metaDescription')} />
