@@ -30,6 +30,6 @@ export const DEFAULT_PAGINATION: Pagination = {
 	offset: 0,
 	orderBy: {
 		column: 'uploaded_at',
-		direction: 'asc'
+		direction: 'desc'
 	}
 };

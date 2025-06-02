@@ -24,7 +24,7 @@ export const orderBy = (() => {
 })();
 
 export function getOrderBy(url: URL): OrderBy | null {
-	return getFromUrl(url) ?? null;
+	return getFromUrl(url) ?? DEFAULT_PAGINATION.orderBy;
 }
 
 export function getFromUrl(url: URL): OrderBy | null {
