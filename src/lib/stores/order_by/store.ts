@@ -38,7 +38,7 @@ function setCookie(orderBy: OrderBy) {
 }
 
 export function getOrderBy(url: URL): OrderBy | null {
-	return getFromUrl(url) ?? getFromCookie() ?? null;
+	return getFromUrl(url) ?? null;
 }
 
 export function getFromUrl(url: URL): OrderBy | null {
