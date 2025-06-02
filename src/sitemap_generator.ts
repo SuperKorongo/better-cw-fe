@@ -23,7 +23,7 @@ interface ApiResponse {
 // Configuration
 const API_URL = process.env.PUBLIC_STORE_API_URL;
 const BASE_URL = process.env.PUBLIC_DOMAIN;
-const LANGUAGES = ['en', 'es', 'it'];
+const LANGUAGES = ['en', 'es', 'it']; // todo: get availableLanguages from src/lib/translations
 const DEFAULT_LANGUAGE = 'en'; // Used for <loc> and x-default
 const MAX_ITEMS = 200;
 const PAGE_SIZE = 25;

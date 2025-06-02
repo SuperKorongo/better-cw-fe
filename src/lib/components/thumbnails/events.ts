@@ -29,6 +29,7 @@ export const events = (
 	let lastLoadDate: Date = new Date();
 	let lastOrderByChangedDate: Date = new Date();
 	let lastSearchDate: Date = new Date();
+	let lastFreeOnlyToggle: Date = new Date();
 
 	const onScroll = async (
 		onNewVideosLoaded: (result: { videos: Video[]; error: Error | null }) => void,
@@ -98,11 +99,7 @@ export const events = (
 	};
 
 	const onOrderByChanged = async (newOrderBy: OrderBy, newVideos: (newVideos: Video[]) => void) => {
-		if (
-			new Date().getTime() - lastOrderByChangedDate.getTime() <
-			MILLISECONDS_BETWEEN_LOADING_NEW_VIDEOS
-		)
-			return;
+		if (new Date().getTime() - lastOrderByChangedDate.getTime() < 250) return;
 
 		lastOrderByChangedDate = new Date();
 
@@ -160,6 +157,14 @@ export const events = (
 		newValue: boolean,
 		newVideos: (newVideos: Video[]) => void
 	) => {
+		if (
+			new Date().getTime() - lastFreeOnlyToggle.getTime() <
+			MILLISECONDS_BETWEEN_LOADING_NEW_VIDEOS
+		)
+			return;
+
+		lastFreeOnlyToggle = new Date();
+
 		loading.set(true);
 		try {
 			const videos = await getVideosFunc({
