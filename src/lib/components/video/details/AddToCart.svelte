@@ -1,7 +1,9 @@
 <script lang="ts">
+	import Rating from '$lib/components/admin/purchases/Rating.svelte';
 	import GlowingText from '$lib/components/common/GlowingText.svelte';
 	import type { Video } from '$lib/models/Video';
 	import { cart } from '$lib/stores/cart/store';
+	import { user } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
 	import { getFormattedPrice, getHrefWithLanguage, onClickInternalLink } from '$lib/utils/utils';
 	import Button, { Label } from '@smui/button';
@@ -42,7 +44,11 @@
 			</div>
 		{/if}
 	{:else}
-		<div>TODO: RATE VIDEO HERE IF USER IS LOGGED IN</div>
+		<div>
+			{#if $user.data}
+				<Rating videoUUID={video.uuid} />
+			{/if}
+		</div>
 	{/if}
 {/key}
 

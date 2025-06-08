@@ -112,3 +112,9 @@ export const uploadThumbnail = async (videoUUID: string, blob: Blob | null): Pro
 		}
 	);
 };
+
+export const addView = async (videoUUID: string): Promise<void> => {
+	await fetchWrapper(window.fetch)(`${PUBLIC_STORE_API_URL}/api/v1/videos/${videoUUID}/views/add`, {
+		method: 'PATCH'
+	});
+};

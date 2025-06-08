@@ -39,13 +39,13 @@
 	<CloseButton onClick={onClose} />
 	<main>
 		<h1>Model video</h1>
-		<!-- TODO: TRANSLATION - TODO: IFRAME TO MEGA FOR FREE VIDEOS -->
+		<!-- TODO: TRANSLATION -->
 		<article>
 			<h2>{video.title}</h2>
 			{#if video.price.value}
 				<Carousel onClickImage={onClickCarouselImage} imageUrls={video.thumbnailFilePaths} />
 			{:else}
-				<Player />
+				<Player {video} />
 			{/if}
 			<Details {video} />
 		</article>

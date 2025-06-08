@@ -5,6 +5,7 @@ export type Video = {
 	description: string | null;
 	uuid: string;
 	thumbnailFilePaths: string[];
+	downloadLink: string;
 	price: {
 		currency: Currency;
 		value: number;
@@ -26,12 +27,14 @@ export type Video = {
 		slug: string;
 	}[];
 	rating: number;
+	views: number;
 };
 
 export const getEmpty = (): Video => {
 	return {
 		title: '',
 		description: '',
+		downloadLink: '',
 		uuid: '',
 		thumbnailFilePaths: [],
 		price: {
@@ -55,7 +58,8 @@ export const getEmpty = (): Video => {
 			slug: ''
 		},
 		tags: [],
-		rating: 0
+		rating: 0,
+		views: 0
 	};
 };
 

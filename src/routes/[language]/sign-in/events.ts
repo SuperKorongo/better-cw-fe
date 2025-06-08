@@ -17,7 +17,7 @@ export const onClickLoginButton = async (getEmail: () => string, getPassword: ()
 		toasts.warning(getTranslation('signInForm.errors.emptyEmail'));
 		return;
 	}
-	if (getPassword().length < 8) {
+	if (getPassword().length < 6) {
 		toasts.warning(getTranslation('signInForm.errors.invalidPassword'));
 		return;
 	}
