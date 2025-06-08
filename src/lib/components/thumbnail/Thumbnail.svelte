@@ -84,6 +84,9 @@
 				{/if}
 			</span>
 		</div>
+		{#if !video.price.value}
+			<span class="views">{video.views} {getTranslation('homepage.views')}</span>
+		{/if}
 	</figcaption>
 </figure>
 
@@ -140,7 +143,8 @@
 		letter-spacing: 0.2px;
 	}
 
-	.uploaded-by {
+	.uploaded-by,
+	.views {
 		color: #aaa;
 		font-size: 13px;
 	}
@@ -151,5 +155,9 @@
 		font-size: 16px;
 		color: #dddddd;
 		font-weight: bold;
+	}
+
+	.views {
+		line-height: 30px;
 	}
 </style>
