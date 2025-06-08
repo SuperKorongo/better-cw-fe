@@ -157,11 +157,7 @@ export const events = (
 		newValue: boolean,
 		newVideos: (newVideos: Video[]) => void
 	) => {
-		if (
-			new Date().getTime() - lastFreeOnlyToggle.getTime() <
-			MILLISECONDS_BETWEEN_LOADING_NEW_VIDEOS
-		)
-			return;
+		if (new Date().getTime() - lastFreeOnlyToggle.getTime() < 200) return;
 
 		lastFreeOnlyToggle = new Date();
 

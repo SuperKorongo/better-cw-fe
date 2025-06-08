@@ -6,6 +6,7 @@
 </script>
 
 <div class="container">
+	Free videos only
 	<FormField align="end">
 		<Switch
 			onclick={() => {
@@ -13,15 +14,12 @@
 			}}
 			bind:checked={value}
 		/>
-		{#snippet label()}
-			<!-- TODO: TRANSLATION - TODO: ADJUST VIDEO FORM: BY DEFAULT PRICE OF 1.00, THEN ADD TOGGLE TO MAKE THE VIDEO FREE -->
-			Free videos only
-		{/snippet}
 	</FormField>
 </div>
 
 <style>
 	.container {
-		display: none; /* TODO: Better label */
+		color: #eee;
+		font-size: 13px;
 	}
 </style>

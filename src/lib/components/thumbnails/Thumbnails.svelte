@@ -130,6 +130,10 @@
 		display: flex;
 		align-items: baseline;
 		margin-bottom: 20px;
+		background: rgba(0, 0, 0, 0.463);
+		width: fit-content;
+		border-radius: 15px;
+		padding: 0px 10px;
 	}
 
 	@media (max-width: 600px) {
