@@ -41,11 +41,6 @@
 			return;
 		}
 
-		if ($videoForm.priceInCentsOfDollar <= 99) {
-			toasts.error(getTranslation('upload.errors.emptyPrice'));
-			return;
-		}
-
 		if ($videoForm.priceInCentsOfDollar > 100000000) {
 			toasts.error(getTranslation('upload.errors.maxPrice'));
 			return;

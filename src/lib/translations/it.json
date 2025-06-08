@@ -366,7 +366,6 @@
 			"emptyTitle": "Specifica il titolo del video",
 			"emptyDownloadLink": "Aggiungi il link di download di mega.nz",
 			"missingThumbnail": "Aggiungi almeno una miniatura",
-			"emptyPrice": "Specifica il prezzo (minimo 99 centesimi)",
 			"emptyDuration": "Specifica la durata del video",
 			"genericServerError": "Errore del server - Per favore riprova più tardi",
 			"linkAlreadyUsed": "Il link di download è già assegnato a un altro video",
