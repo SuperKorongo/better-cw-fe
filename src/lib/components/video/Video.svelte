@@ -38,8 +38,7 @@
 >
 	<CloseButton onClick={onClose} />
 	<main>
-		<h1>Model video</h1>
-		<!-- TODO: TRANSLATION -->
+		<h1>{video.model?.name}</h1>
 		<article>
 			<h2>{video.title}</h2>
 			{#if video.price.value}
