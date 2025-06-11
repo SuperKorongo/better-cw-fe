@@ -1,4 +1,5 @@
 import { goto } from '$app/navigation';
+import { loading } from '$lib/stores/loading/store';
 import type { SwipeCustomEvent } from 'svelte-gestures';
 
 export const events = (container: () => HTMLElement, setModalImageUrl: (url: string) => void) => {
@@ -30,6 +31,7 @@ export const events = (container: () => HTMLElement, setModalImageUrl: (url: str
 		onExit();
 
 		if (history.length <= 2) {
+			loading.set(true);
 			goto('/');
 			return;
 		}
