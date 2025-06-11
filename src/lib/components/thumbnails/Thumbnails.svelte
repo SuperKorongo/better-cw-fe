@@ -77,12 +77,10 @@
 </script>
 
 <section>
-	{#if videos.length > 0}
-		<div class="filters-container">
-			<OrderBy />
-			<FreeOnlyToggle bind:value={freeVideosOnly} />
-		</div>
-	{/if}
+	<div class="filters-container">
+		<OrderBy />
+		<FreeOnlyToggle bind:value={freeVideosOnly} />
+	</div>
 	<div class="thumbnails-container">
 		{#each videos as video (video.uuid)}
 			<Thumbnail {video} />
