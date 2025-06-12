@@ -4,7 +4,8 @@ import { getHomepageVideos } from '$lib/services/videos';
 import { getOrderBy } from '$lib/stores/order_by/store';
 import { getFromUrl as getSearchFromURL } from '$lib/stores/search/store';
 import type { Language } from '$lib/translations';
-import { availableLanguages, setLanguage } from '$lib/translations';
+import { setLanguage } from '$lib/translations';
+import availableLanguages from '$lib/translations/available_languages.json' with { type: 'json' };
 import { redirect } from '@sveltejs/kit';
 import type { PageLoadEvent } from './$types';
 

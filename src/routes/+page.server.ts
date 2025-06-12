@@ -1,5 +1,6 @@
 import type { Video } from '$lib/models/Video';
-import { availableLanguages, type Language } from '$lib/translations/index.js';
+import availableLanguages from '$lib/translations/available_languages.json' with { type: 'json' };
+import { type Language } from '$lib/translations/index.js';
 import { redirect } from '@sveltejs/kit';
 
 export const prerender = false;

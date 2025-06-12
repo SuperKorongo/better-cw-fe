@@ -3,6 +3,7 @@
 	import { language } from '$lib/stores/language/store';
 	import { type Language } from '$lib/translations';
 	import ItalianFlag from '../icons/flags/ItalianFlag.svelte';
+	import RussianFlag from '../icons/flags/RussianFlag.svelte';
 	import SpanishFlag from '../icons/flags/SpanishFlag.svelte';
 	import UkFlag from '../icons/flags/UKFlag.svelte';
 
@@ -26,6 +27,9 @@
 	</button>
 	<button onclick={() => changeLanguage('it')}>
 		<ItalianFlag />
+	</button>
+	<button onclick={() => changeLanguage('ru')}>
+		<RussianFlag />
 	</button>
 </div>
 

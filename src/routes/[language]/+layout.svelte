@@ -21,7 +21,9 @@
 	import { language } from '$lib/stores/language/store';
 	import { menu } from '$lib/stores/menu/store';
 	import { navigationHistory } from '$lib/stores/navigation/store';
-	import { availableLanguages, getTranslation, type Language } from '$lib/translations';
+	import { getTranslation, type Language } from '$lib/translations';
+	import availableLanguages from '$lib/translations/available_languages.json' with { type: 'json' };
+
 	import '../styles.css';
 
 	let { children } = $props();
