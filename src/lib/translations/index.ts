@@ -1,10 +1,11 @@
+import languages from './available_languages.json' with { type: 'json' };
 import * as enTranslations from './en.json';
 import * as esTranslations from './es.json';
 import * as itTranslations from './it.json';
 
 type TranslationsJSON = { [key: string]: TranslationsJSON | string };
 export type Language = 'en' | 'es' | 'it';
-export const availableLanguages: Language[] = ['en', 'es', 'it'];
+export const availableLanguages: Language[] = languages as Language[];
 
 export const translations: { [key in Language]: TranslationsJSON } = {
 	en: enTranslations,
