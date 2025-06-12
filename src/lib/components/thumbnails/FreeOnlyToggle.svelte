@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { getTranslation } from '$lib/translations';
 	import FormField from '@smui/form-field';
 	import Switch from '@smui/switch';
 
@@ -6,7 +7,7 @@
 </script>
 
 <div class="container">
-	Free videos only
+	{getTranslation('homepage.freeVideosOnly')}
 	<FormField align="end">
 		<Switch
 			onclick={() => {

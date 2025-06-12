@@ -220,7 +220,8 @@
 		"metaDescription": "Compra y vende videos para adultos de forma segura con Bitcoin. Totalmente anónimo. Únete al mejor mercado de contenido adulto premium. Transacciones rápidas, privacidad total y una experiencia fluida.",
 		"metaDescriptionUserPage": "Descubre los mejores clips compartidos por $USER.",
 		"metaDescriptionModelPage": "Explora los mejores clips de $MODEL.",
-		"metaDescriptionTagPage": "Mira los clips más increíbles de $TAG."
+		"metaDescriptionTagPage": "Mira los clips más increíbles de $TAG.",
+		"freeVideosOnly": "Solo videos gratis"
 	},
 	"menu": {
 		"home": "Home",

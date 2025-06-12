@@ -5,7 +5,7 @@ import * as itTranslations from './it.json';
 
 type TranslationsJSON = { [key: string]: TranslationsJSON | string };
 export type Language = 'en' | 'es' | 'it';
-export const availableLanguages: Language[] = languages as Language[];
+export const availableLanguages: Language[] = languages as Language[]; // todo: no need to export this, simply import ./available_languages.json whenever needed
 
 export const translations: { [key in Language]: TranslationsJSON } = {
 	en: enTranslations,

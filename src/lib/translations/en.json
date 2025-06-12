@@ -220,7 +220,8 @@
 		"metaDescription": "Buy and sell adult videos securely with Bitcoin. Fully anonymous. Join the top marketplace for premium adult content. Fast transactions, full privacy, and a seamless experience.",
 		"metaDescriptionUserPage": "Discover the best clips shared by $USER.",
 		"metaDescriptionModelPage": "Browse the best clips of $MODEL.",
-		"metaDescriptionTagPage": "Watch the most amazing $TAG clips."
+		"metaDescriptionTagPage": "Watch the most amazing $TAG clips.",
+		"freeVideosOnly": "Free videos only"
 	},
 	"menu": {
 		"home": "Home",
