@@ -188,3 +188,22 @@ export const handleApiError = (
 
 	toasts.error(getTranslation(errorMessageKey));
 };
+
+export const isAdblockPresent = async (): Promise<boolean> => {
+	const ADS_URL = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+
+	return new Promise((resolve) => {
+		const xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == XMLHttpRequest.DONE) {
+				resolve(
+					xhr.status === 0 ||
+						xhr.responseURL !== ADS_URL ||
+						xhr.response.toLowerCase().includes('block')
+				);
+			}
+		};
+		xhr.open('HEAD', ADS_URL, true);
+		xhr.send(null);
+	});
+};

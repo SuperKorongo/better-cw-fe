@@ -1,15 +1,50 @@
 <script lang="ts">
-	import { PUBLIC_AD_BANNER_KEY } from '$env/static/public';
+	import { PUBLIC_AD_BANNER_KEY, PUBLIC_AD_BANNER_SRC } from '$env/static/public';
+	import { isAdblockPresent } from '$lib/utils/utils';
+	import { onMount } from 'svelte';
+
+	let height: number = 250;
+	let width: number = 300;
+
+	let container: HTMLDivElement | null = $state(null);
+	let _isAdBlockPresent: boolean = $state(true);
+
+	onMount(async () => {
+		_isAdBlockPresent = await isAdblockPresent();
+		if (_isAdBlockPresent) {
+			return;
+		}
+	});
+
+	$effect(() => {
+		if (!container || _isAdBlockPresent) {
+			return;
+		}
+
+		(window as any).atOptions = {
+			key: PUBLIC_AD_BANNER_KEY,
+			format: 'iframe',
+			height,
+			width,
+			params: {}
+		};
+
+		const scriptNode = document.createElement('script');
+		scriptNode.setAttribute('type', 'text/javascript');
+		scriptNode.setAttribute('src', PUBLIC_AD_BANNER_SRC);
+
+		container.append(scriptNode);
+	});
 </script>
 
-<div id={`container-${PUBLIC_AD_BANNER_KEY}`}></div>
+{#if !_isAdBlockPresent}
+	<div bind:this={container}></div>
+{/if}
 
 <style>
 	div {
-		max-width: var(--thumbnail-width);
-		max-height: var(--thumbnail-height);
-		overflow: hidden;
-		background-color: rgb(0, 0, 0);
-		border-radius: var(--thumbnail-border-radius);
+		padding-left: 25px;
+		max-width: 400px;
+		max-height: 200px;
 	}
 </style>

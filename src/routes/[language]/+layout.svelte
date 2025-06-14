@@ -8,11 +8,9 @@
 
 	import { afterNavigate } from '$app/navigation';
 	import {
-		PUBLIC_AD_BANNER_SRC,
 		PUBLIC_ANALYTICS_ID,
 		PUBLIC_ANALYTICS_SCRIPT_URL,
-		PUBLIC_DOMAIN,
-		PUBLIC_POPUNDER_AD_SRC
+		PUBLIC_DOMAIN
 	} from '$env/static/public';
 	import { onClose as closeMenu, onClose } from '$lib/components/menu/events';
 	import Menu from '$lib/components/menu/Menu.svelte';
@@ -108,12 +106,6 @@
 			/>
 		{/if}
 	{/each}
-	{#if PUBLIC_POPUNDER_AD_SRC}
-		<script type="text/javascript" src={`${PUBLIC_POPUNDER_AD_SRC}`}></script>
-	{/if}
-	{#if PUBLIC_AD_BANNER_SRC}
-		<script type="text/javascript" data-cfasync="false" src={`${PUBLIC_AD_BANNER_SRC}`}></script>
-	{/if}
 </svelte:head>
 
 {#key mounted}
