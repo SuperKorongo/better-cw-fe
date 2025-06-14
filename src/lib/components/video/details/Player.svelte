@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { PUBLIC_DIRECT_LINK_AD_SRC } from '$env/static/public';
 	import type { Video } from '$lib/models/Video';
 	import { addView } from '$lib/services/videos';
 
@@ -10,6 +11,9 @@
 
 	const onPlayVideo = (e: MouseEvent) => {
 		addView(video.uuid);
+		if (PUBLIC_DIRECT_LINK_AD_SRC) {
+			window.open(PUBLIC_DIRECT_LINK_AD_SRC, '_blank');
+		}
 		(e.target as HTMLDivElement).style.display = 'none';
 	};
 </script>
