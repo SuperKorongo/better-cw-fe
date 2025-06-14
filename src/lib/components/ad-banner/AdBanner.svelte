@@ -37,7 +37,7 @@
 	});
 </script>
 
-{#if !_isAdBlockPresent}
+{#if !_isAdBlockPresent && PUBLIC_AD_BANNER_KEY}
 	<div bind:this={container}></div>
 {/if}
 

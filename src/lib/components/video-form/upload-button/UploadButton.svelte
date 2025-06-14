@@ -87,8 +87,18 @@
 	<Button onclick={onClick} variant="raised">{buttonLabel}</Button>
 	<span class="disclaimer">{disclaimer}</span>
 </div>
+<div class="loading-overlay"></div>
 
 <style>
+	.loading-overlay {
+		display: none;
+		position: fixed;
+		top: var(--navbar-height);
+		left: 0%;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.5);
+	}
 	.disclaimer {
 		display: block;
 		font-size: 13px;
