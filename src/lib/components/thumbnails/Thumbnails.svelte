@@ -7,7 +7,6 @@
 	import { orderBy } from '$lib/stores/order_by/store';
 	import { search } from '$lib/stores/search/store';
 	import { getTranslation } from '$lib/translations';
-	import AdBanner from '../ad-banner/AdBanner.svelte';
 	import Thumbnail from '../thumbnail/Thumbnail.svelte';
 	import { events, type GetVideosFunc } from './events';
 	import FreeOnlyToggle from './FreeOnlyToggle.svelte';
@@ -83,7 +82,6 @@
 		<FreeOnlyToggle bind:value={freeVideosOnly} />
 	</div>
 	<div class="thumbnails-container">
-		<AdBanner />
 		{#each videos as video (video.uuid)}
 			<Thumbnail {video} />
 		{/each}
