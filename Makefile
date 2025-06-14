@@ -63,6 +63,9 @@ vps-initial-setup:
 	ssh -t -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "cd ${REMOTE_FOLDER}; make generate-prod-certs"
 	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "cd ${REMOTE_FOLDER}; make vps-setup-nginx-conf"
 	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "cd ${REMOTE_FOLDER}; docker compose stop; docker compose up -d;"
+# System monitor script to log cpu, memory and disk usage
+	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "cd ${REMOTE_FOLDER}; cp system_monitor.sh ~/; chmod +x ~/system_monitor.sh; ~/system_monitor.sh &"
+# Run deploy script to finalize the setup
 	make deploy
 
 vps-update-repo: 
