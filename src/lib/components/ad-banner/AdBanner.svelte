@@ -43,7 +43,7 @@
 
 <style>
 	div {
-		padding-left: 25px;
+		padding-left: 10px;
 		max-width: 400px;
 		max-height: 200px;
 	}
