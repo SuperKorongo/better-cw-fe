@@ -1,6 +1,7 @@
 import { goto } from '$app/navigation';
-import { loading } from '$lib/stores/loading/store';
+import { navigationHistory } from '$lib/stores/navigation/store';
 import type { SwipeCustomEvent } from 'svelte-gestures';
+import { get } from 'svelte/store';
 
 export const events = (container: () => HTMLElement, setModalImageUrl: (url: string) => void) => {
 	const mobileBreakpoint = 1100;
@@ -30,8 +31,7 @@ export const events = (container: () => HTMLElement, setModalImageUrl: (url: str
 
 		onExit();
 
-		if (history.length <= 2) {
-			loading.set(true);
+		if (get(navigationHistory).history.length <= 1) {
 			goto('/');
 			return;
 		}
