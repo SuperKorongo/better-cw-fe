@@ -20,6 +20,9 @@
 	});
 
 	$effect(() => {
+		hours = isNaN(hours) ? 0 : hours;
+		minutes = isNaN(minutes) ? 0 : minutes;
+		seconds = isNaN(seconds) ? 0 : seconds;
 		videoForm.setDurationInSeconds(hours * 60 * 60 + minutes * 60 + seconds);
 	});
 </script>
