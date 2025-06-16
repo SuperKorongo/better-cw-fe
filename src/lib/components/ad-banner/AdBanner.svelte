@@ -21,7 +21,11 @@
 			return;
 		}
 
-		(window as any).atOptions = {
+		(
+			window as unknown as {
+				atOptions: { [key: string]: string | number | object };
+			}
+		).atOptions = {
 			key: PUBLIC_AD_BANNER_KEY,
 			format: 'iframe',
 			height,
@@ -33,7 +37,7 @@
 		scriptNode.setAttribute('type', 'text/javascript');
 		scriptNode.setAttribute('src', PUBLIC_AD_BANNER_SRC);
 
-		container.append(scriptNode);
+		container.append(scriptNode); // eslint-disable-line svelte/no-dom-manipulating
 	});
 </script>
 
