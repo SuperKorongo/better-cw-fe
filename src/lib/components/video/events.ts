@@ -1,4 +1,5 @@
 import { goto } from '$app/navigation';
+import { language } from '$lib/stores/language/store';
 import { navigationHistory } from '$lib/stores/navigation/store';
 import type { SwipeCustomEvent } from 'svelte-gestures';
 import { get } from 'svelte/store';
@@ -32,7 +33,7 @@ export const events = (container: () => HTMLElement, setModalImageUrl: (url: str
 		onExit();
 
 		if (get(navigationHistory).history.length <= 1) {
-			goto('/');
+			goto(`/${get(language)}`);
 			return;
 		}
 

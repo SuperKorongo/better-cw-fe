@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
+	import HeaderTexts from '$lib/components/header-texts/HeaderTexts.svelte';
 	import type { GetVideosFunc, GetVideosFuncParams } from '$lib/components/thumbnails/events';
 	import Thumbnails from '$lib/components/thumbnails/Thumbnails.svelte';
 	import Video from '$lib/components/video/Video.svelte';
@@ -30,16 +31,17 @@
 	};
 </script>
 
-{#key mounted}
-	{#if mounted}
-		<Thumbnails videos={homepageVideos} {getVideosFunc} />
-	{/if}
-{/key}
-
 {#key page.state}
 	{#if page.state.selectedVideo}
 		<Video video={page.state.selectedVideo} />
 	{:else if !data.error}
+		<HeaderTexts />
 		<Video video={data.video} />
+	{/if}
+{/key}
+
+{#key mounted}
+	{#if mounted}
+		<Thumbnails videos={homepageVideos} {getVideosFunc} />
 	{/if}
 {/key}
