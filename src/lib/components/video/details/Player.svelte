@@ -1,7 +1,10 @@
 <script lang="ts">
 	import { PUBLIC_DIRECT_LINK_AD_SRC } from '$env/static/public';
+	import * as toasts from '$lib/components/toasts/toasts';
 	import type { Video } from '$lib/models/Video';
 	import { addView } from '$lib/services/videos';
+	import { getTranslation } from '$lib/translations';
+	import { isAdblockPresent } from '$lib/utils/utils';
 
 	let {
 		video
@@ -9,7 +12,12 @@
 		video: Video;
 	} = $props();
 
-	const onPlayVideo = (e: MouseEvent) => {
+	const onPlayVideo = async (e: MouseEvent) => {
+		if (await isAdblockPresent()) {
+			toasts.warning(getTranslation('video.deactivateAdblock'), { duration: 999999 });
+			return;
+		}
+
 		addView(video.uuid);
 		if (PUBLIC_DIRECT_LINK_AD_SRC) {
 			window.open(PUBLIC_DIRECT_LINK_AD_SRC, '_blank');

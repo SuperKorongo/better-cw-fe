@@ -404,7 +404,8 @@
 		"videoRating": "Video rating",
 		"modelName": "Modelo",
 		"duration": "Duración",
-		"free": "Gratis"
+		"free": "Gratis",
+		"deactivateAdblock": "Desactive el bloqueador de anuncios y actualice la página para ver el video gratuito"
 	},
 	"withdraw": {
 		"title": "Retirar fondos",

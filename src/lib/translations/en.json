@@ -404,7 +404,8 @@
 		"videoRating": "Video rating",
 		"modelName": "Model name",
 		"duration": "Duration",
-		"free": "Free"
+		"free": "Free",
+		"deactivateAdblock": "Deactivate adblock and refresh the page to see the free video"
 	},
 	"withdraw": {
 		"title": "Withdraw funds",

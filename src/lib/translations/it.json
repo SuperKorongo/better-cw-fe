@@ -404,7 +404,8 @@
 		"videoRating": "Valutazione del video",
 		"modelName": "Nome del modello",
 		"duration": "Durata",
-		"free": "Gratuito"
+		"free": "Gratuito",
+		"deactivateAdblock": "Disattiva AdBlock e aggiorna la pagina per vedere il video gratuito"
 	},
 	"withdraw": {
 		"title": "Preleva fondi",
