@@ -31,6 +31,11 @@
 	};
 </script>
 
+<svelte:head>
+	{#if !data.error}
+		<title>{data.video.title} - Clipz4BTC</title>
+	{/if}
+</svelte:head>
 {#key page.state}
 	{#if page.state.selectedVideo}
 		<Video video={page.state.selectedVideo} />
