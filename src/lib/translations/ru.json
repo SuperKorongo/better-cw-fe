@@ -221,7 +221,8 @@
 		"metaDescriptionUserPage": "Откройте для себя лучшие клипы, поделившиеся $USER.",
 		"metaDescriptionModelPage": "Просматривайте лучшие клипы $MODEL.",
 		"metaDescriptionTagPage": "Смотрите самые удивительные клипы с тегом $TAG.",
-		"freeVideosOnly": "Только бесплатные видео"
+		"freeVideosOnly": "Только бесплатные видео",
+		"watchForFree": "Бесплатное видео"
 	},
 	"menu": {
 		"home": "Главная",

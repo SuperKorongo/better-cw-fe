@@ -221,7 +221,8 @@
 		"metaDescriptionUserPage": "Discover the best clips shared by $USER.",
 		"metaDescriptionModelPage": "Browse the best clips of $MODEL.",
 		"metaDescriptionTagPage": "Watch the most amazing $TAG clips.",
-		"freeVideosOnly": "Free videos only"
+		"freeVideosOnly": "Free videos only",
+		"watchForFree": "Watch for free"
 	},
 	"menu": {
 		"home": "Home",

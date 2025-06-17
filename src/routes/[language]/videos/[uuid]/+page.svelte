@@ -9,6 +9,7 @@
 	import { type Video as VideoType } from '$lib/models/Video';
 	import { getHomepageVideos } from '$lib/services/videos';
 	import { language } from '$lib/stores/language/store';
+	import { getTranslation } from '$lib/translations';
 	import { onMount } from 'svelte';
 	import type { Data } from './+page';
 
@@ -33,7 +34,10 @@
 
 <svelte:head>
 	{#if !data.error}
-		<title>{data.video.title} - Clipz4BTC</title>
+		<title>
+			{data.video.price.value === 0 ? `${getTranslation('homepage.watchForFree')} | ` : ''}{data
+				.video.title} - Clipz4BTC
+		</title>
 	{/if}
 </svelte:head>
 {#key page.state}
