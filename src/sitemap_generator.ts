@@ -27,7 +27,8 @@ const BASE_URL = process.env.PUBLIC_DOMAIN;
 const DEFAULT_LANGUAGE = 'en'; // Used for <loc> and x-default
 const MAX_ITEMS = 200;
 const PAGE_SIZE = 25;
-const CHANGE_FREQUENCY = 'daily';
+const MODELS_CHANGE_FREQUENCY = 'weekly';
+const TAGS_CHANGE_FREQUENCY = 'daily';
 
 // Validate environment variables
 if (!API_URL || !BASE_URL) {
@@ -48,7 +49,7 @@ function generateItemXml(item: string, type: 'tags' | 'models'): string {
 	// Add x-default
 	xml += `    <xhtml:link rel="alternate" hreflang="x-default" href="${mainUrl}" />\n`;
 	xml += `    <lastmod>${new Date().toISOString()}</lastmod>\n`;
-	xml += `    <changefreq>${CHANGE_FREQUENCY}</changefreq>\n`;
+	xml += `    <changefreq>${type === 'tags' ? TAGS_CHANGE_FREQUENCY : MODELS_CHANGE_FREQUENCY}</changefreq>\n`;
 	xml += `    <priority>0.8</priority>\n`;
 	xml += `  </url>\n`;
 	return xml;
