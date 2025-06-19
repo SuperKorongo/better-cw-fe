@@ -111,6 +111,7 @@
 	}
 	.rating-container {
 		display: inline-block;
+		visibility: hidden;
 		width: 80%;
 		height: 25px;
 		padding-left: 10px;
