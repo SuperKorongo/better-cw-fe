@@ -76,7 +76,7 @@ type CryptoWidgetPopupIncomingMessage = {
 export const openCryptoWidgetPopup = (paymentUUID: string, cryptoGatewayUUID: string): void => {
 	const widgetWindow = window.open(
 		'',
-		'popupWindow',
+		'popupWindow' + new Date().getTime(),
 		'width=750,height=800,scrollbars=no'
 	) as WindowProxy;
 
