@@ -4,11 +4,7 @@
 	import { loading } from '$lib/stores/loading/store';
 	import { search } from '$lib/stores/search/store';
 	import { getTranslation } from '$lib/translations';
-	import {
-		enterKeyCheck,
-		getSearchAndOrderQueryParams,
-		isVideoDisplayRoute
-	} from '$lib/utils/utils';
+	import { enterKeyCheck, getSearchAndOrderQueryParams } from '$lib/utils/utils';
 	import SearchIcon from './SearchIcon.svelte';
 
 	let searchInput: HTMLInputElement;
@@ -16,12 +12,8 @@
 	function onClick() {
 		search.set({ value: searchInput.value, forceLoad: true });
 
-		if (isVideoDisplayRoute()) {
-			goto(getSearchAndOrderQueryParams());
-		} else {
-			loading.set(true);
-			goto(`/${$language}` + getSearchAndOrderQueryParams());
-		}
+		loading.set(true);
+		goto(`/${$language}` + getSearchAndOrderQueryParams());
 	}
 
 	function onKeyPress({ key }: KeyboardEvent) {
