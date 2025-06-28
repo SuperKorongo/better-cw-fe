@@ -7,6 +7,7 @@
 	import { orderBy } from '$lib/stores/order_by/store';
 	import { search } from '$lib/stores/search/store';
 	import { getTranslation } from '$lib/translations';
+	import { isAdblockPresent } from '$lib/utils/utils';
 	import AdBanner from '../ad-banner/AdBanner.svelte';
 	import Thumbnail from '../thumbnail/Thumbnail.svelte';
 	import { events, type GetVideosFunc } from './events';
@@ -23,6 +24,8 @@
 
 	let noMoreVideos: boolean = $state(false);
 	let freeVideosOnly: boolean = $state(false);
+	let mounted: boolean = $state(false);
+	let hasAdBlock: boolean = $state(false);
 
 	const { onScroll, onClickLoadMore, onOrderByChanged, onSearchChanged, onToggleFreeVideosOnly } =
 		events(
@@ -34,8 +37,10 @@
 			getVideosFunc
 		);
 
-	onMount(() => {
+	onMount(async () => {
 		window.onscroll = () => onScroll(addNewVideos, !noMoreVideos);
+		hasAdBlock = await isAdblockPresent();
+		mounted = true;
 	});
 
 	$effect(() => {
@@ -89,12 +94,26 @@
 		{/each}
 	</div>
 	<div class="load-more-container">
-		{#if noMoreVideos}
-			<span>{getTranslation('common.noMoreVideos')}</span>
-		{:else}
-			<Button onclick={() => onClickLoadMore(addNewVideos)} variant="raised" color="secondary">
-				<Label>{getTranslation('homepage.loadMore')}</Label>
-			</Button>
+		{#if mounted}
+			{#if noMoreVideos}
+				<span>{getTranslation('common.noMoreVideos')}</span>
+			{:else}
+				<Button
+					aria-describedby="loadMoreDisclaimer"
+					onclick={() => onClickLoadMore(addNewVideos)}
+					variant="raised"
+					color="secondary"
+				>
+					<Label>
+						{getTranslation(hasAdBlock ? 'homepage.loadMore' : 'homepage.loadMoreWithoutAdBlock')}
+					</Label>
+				</Button>
+				<span id="loadMoreDisclaimer">
+					{#if !hasAdBlock}
+						{getTranslation('homepage.loadMoreAdDisclaimer')}
+					{/if}
+				</span>
+			{/if}
 		{/if}
 	</div>
 </section>
@@ -134,6 +153,13 @@
 		width: fit-content;
 		border-radius: 15px;
 		padding: 0px 10px;
+	}
+
+	#loadMoreDisclaimer {
+		display: block;
+		margin-top: 10px;
+		font-size: 13px;
+		color: #bbb;
 	}
 
 	@media (max-width: 600px) {
