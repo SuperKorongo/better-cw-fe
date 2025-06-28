@@ -62,7 +62,7 @@
 	});
 
 	$effect(() => {
-		navigationHistory.push(page.url.pathname);
+		navigationHistory.push(page.url.pathname, page.route.id || '');
 	});
 	$effect(() => {
 		menu.setOverlay(menuOverlayModal!);

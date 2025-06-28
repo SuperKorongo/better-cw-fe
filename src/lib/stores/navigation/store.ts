@@ -2,7 +2,10 @@ import { get, writable } from 'svelte/store';
 import { language } from '../language/store';
 
 type NavigationHistory = {
-	history: string[];
+	history: {
+		path: string;
+		id: string;
+	}[];
 };
 
 export const navigationHistory = (() => {
@@ -13,9 +16,12 @@ export const navigationHistory = (() => {
 	return {
 		subscribe,
 
-		push: (path: string) =>
+		push: (path: string, routeId: string) =>
 			update((data: NavigationHistory) => {
-				data.history.push(path);
+				data.history.push({
+					path,
+					id: routeId
+				});
 				return data;
 			}),
 
@@ -25,12 +31,12 @@ export const navigationHistory = (() => {
 			for (let i = history.length - 1; i >= 0; i--) {
 				if (
 					[`/${get(language)}/sign-in`, `/${get(language)}/register`, '/logout'].includes(
-						history[i]
+						history[i].path
 					)
 				) {
 					continue;
 				}
-				return history[i];
+				return history[i].path;
 			}
 
 			return '/' + get(language);

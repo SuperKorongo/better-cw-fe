@@ -1,4 +1,4 @@
-import { pushState } from '$app/navigation';
+import { goto, pushState } from '$app/navigation';
 import { language } from '$lib/stores/language/store';
 import { navigationHistory } from '$lib/stores/navigation/store';
 import type { SwipeCustomEvent } from 'svelte-gestures';
@@ -33,6 +33,13 @@ export const events = (container: () => HTMLElement, setModalImageUrl: (url: str
 		onExit();
 
 		if (get(navigationHistory).history.length <= 1) {
+			if (
+				get(navigationHistory).history.length === 1 &&
+				get(navigationHistory).history[0].id === '/[language]/videos/[uuid]'
+			) {
+				goto(`/${get(language)}`);
+				return;
+			}
 			pushState(`/${get(language)}`, { selectedVideo: undefined });
 			return;
 		}
