@@ -35,6 +35,7 @@ export const events = (
 		onNewVideosLoaded: (result: { videos: Video[]; error: Error | null }) => void,
 		shouldLoadNewVideos: boolean
 	): Promise<void> => {
+		return;
 		if (!isVideoDisplayRoute()) return;
 		if (!shouldLoadNewVideos) return;
 
