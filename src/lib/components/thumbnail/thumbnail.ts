@@ -12,6 +12,7 @@ export const eventFunctions = (filePaths: string[], imgElement: () => HTMLImageE
 	let currentThumbnailUrlIndex: number = 0;
 
 	const onMouseOver = () => {
+		return;
 		const thumbnailsTransition = () => {
 			currentThumbnailUrlIndex++;
 			if (currentThumbnailUrlIndex === filePaths.length) {
@@ -29,7 +30,6 @@ export const eventFunctions = (filePaths: string[], imgElement: () => HTMLImageE
 
 		thumbnailsTransition();
 
-		return;
 		thumbnailsTransitionInterval = setInterval(
 			thumbnailsTransition,
 			THUMBNAILS_TRANSITION_TIME_IN_MILLISECONDS
