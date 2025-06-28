@@ -1,3 +1,4 @@
+import { PUBLIC_DIRECT_LINK_AD_SRC } from '$env/static/public';
 import { DEFAULT_PAGINATION, type OrderBy, type Pagination } from '$lib/models/Pagination';
 import type { Video } from '$lib/models/Video';
 import { loading } from '$lib/stores/loading/store';
@@ -35,7 +36,7 @@ export const events = (
 		onNewVideosLoaded: (result: { videos: Video[]; error: Error | null }) => void,
 		shouldLoadNewVideos: boolean
 	): Promise<void> => {
-		return;
+		return; // TODO: Debug performance issue that only happens in prod while loading videos on scroll.
 		if (!isVideoDisplayRoute()) return;
 		if (!shouldLoadNewVideos) return;
 
@@ -96,6 +97,9 @@ export const events = (
 			onNewVideosLoaded({ videos: [], error: e as Error });
 		} finally {
 			loading.set(false);
+			if (PUBLIC_DIRECT_LINK_AD_SRC) {
+				window.open(PUBLIC_DIRECT_LINK_AD_SRC, '_blank');
+			}
 		}
 	};
 
