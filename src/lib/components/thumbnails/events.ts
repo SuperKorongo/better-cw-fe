@@ -3,7 +3,7 @@ import { DEFAULT_PAGINATION, type OrderBy, type Pagination } from '$lib/models/P
 import type { Video } from '$lib/models/Video';
 import { loading } from '$lib/stores/loading/store';
 import { search } from '$lib/stores/search/store';
-import { handleApiError, isVideoDisplayRoute } from '$lib/utils/utils';
+import { handleApiError, isAdblockPresent, isVideoDisplayRoute } from '$lib/utils/utils';
 import { get } from 'svelte/store';
 
 const VIDEOS_TO_LOAD_ON_SCROLL = 10;
@@ -97,7 +97,7 @@ export const events = (
 			onNewVideosLoaded({ videos: [], error: e as Error });
 		} finally {
 			loading.set(false);
-			if (PUBLIC_DIRECT_LINK_AD_SRC) {
+			if (!(await isAdblockPresent()) && PUBLIC_DIRECT_LINK_AD_SRC) {
 				window.open(PUBLIC_DIRECT_LINK_AD_SRC, '_blank');
 			}
 		}
