@@ -28,6 +28,8 @@ export const eventFunctions = (filePaths: string[], imgElement: () => HTMLImageE
 		};
 
 		thumbnailsTransition();
+
+		return;
 		thumbnailsTransitionInterval = setInterval(
 			thumbnailsTransition,
 			THUMBNAILS_TRANSITION_TIME_IN_MILLISECONDS
