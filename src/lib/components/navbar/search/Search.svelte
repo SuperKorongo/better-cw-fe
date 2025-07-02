@@ -4,7 +4,7 @@
 	import { loading } from '$lib/stores/loading/store';
 	import { search } from '$lib/stores/search/store';
 	import { getTranslation } from '$lib/translations';
-	import { enterKeyCheck, getSearchAndOrderQueryParams } from '$lib/utils/utils';
+	import { enterKeyCheck, getSearchAndOrderQueryParams, openAdLink } from '$lib/utils/utils';
 	import SearchIcon from './SearchIcon.svelte';
 
 	let searchInput: HTMLInputElement;
@@ -13,6 +13,7 @@
 		search.set({ value: searchInput.value, forceLoad: true });
 
 		loading.set(true);
+		openAdLink();
 		goto(`/${$language}` + getSearchAndOrderQueryParams());
 	}
 

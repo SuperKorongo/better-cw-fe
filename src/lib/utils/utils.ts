@@ -1,6 +1,6 @@
 import { goto, pushState } from '$app/navigation';
 import { page } from '$app/state';
-import { PUBLIC_THUMBNAIL_IMAGES_URL } from '$env/static/public';
+import { PUBLIC_DIRECT_LINK_AD_SRC, PUBLIC_THUMBNAIL_IMAGES_URL } from '$env/static/public';
 import * as toasts from '$lib/components/toasts/toasts';
 import type { Video } from '$lib/models/Video';
 import { language } from '$lib/stores/language/store';
@@ -206,4 +206,10 @@ export const isAdblockPresent = async (): Promise<boolean> => {
 		xhr.open('HEAD', ADS_URL, true);
 		xhr.send(null);
 	});
+};
+
+export const openAdLink = async (): Promise<void> => {
+	if (!(await isAdblockPresent()) && PUBLIC_DIRECT_LINK_AD_SRC) {
+		window.open(PUBLIC_DIRECT_LINK_AD_SRC, '_blank');
+	}
 };

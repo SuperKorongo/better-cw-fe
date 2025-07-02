@@ -1,10 +1,9 @@
 <script lang="ts">
-	import { PUBLIC_DIRECT_LINK_AD_SRC } from '$env/static/public';
 	import * as toasts from '$lib/components/toasts/toasts';
 	import type { Video } from '$lib/models/Video';
 	import { addView } from '$lib/services/videos';
 	import { getTranslation } from '$lib/translations';
-	import { isAdblockPresent } from '$lib/utils/utils';
+	import { isAdblockPresent, openAdLink } from '$lib/utils/utils';
 
 	let {
 		video
@@ -19,9 +18,7 @@
 		}
 
 		addView(video.uuid);
-		if (PUBLIC_DIRECT_LINK_AD_SRC) {
-			window.open(PUBLIC_DIRECT_LINK_AD_SRC, '_blank');
-		}
+		openAdLink();
 		(e.target as HTMLDivElement).style.display = 'none';
 	};
 </script>
