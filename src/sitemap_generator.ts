@@ -25,7 +25,7 @@ interface ApiResponse {
 const API_URL = process.env.PUBLIC_STORE_API_URL;
 const BASE_URL = process.env.PUBLIC_DOMAIN;
 const DEFAULT_LANGUAGE = 'en'; // Used for <loc> and x-default
-const MAX_ITEMS = 200;
+const MAX_ITEMS = 50000;
 const PAGE_SIZE = 25;
 const MODELS_CHANGE_FREQUENCY = 'weekly';
 const TAGS_CHANGE_FREQUENCY = 'daily';
