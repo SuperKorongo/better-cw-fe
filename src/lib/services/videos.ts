@@ -63,6 +63,7 @@ export type UploadVideoRequest = {
 	description?: string;
 	model?: string;
 	downloadLinkInstructions?: string;
+	active?: boolean;
 };
 export const upload = async (data: VideoData): Promise<string> => {
 	const uploadVideoRequest: Partial<UploadVideoRequest> & { [key: string]: unknown } = {};
@@ -71,6 +72,7 @@ export const upload = async (data: VideoData): Promise<string> => {
 		uploadVideoRequest[key] = value;
 	}
 	delete uploadVideoRequest['blobs'];
+	uploadVideoRequest.active = true;
 
 	const response = await fetchWrapper(window.fetch)(`${PUBLIC_STORE_API_URL}/api/v1/videos/`, {
 		method: 'PUT',
