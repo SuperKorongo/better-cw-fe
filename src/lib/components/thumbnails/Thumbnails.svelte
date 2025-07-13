@@ -5,7 +5,6 @@
 	import type { Video } from '$lib/models/Video';
 	import { loading } from '$lib/stores/loading/store';
 	import { orderBy } from '$lib/stores/order_by/store';
-	import { search } from '$lib/stores/search/store';
 	import { getTranslation } from '$lib/translations';
 	import { isAdblockPresent } from '$lib/utils/utils';
 	import AdBanner from '../ad-banner/AdBanner.svelte';
@@ -71,10 +70,6 @@
 
 	$effect(() => {
 		onOrderByChanged($orderBy, setNewVideos);
-	});
-
-	$effect(() => {
-		onSearchChanged($search.value ?? '', setNewVideos);
 	});
 
 	$effect(() => {

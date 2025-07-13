@@ -9,17 +9,31 @@ import { getQueryParams } from './common';
 
 export const MEGA_PREFIX = 'https://mega.nz/file/';
 
+let lastFetchDate: Date | null = null;
+let lastFetchedVideos: Video[] = [];
+
 export const getHomepageVideos = async (
 	fetch: PageLoadEvent['fetch'],
 	pagination: Pagination,
 	search: string,
 	filters: GetVideosFuncParams['filters'] | null
 ): Promise<Video[]> => {
+	if (lastFetchDate === null) {
+		lastFetchDate = new Date();
+	} else {
+		if (new Date().getTime() - lastFetchDate.getTime() < 500) {
+			return lastFetchedVideos;
+		}
+	}
+
+	lastFetchDate = new Date();
 	const response = await fetchWrapper(fetch)(
 		`${PUBLIC_STORE_API_URL}/api/v1/videos/?${getQueryParams(pagination, search, filters)}`
 	);
 
 	const paginatedResponse = (await response.json()) as PaginatedResponse<Video>;
+	lastFetchedVideos = paginatedResponse.data;
+
 	return paginatedResponse.data;
 };
 
