@@ -9,6 +9,7 @@
 	import Button from '@smui/button';
 	import Textfield from '@smui/textfield';
 	import { onMount } from 'svelte';
+	import { SvelteMap } from 'svelte/reactivity';
 
 	onMount(() => loading.set(false));
 
@@ -31,7 +32,7 @@
 			currentPassword = '';
 			newPassword = '';
 		} catch (e: unknown) {
-			const funcMap = new Map<number, () => void>();
+			const funcMap = new SvelteMap<number, () => void>();
 			funcMap.set(409, () => {
 				toasts.error(getTranslation('admin.profile.invalidPassword'));
 			});

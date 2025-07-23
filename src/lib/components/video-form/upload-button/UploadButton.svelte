@@ -9,6 +9,7 @@
 	import { getTranslation } from '$lib/translations';
 	import { goToInternalLink, handleApiError } from '$lib/utils/utils';
 	import Button from '@smui/button';
+	import { SvelteMap } from 'svelte/reactivity';
 	import { patchThumbnails } from './patchThumbnails';
 
 	let { type, video }: { type: 'upload' | 'patch'; video?: Video } = $props();
@@ -70,7 +71,7 @@
 			cacheInvalidation.refreshMyVideos();
 			goToInternalLink(e, '/admin/my-videos');
 		} catch (e: unknown) {
-			const funcMap = new Map<number, () => void>();
+			const funcMap = new SvelteMap<number, () => void>();
 
 			funcMap.set(409, () => {
 				toasts.error(getTranslation('upload.errors.linkAlreadyUsed'));

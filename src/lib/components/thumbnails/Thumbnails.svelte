@@ -26,15 +26,14 @@
 	let mounted: boolean = $state(false);
 	let hasAdBlock: boolean = $state(false);
 
-	const { onScroll, onClickLoadMore, onOrderByChanged, onSearchChanged, onToggleFreeVideosOnly } =
-		events(
-			() => $orderBy,
-			() => {
-				return { freeVideosOnly };
-			},
-			() => videos,
-			getVideosFunc
-		);
+	const { onScroll, onClickLoadMore, onOrderByChanged, onToggleFreeVideosOnly } = events(
+		() => $orderBy,
+		() => {
+			return { freeVideosOnly };
+		},
+		() => videos,
+		getVideosFunc
+	);
 
 	onMount(async () => {
 		window.onscroll = () => onScroll(addNewVideos, !noMoreVideos);

@@ -9,6 +9,7 @@
 	import Slider from '@smui/slider';
 	import { Rating, Star } from 'flowbite-svelte';
 	import { onMount } from 'svelte';
+	import { SvelteMap } from 'svelte/reactivity';
 
 	const DEFAULT_RATNG = 4.5;
 	const LOCAL_STORAGE_KEY = 'user-rated-videos';
@@ -68,7 +69,7 @@
 			}
 			onSuccessfulRating();
 		} catch (e: unknown) {
-			const funcMap = new Map<number, () => void>();
+			const funcMap = new SvelteMap<number, () => void>();
 			funcMap.set(409, () => {
 				// User already rated this video
 				onSuccessfulRating();

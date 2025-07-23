@@ -8,6 +8,7 @@
 	import Button, { Label } from '@smui/button';
 	import Textfield from '@smui/textfield';
 	import CharacterCounter from '@smui/textfield/character-counter';
+	import { SvelteMap } from 'svelte/reactivity';
 
 	let {
 		open = $bindable(false),
@@ -43,7 +44,7 @@
 			cacheInvalidation.refreshMyDisputes();
 			onDisputeOpenCallback(e, videoUUID, dispute.uuid);
 		} catch (e: unknown) {
-			const funcMap = new Map<number, () => void>();
+			const funcMap = new SvelteMap<number, () => void>();
 			funcMap.set(409, () => {
 				toasts.warning(getTranslation('purchases.details.disputeModal.conflict'), {
 					duration: 15000

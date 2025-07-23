@@ -1,7 +1,6 @@
 import { DEFAULT_PAGINATION, type OrderBy, type Pagination } from '$lib/models/Pagination';
 import type { Video } from '$lib/models/Video';
 import { loading } from '$lib/stores/loading/store';
-import { search } from '$lib/stores/search/store';
 import { handleApiError, isVideoDisplayRoute, openAdLink } from '$lib/utils/utils';
 import { get } from 'svelte/store';
 
@@ -28,7 +27,6 @@ export const events = (
 	let previousScroll: number = Number.MAX_SAFE_INTEGER;
 	let lastLoadDate: Date = new Date();
 	let lastOrderByChangedDate: Date = new Date();
-	let lastSearchDate: Date = new Date();
 	let lastFreeOnlyToggle: Date = new Date();
 
 	const onScroll = async (
@@ -123,38 +121,6 @@ export const events = (
 		}
 	};
 
-	const onSearchChanged = async (text: string, newVideos: (newVideos: Video[]) => void) => {
-		if (!get(search).forceLoad && !text) {
-			const old = new Date();
-			old.setDate(lastSearchDate.getDate() - 1);
-			lastSearchDate = old;
-			return;
-		}
-
-		if (new Date().getTime() - lastSearchDate.getTime() < MILLISECONDS_BETWEEN_LOADING_NEW_VIDEOS)
-			return;
-
-		lastSearchDate = new Date();
-
-		loading.set(true);
-		try {
-			const videos = await getVideosFunc({
-				pagination: {
-					limit: DEFAULT_PAGINATION.limit,
-					offset: DEFAULT_PAGINATION.offset,
-					orderBy: orderBy()
-				},
-				filters: filters()
-			});
-
-			newVideos(videos);
-		} catch (e: unknown) {
-			handleApiError(e);
-		} finally {
-			loading.set(false);
-		}
-	};
-
 	const onToggleFreeVideosOnly = async (
 		newValue: boolean,
 		newVideos: (newVideos: Video[]) => void
@@ -197,7 +163,6 @@ export const events = (
 		onScroll,
 		onClickLoadMore,
 		onOrderByChanged,
-		onSearchChanged,
 		onToggleFreeVideosOnly
 	};
 };

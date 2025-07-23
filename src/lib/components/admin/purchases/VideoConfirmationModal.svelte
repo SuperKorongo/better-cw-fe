@@ -6,6 +6,7 @@
 	import { getTranslation } from '$lib/translations';
 	import { handleApiError } from '$lib/utils/utils';
 	import Button, { Label } from '@smui/button';
+	import { SvelteMap } from 'svelte/reactivity';
 
 	let {
 		open = $bindable(false),
@@ -30,7 +31,7 @@
 			cacheInvalidation.refreshMyPurchases();
 			onConfirmCallback(videoUUID);
 		} catch (e: unknown) {
-			const funcMap = new Map<number, () => void>();
+			const funcMap = new SvelteMap<number, () => void>();
 			funcMap.set(409, () => {
 				toasts.warning(
 					getTranslation('purchases.details.confirmationModal.confirmationDisputeConflict'),
