@@ -40,8 +40,8 @@
 
 	function getModelName(): string {
 		return data.videos && data.videos.length
-			? data.videos[0].model?.name || page.params.name
-			: page.params.name;
+			? data.videos[0].model?.name || (page.params.name as string)
+			: (page.params.name as string);
 	}
 </script>
 

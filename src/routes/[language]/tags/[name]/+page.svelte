@@ -40,8 +40,9 @@
 
 	function getTagName(): string {
 		return data.videos && data.videos.length
-			? data.videos[0].tags.find((t) => t.slug === page.params.name)?.name || page.params.name
-			: page.params.name;
+			? data.videos[0].tags.find((t) => t.slug === page.params.name)?.name ||
+					(page.params.name as string)
+			: (page.params.name as string);
 	}
 </script>
 

@@ -40,7 +40,9 @@
 	});
 
 	function getUserName(): string {
-		return data.videos && data.videos.length ? data.videos[0].uploader.name : page.params.name;
+		return data.videos && data.videos.length
+			? data.videos[0].uploader.name
+			: (page.params.name as string);
 	}
 </script>
 

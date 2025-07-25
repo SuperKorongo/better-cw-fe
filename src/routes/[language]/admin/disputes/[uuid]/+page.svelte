@@ -15,7 +15,7 @@
 		const { uuid } = page.params;
 
 		try {
-			dispute = await getDisputeByUUID(window.fetch, uuid);
+			dispute = await getDisputeByUUID(window.fetch, uuid as string);
 		} catch (e: unknown) {
 			handleApiError(e);
 			goto(`${$language}/admin/disputes`);

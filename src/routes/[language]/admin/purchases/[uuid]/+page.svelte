@@ -26,7 +26,7 @@
 		const { uuid } = page.params;
 
 		try {
-			payment = await getPaymentByUUID(window.fetch, uuid);
+			payment = await getPaymentByUUID(window.fetch, uuid as string);
 		} catch (e: unknown) {
 			handleApiError(e);
 			goto(`${$language}/admin/purchases`);
