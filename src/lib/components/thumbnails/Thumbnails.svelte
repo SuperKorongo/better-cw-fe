@@ -2,9 +2,12 @@
 	import Button, { Label } from '@smui/button';
 	import { onMount } from 'svelte';
 
-	import type { Video } from '$lib/models/Video';
+	import { page } from '$app/state';
+	import type { Tag, Video } from '$lib/models/Video';
+	import { getSimilar } from '$lib/services/tags';
 	import { loading } from '$lib/stores/loading/store';
 	import { orderBy } from '$lib/stores/order_by/store';
+	import { getFromUrl as getInputSearchFromUrl } from '$lib/stores/search/store';
 	import { getTranslation } from '$lib/translations';
 	import { isAdblockPresent } from '$lib/utils/utils';
 	import AdBanner from '../ad-banner/AdBanner.svelte';
@@ -25,6 +28,8 @@
 	let freeVideosOnly: boolean = $state(false);
 	let mounted: boolean = $state(false);
 	let hasAdBlock: boolean = $state(false);
+	let noVideosFound: boolean = $state(false);
+	let similarSearchText: string = $state('');
 
 	const { onScroll, onClickLoadMore, onOrderByChanged, onToggleFreeVideosOnly } = events(
 		() => $orderBy,
@@ -74,6 +79,19 @@
 	$effect(() => {
 		onToggleFreeVideosOnly(freeVideosOnly, setNewVideos);
 	});
+
+	$effect(() => {
+		if (videos.length === 0) {
+			noVideosFound = true;
+		}
+
+		const searchQueryParam = getInputSearchFromUrl(page.url);
+		if (videos.length === 0 && searchQueryParam) {
+			getSimilar(window.fetch, searchQueryParam).then((tag: Tag) => {
+				similarSearchText = tag.name;
+			});
+		}
+	});
 </script>
 
 <section>
@@ -81,6 +99,15 @@
 		<OrderBy />
 		<FreeOnlyToggle bind:value={freeVideosOnly} />
 	</div>
+	{#if noVideosFound}
+		<div class="no-videos-found">
+			TODO: Finish this <br />No results found :(
+			{#if similarSearchText}
+				<br />
+				Perhaps you are looking for {similarSearchText}?
+			{/if}
+		</div>
+	{/if}
 	<div class="thumbnails-container">
 		<AdBanner />
 		{#each videos as video (video.uuid)}

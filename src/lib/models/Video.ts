@@ -1,5 +1,10 @@
 import type { Currency } from './Currency';
 
+export type Tag = {
+	name: string;
+	slug: string;
+};
+
 export type Video = {
 	title: string;
 	description: string | null;
@@ -22,10 +27,7 @@ export type Video = {
 		name: string;
 		slug: string;
 	} | null;
-	tags: {
-		name: string;
-		slug: string;
-	}[];
+	tags: Tag[];
 	rating: number;
 	views: number;
 };
