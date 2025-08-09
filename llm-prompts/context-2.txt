@@ -7,7 +7,7 @@ Whenever we need to display a toast we import that package
 and then do toasts.success, toasts.warning or toast.error
 
 
-Another topic is translations. We have english, italian and spanish translations for all text in the app. The translations are located in src/lib/translations.
+Another topic is translations. We have english, italian, spanish and russian translations for all text in the app. The translations are located in src/lib/translations.
 
 Whenever I tell you to display any text, you always need to add the necessary translations to all languages and then use the getTranslation function 
 `import { getTranslation } from '$lib/translations';`
