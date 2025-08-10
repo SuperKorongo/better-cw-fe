@@ -24,7 +24,7 @@
 		getVideosFunc: GetVideosFunc;
 	} = $props();
 
-	let noMoreVideos: boolean = $state(false);
+	let shouldDisplayLoadMoreVideosButton: boolean = $state(true);
 	let freeVideosOnly: boolean = $state(false);
 	let mounted: boolean = $state(false);
 	let hasAdBlock: boolean = $state(false);
@@ -41,12 +41,14 @@
 	);
 
 	onMount(async () => {
-		window.onscroll = () => onScroll(addNewVideos, !noMoreVideos);
+		window.onscroll = () => onScroll(addNewVideos, shouldDisplayLoadMoreVideosButton);
 		hasAdBlock = await isAdblockPresent();
 		mounted = true;
 	});
 
 	$effect(() => {
+		shouldDisplayLoadMoreVideosButton = true;
+		noVideosFound = false;
 		if (videos) {
 			loading.set(false);
 		}
@@ -58,7 +60,7 @@
 		}
 
 		if (result.videos.length === 0) {
-			noMoreVideos = true;
+			shouldDisplayLoadMoreVideosButton = false;
 			return;
 		}
 
@@ -69,7 +71,7 @@
 	function setNewVideos(newVideos: Video[]) {
 		videos = Array.from(newVideos);
 
-		noMoreVideos = false;
+		shouldDisplayLoadMoreVideosButton = true;
 	}
 
 	$effect(() => {
@@ -116,9 +118,7 @@
 	</div>
 	<div class="load-more-container">
 		{#if mounted}
-			{#if noMoreVideos}
-				<span>{getTranslation('common.noMoreVideos')}</span>
-			{:else}
+			{#if shouldDisplayLoadMoreVideosButton && !noVideosFound}
 				<Button
 					aria-describedby="loadMoreDisclaimer"
 					onclick={() => onClickLoadMore(addNewVideos)}
@@ -134,6 +134,8 @@
 						{getTranslation('homepage.loadMoreAdDisclaimer')}
 					{/if}
 				</span>
+			{:else}
+				<span>{getTranslation('common.noMoreVideos')}</span>
 			{/if}
 		{/if}
 	</div>
