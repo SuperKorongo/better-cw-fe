@@ -117,11 +117,13 @@
 	{#if noVideosFound}
 		<div class="no-videos-found">
 			<span class="no-results-text">
-				No results found for text {getInputSearchFromUrl(page.url)} 😔
+				{getTranslation('homepage.noResults')}
+				{getInputSearchFromUrl(page.url)} 😔
 			</span>
 			{#if similarSearchText}
 				<span class="alternative-text">
-					Perhaps you are looking for <span
+					{getTranslation('homepage.noResultsAlternative')}
+					<span
 						onkeypress={() => {
 							onClickAlternative(similarSearchText);
 						}}
@@ -133,7 +135,7 @@
 						class="alternative"
 					>
 						<GlowingText text={similarSearchText} />
-					</span>🔥?
+					</span>? 🔥🔥
 				</span>
 			{/if}
 		</div>
@@ -218,6 +220,7 @@
 		border-radius: 10px;
 		padding: 30px 10px;
 		background: linear-gradient(45deg, #40c4ff, #a23cff);
+		margin-bottom: 25px;
 	}
 
 	.no-results-text,

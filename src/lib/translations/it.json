@@ -224,7 +224,9 @@
 		"metaDescriptionModelPage": "Esplora i migliori clip di $MODEL.",
 		"metaDescriptionTagPage": "Guarda i clip più sorprendenti di $TAG.",
 		"freeVideosOnly": "Solo video gratuiti",
-		"watchForFree": "Video gratuiti"
+		"watchForFree": "Video gratuiti",
+		"noResults": "Nessun risultato trovato per il testo",
+		"noResultsAlternative": "Forse stai cercando"
 	},
 	"menu": {
 		"home": "Home",

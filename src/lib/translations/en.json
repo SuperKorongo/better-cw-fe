@@ -224,7 +224,9 @@
 		"metaDescriptionModelPage": "Browse the best clips of $MODEL.",
 		"metaDescriptionTagPage": "Watch the most amazing $TAG clips.",
 		"freeVideosOnly": "Free videos only",
-		"watchForFree": "Watch for free"
+		"watchForFree": "Watch for free",
+		"noResults": "No results found for text",
+		"noResultsAlternative": "Perhaps you are looking for"
 	},
 	"menu": {
 		"home": "Home",

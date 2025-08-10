@@ -224,7 +224,9 @@
 		"metaDescriptionModelPage": "Просматривайте лучшие клипы $MODEL.",
 		"metaDescriptionTagPage": "Смотрите самые удивительные клипы с тегом $TAG.",
 		"freeVideosOnly": "Только бесплатные видео",
-		"watchForFree": "Бесплатное видео"
+		"watchForFree": "Бесплатное видео",
+		"noResults": "Результаты по запросу текст не найдены.",
+		"noResultsAlternative": "Возможно, вы ищете"
 	},
 	"menu": {
 		"home": "Главная",
