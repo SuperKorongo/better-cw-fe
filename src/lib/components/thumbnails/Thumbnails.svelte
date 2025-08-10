@@ -5,12 +5,18 @@
 	import { page } from '$app/state';
 	import type { Tag, Video } from '$lib/models/Video';
 	import { getSimilar } from '$lib/services/tags';
+	import { language } from '$lib/stores/language/store';
 	import { loading } from '$lib/stores/loading/store';
 	import { orderBy } from '$lib/stores/order_by/store';
-	import { getFromUrl as getInputSearchFromUrl } from '$lib/stores/search/store';
+	import {
+		getFromUrl as getInputSearchFromUrl,
+		search,
+		SEARCH_QUERY_PARAM
+	} from '$lib/stores/search/store';
 	import { getTranslation } from '$lib/translations';
 	import { isAdblockPresent } from '$lib/utils/utils';
 	import AdBanner from '../ad-banner/AdBanner.svelte';
+	import GlowingText from '../common/GlowingText.svelte';
 	import Thumbnail from '../thumbnail/Thumbnail.svelte';
 	import { events, type GetVideosFunc } from './events';
 	import FreeOnlyToggle from './FreeOnlyToggle.svelte';
@@ -74,6 +80,13 @@
 		shouldDisplayLoadMoreVideosButton = true;
 	}
 
+	function onClickAlternative(alternative: string) {
+		search.set({ value: alternative, forceLoad: true });
+
+		loading.set(true);
+		document.location.href = `/${$language}?${SEARCH_QUERY_PARAM}=${alternative}`;
+	}
+
 	$effect(() => {
 		onOrderByChanged($orderBy, setNewVideos);
 	});
@@ -103,10 +116,25 @@
 	</div>
 	{#if noVideosFound}
 		<div class="no-videos-found">
-			TODO: Finish this <br />No results found :(
+			<span class="no-results-text">
+				No results found for text {getInputSearchFromUrl(page.url)} 😔
+			</span>
 			{#if similarSearchText}
-				<br />
-				Perhaps you are looking for {similarSearchText}?
+				<span class="alternative-text">
+					Perhaps you are looking for <span
+						onkeypress={() => {
+							onClickAlternative(similarSearchText);
+						}}
+						tabindex="-1"
+						role="link"
+						onclick={() => {
+							onClickAlternative(similarSearchText);
+						}}
+						class="alternative"
+					>
+						<GlowingText text={similarSearchText} />
+					</span>🔥?
+				</span>
 			{/if}
 		</div>
 	{/if}
@@ -183,6 +211,31 @@
 		margin-top: 10px;
 		font-size: 13px;
 		color: #bbb;
+	}
+
+	.no-videos-found {
+		text-align: center;
+		border-radius: 10px;
+		padding: 30px 10px;
+		background: linear-gradient(45deg, #40c4ff, #a23cff);
+	}
+
+	.no-results-text,
+	.alternative-text {
+		font-weight: bold;
+		font-size: 25px;
+		display: block;
+		margin-bottom: 30px;
+		text-shadow: 1px 1px 3px black;
+	}
+
+	.alternative-text {
+		margin-bottom: 0px;
+	}
+	.alternative {
+		text-shadow: none;
+		cursor: pointer;
+		font-size: 35px;
 	}
 
 	@media (max-width: 600px) {
