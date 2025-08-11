@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import Thumbnails from '$lib/components/thumbnails/Thumbnails.svelte';
+	import Videos from '$lib/components/videos/Videos.svelte';
 
 	import { goto } from '$app/navigation';
 	import Header from '$lib/components/header/Header.svelte';
-	import type { GetVideosFunc, GetVideosFuncParams } from '$lib/components/thumbnails/events';
+	import type { GetVideosFunc, GetVideosFuncParams } from '$lib/components/videos/events';
 	import { type Video as VideoType } from '$lib/models/Video';
 	import { getVideosBy, TAGS_ENDPOINT } from '$lib/services/videos';
 	import { language } from '$lib/stores/language/store';
@@ -61,7 +61,7 @@
 </article>
 
 {#if !data.error}
-	<Thumbnails videos={data.videos} {getVideosFunc} />
+	<Videos videos={data.videos} {getVideosFunc} />
 {/if}
 
 <style>

@@ -1,4 +1,4 @@
-import type { GetVideosFuncParams } from '$lib/components/thumbnails/events';
+import type { GetVideosFuncParams } from '$lib/components/videos/events';
 import type { Pagination } from '$lib/models/Pagination';
 
 export const getQueryParams = (

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import HeaderTexts from '$lib/components/header-texts/HeaderTexts.svelte';
-	import type { GetVideosFunc, GetVideosFuncParams } from '$lib/components/thumbnails/events';
-	import Thumbnails from '$lib/components/thumbnails/Thumbnails.svelte';
+	import type { GetVideosFunc, GetVideosFuncParams } from '$lib/components/videos/events';
+	import Videos from '$lib/components/videos/Videos.svelte';
 	import { type Video as VideoType } from '$lib/models/Video';
 
 	import { getHomepageVideos } from '$lib/services/videos';
@@ -22,5 +22,5 @@
 <HeaderTexts />
 
 {#if !data.error}
-	<Thumbnails videos={data.videos} {getVideosFunc} />
+	<Videos videos={data.videos} {getVideosFunc} />
 {/if}

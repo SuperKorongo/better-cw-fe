@@ -1,5 +1,5 @@
 import { PUBLIC_STORE_API_URL } from '$env/static/public';
-import type { GetVideosFuncParams } from '$lib/components/thumbnails/events';
+import type { GetVideosFuncParams } from '$lib/components/videos/events';
 import type { PaginatedResponse, Pagination } from '$lib/models/Pagination';
 import type { Data as VideoData } from '$lib/stores/video-form/store';
 import { fetchWrapper } from '$lib/utils/fetch';

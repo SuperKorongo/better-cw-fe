@@ -15,12 +15,12 @@
 	} from '$lib/stores/search/store';
 	import { getTranslation } from '$lib/translations';
 	import { isAdblockPresent } from '$lib/utils/utils';
-	import AdBanner from '../ad-banner/AdBanner.svelte';
-	import GlowingText from '../common/GlowingText.svelte';
-	import Thumbnail from '../thumbnail/Thumbnail.svelte';
-	import { events, type GetVideosFunc } from './events';
-	import FreeOnlyToggle from './FreeOnlyToggle.svelte';
-	import OrderBy from './OrderBy.svelte';
+	import AdBanner from '../../ad-banner/AdBanner.svelte';
+	import GlowingText from '../../common/GlowingText.svelte';
+	import Thumbnail from '../../thumbnail/Thumbnail.svelte';
+	import { events, type GetVideosFunc } from '../events';
+	import FreeOnlyToggle from '../FreeOnlyToggle.svelte';
+	import OrderBy from '../OrderBy.svelte';
 
 	let {
 		videos,

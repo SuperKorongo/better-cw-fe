@@ -2,9 +2,9 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
 	import HeaderTexts from '$lib/components/header-texts/HeaderTexts.svelte';
-	import type { GetVideosFunc, GetVideosFuncParams } from '$lib/components/thumbnails/events';
-	import Thumbnails from '$lib/components/thumbnails/Thumbnails.svelte';
 	import Video from '$lib/components/video/Video.svelte';
+	import type { GetVideosFunc, GetVideosFuncParams } from '$lib/components/videos/events';
+	import Videos from '$lib/components/videos/Videos.svelte';
 	import { DEFAULT_PAGINATION } from '$lib/models/Pagination';
 	import { type Video as VideoType } from '$lib/models/Video';
 	import { getHomepageVideos } from '$lib/services/videos';
@@ -51,6 +51,6 @@
 
 {#key mounted}
 	{#if mounted}
-		<Thumbnails videos={homepageVideos} {getVideosFunc} />
+		<Videos videos={homepageVideos} {getVideosFunc} />
 	{/if}
 {/key}
