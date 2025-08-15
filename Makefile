@@ -13,12 +13,12 @@ generate-prod-certs:
 deploy:
 	node src/sitemap_generator.ts
 	./update-robots.sh
-	make vps-update-repo
+	scp -i ${SSH_KEY_FILE_PATH} .env.production ${SSH_USER}@${SERVER_IP}:${REMOTE_FOLDER}/.env
+	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "cd ${REMOTE_FOLDER}; git pull origin master;"
 	npm run build
 	zip -r build.zip build 
 	scp -i ${SSH_KEY_FILE_PATH} build.zip ${SSH_USER}@${SERVER_IP}:${REMOTE_FOLDER}/build.zip
 	rm build.zip
-	scp -i ${SSH_KEY_FILE_PATH} .env.production ${SSH_USER}@${SERVER_IP}:${REMOTE_FOLDER}/.env
 	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "cd ${REMOTE_FOLDER}; make run-prod;"
 
 run-prod:
@@ -49,8 +49,11 @@ vps-initial-setup:
 	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "cd /root/; docker load -i store-frontend.tar"
 	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "cd /root/; docker load -i store-frontend-nginx.tar"
 	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "cd /root/; rm -f *.tar"
-# Setup repository
-	make vps-update-repo
+# Send private ssh key and pull from repository
+	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "mkdir -p /root/.ssh"
+	scp -i ${SSH_KEY_FILE_PATH} ~/.ssh/github-better-cw/id_rsa ${SSH_USER}@${SERVER_IP}:/root/.ssh/id_rsa
+	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "mkdir -p ${REMOTE_FOLDER};"
+	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "cd ${REMOTE_FOLDER}; git init; git remote add origin git@github.com:SuperKorongo/better-cw-fe.git; git pull origin master;"
 # Setup initial config to run the containers
 	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "cd ${REMOTE_FOLDER}; cp docker-compose.override.yml.dist docker-compose.override.yml; cp nginx/nginx.conf.dist nginx/nginx.conf;"
 	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "cd ${REMOTE_FOLDER}; cp static/robots.txt.dist static/robots.txt; sed -i "s/DOMAIN/${PUBLIC_DOMAIN}/g" static/robots.txt"
@@ -67,16 +70,6 @@ vps-initial-setup:
 	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "cd ${REMOTE_FOLDER}; cp system_monitor.sh ~/; chmod +x ~/system_monitor.sh; ~/system_monitor.sh &"
 # Run deploy script to finalize the setup
 	make deploy
-
-vps-update-repo: 
-	mkdir -p .git-zip
-	cp -r .git .git-zip/
-	zip -r repo.zip .git-zip
-	rm -rf .git-zip
-	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "mkdir -p ${REMOTE_FOLDER};"
-	scp -i ${SSH_KEY_FILE_PATH} repo.zip ${SSH_USER}@${SERVER_IP}:${REMOTE_FOLDER}/repo.zip
-	rm repo.zip
-	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "cd ${REMOTE_FOLDER}; rm -rf .git; unzip repo.zip; mv .git-zip/.git .; rm -rf .git-zip; git checkout -- .; rm repo.zip;"
 
 vps-setup-nginx-conf:
 	sed -i "s/server_name localhost;/server_name ${DOMAIN_NAME} www.${DOMAIN_NAME};/g" nginx/nginx.conf

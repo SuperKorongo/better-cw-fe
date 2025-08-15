@@ -20,3 +20,4 @@ sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plug
 # Install other utilities
 sudo apt install -y unzip
 sudo apt install -y make
+sudo apt install -y git
