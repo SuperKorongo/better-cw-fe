@@ -398,7 +398,8 @@
 		"disclaimer": "I nuovi video possono richiedere fino a 1 ora per apparire nella pagina principale e nei risultati di ricerca",
 		"uploadButton": "Carica video",
 		"editButton": "Modifica video",
-		"editDisclaimer": "Le modifiche al video possono richiedere fino a 1 ora per essere applicate nella pagina principale e nei risultati di ricerca"
+		"editDisclaimer": "Le modifiche al video possono richiedere fino a 1 ora per essere applicate nella pagina principale e nei risultati di ricerca",
+		"visibility": "Visibilità"
 	},
 	"video": {
 		"addToCart": "Aggiungi al carrello",

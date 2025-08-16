@@ -30,6 +30,7 @@ export type Video = {
 	tags: Tag[];
 	rating: number;
 	views: number;
+	isPrivate: boolean;
 };
 
 export const getEmpty = (): Video => {
@@ -61,7 +62,8 @@ export const getEmpty = (): Video => {
 		},
 		tags: [],
 		rating: 0,
-		views: 0
+		views: 0,
+		isPrivate: false
 	};
 };
 

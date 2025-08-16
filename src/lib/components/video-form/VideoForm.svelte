@@ -11,6 +11,7 @@
 	import Thumbnails from './thumbnails/Thumbnails.svelte';
 	import TitleAndDescription from './title-and-description/TitleAndDescription.svelte';
 	import UploadButton from './upload-button/UploadButton.svelte';
+	import Visibility from './visibility/Visibility.svelte';
 
 	const AMOUNT_OF_THUMBNAILS = 6;
 
@@ -64,6 +65,10 @@
 	<section class="price">
 		<h1>{getTranslation('upload.price')}</h1>
 		<Price price={video.price.value.toString()} />
+	</section>
+	<section class="visibility">
+		<h1>{getTranslation('upload.visibility')}</h1>
+		<Visibility />
 	</section>
 	<section class="duration">
 		<h1>{getTranslation('upload.duration')}</h1>

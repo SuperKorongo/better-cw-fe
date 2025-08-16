@@ -21,8 +21,6 @@
 			loading.set(false);
 		}
 	});
-
-	console.log(page.route.id);
 </script>
 
 <div class="balance-container">
