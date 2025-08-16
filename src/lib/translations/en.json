@@ -399,7 +399,11 @@
 		"uploadButton": "Upload video",
 		"editButton": "Edit video",
 		"editDisclaimer": "Video modifications can take up to 1 hour to be applied on main page and search results",
-		"visibility": "Visibility"
+		"visibility": "Visibility",
+		"visibilityExplanation1": "Public means everyone can watch it. Private means only your friend can watch it.",
+		"visibilityExplanation2": "Please note that only free videos can be marked with private visibility. If you set a price then anyone can pay and download the video.",
+		"visibilityPublic": "Public",
+		"visibilityPrivate": "Private"
 	},
 	"video": {
 		"addToCart": "Add to cart",

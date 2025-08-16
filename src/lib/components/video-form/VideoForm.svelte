@@ -54,6 +54,10 @@
 		<h1>{getTranslation('upload.thumbnails')}</h1>
 		<Thumbnails amountOfThumbnails={AMOUNT_OF_THUMBNAILS} images={getThumbnailImages()} />
 	</section>
+	<section class="duration">
+		<h1>{getTranslation('upload.duration')}</h1>
+		<Duration durationInSeconds={video.durationInSeconds} />
+	</section>
 	<section class="model">
 		<h1>{getTranslation('upload.model')}</h1>
 		<Model name={video.model ? video.model.name : ''} />
@@ -69,10 +73,6 @@
 	<section class="visibility">
 		<h1>{getTranslation('upload.visibility')}</h1>
 		<Visibility />
-	</section>
-	<section class="duration">
-		<h1>{getTranslation('upload.duration')}</h1>
-		<Duration durationInSeconds={video.durationInSeconds} />
 	</section>
 	<section class="upload-button">
 		<UploadButton {type} {video} />
