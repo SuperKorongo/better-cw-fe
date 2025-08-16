@@ -14,6 +14,7 @@ export type Data = {
 	downloadLink: string;
 	downloadLinkInstructions: string;
 	model: string;
+	isPrivate: boolean;
 };
 
 const emptyData = {
@@ -25,7 +26,8 @@ const emptyData = {
 	durationInSeconds: 0,
 	downloadLink: '',
 	downloadLinkInstructions: '',
-	model: ''
+	model: '',
+	isPrivate: false
 };
 
 export const videoForm = (() => {
@@ -96,6 +98,12 @@ export const videoForm = (() => {
 		setModel: (model: string) =>
 			update((data) => {
 				data.model = model;
+				return data;
+			}),
+
+		setIsPrivate: (value: boolean) =>
+			update((data) => {
+				data.isPrivate = value;
 				return data;
 			})
 	};
