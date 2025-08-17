@@ -18,7 +18,7 @@
 	};
 
 	const options = $state([PUBLIC_OPTION, PRIVATE_OPTION]);
-	let value = $state(PUBLIC_OPTION.name);
+	let value = $derived(PUBLIC_OPTION.name);
 
 	$effect.pre(() => {
 		value = visibility === 'private' ? PRIVATE_OPTION.name : PUBLIC_OPTION.name;
@@ -32,11 +32,15 @@
 		}
 		PRIVATE_OPTION.disabled = false;
 	});
+
+	$effect(() => {
+		console.log($videoForm.isPrivate);
+	});
 </script>
 
 <div class="main-container">
 	<div class="form-group">
-		{#each options as option}
+		{#each options as option (option.name)}
 			<FormField>
 				<Radio
 					onclick={(e: Event) => {
