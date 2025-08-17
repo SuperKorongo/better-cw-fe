@@ -403,7 +403,8 @@
 		"visibilityExplanation1": "Public means everyone can watch it. Private means only your friend can watch it.",
 		"visibilityExplanation2": "Please note that only free videos can be marked with private visibility. If you set a price then anyone can pay and download the video.",
 		"visibilityPublic": "Public",
-		"visibilityPrivate": "Private"
+		"visibilityPrivate": "Private",
+		"cannotChangeToPrivate": "Only free videos can be marked as private"
 	},
 	"video": {
 		"addToCart": "Add to cart",

@@ -74,6 +74,9 @@ export const videoForm = (() => {
 		setPriceInCentsOfDollar: (priceInCentsOfDollar: number) =>
 			update((data) => {
 				data.priceInCentsOfDollar = priceInCentsOfDollar;
+				if (priceInCentsOfDollar > 0) {
+					data.isPrivate = false;
+				}
 				return data;
 			}),
 

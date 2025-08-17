@@ -72,7 +72,7 @@
 	</section>
 	<section class="visibility">
 		<h1>{getTranslation('upload.visibility')}</h1>
-		<Visibility visibility={video.isPrivate ? 'private' : 'public'} price={video.price.value} />
+		<Visibility visibility={video.isPrivate ? 'private' : 'public'} price={$videoForm.priceInCentsOfDollar} />
 	</section>
 	<section class="upload-button">
 		<UploadButton {type} {video} />

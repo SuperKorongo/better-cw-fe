@@ -1,23 +1,67 @@
 <script lang="ts">
+	import Radio from '@smui/radio';
+	import FormField from '@smui/form-field';
+
+	import * as toasts from '$lib/components/toasts/toasts';
 	import { getTranslation } from '$lib/translations';
-	import Switch from '@smui/switch';
+	import { videoForm } from '$lib/stores/video-form/store';
 
-	let { visibility, price }: { visibility: 'private' | 'public', price: number } = $props();
+	let { price, visibility }: { visibility: 'private' | 'public', price: number } = $props();
 
-	let publicState: boolean = $state(true);
-	let privateState: boolean = $state(false);
+	const PUBLIC_OPTION = {
+		name: getTranslation('upload.visibilityPublic'),
+		disabled: false
+	};
+	const PRIVATE_OPTION = {
+		name: getTranslation('upload.visibilityPrivate'),
+		disabled: false
+	};
 
+	const options = $state([PUBLIC_OPTION, PRIVATE_OPTION]);
+	let value = $state(PUBLIC_OPTION.name);
 
+	$effect.pre(() => {
+		value = visibility === 'private' ? PRIVATE_OPTION.name : PUBLIC_OPTION.name;
+	});
+
+	$effect(() => {
+		if (price > 0) {
+			PRIVATE_OPTION.disabled = true;
+			value = PUBLIC_OPTION.name;
+			return;
+		}
+		PRIVATE_OPTION.disabled = false;
+	});
 </script>
 
 <div class="main-container">
+	<div class="form-group">
+		{#each options as option}
+			<FormField>
+				<Radio
+					onclick={(e: Event) => {
+						if (price > 0 && option.name === PRIVATE_OPTION.name) {
+							e.preventDefault();
+							value = PUBLIC_OPTION.name;
+							videoForm.setIsPrivate(false);
+							toasts.warning(getTranslation("upload.cannotChangeToPrivate"))
+							return;
+						}
+
+						videoForm.setIsPrivate(option.name === PRIVATE_OPTION.name)
+					}}
+					bind:group={value}
+					value={option.name}
+					disabled={option.disabled}
+				/>
+				{#snippet label()}
+					{option.name}
+				{/snippet}
+			</FormField>
+		{/each}
+	</div>
 	<span class="explanation">{getTranslation('upload.visibilityExplanation1')}</span>
 	<span class="explanation">{getTranslation('upload.visibilityExplanation2')}</span>
-	<Switch
-		onclick={async (e: Event) => {
-		}}
-		checked={publicState}
-	/>
 </div>
 
 <style>

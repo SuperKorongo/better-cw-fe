@@ -403,7 +403,8 @@
 		"visibilityExplanation1": "Pubblico significa che tutti possono guardarlo. Privato significa che solo i tuoi amici possono guardarlo.",
 		"visibilityExplanation2": "Tieni presente che solo i video gratuiti possono essere contrassegnati come privati. Se imposti un prezzo, chiunque può pagare e scaricare il video.",
 		"visibilityPublic": "Pubblico",
-		"visibilityPrivate": "Privato"
+		"visibilityPrivate": "Privato",
+		"cannotChangeToPrivate": "Solo i video gratuiti possono essere contrassegnati come privati"
 	},
 	"video": {
 		"addToCart": "Aggiungi al carrello",
