@@ -6,7 +6,7 @@
 	import { getTranslation } from '$lib/translations';
 	import { videoForm } from '$lib/stores/video-form/store';
 
-	let { price, visibility }: { visibility: 'private' | 'public', price: number } = $props();
+	let { price, visibility }: { visibility: 'private' | 'public'; price: number } = $props();
 
 	const PUBLIC_OPTION = {
 		name: getTranslation('upload.visibilityPublic'),
@@ -44,11 +44,11 @@
 							e.preventDefault();
 							value = PUBLIC_OPTION.name;
 							videoForm.setIsPrivate(false);
-							toasts.warning(getTranslation("upload.cannotChangeToPrivate"))
+							toasts.warning(getTranslation('upload.cannotChangeToPrivate'));
 							return;
 						}
 
-						videoForm.setIsPrivate(option.name === PRIVATE_OPTION.name)
+						videoForm.setIsPrivate(option.name === PRIVATE_OPTION.name);
 					}}
 					bind:group={value}
 					value={option.name}
