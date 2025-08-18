@@ -46,6 +46,14 @@
 			onblur={onMouseOut}
 			onmouseover={onMouseOver}
 			onmouseout={onMouseOut}
+			onload={() => {
+				if (imgElement.width > imgElement.height) {
+					imgElement.style.width = '100%';
+				} else {
+					imgElement.style.width = '50%';
+					imgElement.style.marginLeft = '25%';
+				}
+			}}
 			bind:this={imgElement}
 			alt={video.title}
 			src={video.thumbnailFilePaths.length > 0
@@ -100,9 +108,8 @@
 	img {
 		border-radius: var(--thumbnail-border-radius);
 		cursor: pointer;
-		width: 100%;
-		height: 80%;
 		margin-bottom: -30px;
+		height: 80%;
 	}
 
 	.rating-and-duration-container {
