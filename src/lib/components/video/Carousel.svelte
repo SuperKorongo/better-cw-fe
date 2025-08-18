@@ -44,20 +44,16 @@
 						return;
 					}
 
-					// Create a canvas with the new dimensions (300px wide, 200px high)
 					const canvas = document.createElement('canvas');
-					canvas.width = 300;
-					canvas.height = 200;
+					canvas.width = 800;
+					canvas.height = 600;
 					const ctx = canvas.getContext('2d')!;
 
-					// Fill the entire canvas with black
 					ctx.fillStyle = 'black';
 					ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-					// Draw the original image in the center (100px to 200px on x-axis)
-					ctx.drawImage(img, 100, 0, 100, 200);
+					ctx.drawImage(img, 275, 0, 275, 600);
 
-					// Convert canvas to blob
 					canvas.toBlob(function (blob) {
 						imageSrcs.push(URL.createObjectURL(blob!));
 						imagesLoaded++;
@@ -73,7 +69,7 @@
 
 <div class="carousel-container">
 	{#if isMounted}
-		<Carousel autoplayDuration={0} duration={3000} autoplay timingFunction="linear" arrows={false}>
+		<Carousel autoplayDuration={0} duration={5000} autoplay timingFunction="linear" arrows={false}>
 			{#each imageUrls as src, index (src)}
 				<img
 					role="none"

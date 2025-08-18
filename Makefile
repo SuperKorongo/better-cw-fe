@@ -11,6 +11,7 @@ generate-prod-certs:
 	docker compose exec -it nginx certbot certonly --nginx
 
 deploy:
+	git push origin master
 	node src/sitemap_generator.ts
 	./update-robots.sh
 	scp -i ${SSH_KEY_FILE_PATH} .env.production ${SSH_USER}@${SERVER_IP}:${REMOTE_FOLDER}/.env
