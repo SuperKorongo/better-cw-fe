@@ -35,7 +35,7 @@
 						isMounted = true;
 					}
 				};
-				img.onload = (e) => {
+				img.onload = () => {
 					if (img.naturalWidth > img.naturalHeight) {
 						imagesLoaded++;
 						if (imagesLoaded === imageUrls.length) {
