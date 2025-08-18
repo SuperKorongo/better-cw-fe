@@ -47,8 +47,9 @@
 			onmouseover={onMouseOver}
 			onmouseout={onMouseOut}
 			onload={() => {
-				if (imgElement.width > imgElement.height) {
+				if (imgElement.naturalWidth > imgElement.naturalHeight) {
 					imgElement.style.width = '100%';
+					imgElement.style.marginLeft = '0%';
 				} else {
 					imgElement.style.width = '50%';
 					imgElement.style.marginLeft = '25%';

@@ -24,8 +24,6 @@
 
 	function setup(): void {
 		canvas = document.createElement('canvas');
-		canvas.width = 960;
-		canvas.height = 540;
 		canvasContext = canvas.getContext('2d')!;
 
 		videoElement = document.createElement('video');
@@ -50,6 +48,15 @@
 		};
 
 		videoElement.onseeked = () => {
+			console.log('video width', videoElement.videoWidth);
+			if (videoElement.videoWidth > videoElement.videoHeight) {
+				canvas.width = 960;
+				canvas.height = 540;
+			} else {
+				canvas.width = 540;
+				canvas.height = 960;
+			}
+
 			canvasContext.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
 
 			canvas.toBlob(async (blob: Blob | null) => {

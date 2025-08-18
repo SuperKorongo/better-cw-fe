@@ -1,10 +1,10 @@
 <script lang="ts">
-	import Radio from '@smui/radio';
 	import FormField from '@smui/form-field';
+	import Radio from '@smui/radio';
 
 	import * as toasts from '$lib/components/toasts/toasts';
-	import { getTranslation } from '$lib/translations';
 	import { videoForm } from '$lib/stores/video-form/store';
+	import { getTranslation } from '$lib/translations';
 
 	let { price, visibility }: { visibility: 'private' | 'public'; price: number } = $props();
 
@@ -31,10 +31,6 @@
 			return;
 		}
 		PRIVATE_OPTION.disabled = false;
-	});
-
-	$effect(() => {
-		console.log($videoForm.isPrivate);
 	});
 </script>
 

@@ -130,7 +130,22 @@
 						</div>
 					</div>
 				{/key}
-				<img bind:this={thumbnailImages[i]} src={thumbnailImages[i].src} alt="" />
+				<img
+					onload={() => {
+						if (thumbnailImages[i].naturalWidth > thumbnailImages[i].naturalHeight) {
+							thumbnailImages[i].style.width = '100%';
+							thumbnailImages[i].style.height = '100%';
+							thumbnailImages[i].style.marginLeft = '0%';
+						} else {
+							thumbnailImages[i].style.width = '50%';
+							thumbnailImages[i].style.marginLeft = '25%';
+							thumbnailImages[i].style.height = '100%';
+						}
+					}}
+					bind:this={thumbnailImages[i]}
+					src={thumbnailImages[i].src}
+					alt=""
+				/>
 				<input
 					accept="image/png, image/jpeg"
 					bind:this={fileInputs[i]}
@@ -180,10 +195,6 @@
 	}
 	.thumbnail-container:hover > .edit-overlay {
 		display: grid !important;
-	}
-	.thumbnail-container img {
-		width: 100%;
-		height: 100%;
 	}
 	.edit-overlay {
 		display: grid;
