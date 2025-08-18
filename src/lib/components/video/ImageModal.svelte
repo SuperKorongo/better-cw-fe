@@ -17,7 +17,20 @@
 	<div class="close-button-container">
 		<CloseButton onClick={onClose} />
 	</div>
-	<img src={getImageSrc(imageUrl)} alt={imageUrl} />
+	<img
+		onload={(e) => {
+			const img = e.target as HTMLImageElement;
+			if (img.naturalWidth > img.naturalHeight) {
+				img.style.width = '100%';
+				img.style.marginLeft = '0%';
+			} else {
+				img.style.width = '50%';
+				img.style.marginLeft = '25%';
+			}
+		}}
+		src={getImageSrc(imageUrl)}
+		alt={imageUrl}
+	/>
 </div>
 
 <style>
@@ -30,7 +43,6 @@
 		height: 80%;
 	}
 	img {
-		width: 100%;
 		height: 100%;
 	}
 

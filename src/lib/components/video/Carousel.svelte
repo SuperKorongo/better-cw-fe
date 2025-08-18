@@ -13,10 +13,62 @@
 	} = $props();
 
 	let isMounted: boolean = $state(false);
+	let imageSrcs: string[] = [];
 	onMount(() => {
-		isMounted = true;
 		if (imageUrls.length === 0) {
 			imageUrls.push('placeholder');
+		}
+
+		let imagesLoaded = 0;
+		for (const imageUrl of imageUrls) {
+			let src = getImageSrc(imageUrl);
+
+			const img = document.createElement('img');
+			img.setAttribute('src', src);
+			img.setAttribute('crossOrigin', 'anonymous');
+			img.style.display = 'none';
+
+			(function (img) {
+				img.onerror = () => {
+					imagesLoaded++;
+					if (imagesLoaded === imageUrls.length) {
+						isMounted = true;
+					}
+				};
+				img.onload = (e) => {
+					if (img.naturalWidth > img.naturalHeight) {
+						imagesLoaded++;
+						if (imagesLoaded === imageUrls.length) {
+							console.log('done!');
+							isMounted = true;
+						}
+						return;
+					}
+
+					// Create a canvas with the new dimensions (300px wide, 200px high)
+					const canvas = document.createElement('canvas');
+					canvas.width = 300;
+					canvas.height = 200;
+					const ctx = canvas.getContext('2d')!;
+
+					// Fill the entire canvas with black
+					ctx.fillStyle = 'black';
+					ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+					// Draw the original image in the center (100px to 200px on x-axis)
+					ctx.drawImage(img, 100, 0, 100, 200);
+
+					// Convert canvas to blob
+					canvas.toBlob(function (blob) {
+						imageSrcs.push(URL.createObjectURL(blob!));
+						imagesLoaded++;
+						if (imagesLoaded === imageUrls.length) {
+							console.log('done!');
+							isMounted = true;
+						}
+					}, 'image/png');
+				};
+			})(img);
 		}
 	});
 </script>
@@ -24,12 +76,12 @@
 <div class="carousel-container">
 	{#if isMounted}
 		<Carousel autoplayDuration={0} duration={3000} autoplay timingFunction="linear" arrows={false}>
-			{#each imageUrls as src (src)}
+			{#each imageUrls as src, index (src)}
 				<img
 					role="none"
 					onclick={() => onClickImage(src)}
 					class="carousel-image"
-					src={getImageSrc(src)}
+					src={imageSrcs[index]}
 					alt={src}
 				/>
 			{/each}
