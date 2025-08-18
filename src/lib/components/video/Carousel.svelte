@@ -39,7 +39,6 @@
 					if (img.naturalWidth > img.naturalHeight) {
 						imagesLoaded++;
 						if (imagesLoaded === imageUrls.length) {
-							console.log('done!');
 							isMounted = true;
 						}
 						return;
@@ -63,7 +62,6 @@
 						imageSrcs.push(URL.createObjectURL(blob!));
 						imagesLoaded++;
 						if (imagesLoaded === imageUrls.length) {
-							console.log('done!');
 							isMounted = true;
 						}
 					}, 'image/png');
