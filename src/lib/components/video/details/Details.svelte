@@ -5,15 +5,17 @@
 	import Tags from './Tags.svelte';
 
 	let {
-		video
+		video,
+		showRatingComponent
 	}: {
 		video: Video;
+		showRatingComponent: boolean;
 	} = $props();
 </script>
 
 <section class="price-and-meta">
 	<div class="price-container">
-		<AddToCart {video} />
+		<AddToCart {video} {showRatingComponent} />
 	</div>
 	<div class="meta">
 		<Meta {video} />

@@ -3,15 +3,16 @@
 	import GlowingText from '$lib/components/common/GlowingText.svelte';
 	import type { Video } from '$lib/models/Video';
 	import { cart } from '$lib/stores/cart/store';
-	import { user } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
 	import { getFormattedPrice, getHrefWithLanguage, onClickInternalLink } from '$lib/utils/utils';
 	import Button, { Label } from '@smui/button';
 
 	let {
-		video
+		video,
+		showRatingComponent
 	}: {
 		video: Video;
+		showRatingComponent: boolean;
 	} = $props();
 
 	const onClick = () => cart.add(video);
@@ -45,7 +46,7 @@
 		{/if}
 	{:else}
 		<div>
-			{#if $user.data}
+			{#if showRatingComponent}
 				<Rating videoUUID={video.uuid} />
 			{/if}
 		</div>

@@ -416,7 +416,8 @@
 		"modelName": "Model name",
 		"duration": "Duration",
 		"free": "Free",
-		"deactivateAdblock": "Deactivate adblock and refresh the page to see the free video"
+		"deactivateAdblock": "Deactivate adblock and refresh the page to see the free video",
+		"friendsOnly": ""
 	},
 	"withdraw": {
 		"title": "Withdraw funds",

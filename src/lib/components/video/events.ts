@@ -7,11 +7,6 @@ import { get } from 'svelte/store';
 export const events = (container: () => HTMLElement, setModalImageUrl: (url: string) => void) => {
 	const mobileBreakpoint = 1100;
 
-	const onLoad = () => {
-		document.body.style.overflowY = 'hidden';
-		window.addEventListener('popstate', onExit);
-	};
-
 	const onClose = async () => {
 		const hideAnimation = async (): Promise<void> => {
 			const hideAnimationDurationInMs = 300;
@@ -69,7 +64,6 @@ export const events = (container: () => HTMLElement, setModalImageUrl: (url: str
 	};
 
 	return {
-		onLoad,
 		onClose,
 		onSwipe,
 		onExit,

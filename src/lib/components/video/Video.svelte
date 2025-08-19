@@ -3,11 +3,14 @@
 	import { swipe } from 'svelte-gestures';
 
 	import type { Video } from '$lib/models/Video';
+	import { loading } from '$lib/stores/loading/store';
+	import { user } from '$lib/stores/user/store';
 	import Carousel from './Carousel.svelte';
 	import CloseButton from './CloseButton.svelte';
 	import Details from './details/Details.svelte';
 	import Player from './details/Player.svelte';
 	import { events } from './events';
+	import FriendsOnlyOverlay from './FriendsOnlyOverlay.svelte';
 	import ImageModal from './ImageModal.svelte';
 	import Overlay from './Overlay.svelte';
 
@@ -18,15 +21,26 @@
 	} = $props();
 
 	let modalImageUrl: string = $state('');
-
 	let container: HTMLElement;
+	let downloadLink: string | null = $state(null);
 
-	const { onLoad, onClose, onSwipe, onClickCarouselImage, onCloseImageModal } = events(
+	const { onExit, onClose, onSwipe, onClickCarouselImage, onCloseImageModal } = events(
 		() => container,
 		(url: string) => (modalImageUrl = url)
 	);
 
-	onMount(onLoad);
+	onMount(() => {
+		document.body.style.overflowY = 'hidden';
+		window.addEventListener('popstate', onExit);
+	});
+
+	const showRatingComponent = (): boolean => {
+		if (video.isPrivate && downloadLink) {
+			return true;
+		}
+
+		return !video.isPrivate && $user.data !== null;
+	};
 </script>
 
 <Overlay onClick={onClose} />
@@ -41,12 +55,24 @@
 		<h1>{video.model?.name}</h1>
 		<article>
 			<h2>{video.title}</h2>
-			{#if video.price.value}
-				<Carousel onClickImage={onClickCarouselImage} imageUrls={video.thumbnailFilePaths} />
-			{:else}
-				<Player {video} />
+			{#if video.isPrivate}
+				{#if $loading.value}
+					<div class="loading-placeholder"></div>
+				{/if}
+				{#if $user.data === null}
+					<FriendsOnlyOverlay />
+					<Carousel onClickImage={onClickCarouselImage} imageUrls={video.thumbnailFilePaths} />
+				{/if}
 			{/if}
-			<Details {video} />
+
+			{#if !video.isPrivate}
+				{#if video.price.value}
+					<Carousel onClickImage={onClickCarouselImage} imageUrls={video.thumbnailFilePaths} />
+				{:else}
+					<Player {video} />
+				{/if}
+			{/if}
+			<Details showRatingComponent={showRatingComponent()} {video} />
 		</article>
 	</main>
 </aside>
@@ -144,5 +170,26 @@
 	}
 	article {
 		padding: 5px 20px;
+	}
+
+	@media (max-width: 600px) {
+		.loading-placeholder {
+			height: 250px;
+		}
+	}
+	@media (min-width: 600px) {
+		.loading-placeholder {
+			height: 500px;
+		}
+	}
+	@media (min-width: 1921px) {
+		.loading-placeholder {
+			height: 650px;
+		}
+	}
+	@media (min-width: 2500px) {
+		.loading-placeholder {
+			height: 800px;
+		}
 	}
 </style>

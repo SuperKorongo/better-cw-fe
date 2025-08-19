@@ -96,7 +96,7 @@
 				{/if}
 			</span>
 		</div>
-		{#if !video.price.value}
+		{#if !video.price.value && !video.isPrivate}
 			<span class="views">{video.views} {getTranslation('homepage.views')}</span>
 		{/if}
 	</figcaption>
