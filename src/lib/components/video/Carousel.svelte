@@ -24,6 +24,7 @@
 			let src = getImageSrc(imageUrl);
 
 			const img = document.createElement('img');
+
 			img.setAttribute('src', src);
 			img.setAttribute('crossOrigin', 'anonymous');
 			img.style.display = 'none';
