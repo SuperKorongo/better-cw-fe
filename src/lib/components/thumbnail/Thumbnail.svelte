@@ -69,6 +69,9 @@
 				<span class="duration">{getDurationString(video.durationInSeconds)}</span>
 			</div>
 		</div>
+		{#if !video.isPrivate}
+			<div class="private-container">🔒 {getTranslation('upload.visibilityPrivate')}</div>
+		{/if}
 	</a>
 
 	<figcaption>
@@ -111,6 +114,19 @@
 		cursor: pointer;
 		margin-bottom: -30px;
 		height: 80%;
+	}
+
+	.private-container {
+		position: absolute;
+		margin-top: -50px;
+		font-variant: small-caps;
+		background: rgba(0, 0, 0, 0.7);
+		border-radius: 10px;
+		padding: 5px 10px;
+		font-weight: bold;
+		letter-spacing: 2px;
+		font-size: 13px;
+		margin-left: 10px;
 	}
 
 	.rating-and-duration-container {
