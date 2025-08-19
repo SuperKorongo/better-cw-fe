@@ -2,7 +2,7 @@
 	import GlowingText from '$lib/components/common/GlowingText.svelte';
 	import { loading } from '$lib/stores/loading/store';
 	import { getTranslation } from '$lib/translations';
-	import { getHrefWithLanguage, onClickInternalLink } from '$lib/utils/utils';
+	import { getBrandName, getHrefWithLanguage, onClickInternalLink } from '$lib/utils/utils';
 	import { onMount } from 'svelte';
 
 	onMount(() => {
@@ -11,7 +11,7 @@
 </script>
 
 <main>
-	<h1 class="title"><GlowingText text="CLIPZ 4 BTC" /></h1>
+	<h1 class="title"><GlowingText text={getBrandName('extended')} /></h1>
 	<article>
 		<h1>{getTranslation('aboutUs.howCanIEarnMoney.title')}</h1>
 		<h3>
@@ -45,7 +45,7 @@
 	</article>
 	<article>
 		<h1>{getTranslation('aboutUs.howToWithdraw.title')}</h1>
-		<h3>{getTranslation('aboutUs.howToWithdraw.t1')}</h3>
+		<h3>{getTranslation('aboutUs.howToWithdraw.t1').replace('{BRAND}', getBrandName('short'))}</h3>
 		<h3><b>{getTranslation('aboutUs.howToWithdraw.t2')}</b></h3>
 		<span class="span-list">
 			- <b>{getTranslation('aboutUs.howToWithdraw.t3')}</b>: {getTranslation(
@@ -89,11 +89,13 @@
 		</h3>
 		<h3>
 			{getTranslation('aboutUs.disclaimer.t4')}<a target="_blank" href="https://mega.nz">mega.nz</a>
-			{getTranslation('aboutUs.disclaimer.t5')}
+			{getTranslation('aboutUs.disclaimer.t5').replace('{BRAND}', getBrandName('short'))}
 		</h3>
 		<h3><b>{getTranslation('aboutUs.disclaimer.t6')}</b>:</h3>
 		<span class="span-list">{getTranslation('aboutUs.disclaimer.t7')}</span>
-		<span class="span-list"> {getTranslation('aboutUs.disclaimer.t8')}</span>
+		<span class="span-list">
+			{getTranslation('aboutUs.disclaimer.t8').replace('{BRAND}', getBrandName('short'))}
+		</span>
 	</article>
 	<article>
 		<h1>{getTranslation('aboutUs.anyMegaLink.title')}</h1>

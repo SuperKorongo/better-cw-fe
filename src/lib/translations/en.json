@@ -16,7 +16,7 @@
 		},
 		"howToWithdraw": {
 			"title": "💸 How to Withdraw Your Earnings",
-			"t1": "As a seller on Clipz4BTC, when someone purchases one or more of your videos, the corresponding Bitcoin amount will be credited to your account.",
+			"t1": "As a seller on {BRAND}, when someone purchases one or more of your videos, the corresponding Bitcoin amount will be credited to your account.",
 			"t2": "Withdrawing your earnings is easy:",
 			"t3": "Step 1",
 			"t4": "Go to the",
@@ -41,10 +41,10 @@
 			"t2": "do not",
 			"t3": "store videos on our servers.",
 			"t4": "All videos must be uploaded to ",
-			"t5": "first. Once uploaded, you'll share the download link on Clipz4BTC.",
+			"t5": "first. Once uploaded, you'll share the download link on {BRAND}.",
 			"t6": "To sell a video",
 			"t7": "- Upload your video to mega.nz",
-			"t8": "- Provide the download link in the upload form on Clipz4BTC."
+			"t8": "- Provide the download link in the upload form on {BRAND}."
 		},
 		"anyMegaLink": {
 			"title": "🤔 Can I Share Any Mega.nz Link?",
@@ -213,12 +213,12 @@
 		"loadMoreAdDisclaimer": "Clicking this button will display more videos and open a sponsored link in a new tab",
 		"userRating": "User rating",
 		"title": "Buy & Sell Adult Videos – Powered by Bitcoin",
-		"subTitle": "Welcome to Clipz4BTC – Your #1 Marketplace for adult content!",
+		"subTitle": "Welcome to {BRAND} – Your #1 Marketplace for adult content!",
 		"desc1": "🔒 Secure Payments - 100% Bitcoin transactions with buyers and sellers protection",
 		"desc2": "🕶️ Anonymous - No personal data required",
 		"desc3": "⚡ Fast Delivery - Instant downloads after purchase",
 		"desc4": "🌍 Global - Open to buyers and sellers worldwide",
-		"htmlTitle": "The best adult content marketplace powered by Bitcoin | Clipz4BTC",
+		"htmlTitle": "The best adult content marketplace powered by Bitcoin | {BRAND}",
 		"metaDescription": "The best clips from your favorite cam models. Private shows from top sites like onlyfans, livejasmin, chaturbate, xlove, cams.com, and many more. Join the top marketplace for premium adult content. Fast transactions, full privacy, and a seamless experience. Buy and sell adult videos securely with Bitcoin. Fully anonymous.",
 		"metaDescriptionUserPage": "Discover the best clips shared by $USER.",
 		"metaDescriptionModelPage": "Browse the best clips of $MODEL.",
@@ -231,7 +231,7 @@
 	"menu": {
 		"home": "Home",
 		"cart": "Cart",
-		"aboutUs": "About Clipz4BTC",
+		"aboutUs": "About {BRAND}",
 		"contactUs": "Contact us",
 		"uploadVideos": "Upload videos",
 		"signIn": "Sign In",
@@ -329,8 +329,8 @@
 	},
 	"signInForm": {
 		"welcome": "Welcome!",
-		"title1": "Log in to Clipz4BTC",
-		"title2": "Clipz4BTC - Where Privacy, Content, and Bitcoin Transactions Come Together.",
+		"title1": "Log in to {BRAND}",
+		"title2": "{BRAND} - Where Privacy, Content, and Bitcoin Transactions Come Together.",
 		"loginButtonLabel": "Sign In",
 		"email": "Email",
 		"password": "Password",
@@ -342,7 +342,7 @@
 		}
 	},
 	"signUpForm": {
-		"title1": "Join Clipz4BTC Today",
+		"title1": "Join {BRAND} Today",
 		"title2": "Your Private Marketplace for Adult Content - powered by Bitcoin.",
 		"title3": "Enjoy Full Privacy and Hassle-Free Bitcoin Payments.",
 		"registerButtonLabel": "Register",

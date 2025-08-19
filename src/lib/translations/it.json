@@ -16,7 +16,7 @@
 		},
 		"howToWithdraw": {
 			"title": "💸 Come Ritirare i Tuoi Guadagni",
-			"t1": "Come venditore su Clipz4BTC, quando qualcuno acquista uno o più dei tuoi video, l'importo corrispondente in Bitcoin sarà accreditato sul tuo account.",
+			"t1": "Come venditore su {BRAND}, quando qualcuno acquista uno o più dei tuoi video, l'importo corrispondente in Bitcoin sarà accreditato sul tuo account.",
 			"t2": "Ritirare i tuoi guadagni è facile:",
 			"t3": "Passo 1",
 			"t4": "Vai alla sezione di",
@@ -41,10 +41,10 @@
 			"t2": "non",
 			"t3": "memorizziamo video sui nostri server.",
 			"t4": "Tutti i video devono essere caricati su",
-			"t5": "prima. Una volta caricati, condividerai il link per il download su Clipz4BTC.",
+			"t5": "prima. Una volta caricati, condividerai il link per il download su {BRAND}.",
 			"t6": "Per vendere un video",
 			"t7": "- Carica il tuo video su mega.nz",
-			"t8": "- Fornisci il link per il download nel modulo di caricamento su Clipz4BTC."
+			"t8": "- Fornisci il link per il download nel modulo di caricamento su {BRAND}."
 		},
 		"anyMegaLink": {
 			"title": "🤔 Posso Condividere Qualsiasi Link di Mega.nz?",
@@ -213,12 +213,12 @@
 		"loadMoreAdDisclaimer": "Facendo clic su questo pulsante verranno visualizzati altri video e verrà aperto un collegamento sponsorizzato in una nuova scheda",
 		"userRating": "Valutazione del utente",
 		"title": "Compra e Vendi Video per Adulti – Alimentato da Bitcoin",
-		"subTitle": "Benvenuto su Clipz4BTC – Il tuo marketplace n.1 per contenuti per adulti!",
+		"subTitle": "Benvenuto su {BRAND} – Il tuo marketplace n.1 per contenuti per adulti!",
 		"desc1": "🔒 Pagamenti sicuri - Transazioni 100% Bitcoin, con protezione per acquirente e venditore",
 		"desc2": "🕶️ Anonimo - Nessun dato personale richiesto",
 		"desc3": "⚡ Consegna veloce - Download immediato dopo l'acquisto",
 		"desc4": "🌍 Globale - Aperto a compratori e venditori in tutto il mondo",
-		"htmlTitle": "Il miglior marketplace di contenuti per adulti alimentato da Bitcoin | Clipz4BTC",
+		"htmlTitle": "Il miglior marketplace di contenuti per adulti alimentato da Bitcoin | {BRAND}",
 		"metaDescription": "I migliori clip delle tue camgirl preferite. Show privati dai migliori siti come OnlyFans, LiveJasmin, Chaturbate, XLove, Cams.com e molti altri. Unisciti al principale marketplace di contenuti per adulti premium. Transazioni rapide, massima privacy e un'esperienza senza interruzioni. Acquista e vendi video per adulti in modo sicuro con Bitcoin. Completamente anonimo.",
 		"metaDescriptionUserPage": "Scopri i migliori clip condivisi da $USER.",
 		"metaDescriptionModelPage": "Esplora i migliori clip di $MODEL.",
@@ -231,7 +231,7 @@
 	"menu": {
 		"home": "Home",
 		"cart": "Carrello",
-		"aboutUs": "Info su Clipz4BTC",
+		"aboutUs": "Info su {BRAND}",
 		"contactUs": "Contattaci",
 		"uploadVideos": "Carica video",
 		"signIn": "Accedi",
@@ -329,8 +329,8 @@
 	},
 	"signInForm": {
 		"welcome": "Benvenuto!",
-		"title1": "Accedi a Clipz4BTC",
-		"title2": "Clipz4BTC - Dove Privacy, Contenuti e Transazioni Bitcoin Si Incontrano.",
+		"title1": "Accedi a {BRAND}",
+		"title2": "{BRAND} - Dove Privacy, Contenuti e Transazioni Bitcoin Si Incontrano.",
 		"loginButtonLabel": "Accedi",
 		"email": "Email",
 		"password": "Password",
@@ -342,7 +342,7 @@
 		}
 	},
 	"signUpForm": {
-		"title1": "Unisciti a Clipz4BTC Oggi",
+		"title1": "Unisciti a {BRAND} Oggi",
 		"title2": "Il Tuo Marketplace Privato di Contenuti Adulti - alimentato da Bitcoin.",
 		"title3": "Goditi la Privacy Completa e Pagamenti Bitcoin Senza Complicazioni.",
 		"registerButtonLabel": "Registrati",

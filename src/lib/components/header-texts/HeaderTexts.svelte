@@ -2,14 +2,15 @@
 	import GlowingText from '$lib/components/common/GlowingText.svelte';
 
 	import { getTranslation } from '$lib/translations';
+	import { getBrandName } from '$lib/utils/utils';
 </script>
 
 <header>
 	<h1>
-		<GlowingText text="Clipz 4 BTC" />
+		<GlowingText text={getBrandName('extended')} />
 	</h1>
 	<h2>{getTranslation('homepage.title')}</h2>
-	<h3>{getTranslation('homepage.subTitle')}</h3>
+	<h3>{getTranslation('homepage.subTitle').replace('{BRAND}', getBrandName('short'))}</h3>
 	<section class="description">
 		{getTranslation('homepage.desc1')}<br />
 		{getTranslation('homepage.desc2')}<br />

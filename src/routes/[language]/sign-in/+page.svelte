@@ -5,7 +5,7 @@
 	import { navigationHistory } from '$lib/stores/navigation/store';
 	import { user as userStore } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
-	import { enterKeyCheck } from '$lib/utils/utils';
+	import { enterKeyCheck, getBrandName } from '$lib/utils/utils';
 	import { onClickLoginButton } from './events';
 
 	let email: string = $state('');
@@ -30,9 +30,11 @@
 	<div class="login-container">
 		<header>
 			<h2 class="login-title">
-				<GlowingText text={getTranslation('signInForm.title1')} />
+				<GlowingText
+					text={getTranslation('signInForm.title1').replace('{BRAND}', getBrandName('short'))}
+				/>
 			</h2>
-			<h3>{getTranslation('signInForm.title2')}</h3>
+			<h3>{getTranslation('signInForm.title2').replace('{BRAND}', getBrandName('short'))}</h3>
 		</header>
 
 		<div class="form-group">

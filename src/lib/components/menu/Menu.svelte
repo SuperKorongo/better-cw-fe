@@ -3,7 +3,7 @@
 	import { menu } from '$lib/stores/menu/store';
 	import { user } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
-	import { getHrefWithLanguage, onClickInternalLink } from '$lib/utils/utils';
+	import { getBrandName, getHrefWithLanguage, onClickInternalLink } from '$lib/utils/utils';
 	import { mdiAccount, mdiCart, mdiCash, mdiEmail, mdiHome, mdiInformation } from '@mdi/js';
 	import { onMount } from 'svelte';
 	import { swipe } from 'svelte-gestures';
@@ -92,7 +92,7 @@
 					data-sveltekit-preload-data="tap"
 					href={getHrefWithLanguage(`/about-us`)}
 				>
-					{getTranslation('menu.aboutUs')}
+					{getTranslation('menu.aboutUs').replace('{BRAND}', getBrandName('short'))}
 				</a>
 			</div>
 			<div>

@@ -24,6 +24,7 @@
 	import { getTranslation, type Language } from '$lib/translations';
 	import availableLanguages from '$lib/translations/available_languages.json' with { type: 'json' };
 
+	import { getBrandName } from '$lib/utils/utils';
 	import '../styles.css';
 
 	let { children } = $props();
@@ -86,7 +87,7 @@
 		src={`${PUBLIC_ANALYTICS_SCRIPT_URL}`}
 		data-website-id={`${PUBLIC_ANALYTICS_ID}`}
 	></script>
-	<title>{getTranslation('homepage.htmlTitle')}</title>
+	<title>{getTranslation('homepage.htmlTitle').replace('{BRAND}', getBrandName('short'))}</title>
 	{#if shouldAddMetaDescription()}
 		<meta name="description" content={getTranslation('homepage.metaDescription')} />
 	{/if}

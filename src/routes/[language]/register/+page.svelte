@@ -5,7 +5,7 @@
 	import { navigationHistory } from '$lib/stores/navigation/store';
 	import { user as userStore } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
-	import { enterKeyCheck } from '$lib/utils/utils';
+	import { enterKeyCheck, getBrandName } from '$lib/utils/utils';
 	import { onClickRegisterButton } from './events';
 
 	let username: string = $state('');
@@ -32,7 +32,9 @@
 	<div class="register-container">
 		<header>
 			<h2 class="register-title">
-				<GlowingText text={getTranslation('signUpForm.title1')} />
+				<GlowingText
+					text={getTranslation('signUpForm.title1').replace('{BRAND}', getBrandName('short'))}
+				/>
 			</h2>
 			<h3>
 				{getTranslation('signUpForm.title2')}
