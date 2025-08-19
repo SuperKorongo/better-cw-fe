@@ -217,9 +217,10 @@ export const openAdLink = async (): Promise<void> => {
 export const getBrandName = (which: 'short' | 'extended'): string => {
 	console.log('host is ', page.url.host);
 	switch (page.url.host) {
-		case 'clipz4btc':
+		case 'clipz4btc.com':
 			return which === 'short' ? 'Clipz4BTC' : 'Clipz 4 BTC';
-		case 'bettercamwhores':
+		case 'bettercamwhores.tv':
+		case 'bettercamwhores.com':
 			return which === 'short' ? 'BetterCamWhores' : 'Better CamWhores';
 		default:
 			return which === 'short' ? 'Clipz4BTC' : 'Clipz 4 BTC';
