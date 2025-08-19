@@ -86,7 +86,7 @@ export const openCryptoWidgetPopup = (paymentUUID: string, cryptoGatewayUUID: st
         <head>
             <meta charset="UTF-8" />
             <meta name="viewport" content="width=device-width" />
-            <script src="/widget.js"></script>
+            <script src="/widget.js" crossorigin="anonymous"></script>
             <style>
 				* {
 					margin: 0;
