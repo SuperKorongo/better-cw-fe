@@ -69,7 +69,7 @@
 				<span class="duration">{getDurationString(video.durationInSeconds)}</span>
 			</div>
 		</div>
-		{#if !video.isPrivate}
+		{#if video.isPrivate}
 			<div class="private-container">🔒 {getTranslation('upload.visibilityPrivate')}</div>
 		{/if}
 	</a>
