@@ -11,6 +11,7 @@ generate-prod-certs:
 	docker compose exec -it nginx certbot certonly --nginx
 
 deploy:
+	[ -f "static/widget.js" ] && true || false;
 	git push origin master
 	node src/sitemap_generator.ts
 	./update-robots.sh
