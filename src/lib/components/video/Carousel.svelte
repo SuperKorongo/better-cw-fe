@@ -39,6 +39,7 @@
 				img.onload = () => {
 					if (img.naturalWidth > img.naturalHeight) {
 						imagesLoaded++;
+						imageSrcs.push(src);
 						if (imagesLoaded === imageUrls.length) {
 							isMounted = true;
 						}
