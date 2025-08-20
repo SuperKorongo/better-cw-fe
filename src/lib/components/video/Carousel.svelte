@@ -12,7 +12,7 @@
 		onClickImage: (imageUrl: string) => void;
 	} = $props();
 
-	let isMounted: boolean = $state(false);
+	let allImagesLoaded: boolean = $state(false);
 	let imageSrcs: string[] = [];
 	onMount(() => {
 		if (imageUrls.length === 0) {
@@ -33,7 +33,7 @@
 				img.onerror = () => {
 					imagesLoaded++;
 					if (imagesLoaded === imageUrls.length) {
-						isMounted = true;
+						allImagesLoaded = true;
 					}
 				};
 				img.onload = () => {
@@ -41,7 +41,7 @@
 						imagesLoaded++;
 						imageSrcs.push(src);
 						if (imagesLoaded === imageUrls.length) {
-							isMounted = true;
+							allImagesLoaded = true;
 						}
 						return;
 					}
@@ -60,7 +60,7 @@
 						imageSrcs.push(URL.createObjectURL(blob!));
 						imagesLoaded++;
 						if (imagesLoaded === imageUrls.length) {
-							isMounted = true;
+							allImagesLoaded = true;
 						}
 					}, 'image/png');
 				};
@@ -70,7 +70,7 @@
 </script>
 
 <div class="carousel-container">
-	{#if isMounted}
+	{#if allImagesLoaded}
 		<Carousel autoplayDuration={0} duration={5000} autoplay timingFunction="linear" arrows={false}>
 			{#each imageUrls as src, index (src)}
 				<img
@@ -83,13 +83,16 @@
 			{/each}
 		</Carousel>
 	{:else}
-		<div class="placeholder"></div>
+		<div class="loading-images">
+			<div class="inner"><div class="loader"></div></div>
+		</div>
 	{/if}
 </div>
 
 <style>
 	.carousel-container {
 		margin-top: 40px;
+		position: relative;
 	}
 	.carousel-container :global(.sc-carousel__pages-window) {
 		box-shadow: 0 0 9px 2px black;
@@ -101,26 +104,46 @@
 
 	@media (max-width: 600px) {
 		.carousel-image,
-		.placeholder {
+		.loading-images {
 			height: 250px;
 		}
 	}
 	@media (min-width: 600px) {
 		.carousel-image,
-		.placeholder {
+		.loading-images {
 			height: 500px;
 		}
 	}
 	@media (min-width: 1921px) {
 		.carousel-image,
-		.placeholder {
+		.loading-images {
 			height: 650px;
 		}
 	}
 	@media (min-width: 2500px) {
 		.carousel-image,
-		.placeholder {
+		.loading-images {
 			height: 800px;
+		}
+	}
+
+	.inner {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -100%);
+	}
+	.loader {
+		width: 50px;
+		aspect-ratio: 1;
+		border-radius: 50%;
+		border: 8px solid;
+		border-color: #fff #fff0;
+		animation: l1 1s infinite;
+	}
+	@keyframes l1 {
+		to {
+			transform: rotate(0.5turn);
 		}
 	}
 </style>
