@@ -231,7 +231,7 @@
 	"menu": {
 		"home": "Home",
 		"cart": "Carrello",
-		"aboutUs": "Info su {BRAND}",
+		"aboutUs": "Chi siamo",
 		"contactUs": "Contattaci",
 		"uploadVideos": "Carica video",
 		"signIn": "Accedi",
