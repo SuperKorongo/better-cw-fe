@@ -8,7 +8,7 @@ generate-local-certs:
 	 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout nginx/localhost.key -out nginx/localhost.crt
 
 generate-prod-certs:
-	docker compose exec -it nginx certbot certonly --nginx
+	docker compose exec -it nginx certbot certonly --nginx -d ${DOMAIN_NAME} -d www.${DOMAIN_NAME}
 
 deploy:
 	[ -f "static/widget.js" ] && true || false;
