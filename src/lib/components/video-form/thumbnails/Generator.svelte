@@ -48,7 +48,6 @@
 		};
 
 		videoElement.onseeked = () => {
-			console.log('video width', videoElement.videoWidth);
 			if (videoElement.videoWidth > videoElement.videoHeight) {
 				canvas.width = 960;
 				canvas.height = 540;

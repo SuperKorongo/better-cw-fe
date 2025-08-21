@@ -134,3 +134,12 @@ export const addView = async (videoUUID: string): Promise<void> => {
 		method: 'PATCH'
 	});
 };
+
+export const getDownloadLink = async (
+	videoUUID: string
+): Promise<{ link: string; instructions: string }> => {
+	const response = await fetchWrapper(fetch)(
+		`${PUBLIC_STORE_API_URL}/api/v1/videos/${videoUUID}/download-link`
+	);
+	return await response.json();
+};

@@ -416,7 +416,11 @@
 		"modelName": "Modelo",
 		"duration": "Duración",
 		"free": "Gratis",
-		"deactivateAdblock": "Desactive el bloqueador de anuncios y actualice la página para ver el video gratuito"
+		"deactivateAdblock": "Desactive el bloqueador de anuncios y actualice la página para ver el video gratuito",
+		"friendsOnly1": "Este es un video privado subido por",
+		"friendsOnly2": "Solamente los amigos de",
+		"friendsOnly3": "pueden ver este video",
+		"friendsWatch": "Ver video"
 	},
 	"withdraw": {
 		"title": "Retirar fondos",

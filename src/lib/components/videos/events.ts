@@ -145,7 +145,6 @@ export const events = (
 
 			newVideos(videos);
 		} catch (e: unknown) {
-			console.log(e);
 			handleApiError(e);
 		} finally {
 			loading.set(false);

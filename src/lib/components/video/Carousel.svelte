@@ -71,7 +71,7 @@
 
 <div class="carousel-container">
 	{#if allImagesLoaded}
-		<Carousel autoplayDuration={0} duration={5000} autoplay timingFunction="linear" arrows={false}>
+		<Carousel autoplayDuration={0} duration={2500} autoplay timingFunction="linear" arrows={false}>
 			{#each imageUrls as src, index (src)}
 				<img
 					role="none"

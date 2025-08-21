@@ -1,9 +1,12 @@
 <script lang="ts">
-	let { text }: { text: string } = $props();
+	let { text, component }: { text?: string; component?: () => any } = $props();
 </script>
 
 <span>
 	{text}
+	{#if component}
+		{@render component()}
+	{/if}
 </span>
 
 <style>

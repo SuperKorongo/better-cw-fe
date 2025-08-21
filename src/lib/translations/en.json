@@ -417,7 +417,10 @@
 		"duration": "Duration",
 		"free": "Free",
 		"deactivateAdblock": "Deactivate adblock and refresh the page to see the free video",
-		"friendsOnly": ""
+		"friendsOnly1": "This is a private video uploaded by",
+		"friendsOnly2": "Only",
+		"friendsOnly3": "friends can watch this video",
+		"friendsWatch": "Watch video"
 	},
 	"withdraw": {
 		"title": "Withdraw funds",
