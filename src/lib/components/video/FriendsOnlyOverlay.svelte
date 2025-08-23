@@ -28,7 +28,8 @@
 			const { link } = await getDownloadLink(video.uuid);
 			downloadLink = link;
 		} catch (error) {
-			// Get if there is existing friend request // todo
+			loading.set(false);
+			loading.set(true);
 		} finally {
 			loading.set(false);
 		}
@@ -62,7 +63,7 @@
 			<div class="inner-section">
 				<AuthCTA />
 			</div>
-		{:else if !$loading.value}
+		{:else if !$loading.value && !downloadLink}
 			<div class="inner-section">
 				TODO - either show button to add friend or show "you already sent a friend request"
 			</div>
@@ -84,13 +85,14 @@
 		position: absolute;
 		top: 50%;
 		left: 50%;
-		transform: translate(-50%, -85%);
 		width: 100%;
 		text-shadow: 1px 1px 1px rgb(54, 0, 116);
 	}
 
 	.inner-section {
 		padding-top: 30px;
+		padding-left: 20px;
+		padding-right: 20px;
 	}
 
 	.main-container {
@@ -109,6 +111,7 @@
 	@media (max-width: 600px) {
 		.inner {
 			font-size: 17px;
+			transform: translate(-50%, -60%);
 		}
 		.main-container {
 			height: 250px;
@@ -118,6 +121,7 @@
 	@media (min-width: 600px) {
 		.inner {
 			font-size: 25px;
+			transform: translate(-50%, -85%);
 		}
 		.main-container {
 			height: 500px;
@@ -126,7 +130,8 @@
 	}
 	@media (min-width: 1921px) {
 		.inner {
-			font-size: 35px;
+			font-size: 30px;
+			transform: translate(-50%, -85%);
 		}
 		.main-container {
 			height: 650px;
@@ -135,7 +140,8 @@
 	}
 	@media (min-width: 2500px) {
 		.inner {
-			font-size: 35px;
+			font-size: 30px;
+			transform: translate(-50%, -85%);
 		}
 		.main-container {
 			height: 800px;
