@@ -7,7 +7,7 @@ import { goToInternalLink, handleApiError } from '$lib/utils/utils';
 import { get } from 'svelte/store';
 import * as toasts from '../toasts/toasts';
 
-const MIN_CART_PRICE_IN_USD = 5;
+const MIN_CART_PRICE_IN_USD = 1;
 
 export const onClickProceedToPayment = async (e: MouseEvent): Promise<void> => {
 	let totalPriceInUSD = 0;
