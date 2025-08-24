@@ -57,7 +57,7 @@
 
 			switch (type) {
 				case 'upload':
-					await upload($videoForm);
+					await upload(window.fetch, $videoForm);
 					toasts.success(getTranslation('upload.successfulUpload'));
 					break;
 				case 'patch':

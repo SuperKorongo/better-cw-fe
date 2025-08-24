@@ -420,7 +420,11 @@
 		"friendsOnly1": "This is a private video uploaded by",
 		"friendsOnly2": "Only",
 		"friendsOnly3": "friends can watch this video",
-		"friendsWatch": "Watch video"
+		"friendsWatch": "Watch video",
+		"sendFriendRequest": "Send friend request",
+		"friendRequestSent": "Friend request successfully sent!",
+		"friendRequestError": "An error occurred while sending the friend request - please try again later",
+		"friendRequestPending": "You have already sent a friend request to {USER} - Please wait for it to be accepted."
 	},
 	"withdraw": {
 		"title": "Withdraw funds",

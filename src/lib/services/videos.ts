@@ -79,7 +79,7 @@ export type UploadVideoRequest = {
 	downloadLinkInstructions?: string;
 	active?: boolean;
 };
-export const upload = async (data: VideoData): Promise<string> => {
+export const upload = async (fetch: PageLoadEvent['fetch'], data: VideoData): Promise<string> => {
 	const uploadVideoRequest: Partial<UploadVideoRequest> & { [key: string]: unknown } = {};
 
 	for (const [key, value] of Object.entries(data)) {
@@ -88,7 +88,7 @@ export const upload = async (data: VideoData): Promise<string> => {
 	delete uploadVideoRequest['blobs'];
 	uploadVideoRequest.active = true;
 
-	const response = await fetchWrapper(window.fetch)(`${PUBLIC_STORE_API_URL}/api/v1/videos/`, {
+	const response = await fetchWrapper(fetch)(`${PUBLIC_STORE_API_URL}/api/v1/videos/`, {
 		method: 'PUT',
 		body: JSON.stringify({ videos: [uploadVideoRequest] })
 	});
@@ -103,7 +103,7 @@ export const upload = async (data: VideoData): Promise<string> => {
 			if (thumbnail === null) {
 				continue;
 			}
-			await uploadThumbnail(uuid, thumbnail.blob);
+			await uploadThumbnail(fetch, uuid, thumbnail.blob);
 		}
 	} catch (e: unknown) {
 		console.error(e);
@@ -112,7 +112,11 @@ export const upload = async (data: VideoData): Promise<string> => {
 	return uuid;
 };
 
-export const uploadThumbnail = async (videoUUID: string, blob: Blob | null): Promise<void> => {
+export const uploadThumbnail = async (
+	fetch: PageLoadEvent['fetch'],
+	videoUUID: string,
+	blob: Blob | null
+): Promise<void> => {
 	if (blob === null) {
 		return;
 	}
@@ -120,22 +124,20 @@ export const uploadThumbnail = async (videoUUID: string, blob: Blob | null): Pro
 	const formData = new FormData();
 	formData.append('thumbnail', blob);
 
-	await fetchWrapper(window.fetch)(
-		`${PUBLIC_STORE_API_URL}/api/v1/thumbnails/${videoUUID}/thumbnail`,
-		{
-			method: 'PUT',
-			body: formData
-		}
-	);
+	await fetchWrapper(fetch)(`${PUBLIC_STORE_API_URL}/api/v1/thumbnails/${videoUUID}/thumbnail`, {
+		method: 'PUT',
+		body: formData
+	});
 };
 
-export const addView = async (videoUUID: string): Promise<void> => {
-	await fetchWrapper(window.fetch)(`${PUBLIC_STORE_API_URL}/api/v1/videos/${videoUUID}/views/add`, {
+export const addView = async (fetch: PageLoadEvent['fetch'], videoUUID: string): Promise<void> => {
+	await fetchWrapper(fetch)(`${PUBLIC_STORE_API_URL}/api/v1/videos/${videoUUID}/views/add`, {
 		method: 'PATCH'
 	});
 };
 
 export const getDownloadLink = async (
+	fetch: PageLoadEvent['fetch'],
 	videoUUID: string
 ): Promise<{ link: string; instructions: string }> => {
 	const response = await fetchWrapper(fetch)(

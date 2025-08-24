@@ -420,7 +420,11 @@
 		"friendsOnly1": "Questo è un video privato caricato da",
 		"friendsOnly2": "Solo gli amici di",
 		"friendsOnly3": "puoi guardare questo video",
-		"friendsWatch": "Guarda il video"
+		"friendsWatch": "Guarda il video",
+		"sendFriendRequest": "Invia richiesta di amicizia",
+		"friendRequestSent": "Richiesta di amicizia inviata con successo!",
+		"friendRequestError": "Si è verificato un errore durante l'invio della richiesta di amicizia - riprova più tardi",
+		"friendRequestPending": "Hai già inviato una richiesta di amicizia a {USER} - Attendi che venga accettata."
 	},
 	"withdraw": {
 		"title": "Preleva fondi",

@@ -17,7 +17,7 @@
 			return;
 		}
 
-		addView(video.uuid);
+		addView(window.fetch, video.uuid);
 		openAdLink();
 		(e.target as HTMLDivElement).style.display = 'none';
 	};

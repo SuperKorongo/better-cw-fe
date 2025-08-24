@@ -75,7 +75,7 @@ async function addThumbnails(video: Video): Promise<void> {
 			video.thumbnailFilePaths.filter((p) => isSameImage(p, thumbnail.src)).length === 0
 		) {
 			try {
-				await uploadThumbnail(video.uuid, thumbnail.blob);
+				await uploadThumbnail(window.fetch, video.uuid, thumbnail.blob);
 			} catch {
 				// TODO
 			}

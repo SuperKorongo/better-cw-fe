@@ -1,5 +1,7 @@
 <script lang="ts">
-	let { text, component }: { text?: string; component?: () => any } = $props();
+	import type { Snippet } from 'svelte';
+
+	let { text, component }: { text?: string; component?: () => ReturnType<Snippet> } = $props();
 </script>
 
 <span>

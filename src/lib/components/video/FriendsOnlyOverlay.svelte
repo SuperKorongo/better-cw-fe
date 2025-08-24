@@ -1,5 +1,8 @@
 <script lang="ts">
+	import * as toasts from '$lib/components/toasts/toasts';
+	import type { FriendRequest } from '$lib/models/FriendRequest';
 	import type { Video } from '$lib/models/Video';
+	import { getFriendRequest, sendFriendRequest } from '$lib/services/friends';
 	import { getDownloadLink } from '$lib/services/videos';
 	import { loading } from '$lib/stores/loading/store';
 	import { user } from '$lib/stores/user/store';
@@ -18,22 +21,57 @@
 		onClickWatchVideo: (link: string) => void;
 	} = $props();
 
-	let downloadLink = $state('');
+	let downloadLink = $state<string>('');
+	let friendRequest = $state<FriendRequest | null>(null);
+	let friendRequestCheckFinished = $state<boolean>(false);
+	let mounted = $state<boolean>(false);
 
-	onMount(async () => {
+	onMount(() => {
+		mounted = true;
+	});
+
+	$effect(() => {
+		if (!mounted) return;
 		if (!$user.data) return;
+
+		(async function () {
+			loading.set(true);
+			try {
+				const { link } = await getDownloadLink(window.fetch, video.uuid);
+				downloadLink = link;
+			} catch {
+				loading.set(false);
+				loading.set(true);
+
+				try {
+					const request = await getFriendRequest(window.fetch, video.uploader.uuid);
+					friendRequest = request;
+				} catch {
+					// nothing
+				} finally {
+					friendRequestCheckFinished = true;
+					loading.set(false);
+				}
+			} finally {
+				loading.set(false);
+			}
+		})();
+	});
+
+	const onClickSendFriendRequest = async (): Promise<void> => {
+		if ($loading.value) return;
 
 		loading.set(true);
 		try {
-			const { link } = await getDownloadLink(video.uuid);
-			downloadLink = link;
-		} catch (error) {
-			loading.set(false);
-			loading.set(true);
+			const request = await sendFriendRequest(window.fetch, video.uploader.uuid);
+			friendRequest = request;
+			toasts.success(getTranslation('video.friendRequestSent'));
+		} catch {
+			toasts.error(getTranslation('video.friendRequestError'));
 		} finally {
 			loading.set(false);
 		}
-	});
+	};
 </script>
 
 <div class="main-container">
@@ -59,17 +97,25 @@
 			</span>
 			{getTranslation('video.friendsOnly3')}
 		</div>
-		{#if $user.data === null}
+		{#if $user.data === null && mounted}
 			<div class="inner-section">
 				<AuthCTA />
 			</div>
-		{:else if !$loading.value && !downloadLink}
+		{:else if !$loading.value && !downloadLink && friendRequestCheckFinished}
 			<div class="inner-section">
-				TODO - either show button to add friend or show "you already sent a friend request"
+				{#if friendRequest === null}
+					<Button onclick={onClickSendFriendRequest} variant="raised" color="primary">
+						{getTranslation('video.sendFriendRequest')}
+					</Button>
+				{:else}
+					<span class="friend-request-already-sent">
+						{getTranslation('video.friendRequestPending').replace('{USER}', video.uploader.name)}
+					</span>
+				{/if}
 			</div>
 		{/if}
 		{#if downloadLink}
-			<div class="inner-section">
+			<div class="inner-section watch-video-button">
 				<Button onclick={() => onClickWatchVideo(downloadLink)} variant="raised" color="primary">
 					{getTranslation('video.friendsWatch')}
 				</Button>
@@ -106,6 +152,12 @@
 	.uploader-link {
 		font-weight: bold;
 		text-shadow: none;
+	}
+
+	.friend-request-already-sent {
+		font-size: 14px;
+		color: #aaa;
+		font-style: italic;
 	}
 
 	@media (max-width: 600px) {
