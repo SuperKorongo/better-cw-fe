@@ -11,5 +11,6 @@ export type User = {
 	readonly rating: number;
 	readonly totalRatings: number;
 	readonly hasOpenDisputes: boolean;
+	readonly hasPendingFriendRequests: boolean;
 	readonly sinceTimestamp: number;
 };
