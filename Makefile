@@ -75,5 +75,8 @@ vps-initial-setup:
 
 vps-setup-nginx-conf:
 	sed -i "s/server_name localhost;/server_name ${DOMAIN_NAME} www.${DOMAIN_NAME};/g" nginx/nginx.conf
+	sed -i "s/localhost 1;/${DOMAIN_NAME} 1;/g" nginx/nginx.conf
+	sed -i "s/www.localhost 1;/www.${DOMAIN_NAME} 1;/g" nginx/nginx.conf
+	sed -i "s/return 301 https://localhost;/return 301 https://${DOMAIN_NAME} 1;/g" nginx/nginx.conf
 	sed -i 's|ssl_certificate /etc/nginx/localhost.crt;|ssl_certificate /etc/letsencrypt/live/${DOMAIN_NAME}/fullchain.pem;|g' nginx/nginx.conf
 	sed -i 's|ssl_certificate_key /etc/nginx/localhost.key;|ssl_certificate_key /etc/letsencrypt/live/${DOMAIN_NAME}/privkey.pem;|g' nginx/nginx.conf

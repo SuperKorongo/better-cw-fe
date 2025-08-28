@@ -1,3 +1,4 @@
+# Worker processes and connections
 worker_processes auto;
 
 events {
@@ -43,9 +44,15 @@ http {
     include /etc/nginx/conf.d/botblocker-nginx-settings.conf;
     include /etc/nginx/conf.d/globalblacklist.conf;
 
+    map $host $valid_host {
+        localhost 1;
+        www.localhost 1;
+        default 0;
+    }
+
     server {
         listen 80;
-        server_name localhost;
+        server_name localhost www.localhost;
 
         return 301 https://$server_name$request_uri;
     }
@@ -53,7 +60,11 @@ http {
     server {
         listen 443 ssl;
         http2 on;
-        server_name localhost;
+        server_name localhost www.localhost;
+
+        if ($valid_host = 0) {
+                return 301 https://localhost$request_uri;
+        }
 
         # Bots blocker
         include /etc/nginx/bots.d/ddos.conf;
