@@ -21,6 +21,7 @@
 	let value = $derived(PUBLIC_OPTION.name);
 
 	$effect.pre(() => {
+		videoForm.setIsPrivate(visibility === 'private');
 		value = visibility === 'private' ? PRIVATE_OPTION.name : PUBLIC_OPTION.name;
 	});
 
