@@ -35,10 +35,10 @@
 			href: getHrefWithLanguage(`/admin/profile`),
 			label: getTranslation('admin.menu.profile')
 		},
-		{
+		/*{
 			href: getHrefWithLanguage(`/admin/my-friends`),
 			label: getTranslation('admin.menu.myFriends')
-		},
+		},*/
 		{
 			href: getHrefWithLanguage(`/admin/my-videos`),
 			label: getTranslation('admin.menu.myVideos')
