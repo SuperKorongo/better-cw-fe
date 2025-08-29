@@ -44,6 +44,9 @@
 					>
 						{getTranslation('menu.profile')}
 					</a>
+					{#if $user.data.hasOpenDisputes || $user.data.hasPendingFriendRequests}
+						<span class="my-account-alert">-</span>
+					{/if}
 				</div>
 			{/if}
 			<div>
@@ -190,6 +193,15 @@
 		background: red;
 		position: absolute;
 		margin-left: 5px;
+	}
+	.my-account-alert {
+		border-radius: 50%;
+		font-size: 7px;
+		padding: 1px 4px;
+		font-weight: bold;
+		background: red;
+		margin-left: 5px;
+		color: red;
 	}
 
 	@keyframes expand-right-to-left {
