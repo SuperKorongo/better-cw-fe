@@ -36,6 +36,10 @@
 			label: getTranslation('admin.menu.profile')
 		},
 		{
+			href: getHrefWithLanguage(`/admin/my-friends`),
+			label: getTranslation('admin.menu.myFriends')
+		},
+		{
 			href: getHrefWithLanguage(`/admin/my-videos`),
 			label: getTranslation('admin.menu.myVideos')
 		},
@@ -68,8 +72,11 @@
 				<div class={getClass(item.href)}>
 					<a onclick={onClickMenuLink} data-sveltekit-preload-data="tap" href={item.href}>
 						{item.label}
+						{#if item.href === `/${$language}/admin/my-friends` && $user.data?.hasPendingFriendRequests}
+							<span class="alert-indicator"></span>
+						{/if}
 						{#if item.href === `/${$language}/admin/disputes` && $user.data?.hasOpenDisputes}
-							<span class="disputes-indicator"></span>
+							<span class="alert-indicator-2"></span>
 						{/if}
 					</a>
 				</div>
@@ -110,13 +117,21 @@
 		border-radius: 10px;
 	}
 
-	.disputes-indicator {
+	.alert-indicator {
 		width: 8px;
 		height: 8px;
 		border-radius: 50%;
 		background: red;
 		position: absolute;
 		margin-left: 5px;
+	}
+
+	.alert-indicator-2 {
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: red;
+		position: absolute;
 	}
 
 	@keyframes expand-left-to-right {
@@ -164,6 +179,10 @@
 		.main-section > div {
 			margin-bottom: 30px;
 		}
+		.alert-indicator-2 {
+			margin-top: -20px;
+			margin-left: 80px;
+		}
 	}
 	@media (min-width: 900px) {
 		aside {
@@ -176,6 +195,10 @@
 		}
 		.main-section > div {
 			margin-bottom: 45px;
+		}
+		.alert-indicator-2 {
+			margin-top: -25px;
+			margin-left: 102px;
 		}
 	}
 </style>

@@ -64,6 +64,7 @@
 		"onlyRegistered": "Register or login before entering the admin section",
 		"menu": {
 			"profile": "Profile",
+			"myFriends": "My friends",
 			"myVideos": "My videos",
 			"disputes": "Disputes",
 			"purchases": "Purchases",
