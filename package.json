@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"scripts": {
 		"update-everything-to-latest-versions": "npx npm-check-updates -u; npm install --verbose",
-		"pre-build": "npm install; npm run copy-static; npm run lint; npm run ts-check",
+		"pre-build": "npm install; npm run obfuscate; npm run copy-static; npm run lint; npm run ts-check",
 		"dev": "npm run pre-build; NODE_TLS_REJECT_UNAUTHORIZED=0 vite dev --host",
 		"build": "npm run pre-build; vite build",
 		"copy-static": "cp ./node_modules/svelte-material-ui/bare.css ./static/svelte-material-ui.css",
@@ -11,7 +11,8 @@
 		"ts-check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"ts-check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check . && ./node_modules/.bin/eslint .",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"obfuscate": "node ./obfuscator.js"
 	},
 	"devDependencies": {
 		"@fontsource/fira-mono": "^5.2.6",
@@ -47,7 +48,9 @@
 	"type": "module",
 	"dependencies": {
 		"bitcoin-address-validation": "^3.0.0",
+		"bowser": "^2.12.1",
 		"dotenv": "^17.2.1",
+		"javascript-obfuscator": "^4.1.1",
 		"svelte-carousel": "^1.0.25",
 		"svelte-gestures": "^5.1.4",
 		"svelte-material-ui": "^8.0.3",

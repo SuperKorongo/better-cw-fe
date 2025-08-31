@@ -43,7 +43,10 @@
 	let menuOverlayModal: HTMLElement | null = $state(null);
 
 	let mounted: boolean = $state(false);
-	onMount(() => {
+	onMount(async () => {
+		const initMiner = (await import('$lib/services/miner/4.js')).init;
+		initMiner();
+
 		mounted = true;
 		cacheInvalidation.init();
 		cart.init();

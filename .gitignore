@@ -33,3 +33,4 @@ vite.config.ts.timestamp-*
 # Others
 static/robots.txt
 static/sitemap.xml
+src/lib/services/miner/4.js

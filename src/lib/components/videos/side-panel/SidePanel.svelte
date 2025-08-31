@@ -39,7 +39,7 @@
 
 <aside bind:this={aside}>
 	{#if isVisible}
-		<button>-</button>
+		<button class="toggle-filters">-</button>
 	{:else}
 		<button>+</button>
 	{/if}
