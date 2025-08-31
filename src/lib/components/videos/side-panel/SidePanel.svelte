@@ -1,25 +1,31 @@
 <script lang="ts">
 	import { isMobileScreen } from '$lib/utils/utils';
+	import { onMount } from 'svelte';
 
 	let aside: HTMLElement;
 
-	$effect.pre(() => {
+	onMount(() => {
+		function setFiltersPositioning() {
+			if (isMobileScreen()) return;
+
+			if (window.scrollY <= 500) {
+				aside.style.position = 'relative';
+				aside.style.left = 'auto';
+				aside.style.top = 'auto';
+				aside.style.width = 'auto';
+				aside.style.zIndex = '0';
+				return;
+			}
+
+			aside.style.position = 'fixed';
+			aside.style.left = '20px';
+			aside.style.top = '80px';
+			aside.style.zIndex = '100';
+			aside.style.width = '18%';
+		}
+		setFiltersPositioning();
 		setTimeout(() => {
-			window.onscroll = () => {
-				if (window.scrollY <= 500) {
-					aside.style.position = 'relative';
-					aside.style.left = 'auto';
-					aside.style.top = 'auto';
-					aside.style.width = 'auto';
-					aside.style.zIndex = '0';
-				} else if (!isMobileScreen()) {
-					aside.style.position = 'fixed';
-					aside.style.left = '20px';
-					aside.style.top = '80px';
-					aside.style.zIndex = '100';
-					aside.style.width = '18%';
-				}
-			};
+			window.onscroll = setFiltersPositioning;
 		}, 500);
 	});
 
@@ -31,6 +37,7 @@
 </script>
 
 <aside bind:this={aside}>
+	Search term <br />
 	Order by <br />
 	Price range <br />
 	Public only / private only / all (all marked by default)<br />
