@@ -222,6 +222,6 @@ export const getBrandName = (which: 'short' | 'extended'): string => {
 		case 'bettercamwhores.com':
 			return which === 'short' ? 'BetterCamWhores' : 'Better CamWhores';
 		default:
-			return which === 'short' ? 'Clipz4BTC' : 'Clipz 4 BTC';
+			return which === 'short' ? 'BetterCamWhores' : 'Better CamWhores';
 	}
 };
