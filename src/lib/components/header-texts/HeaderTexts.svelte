@@ -20,8 +20,6 @@
 </header>
 
 <style>
-	.brand {
-	}
 	header {
 		margin-top: calc(var(--navbar-height) + 40px);
 		padding: 0% 3rem;
