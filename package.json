@@ -8,11 +8,11 @@
 		"build": "npm run pre-build; vite build",
 		"copy-static": "cp ./node_modules/svelte-material-ui/bare.css ./static/svelte-material-ui.css",
 		"preview": "npm run build; vite preview --host",
-		"ts-check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"ts-check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"ts-check": "svelte-kit sync && npm run svelte-check",
 		"lint": "prettier --check . && ./node_modules/.bin/eslint .",
 		"format": "prettier --write .",
-		"obfuscate": "node ./obfuscator.js"
+		"obfuscate": "node ./obfuscator.js",
+		"svelte-check": "svelte-check --no-tsconfig --ignore 'src/lib/mandelbrot_renderer/src/miner'"
 	},
 	"devDependencies": {
 		"@fontsource/fira-mono": "^5.2.6",
