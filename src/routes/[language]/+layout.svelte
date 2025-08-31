@@ -139,6 +139,9 @@
 	main :global(*) {
 		--navbar-height: 60px;
 	}
+	section {
+		overflow-x: hidden;
+	}
 	.menu-overlay {
 		position: fixed;
 		background-color: rgba(0, 0, 0, 0.642);

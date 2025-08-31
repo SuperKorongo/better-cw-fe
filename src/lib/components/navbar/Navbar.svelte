@@ -12,7 +12,7 @@
 			data-sveltekit-preload-data="tap"
 			href={getHrefWithLanguage(`/`)}
 		>
-			<img alt="Better CamWhores logo" class="logo" src="android-chrome-192x192.png" />
+			<img alt="Better CamWhores logo" class="logo" src="/android-chrome-192x192.png" />
 		</a>
 	</div>
 	<div class="search-container">
