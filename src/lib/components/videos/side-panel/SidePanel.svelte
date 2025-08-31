@@ -3,6 +3,7 @@
 	import { onMount } from 'svelte';
 
 	let aside: HTMLElement;
+	let isVisible: boolean = $state<boolean>(true);
 
 	onMount(() => {
 		function setFiltersPositioning() {
@@ -37,6 +38,11 @@
 </script>
 
 <aside bind:this={aside}>
+	{#if isVisible}
+		<button>-</button>
+	{:else}
+		<button>+</button>
+	{/if}
 	Search term <br />
 	Order by <br />
 	Price range <br />
