@@ -6,7 +6,7 @@
 </script>
 
 <header>
-	<h1>
+	<h1 class="brand">
 		<GlowingText text={getBrandName('extended')} />
 	</h1>
 	<h2>{getTranslation('homepage.title')}</h2>
@@ -20,6 +20,8 @@
 </header>
 
 <style>
+	.brand {
+	}
 	header {
 		margin-top: calc(var(--navbar-height) + 40px);
 		padding: 0% 3rem;

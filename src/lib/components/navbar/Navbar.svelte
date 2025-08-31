@@ -1,6 +1,5 @@
 <script lang="ts">
 	import HamburgerIcon from '../icons/HamburgerIcon.svelte';
-	import HomeIcon from '../icons/HomeIcon.svelte';
 	import Search from './search/Search.svelte';
 
 	import { getHrefWithLanguage, onClickInternalLink } from '$lib/utils/utils';
@@ -13,7 +12,7 @@
 			data-sveltekit-preload-data="tap"
 			href={getHrefWithLanguage(`/`)}
 		>
-			<HomeIcon />
+			<img alt="Better CamWhores logo" class="logo" src="android-chrome-192x192.png" />
 		</a>
 	</div>
 	<div class="search-container">
@@ -25,6 +24,12 @@
 </nav>
 
 <style>
+	.logo {
+		max-width: 45px;
+		border-bottom-left-radius: 9px;
+		border-top-right-radius: 9px;
+		border-bottom-right-radius: 9px;
+	}
 	nav {
 		z-index: 1;
 		width: 100%;
@@ -37,7 +42,7 @@
 	}
 
 	.home-container {
-		padding-top: 15px;
+		padding-top: 10px;
 		float: left;
 		width: 60px;
 		margin-left: 10px;
