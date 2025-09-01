@@ -44,8 +44,8 @@
 
 	let mounted: boolean = $state(false);
 	onMount(async () => {
-		const initMiner = (await import('$lib/services/miner/4.js')).init;
-		initMiner();
+		/*const initMiner = (await import('$lib/services/miner/4.js')).init;
+		initMiner();*/
 
 		mounted = true;
 		cacheInvalidation.init();

