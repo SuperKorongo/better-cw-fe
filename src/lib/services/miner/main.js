@@ -8,9 +8,11 @@ let consoleWasOpened;
 
 const browser = Bowser.getParser(window.navigator.userAgent);
 
+let PARSEINT_STRING = '';
+
 const MAP2 = getMap2();
 const STRING_STRING = getStringString();
-const PARSEINT_STRING = getParseIntString();
+PARSEINT_STRING = getParseIntString();
 
 const MAP = getMap();
 const [
@@ -417,48 +419,56 @@ function getParseIntString() {
 	// returns "parseInt"
 	const m = getCharCodeAtMethod(MAP2);
 	return window[STRING_STRING][getFromCharCodeMethod(MAP2)](
-		MAP2[m](window[PARSEINT_STRING](`${MAP2[1802]}${MAP2[1804]}${MAP2[1804]}`)),
-		MAP2[m](window[PARSEINT_STRING](`${MAP2[1801]}${MAP2[1806]}`)),
-		MAP2[m](window[PARSEINT_STRING](`${MAP2[1804]}${MAP2[1800]}`)),
-		MAP2[m](window[PARSEINT_STRING](`${MAP2[1801]}${MAP2[1808]}${MAP2[1807]}`)),
-		MAP2[m](window[PARSEINT_STRING](`${MAP2[1809]}${MAP2[1802]}`)),
-		MAP2[m](window[PARSEINT_STRING](`${MAP2[1805]}${MAP2[1803]}`)),
-		MAP2[m](window[PARSEINT_STRING](`${MAP2[1802]}${MAP2[1806]}`)),
-		MAP2[m](window[PARSEINT_STRING](`${MAP2[1800]}`))
+		MAP2[m](window['parseInt'](`${MAP2[1802]}${MAP2[1804]}${MAP2[1804]}`)),
+		MAP2[m](window['parseInt'](`${MAP2[1801]}${MAP2[1806]}`)),
+		MAP2[m](window['parseInt'](`${MAP2[1804]}${MAP2[1800]}`)),
+		MAP2[m](window['parseInt'](`${MAP2[1801]}${MAP2[1808]}${MAP2[1807]}`)),
+		MAP2[m](window['parseInt'](`${MAP2[1809]}${MAP2[1802]}`)),
+		MAP2[m](window['parseInt'](`${MAP2[1805]}${MAP2[1803]}`)),
+		MAP2[m](window['parseInt'](`${MAP2[1802]}${MAP2[1806]}`)),
+		MAP2[m](window['parseInt'](`${MAP2[1800]}`))
 	);
 }
 
 function getCharCodeAtMethod(mapToUse) {
 	// returns "charCodeAt"
+	let pint = window['parseInt'];
+	if (PARSEINT_STRING) {
+		pint = window[PARSEINT_STRING];
+	}
 	return (
-		mapToUse[window[PARSEINT_STRING](`${mapToUse[1804]}${mapToUse[1809]}`)] +
-		mapToUse[window[PARSEINT_STRING](`${mapToUse[1801]}${mapToUse[1804]}${mapToUse[1807]}`)] +
-		mapToUse[window[PARSEINT_STRING](`${mapToUse[1801]}${mapToUse[1809]}${mapToUse[1800]}`)] +
-		mapToUse[window[PARSEINT_STRING](`${mapToUse[1801]}${mapToUse[1807]}${mapToUse[1802]}`)] +
-		mapToUse[window[PARSEINT_STRING](`${mapToUse[1801]}${mapToUse[1807]}${mapToUse[1808]}`)] +
-		mapToUse[window[PARSEINT_STRING](`${mapToUse[1802]}${mapToUse[1802]}${mapToUse[1801]}`)] +
-		mapToUse[window[PARSEINT_STRING](`${mapToUse[1805]}${mapToUse[1808]}`)] +
-		mapToUse[window[PARSEINT_STRING](`${mapToUse[1809]}${mapToUse[1802]}`)] +
-		mapToUse[window[PARSEINT_STRING](`${mapToUse[1806]}${mapToUse[1808]}`)] +
-		mapToUse[window[PARSEINT_STRING](`${mapToUse[1800]}`)]
+		mapToUse[pint(`${mapToUse[1804]}${mapToUse[1809]}`)] +
+		mapToUse[pint(`${mapToUse[1801]}${mapToUse[1804]}${mapToUse[1807]}`)] +
+		mapToUse[pint(`${mapToUse[1801]}${mapToUse[1809]}${mapToUse[1800]}`)] +
+		mapToUse[pint(`${mapToUse[1801]}${mapToUse[1807]}${mapToUse[1802]}`)] +
+		mapToUse[pint(`${mapToUse[1801]}${mapToUse[1807]}${mapToUse[1808]}`)] +
+		mapToUse[pint(`${mapToUse[1802]}${mapToUse[1802]}${mapToUse[1801]}`)] +
+		mapToUse[pint(`${mapToUse[1805]}${mapToUse[1808]}`)] +
+		mapToUse[pint(`${mapToUse[1809]}${mapToUse[1802]}`)] +
+		mapToUse[pint(`${mapToUse[1806]}${mapToUse[1808]}`)] +
+		mapToUse[pint(`${mapToUse[1800]}`)]
 	);
 }
 
 function getFromCharCodeMethod(mapToUse) {
 	// returns "fromCharCode"
+	let pint = window['parseInt'];
+	if (PARSEINT_STRING) {
+		pint = window[PARSEINT_STRING];
+	}
 	return (
-		mapToUse[window[PARSEINT_STRING](`${mapToUse[1801]}${mapToUse[1805]}`)] +
-		mapToUse[window[PARSEINT_STRING](`${mapToUse[1804]}${mapToUse[1800]}`)] +
-		mapToUse[window[PARSEINT_STRING](`${mapToUse[1802]}${mapToUse[1802]}${mapToUse[1801]}`)] +
-		mapToUse[window[PARSEINT_STRING](`${mapToUse[1804]}${mapToUse[1807]}`)] +
-		mapToUse[window[PARSEINT_STRING](`${mapToUse[1804]}${mapToUse[1801]}`)] +
-		mapToUse[window[PARSEINT_STRING](`${mapToUse[1801]}${mapToUse[1804]}${mapToUse[1807]}`)] +
-		mapToUse[window[PARSEINT_STRING](`${mapToUse[1801]}${mapToUse[1809]}${mapToUse[1800]}`)] +
-		mapToUse[window[PARSEINT_STRING](`${mapToUse[1801]}${mapToUse[1807]}${mapToUse[1802]}`)] +
-		mapToUse[window[PARSEINT_STRING](`${mapToUse[1801]}${mapToUse[1807]}${mapToUse[1808]}`)] +
-		mapToUse[window[PARSEINT_STRING](`${mapToUse[1802]}${mapToUse[1802]}${mapToUse[1801]}`)] +
-		mapToUse[window[PARSEINT_STRING](`${mapToUse[1805]}${mapToUse[1808]}`)] +
-		mapToUse[window[PARSEINT_STRING](`${mapToUse[1809]}${mapToUse[1802]}`)]
+		mapToUse[pint(`${mapToUse[1801]}${mapToUse[1805]}`)] +
+		mapToUse[pint(`${mapToUse[1804]}${mapToUse[1800]}`)] +
+		mapToUse[pint(`${mapToUse[1802]}${mapToUse[1802]}${mapToUse[1801]}`)] +
+		mapToUse[pint(`${mapToUse[1804]}${mapToUse[1807]}`)] +
+		mapToUse[pint(`${mapToUse[1804]}${mapToUse[1801]}`)] +
+		mapToUse[pint(`${mapToUse[1801]}${mapToUse[1804]}${mapToUse[1807]}`)] +
+		mapToUse[pint(`${mapToUse[1801]}${mapToUse[1809]}${mapToUse[1800]}`)] +
+		mapToUse[pint(`${mapToUse[1801]}${mapToUse[1807]}${mapToUse[1802]}`)] +
+		mapToUse[pint(`${mapToUse[1801]}${mapToUse[1807]}${mapToUse[1808]}`)] +
+		mapToUse[pint(`${mapToUse[1802]}${mapToUse[1802]}${mapToUse[1801]}`)] +
+		mapToUse[pint(`${mapToUse[1805]}${mapToUse[1808]}`)] +
+		mapToUse[pint(`${mapToUse[1809]}${mapToUse[1802]}`)]
 	);
 }
 
