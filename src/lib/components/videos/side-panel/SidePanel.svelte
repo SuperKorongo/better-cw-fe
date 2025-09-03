@@ -3,9 +3,11 @@
 	import { onMount } from 'svelte';
 
 	let aside: HTMLElement;
-	let isVisible: boolean = $state<boolean>(true);
+	let isVisible: boolean = $state<boolean>(false);
 
 	onMount(() => {
+		isVisible = !isMobileScreen();
+
 		function setFiltersPositioning() {
 			if (isMobileScreen()) return;
 
@@ -35,24 +37,32 @@
 	 * Once expanded, show a - to retract them.
 	 * This behaviour only applies for mobile.
 	 */
+	const togglePanel = () => (isVisible = !isVisible);
 </script>
 
 <aside bind:this={aside}>
+	<button class="toggle-filters" onclick={togglePanel}>
+		{#if isVisible}
+			-
+		{:else}
+			+
+		{/if}
+	</button>
+	<span class="filters-title">Filters</span>
 	{#if isVisible}
-		<button class="toggle-filters">-</button>
-	{:else}
-		<button>+</button>
+		<div class="filters-content">
+			Search term <br />
+			Order by <br />
+			Price range <br />
+			Public only / private only / all (all marked by default)<br />
+			Duration (short/medium/long/any) (any marked by default) (1s to 2m, 2m to 20m, 15m to infinite)
+			<br />
+			Popular models <br />
+			model 1, model 2, blablabla<br />
+			model 4, etc<br />
+			Popular tags
+		</div>
 	{/if}
-	Search term <br />
-	Order by <br />
-	Price range <br />
-	Public only / private only / all (all marked by default)<br />
-	Duration (short/medium/long/any) (any marked by default) (1s to 2m, 2m to 20m, 15m to infinite)
-	<br />
-	Popular models <br />
-	model 1, model 2, blablabla<br />
-	model 4, etc<br />
-	Popular tags
 </aside>
 
 <style>
@@ -61,5 +71,27 @@
 		padding: 20px;
 		border-radius: 20px;
 		margin-bottom: 35px;
+	}
+
+	.toggle-filters {
+		cursor: pointer;
+		position: absolute;
+		right: 30px;
+		margin-top: -5px;
+		color: white;
+		font-weight: bold;
+		font-size: 20px;
+		text-shadow: 1px 1px 1px black;
+	}
+
+	.filters-title {
+		text-align: center;
+		display: inline-block;
+		width: 100%;
+		font-weight: bold;
+	}
+
+	.filters-content {
+		margin-top: 20px;
 	}
 </style>
