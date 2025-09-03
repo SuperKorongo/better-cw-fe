@@ -1,11 +1,11 @@
 <script lang="ts">
 	import HeaderTexts from '$lib/components/header-texts/HeaderTexts.svelte';
-	import type { GetVideosFunc, GetVideosFuncParams } from '$lib/components/videos/events';
+	import type { GetVideosFunc } from '$lib/components/videos/events';
 	import Videos from '$lib/components/videos/Videos.svelte';
+	import type { Pagination } from '$lib/models/Pagination';
 	import { type Video as VideoType } from '$lib/models/Video';
 
 	import { getHomepageVideos } from '$lib/services/videos';
-	import { search } from '$lib/stores/search/store';
 	import type { Data } from './+page';
 
 	let {
@@ -14,8 +14,8 @@
 		data: Data;
 	} = $props();
 
-	const getVideosFunc: GetVideosFunc = (params: GetVideosFuncParams): Promise<VideoType[]> => {
-		return getHomepageVideos(fetch, params.pagination, $search.value ?? '', params.filters);
+	const getVideosFunc: GetVideosFunc = (pagination: Pagination): Promise<VideoType[]> => {
+		return getHomepageVideos(fetch, pagination);
 	};
 </script>
 

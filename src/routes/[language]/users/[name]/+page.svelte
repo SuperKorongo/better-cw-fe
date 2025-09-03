@@ -5,11 +5,11 @@
 	import { goto } from '$app/navigation';
 	import StarRating from '$lib/components/common/StarRating.svelte';
 	import Header from '$lib/components/header/Header.svelte';
-	import type { GetVideosFunc, GetVideosFuncParams } from '$lib/components/videos/events';
+	import type { GetVideosFunc } from '$lib/components/videos/events';
+	import type { Pagination } from '$lib/models/Pagination';
 	import { type Video as VideoType } from '$lib/models/Video';
 	import { getVideosBy, USERS_ENDPOINT } from '$lib/services/videos';
 	import { language } from '$lib/stores/language/store';
-	import { search } from '$lib/stores/search/store';
 	import { getTranslation } from '$lib/translations';
 	import { onMount } from 'svelte';
 	import type { Data } from './+page';
@@ -20,16 +20,9 @@
 		data: Data;
 	} = $props();
 
-	let getVideosFunc: GetVideosFunc = (params: GetVideosFuncParams): Promise<VideoType[]> => {
+	let getVideosFunc: GetVideosFunc = (pagination: Pagination): Promise<VideoType[]> => {
 		const pageParams = page.params as { name: string };
-		return getVideosBy(
-			fetch,
-			USERS_ENDPOINT,
-			pageParams.name,
-			params.pagination,
-			$search.value ?? '',
-			params.filters
-		);
+		return getVideosBy(fetch, USERS_ENDPOINT, pageParams.name, pagination);
 	};
 
 	onMount(() => {

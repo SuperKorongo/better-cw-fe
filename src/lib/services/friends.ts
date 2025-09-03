@@ -3,7 +3,7 @@ import type { Friend, FriendRequest } from '$lib/models/FriendRequest';
 import type { PaginatedResponse, Pagination } from '$lib/models/Pagination';
 import { fetchWrapper } from '$lib/utils/fetch';
 import type { PageLoadEvent } from '../../routes/[language]/$types';
-import { getQueryParams } from './common';
+import { getPaginationQueryParams } from './common';
 
 export const getFriendRequest = async (
 	fetch: PageLoadEvent['fetch'],
@@ -50,7 +50,7 @@ export const getMyFriends = async (
 	pagination: Pagination
 ): Promise<Friend[]> => {
 	const response = await fetchWrapper(fetch)(
-		`${PUBLIC_STORE_API_URL}/api/v1/friends/${getQueryParams(pagination)}`,
+		`${PUBLIC_STORE_API_URL}/api/v1/friends/${getPaginationQueryParams(pagination)}`,
 		{
 			method: 'GET'
 		}

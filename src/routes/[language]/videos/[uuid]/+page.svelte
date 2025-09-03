@@ -3,9 +3,9 @@
 	import { page } from '$app/state';
 	import HeaderTexts from '$lib/components/header-texts/HeaderTexts.svelte';
 	import Video from '$lib/components/video/Video.svelte';
-	import type { GetVideosFunc, GetVideosFuncParams } from '$lib/components/videos/events';
+	import type { GetVideosFunc } from '$lib/components/videos/events';
 	import Videos from '$lib/components/videos/Videos.svelte';
-	import { DEFAULT_PAGINATION } from '$lib/models/Pagination';
+	import { DEFAULT_PAGINATION, type Pagination } from '$lib/models/Pagination';
 	import { type Video as VideoType } from '$lib/models/Video';
 	import { getHomepageVideos } from '$lib/services/videos';
 	import { language } from '$lib/stores/language/store';
@@ -24,12 +24,12 @@
 			goto(`/${$language}`);
 			return;
 		}
-		homepageVideos = await getHomepageVideos(window.fetch, DEFAULT_PAGINATION, '', null);
+		homepageVideos = await getHomepageVideos(window.fetch, DEFAULT_PAGINATION);
 		mounted = true;
 	});
 
-	const getVideosFunc: GetVideosFunc = (params: GetVideosFuncParams): Promise<VideoType[]> => {
-		return getHomepageVideos(fetch, params.pagination, '', params.filters);
+	const getVideosFunc: GetVideosFunc = (pagination: Pagination): Promise<VideoType[]> => {
+		return getHomepageVideos(fetch, pagination);
 	};
 </script>
 

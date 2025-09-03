@@ -2,7 +2,7 @@
 	import { goto } from '$app/navigation';
 	import { language } from '$lib/stores/language/store';
 	import { loading } from '$lib/stores/loading/store';
-	import { search } from '$lib/stores/search/store';
+	import { filters } from '$lib/stores/video_filters/store';
 	import { getTranslation } from '$lib/translations';
 	import { enterKeyCheck, getSearchAndOrderQueryParams, openAdLink } from '$lib/utils/utils';
 	import SearchIcon from './SearchIcon.svelte';
@@ -10,7 +10,7 @@
 	let searchInput: HTMLInputElement;
 
 	function onClick() {
-		search.set({ value: searchInput.value, forceLoad: true });
+		filters.setText(searchInput.value);
 
 		loading.set(true);
 		openAdLink();
@@ -27,7 +27,7 @@
 		onkeypress={onKeyPress}
 		bind:this={searchInput}
 		type="text"
-		value={$search.value}
+		value={$filters.text}
 		placeholder={getTranslation('search.placeholder')}
 	/>
 	<div class="icon-container">

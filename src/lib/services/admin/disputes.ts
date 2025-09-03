@@ -5,7 +5,7 @@ import { cacheInvalidation } from '$lib/stores/cache-invalidation/store';
 import { fetchWrapper } from '$lib/utils/fetch';
 import { get } from 'svelte/store';
 import type { PageLoadEvent } from '../../../routes/[language]/$types';
-import { getQueryParams } from '../common';
+import { getPaginationQueryParams } from '../common';
 
 export const openDispute = async (
 	fetch: PageLoadEvent['fetch'],
@@ -76,7 +76,7 @@ export const getDisputes = async (
 	}
 
 	const response = await fetchWrapper(fetch)(
-		`${PUBLIC_STORE_API_URL}${endpoint}?${getQueryParams(pagination, '', null, get(cacheInvalidation).myDisputes)}${statusQueryParam ? `${statusQueryParam}` : ``}`
+		`${PUBLIC_STORE_API_URL}${endpoint}?${getPaginationQueryParams(pagination, get(cacheInvalidation).myDisputes)}${statusQueryParam ? `${statusQueryParam}` : ``}`
 	);
 
 	return await response.json();

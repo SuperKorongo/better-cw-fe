@@ -6,16 +6,15 @@ import { fetchWrapper } from '$lib/utils/fetch';
 import { get } from 'svelte/store';
 import type { PageLoadEvent } from '../../../routes/[language]/$types';
 import type { AdminListVideo, Video } from '../../models/Video';
-import { getQueryParams } from '../common';
+import { getFetchVideosQueryParams } from '../common';
 import type { UploadVideoRequest } from '../videos';
 
 export const getUserVideos = async (
 	fetch: PageLoadEvent['fetch'],
-	pagination: Pagination,
-	search: string
+	pagination: Pagination
 ): Promise<PaginatedResponse<AdminListVideo>> => {
 	const response = await fetchWrapper(fetch)(
-		`${PUBLIC_STORE_API_URL}/api/v1/videos/mine/?${getQueryParams(pagination, search, null, get(cacheInvalidation).myVideos)}`
+		`${PUBLIC_STORE_API_URL}/api/v1/videos/mine/?${getFetchVideosQueryParams(pagination, get(cacheInvalidation).myVideos)}`
 	);
 
 	return await response.json();

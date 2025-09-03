@@ -2,24 +2,18 @@
 	import Button, { Label } from '@smui/button';
 	import { onMount } from 'svelte';
 
-	import { page } from '$app/state';
 	import type { Tag, Video } from '$lib/models/Video';
 	import { getSimilar } from '$lib/services/tags';
 	import { language } from '$lib/stores/language/store';
 	import { loading } from '$lib/stores/loading/store';
 	import { orderBy } from '$lib/stores/order_by/store';
-	import {
-		getFromUrl as getInputSearchFromUrl,
-		search,
-		SEARCH_QUERY_PARAM
-	} from '$lib/stores/search/store';
+	import { filters, TEXT_FILTER_QUERY_PARAM } from '$lib/stores/video_filters/store';
 	import { getTranslation } from '$lib/translations';
 	import { isAdblockPresent } from '$lib/utils/utils';
 	import AdBanner from '../../ad-banner/AdBanner.svelte';
 	import GlowingText from '../../common/GlowingText.svelte';
 	import Thumbnail from '../../thumbnail/Thumbnail.svelte';
 	import { events, type GetVideosFunc } from '../events';
-	import FreeOnlyToggle from '../FreeOnlyToggle.svelte';
 	import OrderBy from '../OrderBy.svelte';
 
 	let {
@@ -31,23 +25,14 @@
 	} = $props();
 
 	let shouldDisplayLoadMoreVideosButton: boolean = $state(true);
-	let freeVideosOnly: boolean = $state(false);
 	let mounted: boolean = $state(false);
 	let hasAdBlock: boolean = $state(false);
 	let noVideosFound: boolean = $state(false);
 	let similarSearchText: string = $state('');
 
-	const { onScroll, onClickLoadMore, onOrderByChanged, onToggleFreeVideosOnly } = events(
-		() => $orderBy,
-		() => {
-			return { freeVideosOnly };
-		},
-		() => videos,
-		getVideosFunc
-	);
+	const { onClickLoadMore, onOrderByChanged } = events(() => videos, getVideosFunc);
 
 	onMount(async () => {
-		window.onscroll = () => onScroll(addNewVideos, shouldDisplayLoadMoreVideosButton);
 		hasAdBlock = await isAdblockPresent();
 		mounted = true;
 	});
@@ -81,10 +66,8 @@
 	}
 
 	function onClickAlternative(alternative: string) {
-		search.set({ value: alternative, forceLoad: true });
-
 		loading.set(true);
-		document.location.href = `/${$language}?${SEARCH_QUERY_PARAM}=${alternative}`;
+		document.location.href = `/${$language}?${TEXT_FILTER_QUERY_PARAM}=${alternative}`;
 	}
 
 	$effect(() => {
@@ -92,17 +75,12 @@
 	});
 
 	$effect(() => {
-		onToggleFreeVideosOnly(freeVideosOnly, setNewVideos);
-	});
-
-	$effect(() => {
 		if (videos.length === 0) {
 			noVideosFound = true;
 		}
 
-		const searchQueryParam = getInputSearchFromUrl(page.url);
-		if (videos.length === 0 && searchQueryParam) {
-			getSimilar(window.fetch, searchQueryParam).then((tag: Tag) => {
+		if (videos.length === 0 && $filters.text) {
+			getSimilar(window.fetch, $filters.text).then((tag: Tag) => {
 				similarSearchText = tag.name;
 			});
 		}
@@ -112,13 +90,12 @@
 <section>
 	<div class="filters-container">
 		<OrderBy />
-		<FreeOnlyToggle bind:value={freeVideosOnly} />
 	</div>
 	{#if noVideosFound}
 		<div class="no-videos-found">
 			<span class="no-results-text">
 				{getTranslation('homepage.noResults')}
-				{getInputSearchFromUrl(page.url)} 😔
+				{$filters.text} 😔
 			</span>
 			{#if similarSearchText}
 				<span class="alternative-text">

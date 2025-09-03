@@ -25,7 +25,7 @@
 		}
 
 		loading.set(true);
-		getUserVideos(window.fetch, pagination, '')
+		getUserVideos(window.fetch, pagination)
 			.then((r) => {
 				data = r;
 			})

@@ -2,7 +2,7 @@ import { DEFAULT_PAGINATION } from '$lib/models/Pagination';
 import type { Video } from '$lib/models/Video';
 import { getHomepageVideos } from '$lib/services/videos';
 import { getOrderBy } from '$lib/stores/order_by/store';
-import { getFromUrl as getSearchFromURL } from '$lib/stores/search/store';
+import { filters } from '$lib/stores/video_filters/store';
 import type { Language } from '$lib/translations';
 import { setLanguage } from '$lib/translations';
 import availableLanguages from '$lib/translations/available_languages.json' with { type: 'json' };
@@ -25,12 +25,8 @@ export async function load(e: PageLoadEvent): Promise<Data> {
 	pagination.orderBy = getOrderBy(e.url);
 
 	try {
-		const videos = await getHomepageVideos(
-			e.fetch,
-			pagination,
-			getSearchFromURL(e.url) ?? '',
-			null
-		);
+		filters.init(e.url.searchParams);
+		const videos = await getHomepageVideos(e.fetch, pagination);
 		return { videos, error: false };
 	} catch (e: unknown) {
 		console.error(e);

@@ -1,11 +1,10 @@
 import { PUBLIC_STORE_API_URL } from '$env/static/public';
-import type { GetVideosFuncParams } from '$lib/components/videos/events';
 import type { PaginatedResponse, Pagination } from '$lib/models/Pagination';
 import type { Data as VideoData } from '$lib/stores/video-form/store';
 import { fetchWrapper } from '$lib/utils/fetch';
 import type { PageLoadEvent } from '../../routes/[language]/$types';
 import type { Video } from '../models/Video';
-import { getQueryParams } from './common';
+import { getFetchVideosQueryParams } from './common';
 
 export const MEGA_PREFIX = 'https://mega.nz/file/';
 
@@ -14,9 +13,7 @@ let lastFetchedVideos: Video[] = [];
 
 export const getHomepageVideos = async (
 	fetch: PageLoadEvent['fetch'],
-	pagination: Pagination,
-	search: string,
-	filters: GetVideosFuncParams['filters'] | null
+	pagination: Pagination
 ): Promise<Video[]> => {
 	if (lastFetchDate === null) {
 		lastFetchDate = new Date();
@@ -28,7 +25,7 @@ export const getHomepageVideos = async (
 
 	lastFetchDate = new Date();
 	const response = await fetchWrapper(fetch)(
-		`${PUBLIC_STORE_API_URL}/api/v1/videos/?${getQueryParams(pagination, search, filters)}`
+		`${PUBLIC_STORE_API_URL}/api/v1/videos/?${getFetchVideosQueryParams(pagination)}`
 	);
 
 	const paginatedResponse = (await response.json()) as PaginatedResponse<Video>;
@@ -56,12 +53,10 @@ export const getVideosBy = async (
 	fetch: PageLoadEvent['fetch'],
 	endpoint: VideosEndpoint,
 	name: string,
-	pagination: Pagination,
-	search: string,
-	filters: GetVideosFuncParams['filters'] | null
+	pagination: Pagination
 ): Promise<Video[]> => {
 	const response = await fetchWrapper(fetch)(
-		`${PUBLIC_STORE_API_URL}/api/v1/videos/${endpoint}/${name}/?${getQueryParams(pagination, search, filters)}`
+		`${PUBLIC_STORE_API_URL}/api/v1/videos/${endpoint}/${name}/?${getFetchVideosQueryParams(pagination)}`
 	);
 
 	const paginatedResponse = (await response.json()) as PaginatedResponse<Video>;

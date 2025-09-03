@@ -7,7 +7,7 @@ import { language } from '$lib/stores/language/store';
 import { loading } from '$lib/stores/loading/store';
 import { menu } from '$lib/stores/menu/store';
 import { ORDER_BY_QUERY_PARAM, orderBy } from '$lib/stores/order_by/store';
-import { search, SEARCH_QUERY_PARAM } from '$lib/stores/search/store';
+import { filters, TEXT_FILTER_QUERY_PARAM } from '$lib/stores/video_filters/store';
 import { getTranslation } from '$lib/translations';
 import { get } from 'svelte/store';
 import type { ApiError } from '../../errors/apiError';
@@ -49,13 +49,11 @@ export function onClickInternalLink(e: MouseEvent): void {
 
 	const { href, pathname } = e.currentTarget as HTMLAnchorElement;
 
-	if (page.url.href === href && !get(search).value) {
+	if (page.url.href === href && !get(filters).text) {
 		return;
 	}
 
-	if (get(search).value) {
-		search.set({ value: null, forceLoad: true });
-	}
+	filters.setEmpty();
 
 	if (page.state.selectedVideo) {
 		pushState('', { selectedVideo: undefined });
@@ -88,23 +86,6 @@ export function getHrefWithLanguage(href: string): string {
 	return `/${get(language)}${href}`;
 }
 
-export function getSearchAndOrderQueryParams() {
-	const $orderBy = get(orderBy);
-	const $search = get(search);
-
-	const queryParams = new URLSearchParams();
-
-	if ($orderBy) {
-		queryParams.set(ORDER_BY_QUERY_PARAM, `${$orderBy.column}|${$orderBy.direction}`);
-	}
-
-	if ($search.value) {
-		queryParams.set(SEARCH_QUERY_PARAM, $search.value);
-	}
-
-	return `?${queryParams.toString()}`;
-}
-
 export const sleep = (milliseconds: number) => {
 	return new Promise((resolve) => setTimeout(resolve, milliseconds));
 };
@@ -133,6 +114,23 @@ export const isVideoDisplayRoute = (): boolean => {
 		'/[language]/tags/[name]'
 	].includes(page.route.id!);
 };
+
+export function getSearchAndOrderQueryParams() {
+	const $orderBy = get(orderBy);
+	const $search = get(filters).text;
+
+	const queryParams = new URLSearchParams();
+
+	if ($orderBy) {
+		queryParams.set(ORDER_BY_QUERY_PARAM, `${$orderBy.column}|${$orderBy.direction}`);
+	}
+
+	if ($search) {
+		queryParams.set(TEXT_FILTER_QUERY_PARAM, $search);
+	}
+
+	return `?${queryParams.toString()}`;
+}
 
 export const getFormattedDate = (timestampInSeconds: number): string => {
 	const date = new Date(timestampInSeconds * 1000);

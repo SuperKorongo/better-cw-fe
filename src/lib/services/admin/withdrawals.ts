@@ -1,7 +1,7 @@
 import { PUBLIC_STORE_API_URL } from '$env/static/public';
 import type { Pagination } from '$lib/models/Pagination';
 import { fetchWrapper } from '$lib/utils/fetch';
-import { getQueryParams } from '../common';
+import { getPaginationQueryParams } from '../common';
 
 export type Withdrawal = {
 	id: number;
@@ -26,7 +26,7 @@ export type WithdrawalsResponse = {
 
 export const getWithdrawals = async (pagination: Pagination): Promise<WithdrawalsResponse> => {
 	const response = await fetchWrapper(window.fetch)(
-		`${PUBLIC_STORE_API_URL}/api/v1/withdrawals/?${getQueryParams(pagination)}`
+		`${PUBLIC_STORE_API_URL}/api/v1/withdrawals/?${getPaginationQueryParams(pagination)}`
 	);
 
 	return response.json();

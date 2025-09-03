@@ -3,7 +3,6 @@
 	import LoadingBar from '$lib/components/common/LoadingBar.svelte';
 	import Navbar from '$lib/components/navbar/Navbar.svelte';
 	import { cart } from '$lib/stores/cart/store';
-	import { search } from '$lib/stores/search/store';
 	import { onMount } from 'svelte';
 
 	import { afterNavigate } from '$app/navigation';
@@ -50,7 +49,6 @@
 		mounted = true;
 		cacheInvalidation.init();
 		cart.init();
-		search.init();
 
 		window.addEventListener('popstate', (e) => {
 			if ((e.target as Window).location.pathname.includes('/videos/')) {
