@@ -1,8 +1,11 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 
-	let { title, component }: { title: string; component: () => ReturnType<Snippet> } = $props();
-	let isVisible: boolean = $state<boolean>(false);
+	let {
+		title,
+		isVisible,
+		component
+	}: { title: string; isVisible: boolean; component: () => ReturnType<Snippet> } = $props();
 
 	const togglePanel = () => (isVisible = !isVisible);
 </script>
@@ -25,11 +28,12 @@
 
 <style>
 	.main {
-		background: linear-gradient(45deg, #40c4ff, #a23cff);
+		background: linear-gradient(45deg, #fbfbfb, #fff);
 		padding: 20px;
 		border-radius: 20px;
 		margin-bottom: 35px;
 		box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.5);
+		color: black;
 	}
 
 	.toggle-panel {
@@ -37,7 +41,7 @@
 		position: absolute;
 		right: 30px;
 		margin-top: -5px;
-		color: white;
+		color: black;
 		font-weight: bold;
 		font-size: 20px;
 		text-shadow: 1px 1px 1px black;

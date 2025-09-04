@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { isMobileScreen } from '$lib/utils/utils';
+	import { isMobileScreen as isMobileScreenFunc } from '$lib/utils/utils';
 
 	import { page } from '$app/state';
 	import ExpandablePanel from './ExpandablePanel.svelte';
@@ -7,11 +7,13 @@
 	import PopuplarTags from './PopuplarTags.svelte';
 
 	let aside: HTMLElement | null = $state(null);
+	let isMobileScreen = $state(true);
 
 	$effect(() => {
 		if (aside === null) {
 			return;
 		}
+		isMobileScreen = isMobileScreenFunc();
 
 		window.scrollTo(0, 1);
 		setFiltersPositioning(aside);
@@ -23,7 +25,7 @@
 		})(aside);
 
 		function setFiltersPositioning(element: HTMLElement) {
-			if (isMobileScreen()) return;
+			if (isMobileScreenFunc()) return;
 
 			const cutOffPxByPage: { [key: string]: number } = {
 				'/[language]': 500,
@@ -51,13 +53,13 @@
 </script>
 
 <aside bind:this={aside}>
-	<ExpandablePanel title={'Filters // todo: translate'}>
+	<ExpandablePanel isVisible={!isMobileScreen} title={'Filters // todo: translate'}>
 		{#snippet component()}
 			<Filters />
 		{/snippet}
 	</ExpandablePanel>
 
-	<ExpandablePanel title={'Popular tags // todo: translate'}>
+	<ExpandablePanel isVisible={!isMobileScreen} title={'Popular tags // todo: translate'}>
 		{#snippet component()}
 			<PopuplarTags />
 		{/snippet}
