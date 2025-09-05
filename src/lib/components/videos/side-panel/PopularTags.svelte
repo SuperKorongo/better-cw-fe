@@ -28,11 +28,12 @@
 <style>
 	.tag {
 		display: inline-block;
-		background: rgba(0, 0, 0, 0.5);
+		background: linear-gradient(45deg, #40c4ff, #a23cff);
+		color: white;
+		text-shadow: 1px 1px 1px black;
 		border-radius: 5px;
 		padding: 2px 10px;
 		margin-right: 5px;
-		color: #eee;
 		font-size: 14px;
 		line-height: 30px;
 		font-weight: bold;

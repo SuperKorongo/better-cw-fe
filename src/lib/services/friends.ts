@@ -59,3 +59,33 @@ export const getMyFriends = async (
 	const paginatedResponse = (await response.json()) as PaginatedResponse<Friend>;
 	return paginatedResponse.data;
 };
+
+export const getPendingFriendRequestsSent = async (
+	fetch: PageLoadEvent['fetch'],
+	pagination: Pagination
+): Promise<Friend[]> => {
+	const response = await fetchWrapper(fetch)(
+		`${PUBLIC_STORE_API_URL}/api/v1/friends/pending/sent${getPaginationQueryParams(pagination)}`,
+		{
+			method: 'GET'
+		}
+	);
+
+	const paginatedResponse = (await response.json()) as PaginatedResponse<Friend>;
+	return paginatedResponse.data;
+};
+
+export const getPendingFriendRequestsReceived = async (
+	fetch: PageLoadEvent['fetch'],
+	pagination: Pagination
+): Promise<Friend[]> => {
+	const response = await fetchWrapper(fetch)(
+		`${PUBLIC_STORE_API_URL}/api/v1/friends/pending/received${getPaginationQueryParams(pagination)}`,
+		{
+			method: 'GET'
+		}
+	);
+
+	const paginatedResponse = (await response.json()) as PaginatedResponse<Friend>;
+	return paginatedResponse.data;
+};
