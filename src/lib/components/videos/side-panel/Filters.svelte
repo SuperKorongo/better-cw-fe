@@ -10,6 +10,7 @@
 	import Select, { Option } from '@smui/select';
 	import Slider from '@smui/slider';
 	import Textfield from '@smui/textfield';
+	import { onMount } from 'svelte';
 
 	let { text, minPrice, maxPrice, visibility, duration } = $derived($filters);
 
@@ -30,6 +31,9 @@
 		loading.set(true);
 		goto(`/${$language}` + getSearchAndOrderAndFiltersQueryParams());
 	};
+	onMount(() => {
+		loading.set(false);
+	});
 </script>
 
 <div class="main">
