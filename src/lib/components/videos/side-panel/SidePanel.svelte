@@ -8,7 +8,6 @@
 	import { getTranslation } from '$lib/translations';
 	import ExpandablePanel from './ExpandablePanel.svelte';
 	import Filters from './Filters.svelte';
-	import PopularTags from './PopularTags.svelte';
 
 	let aside: HTMLElement | null = $state(null);
 	let isMobileScreen = $state(true);
@@ -66,12 +65,6 @@
 	<ExpandablePanel isVisible={!isMobileScreen} title={getTranslation('homepage.filters.title')}>
 		{#snippet component()}
 			<Filters />
-		{/snippet}
-	</ExpandablePanel>
-
-	<ExpandablePanel isVisible={!isMobileScreen} title={getTranslation('homepage.popularTags')}>
-		{#snippet component()}
-			<PopularTags tags={popularTags} />
 		{/snippet}
 	</ExpandablePanel>
 </aside>
