@@ -1,5 +1,5 @@
 import { PUBLIC_STORE_API_URL } from '$env/static/public';
-import type { Pagination } from '$lib/models/Pagination';
+import type { PaginatedResponse, Pagination } from '$lib/models/Pagination';
 import { fetchWrapper } from '$lib/utils/fetch';
 import type { PageLoadEvent } from '../../routes/[language]/$types';
 import type { Tag } from '../models/Video';
@@ -16,5 +16,7 @@ export const getPopular = async (
 	const response = await fetchWrapper(fetch)(
 		`${PUBLIC_STORE_API_URL}/api/v1/popular/tags?limit=${pagination.limit}&offset=${pagination.offset}`
 	);
-	return await response.json();
+
+	const paginatedResponse = (await response.json()) as PaginatedResponse<Tag>;
+	return paginatedResponse.data;
 };
