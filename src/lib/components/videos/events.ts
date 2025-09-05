@@ -5,7 +5,7 @@ import { orderBy } from '$lib/stores/order_by/store';
 import { handleApiError, openAdLink } from '$lib/utils/utils';
 import { get } from 'svelte/store';
 
-const VIDEOS_TO_LOAD_ON_BUTTON = 40;
+const VIDEOS_TO_LOAD_ON_BUTTON = 25;
 
 export type GetVideosFunc = (pagination: Pagination) => Promise<Video[]>;
 
