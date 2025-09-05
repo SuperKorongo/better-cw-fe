@@ -43,12 +43,8 @@ export function toFrontendQueryParams(filters: Filters): URLSearchParams {
 	if (filters.text) {
 		queryParams.set(TEXT_FILTER_QUERY_PARAM, filters.text);
 	}
-	if (filters.minPrice) {
-		queryParams.set(MIN_PRICE_QUERY_PARAM, filters.minPrice.toString());
-	}
-	if (filters.maxPrice) {
-		queryParams.set(MAX_PRICE_QUERY_PARAM, filters.maxPrice.toString());
-	}
+	queryParams.set(MIN_PRICE_QUERY_PARAM, filters.minPrice ? filters.minPrice.toString() : '0');
+	queryParams.set(MAX_PRICE_QUERY_PARAM, filters.maxPrice ? filters.maxPrice.toString() : '0');
 	if (filters.visibility) {
 		queryParams.set(VISIBILITY_QUERY_PARAM, filters.visibility);
 	}
@@ -65,12 +61,16 @@ export function toAPIQueryParams(filters: Filters): URLSearchParams {
 	if (filters.text) {
 		queryParams.set('text', filters.text);
 	}
-	if (filters.minPrice) {
-		queryParams.set('min_price', filters.minPrice.toString() + '00');
-	}
+	queryParams.set('min_price', filters.minPrice ? filters.minPrice.toString() + '00' : '0');
+
 	if (filters.maxPrice && filters.maxPrice < MAX_MAX_PRICE) {
 		queryParams.set('max_price', filters.maxPrice.toString() + '00');
 	}
+
+	if (!filters.maxPrice) {
+		queryParams.set('max_price', '0');
+	}
+
 	if (filters.visibility && filters.visibility !== 'any') {
 		queryParams.set('visibility', filters.visibility);
 	}
