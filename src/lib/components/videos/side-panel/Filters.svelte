@@ -2,7 +2,6 @@
 	import { goto } from '$app/navigation';
 	import { Durations, Visibilities } from '$lib/models/Filters';
 	import { language } from '$lib/stores/language/store';
-	import { loading } from '$lib/stores/loading/store';
 	import { filters, MAX_MAX_PRICE } from '$lib/stores/video_filters/store';
 	import { getTranslation } from '$lib/translations';
 	import { getSearchAndOrderAndFiltersQueryParams } from '$lib/utils/utils';
@@ -10,7 +9,6 @@
 	import Select, { Option } from '@smui/select';
 	import Slider from '@smui/slider';
 	import Textfield from '@smui/textfield';
-	import { onMount } from 'svelte';
 
 	let { text, minPrice, maxPrice, visibility, duration } = $derived($filters);
 
@@ -23,17 +21,12 @@
 			duration
 		});
 
-		loading.set(true);
 		goto(`/${$language}` + getSearchAndOrderAndFiltersQueryParams());
 	};
 	const onResetFilters = () => {
 		filters.setEmpty();
-		loading.set(true);
 		goto(`/${$language}` + getSearchAndOrderAndFiltersQueryParams());
 	};
-	onMount(() => {
-		loading.set(false);
-	});
 </script>
 
 <div class="main">
