@@ -6,8 +6,11 @@ import type { Video } from '$lib/models/Video';
 import { language } from '$lib/stores/language/store';
 import { loading } from '$lib/stores/loading/store';
 import { menu } from '$lib/stores/menu/store';
-import { ORDER_BY_QUERY_PARAM, orderBy } from '$lib/stores/order_by/store';
-import { filters, TEXT_FILTER_QUERY_PARAM } from '$lib/stores/video_filters/store';
+import { ORDER_BY_QUERY_PARAM, orderBy as orderByStore } from '$lib/stores/order_by/store';
+import {
+	filters,
+	toFrontendQueryParams as filterstoFrontendQueryParams
+} from '$lib/stores/video_filters/store';
 import { getTranslation } from '$lib/translations';
 import { get } from 'svelte/store';
 import type { ApiError } from '../../errors/apiError';
@@ -115,18 +118,13 @@ export const isVideoDisplayRoute = (): boolean => {
 	].includes(page.route.id!);
 };
 
-export function getSearchAndOrderQueryParams() {
-	const $orderBy = get(orderBy);
-	const $search = get(filters).text;
+export function getSearchAndOrderAndFiltersQueryParams() {
+	const orderBy = get(orderByStore);
 
-	const queryParams = new URLSearchParams();
+	const queryParams = filterstoFrontendQueryParams(get(filters));
 
-	if ($orderBy) {
-		queryParams.set(ORDER_BY_QUERY_PARAM, `${$orderBy.column}|${$orderBy.direction}`);
-	}
-
-	if ($search) {
-		queryParams.set(TEXT_FILTER_QUERY_PARAM, $search);
+	if (orderBy) {
+		queryParams.set(ORDER_BY_QUERY_PARAM, `${orderBy.column}|${orderBy.direction}`);
 	}
 
 	return `?${queryParams.toString()}`;

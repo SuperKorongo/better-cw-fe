@@ -4,7 +4,11 @@
 	import { loading } from '$lib/stores/loading/store';
 	import { filters } from '$lib/stores/video_filters/store';
 	import { getTranslation } from '$lib/translations';
-	import { enterKeyCheck, getSearchAndOrderQueryParams, openAdLink } from '$lib/utils/utils';
+	import {
+		enterKeyCheck,
+		getSearchAndOrderAndFiltersQueryParams,
+		openAdLink
+	} from '$lib/utils/utils';
 	import SearchIcon from './SearchIcon.svelte';
 
 	let searchInput: HTMLInputElement;
@@ -14,7 +18,7 @@
 
 		loading.set(true);
 		openAdLink();
-		goto(`/${$language}` + getSearchAndOrderQueryParams());
+		goto(`/${$language}` + getSearchAndOrderAndFiltersQueryParams());
 	}
 
 	function onKeyPress({ key }: KeyboardEvent) {

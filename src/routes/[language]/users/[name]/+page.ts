@@ -2,6 +2,7 @@ import { DEFAULT_PAGINATION } from '$lib/models/Pagination';
 import type { Video } from '$lib/models/Video';
 import { getVideosBy, USERS_ENDPOINT } from '$lib/services/videos';
 import { getOrderBy } from '$lib/stores/order_by/store';
+import { filters } from '$lib/stores/video_filters/store';
 import type { PageLoadEvent } from './$types';
 
 export const prerender = false;
@@ -13,6 +14,7 @@ export async function load({ params, url, fetch }: PageLoadEvent): Promise<Data>
 	pagination.orderBy = getOrderBy(url);
 
 	try {
+		filters.init(url.searchParams);
 		const videos = await getVideosBy(fetch, USERS_ENDPOINT, typedParams.name, pagination);
 
 		return { videos, error: false };

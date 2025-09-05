@@ -227,7 +227,27 @@
 		"freeVideosOnly": "Free videos only",
 		"watchForFree": "Watch for free",
 		"noResults": "No results found for text",
-		"noResultsAlternative": "Perhaps you are looking for"
+		"noResultsAlternative": "Perhaps you are looking for",
+		"filters": {
+			"title": "Filters",
+			"searchTerm": "Search term",
+			"visibility": "Visibility",
+			"visibility_any": "Any",
+			"visibility_public": "Public",
+			"visibility_private": "Private",
+			"duration": "Duration",
+			"duration_any": "Any",
+			"duration_short": "Short (1s to 2m)",
+			"duration_medium": "Medium (2m to 20m)",
+			"duration_long": "Long (more than 20m)",
+			"priceRange": "Price ranging from {MIN} to {MAX}",
+			"free": "free",
+			"anyPrice": "any price",
+			"freeOnly": "Free videos only",
+			"apply": "Apply",
+			"reset": "Reset"
+		},
+		"popularTags": "Popular tags"
 	},
 	"menu": {
 		"home": "Home",

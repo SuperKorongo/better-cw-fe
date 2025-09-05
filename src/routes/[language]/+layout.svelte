@@ -23,6 +23,7 @@
 	import { getTranslation, type Language } from '$lib/translations';
 	import availableLanguages from '$lib/translations/available_languages.json' with { type: 'json' };
 
+	import { filters } from '$lib/stores/video_filters/store';
 	import { getBrandName } from '$lib/utils/utils';
 	import '../styles.css';
 
@@ -60,6 +61,7 @@
 	});
 
 	$effect.pre(() => {
+		filters.init(new URLSearchParams(page.url.search));
 		language.set(page.params.language as Language);
 	});
 

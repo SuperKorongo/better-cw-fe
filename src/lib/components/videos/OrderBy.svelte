@@ -3,7 +3,7 @@
 	import type { OrderBy } from '$lib/models/Pagination';
 	import { orderBy } from '$lib/stores/order_by/store';
 	import { getTranslation } from '$lib/translations';
-	import { getSearchAndOrderQueryParams } from '$lib/utils/utils';
+	import { getSearchAndOrderAndFiltersQueryParams } from '$lib/utils/utils';
 	import Select, { Option } from '@smui/select';
 	import { onMount } from 'svelte';
 	import { getOrderBys } from './order_bys';
@@ -32,7 +32,7 @@
 			direction: direction as OrderBy['direction']
 		});
 
-		goto(getSearchAndOrderQueryParams());
+		goto(getSearchAndOrderAndFiltersQueryParams());
 	});
 </script>
 

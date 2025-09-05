@@ -1,35 +1,22 @@
 import type { Pagination } from '$lib/models/Pagination';
-import { filters as filtersStore } from '$lib/stores/video_filters/store';
+import { filters as filtersStore, toAPIQueryParams } from '$lib/stores/video_filters/store';
 import { get } from 'svelte/store';
 
 export const getPaginationQueryParams = (
 	pagination: Pagination,
 	cacheBypass: number | null = null
 ): string => {
-	return new URLSearchParams(getCommonQueryParams(pagination, cacheBypass)).toString();
+	return getCommonQueryParams(pagination, cacheBypass).toString();
 };
 
 export const getFetchVideosQueryParams = (
 	pagination: Pagination,
 	cacheBypass: number | null = null
 ): string => {
-	const urlSearchParams = getCommonQueryParams(pagination, cacheBypass);
+	const commonQueryParams = getCommonQueryParams(pagination, cacheBypass);
+	const filterParams = toAPIQueryParams(get(filtersStore));
 
-	const filters = get(filtersStore);
-	if (filters.text) {
-		urlSearchParams.set('text', filters.text);
-	}
-	// TODO: get videoFilters from QUERY PARAMS!!
-	// on apply filter -> add filter to query param AND THEN FETCH VIDEOS.
-	/*if (filters !== null) {
-		if (filters.text) {
-			urlSearchParams['text'] = filters.text;
-		}
-		// todo: apply filters
-		// todo2: search is a filter so put it inside the filters object
-	}
-*/
-	return new URLSearchParams(urlSearchParams).toString();
+	return new URLSearchParams([...commonQueryParams, ...filterParams]).toString();
 };
 
 function getCommonQueryParams(

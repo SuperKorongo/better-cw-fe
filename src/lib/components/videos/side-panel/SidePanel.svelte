@@ -2,6 +2,7 @@
 	import { isMobileScreen as isMobileScreenFunc } from '$lib/utils/utils';
 
 	import { page } from '$app/state';
+	import { getTranslation } from '$lib/translations';
 	import ExpandablePanel from './ExpandablePanel.svelte';
 	import Filters from './Filters.svelte';
 	import PopuplarTags from './PopuplarTags.svelte';
@@ -48,18 +49,19 @@
 			element.style.top = '80px';
 			element.style.zIndex = '100';
 			element.style.width = '20%';
+			element.style.zIndex = '9';
 		}
 	});
 </script>
 
 <aside bind:this={aside}>
-	<ExpandablePanel isVisible={!isMobileScreen} title={'Filters // todo: translate'}>
+	<ExpandablePanel isVisible={!isMobileScreen} title={getTranslation('homepage.filters.title')}>
 		{#snippet component()}
 			<Filters />
 		{/snippet}
 	</ExpandablePanel>
 
-	<ExpandablePanel isVisible={!isMobileScreen} title={'Popular tags // todo: translate'}>
+	<ExpandablePanel isVisible={!isMobileScreen} title={getTranslation('homepage.popularTags')}>
 		{#snippet component()}
 			<PopuplarTags />
 		{/snippet}

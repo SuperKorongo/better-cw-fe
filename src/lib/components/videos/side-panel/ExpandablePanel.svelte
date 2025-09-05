@@ -18,7 +18,7 @@
 			+
 		{/if}
 	</button>
-	<span class="title">{title}</span>
+	<button onclick={togglePanel} class="title">{title}</button>
 	{#if isVisible}
 		<div class="content">
 			{@render component()}
@@ -48,10 +48,12 @@
 	}
 
 	.title {
+		cursor: pointer;
 		text-align: center;
 		display: inline-block;
 		width: 100%;
 		font-weight: bold;
+		font-size: 15px;
 	}
 
 	.content {
