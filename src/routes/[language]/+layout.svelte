@@ -23,6 +23,7 @@
 	import { getTranslation, type Language } from '$lib/translations';
 	import availableLanguages from '$lib/translations/available_languages.json' with { type: 'json' };
 
+	import { loading } from '$lib/stores/loading/store';
 	import { filters } from '$lib/stores/video_filters/store';
 	import { getBrandName } from '$lib/utils/utils';
 	import '../styles.css';
@@ -58,6 +59,7 @@
 		});
 
 		initLoggedInUser();
+		loading.set(false);
 	});
 
 	$effect.pre(() => {
