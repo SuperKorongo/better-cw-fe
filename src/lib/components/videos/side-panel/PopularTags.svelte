@@ -1,12 +1,19 @@
 <script lang="ts">
+	import { DEFAULT_PAGINATION } from '$lib/models/Pagination';
 	import type { Tag } from '$lib/models/Video';
+	import { getPopular } from '$lib/services/tags';
 	import { getHrefWithLanguage, onClickInternalLink } from '$lib/utils/utils';
+	import { onMount } from 'svelte';
 
-	let { tags }: { tags: Tag[] } = $props();
+	let tags: Tag[] = $state([]);
+
+	onMount(async () => {
+		tags = await getPopular(window.fetch, DEFAULT_PAGINATION);
+	});
 </script>
 
 <div class="main">
-	{#each tags as tag (tag.name)}
+	{#each $state.snapshot(tags) as tag (tag.name)}
 		<a
 			onclick={onClickInternalLink}
 			class="tag"
