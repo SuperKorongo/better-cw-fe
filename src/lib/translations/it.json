@@ -226,8 +226,28 @@
 		"metaDescriptionTagPage": "Guarda i clip più sorprendenti di $TAG.",
 		"freeVideosOnly": "Solo video gratuiti",
 		"watchForFree": "Video gratuiti",
-		"noResults": "Nessun risultato trovato per il testo",
-		"noResultsAlternative": "Forse stai cercando"
+		"noResults": "Nessun risultato trovato",
+		"noResultsAlternative": "Forse stai cercando",
+		"filters": {
+			"title": "Filtri",
+			"searchTerm": "Termine di ricerca",
+			"visibility": "Visibilità",
+			"visibility_any": "Qualsiasi",
+			"visibility_public": "Pubblico",
+			"visibility_private": "Privato",
+			"duration": "Durata",
+			"duration_any": "Qualsiasi",
+			"duration_short": "Breve (da 1s a 2m)",
+			"duration_medium": "Medio (da 2m a 20m)",
+			"duration_long": "Lungo (più di 20m)",
+			"priceRange": "Fascia di prezzo da {MIN} a {MAX}",
+			"free": "gratuito",
+			"anyPrice": "qualsiasi prezzo",
+			"freeOnly": "Solo video gratuiti",
+			"apply": "Applica",
+			"reset": "Ripristina"
+		},
+		"popularTags": "Tag popolari"
 	},
 	"menu": {
 		"home": "Home",

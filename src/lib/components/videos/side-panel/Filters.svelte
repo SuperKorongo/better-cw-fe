@@ -23,7 +23,10 @@
 
 		goto(`/${$language}` + getSearchAndOrderAndFiltersQueryParams());
 	};
-	const onResetFilters = filters.setEmpty;
+	const onResetFilters = () => {
+		filters.setEmpty();
+		goto(`/${$language}` + getSearchAndOrderAndFiltersQueryParams());
+	};
 </script>
 
 <div class="main">
@@ -89,9 +92,9 @@
 
 	<div class="buttons">
 		<div>
-			<Button onclick={onApplyFilters} variant="raised" color="primary"
-				>{getTranslation('homepage.filters.apply')}</Button
-			>
+			<Button onclick={onApplyFilters} variant="raised" color="primary">
+				{getTranslation('homepage.filters.apply')}
+			</Button>
 		</div>
 		<div>
 			<Button onclick={onResetFilters} variant="outlined" color="secondary">

@@ -226,8 +226,28 @@
 		"metaDescriptionTagPage": "Смотрите самые удивительные клипы с тегом $TAG.",
 		"freeVideosOnly": "Только бесплатные видео",
 		"watchForFree": "Бесплатное видео",
-		"noResults": "Результаты по запросу текст не найдены.",
-		"noResultsAlternative": "Возможно, вы ищете"
+		"noResults": "Результаты не найдены",
+		"noResultsAlternative": "Возможно, вы ищете",
+		"filters": {
+			"title": "Фильтры",
+			"searchTerm": "Поисковый запрос",
+			"visibility": "Видимость",
+			"visibility_any": "Любая",
+			"visibility_public": "Публичная",
+			"visibility_private": "Частная",
+			"duration": "Продолжительность",
+			"duration_any": "Любая",
+			"duration_short": "Короткая (от 1с до 2м)",
+			"duration_medium": "Средняя (от 2м до 20м)",
+			"duration_long": "Длинная (более 20м)",
+			"priceRange": "Диапазон цен от {MIN} до {MAX}",
+			"free": "бесплатно",
+			"anyPrice": "любая цена",
+			"freeOnly": "Только бесплатные видео",
+			"apply": "Применить",
+			"reset": "Сбросить"
+		},
+		"popularTags": "Популярные теги"
 	},
 	"menu": {
 		"home": "Главная",

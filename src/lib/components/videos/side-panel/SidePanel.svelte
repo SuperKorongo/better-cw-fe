@@ -2,13 +2,21 @@
 	import { isMobileScreen as isMobileScreenFunc } from '$lib/utils/utils';
 
 	import { page } from '$app/state';
+	import { DEFAULT_PAGINATION } from '$lib/models/Pagination';
+	import type { Tag } from '$lib/models/Video';
+	import { getPopular } from '$lib/services/tags';
 	import { getTranslation } from '$lib/translations';
 	import ExpandablePanel from './ExpandablePanel.svelte';
 	import Filters from './Filters.svelte';
-	import PopuplarTags from './PopuplarTags.svelte';
+	import PopularTags from './PopularTags.svelte';
 
 	let aside: HTMLElement | null = $state(null);
 	let isMobileScreen = $state(true);
+	let popularTags: Tag[] = $state([]);
+
+	$effect.pre(() => {
+		getPopular(window.fetch, DEFAULT_PAGINATION).then((t) => (popularTags = t));
+	});
 
 	$effect(() => {
 		if (aside === null) {
@@ -63,7 +71,7 @@
 
 	<ExpandablePanel isVisible={!isMobileScreen} title={getTranslation('homepage.popularTags')}>
 		{#snippet component()}
-			<PopuplarTags />
+			<PopularTags tags={popularTags} />
 		{/snippet}
 	</ExpandablePanel>
 </aside>
