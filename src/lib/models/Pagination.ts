@@ -16,7 +16,8 @@ export type OrderBy = {
 		| 'title'
 		| 'money_generated_in_btc'
 		| 'created_at'
-		| 'updated_at';
+		| 'updated_at'
+		| 'sent_at';
 	direction: 'asc' | 'desc';
 };
 export type Pagination = {

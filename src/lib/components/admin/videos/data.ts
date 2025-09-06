@@ -1,6 +1,6 @@
 import { getTranslation } from '$lib/translations';
 
-export const tableHeader = [
+export const getTableHeader = () => [
 	{
 		columnId: 'title',
 		label: getTranslation('admin.myVideos.title'),

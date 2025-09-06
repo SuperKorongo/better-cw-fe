@@ -48,44 +48,41 @@ export const acceptFriendRequest = async (
 export const getMyFriends = async (
 	fetch: PageLoadEvent['fetch'],
 	pagination: Pagination
-): Promise<Friend[]> => {
+): Promise<PaginatedResponse<Friend>> => {
 	const response = await fetchWrapper(fetch)(
-		`${PUBLIC_STORE_API_URL}/api/v1/friends/${getPaginationQueryParams(pagination)}`,
+		`${PUBLIC_STORE_API_URL}/api/v1/friends/?${getPaginationQueryParams(pagination)}`,
 		{
 			method: 'GET'
 		}
 	);
 
-	const paginatedResponse = (await response.json()) as PaginatedResponse<Friend>;
-	return paginatedResponse.data;
+	return await response.json();
 };
 
 export const getPendingFriendRequestsSent = async (
 	fetch: PageLoadEvent['fetch'],
 	pagination: Pagination
-): Promise<Friend[]> => {
+): Promise<PaginatedResponse<Friend>> => {
 	const response = await fetchWrapper(fetch)(
-		`${PUBLIC_STORE_API_URL}/api/v1/friends/pending/sent${getPaginationQueryParams(pagination)}`,
+		`${PUBLIC_STORE_API_URL}/api/v1/friends/pending/sent/?${getPaginationQueryParams(pagination)}`,
 		{
 			method: 'GET'
 		}
 	);
 
-	const paginatedResponse = (await response.json()) as PaginatedResponse<Friend>;
-	return paginatedResponse.data;
+	return await response.json();
 };
 
 export const getPendingFriendRequestsReceived = async (
 	fetch: PageLoadEvent['fetch'],
 	pagination: Pagination
-): Promise<Friend[]> => {
+): Promise<PaginatedResponse<Friend>> => {
 	const response = await fetchWrapper(fetch)(
-		`${PUBLIC_STORE_API_URL}/api/v1/friends/pending/received${getPaginationQueryParams(pagination)}`,
+		`${PUBLIC_STORE_API_URL}/api/v1/friends/pending/received/?${getPaginationQueryParams(pagination)}`,
 		{
 			method: 'GET'
 		}
 	);
 
-	const paginatedResponse = (await response.json()) as PaginatedResponse<Friend>;
-	return paginatedResponse.data;
+	return await response.json();
 };

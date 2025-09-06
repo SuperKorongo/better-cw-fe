@@ -1,89 +1,47 @@
 <script lang="ts">
 	import HeaderCell from '$lib/components/table/HeaderCell.svelte';
 	import Pagination from '$lib/components/table/Pagination.svelte';
+	import type { Friend } from '$lib/models/FriendRequest';
 	import {
 		type PaginatedResponse,
 		type Pagination as PaginationType
 	} from '$lib/models/Pagination';
-	import type { AdminListVideo } from '$lib/models/Video';
-	import { patch } from '$lib/services/admin/videos';
 	import { user } from '$lib/stores/user/store';
-	import {
-		getFormattedDate,
-		getFormattedPrice,
-		goToInternalLink,
-		handleApiError,
-		ifNotLoading
-	} from '$lib/utils/utils';
+	import { goToInternalLink, ifNotLoading } from '$lib/utils/utils';
 	import DataTable, { Body, Cell, Head, Row } from '@smui/data-table';
-	import Switch from '@smui/switch';
-	import { allowedRowsPerPage, getTableHeader } from './data';
+	import { allowedRowsPerPage, tableHeader } from './data';
 
 	let {
 		data,
 		pagination,
 		onChangePagination
 	}: {
-		data: PaginatedResponse<AdminListVideo>;
+		data: PaginatedResponse<Friend>;
 		pagination: PaginationType;
 		onChangePagination: (data: PaginationType) => void;
 	} = $props();
-
-	const onToggleActive = async (video: AdminListVideo): Promise<void> => {
-		try {
-			await patch(video.uuid, { active: !video.active });
-		} catch (e: unknown) {
-			handleApiError(e);
-		}
-	};
 </script>
 
-{#if $user.data !== null && data !== null}
+{#if $user.data !== null && data !== null && data.data.length > 0}
 	<div>
-		<DataTable
-			sortable
-			style="width: 100%;"
-			onSMUIDataTableSorted={({ detail }) => {
-				ifNotLoading(() => {
-					onChangePagination({
-						limit: pagination.limit,
-						offset: 0,
-						orderBy: {
-							column: detail.columnId,
-							direction: detail.sortValue === 'ascending' ? 'asc' : 'desc'
-						}
-					});
-				});
-			}}
-		>
+		<DataTable style="width: 100%;">
 			<Head>
 				<Row>
-					{#each getTableHeader() as { columnId, label, sortable } (columnId)}
+					{#each tableHeader as { columnId, label, sortable } (columnId)}
 						<HeaderCell {columnId} {label} {sortable} />
 					{/each}
 				</Row>
 			</Head>
 			<Body>
-				{#each data.data as video, index (index)}
+				{#each data.data as friend, index (index)}
 					<Row
 						onclick={(e) => {
-							goToInternalLink(e, `/admin/my-videos/${video.uuid}`);
+							goToInternalLink(e, `/users/${friend.slug}`);
 						}}
 						style="cursor: pointer"
 					>
-						<Cell>{video.title}</Cell>
-						<Cell>{getFormattedPrice(video.price)}</Cell>
-						<Cell>{getFormattedDate(video.uploadedAtTimestamp)}</Cell>
-						<Cell>{video.moneyGeneratedInBTC} BTC</Cell>
-						<Cell>
-							<Switch
-								onclick={async (e: Event) => {
-									e.stopPropagation();
-									onToggleActive(video);
-								}}
-								checked={video.active}
-							/>
-						</Cell>
+						<Cell>{friend.username}</Cell>
+						<Cell>{new Date(friend.acceptedAt!).toLocaleDateString()}</Cell>
 					</Row>
 				{/each}
 			</Body>
