@@ -48,7 +48,7 @@
 			element.style.left = '20px';
 			element.style.top = '80px';
 			element.style.zIndex = '100';
-			element.style.width = '20%';
+			element.style.width = '19%';
 			element.style.zIndex = '9';
 		}
 	});
