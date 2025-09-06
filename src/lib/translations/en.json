@@ -106,6 +106,28 @@
 			"currentPassword": "Current password",
 			"newPassword": "New password",
 			"welcome": "Welcome"
+		},
+		"myFriends": {
+			"friendsTableTitle": "My Friends",
+			"friendRequestsReceivedTableTitle": "Friend requests received",
+			"friendRequestsSentTableTitle": "Friend requests sent",
+			"removeFriend": "Remove friend",
+			"friendRemoved": "You are no longer friends with that user",
+			"accept": "Accept",
+			"reject": "Reject",
+			"cancel": "Cancel request",
+			"requestRejected": "You rejected the friend request",
+			"requestAccepted": "You have a new friend! ☺️",
+			"requestCancelled": "You cancelled the friend request",
+			"rowsPerPage": "Rows per page",
+			"username": "Username",
+			"friendsSince": "Friends since",
+			"sentAt": "Friend request sent at",
+			"receivedAt": "Friend request received at",
+			"actions": "Actions",
+			"noFriends": "You currently have no friends",
+			"noFriendRequestsSent": "You haven't sent any friend request that is pending to be accepted",
+			"noFriendRequestseReceived": "You haven't received any friend request"
 		}
 	},
 	"cart": {

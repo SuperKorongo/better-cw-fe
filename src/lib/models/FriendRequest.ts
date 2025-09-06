@@ -5,9 +5,10 @@ export type FriendRequest = {
 };
 
 export type Friend = {
-	readonly friendRequestUuid: string;
+	readonly friendRequestUUID: string;
 	readonly userUUID: string;
 	readonly username: string;
 	readonly slug: string;
 	readonly acceptedAt: string | null;
+	readonly sentAt: string;
 };

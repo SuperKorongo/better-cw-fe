@@ -2,6 +2,7 @@ import { writable } from 'svelte/store';
 
 type Data = {
 	myVideos: number | null;
+	myFriends: number | null;
 	myPurchases: number | null;
 	myDisputes: number | null;
 	me: number | null;
@@ -12,6 +13,7 @@ export const LOCAL_STORAGE_KEY = 'cache-invalidation';
 export const cacheInvalidation = (() => {
 	const { subscribe, update } = writable<Data>({
 		myVideos: null,
+		myFriends: null,
 		myPurchases: null,
 		myDisputes: null,
 		me: null
@@ -23,6 +25,13 @@ export const cacheInvalidation = (() => {
 		refreshMyVideos: () =>
 			update((data: Data) => {
 				data.myVideos = new Date().getTime();
+				updateLocalStorage(data);
+				return data;
+			}),
+
+		refreshMyFriends: () =>
+			update((data: Data) => {
+				data.myFriends = new Date().getTime();
 				updateLocalStorage(data);
 				return data;
 			}),

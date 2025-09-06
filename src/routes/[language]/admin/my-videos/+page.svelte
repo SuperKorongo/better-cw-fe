@@ -30,7 +30,7 @@
 
 		filters.setText(search.length < 3 ? '' : search);
 
-		if (get(loading).value) {
+		if (get(loading).value && search.length > 0) {
 			return;
 		}
 

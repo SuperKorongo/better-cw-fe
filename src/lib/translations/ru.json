@@ -106,6 +106,28 @@
 			"currentPassword": "Текущий пароль",
 			"newPassword": "Новый пароль",
 			"welcome": "Добро пожаловать"
+		},
+		"myFriends": {
+			"friendsTableTitle": "Мои друзья",
+			"friendRequestsReceivedTableTitle": "Полученные запросы на дружбу",
+			"friendRequestsSentTableTitle": "Отправленные запросы на дружбу",
+			"removeFriend": "Удалить друга",
+			"friendRemoved": "Вы больше не друзья с этим пользователем",
+			"accept": "Принять",
+			"reject": "Отклонить",
+			"cancel": "Отменить запрос",
+			"requestRejected": "Вы отклонили запрос на дружбу",
+			"requestAccepted": "У вас новый друг! ☺️",
+			"requestCancelled": "Вы отменили запрос на дружбу",
+			"rowsPerPage": "Строк на странице",
+			"username": "Имя пользователя",
+			"friendsSince": "Друзья с",
+			"sentAt": "Запрос на дружбу отправлен",
+			"receivedAt": "Запрос на дружбу получен",
+			"actions": "Действия",
+			"noFriends": "У вас сейчас нет друзей",
+			"noFriendRequestsSent": "Вы не отправили ни одного запроса на дружбу, который ожидает принятия",
+			"noFriendRequestseReceived": "Вы не получили ни одного запроса на дружбу"
 		}
 	},
 	"cart": {

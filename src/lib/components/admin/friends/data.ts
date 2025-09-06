@@ -10,6 +10,16 @@ export const getTableHeader = () => [
 		columnId: 'accepted_at',
 		label: getTranslation('admin.myFriends.friendsSince'),
 		sortable: false
+	},
+	{
+		columnId: 'sent_at',
+		label: getTranslation('admin.myFriends.sentAt'),
+		sortable: false
+	},
+	{
+		columnId: '',
+		label: getTranslation('admin.myFriends.actions'),
+		sortable: false
 	}
 ];
 

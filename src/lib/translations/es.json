@@ -106,6 +106,28 @@
 			"currentPassword": "Contraseña actual",
 			"newPassword": "Nueva contraseña",
 			"welcome": "Bienvenido"
+		},
+		"myFriends": {
+			"friendsTableTitle": "Mis amigos",
+			"friendRequestsReceivedTableTitle": "Solicitudes de amistad recibidas",
+			"friendRequestsSentTableTitle": "Solicitudes de amistad enviadas",
+			"removeFriend": "Eliminar amigo",
+			"friendRemoved": "Ya no eres amigo de ese usuario",
+			"accept": "Aceptar",
+			"reject": "Rechazar",
+			"cancel": "Cancelar solicitud",
+			"requestRejected": "Has rechazado la solicitud de amistad",
+			"requestAccepted": "¡Tienes un nuevo amigo! ☺️",
+			"requestCancelled": "Has cancelado la solicitud de amistad",
+			"rowsPerPage": "Filas por página",
+			"username": "Nombre de usuario",
+			"friendsSince": "Amigos desde",
+			"sentAt": "Solicitud de amistad enviada el",
+			"receivedAt": "Solicitud de amistad recibida el",
+			"actions": "Acciones",
+			"noFriends": "Actualmente no tienes amigos",
+			"noFriendRequestsSent": "No has enviado ninguna solicitud de amistad que esté pendiente de ser aceptada",
+			"noFriendRequestseReceived": "No has recibido ninguna solicitud de amistad"
 		}
 	},
 	"cart": {
