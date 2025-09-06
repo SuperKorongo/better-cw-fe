@@ -9,7 +9,7 @@
 	import { user } from '$lib/stores/user/store';
 	import { goToInternalLink, ifNotLoading } from '$lib/utils/utils';
 	import DataTable, { Body, Cell, Head, Row } from '@smui/data-table';
-	import { allowedRowsPerPage, tableHeader } from './data';
+	import { allowedRowsPerPage, getTableHeader } from './data';
 
 	let {
 		data,
@@ -27,7 +27,7 @@
 		<DataTable style="width: 100%;">
 			<Head>
 				<Row>
-					{#each tableHeader as { columnId, label, sortable } (columnId)}
+					{#each getTableHeader() as { columnId, label, sortable } (columnId)}
 						<HeaderCell {columnId} {label} {sortable} />
 					{/each}
 				</Row>
