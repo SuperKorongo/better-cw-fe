@@ -1,5 +1,18 @@
 {
 	"aboutUs": {
+		"sharingFreeVideos": "Sharing free content",
+		"sharingPaidVideos": "Share paid content and earn money",
+		"mainDescription1": "{BRAND} is your site to enjoy the best content from private shows with your favorite webcam models.",
+		"mainDescription2": "On {BRAND} you can share content for free publicly (visible to everyone) or privately (visible only to your friends).",
+		"mainDescription3": "You also have the option to share paid content (paid content is always public for everyone) and earn money in Bitcoin (you can withdraw your BTC at any time).",
+		"free": {
+			"t1": "When uploading a video, set a price of $0.00 to share it for free.",
+			"t2": "You must choose the visibility of your video: public or private.",
+			"t3": "Public",
+			"t4": "Anyone can see your video.",
+			"t5": "Private",
+			"t6": "Only your friends can see your content."
+		},
 		"howCanIEarnMoney": {
 			"title": "💰 How Can I Earn Money?",
 			"t1": "It's simple!",
@@ -235,13 +248,13 @@
 		"loadMoreWithoutAdBlock": "Load more videos (and open Ad)",
 		"loadMoreAdDisclaimer": "Clicking this button will display more videos and open a sponsored link in a new tab",
 		"userRating": "User rating",
-		"title": "Buy & Sell Adult Videos – Powered by Bitcoin",
+		"title": "The best clips of your favorite models 🎬",
 		"subTitle": "Welcome to {BRAND} – Your #1 Marketplace for adult content!",
 		"desc1": "🔒 Secure Payments - 100% Bitcoin transactions with buyers and sellers protection",
 		"desc2": "🕶️ Anonymous - No personal data required",
 		"desc3": "⚡ Fast Delivery - Instant downloads after purchase",
 		"desc4": "🌍 Global - Open to buyers and sellers worldwide",
-		"htmlTitle": "The best adult content marketplace powered by Bitcoin | {BRAND}",
+		"htmlTitle": "{BRAND} | Private sex shows for free",
 		"metaDescription": "The best clips from your favorite cam models. Private shows from top sites like onlyfans, livejasmin, chaturbate, xlove, cams.com, and many more. Join the top marketplace for premium adult content. Fast transactions, full privacy, and a seamless experience. Buy and sell adult videos securely with Bitcoin. Fully anonymous.",
 		"metaDescriptionUserPage": "Discover the best clips shared by $USER.",
 		"metaDescriptionModelPage": "Browse the best clips of $MODEL.",
@@ -373,7 +386,6 @@
 	"signInForm": {
 		"welcome": "Welcome!",
 		"title1": "Log in to {BRAND}",
-		"title2": "{BRAND} - Where Privacy, Content, and Bitcoin Transactions Come Together.",
 		"loginButtonLabel": "Sign In",
 		"email": "Email",
 		"password": "Password",
@@ -386,8 +398,7 @@
 	},
 	"signUpForm": {
 		"title1": "Join {BRAND} Today",
-		"title2": "Your Private Marketplace for Adult Content - powered by Bitcoin.",
-		"title3": "Enjoy Full Privacy and Hassle-Free Bitcoin Payments.",
+		"title2": "Enjoy and share the best private content from your favorite models",
 		"registerButtonLabel": "Register",
 		"username": "Username",
 		"email": "Email",

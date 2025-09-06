@@ -10,13 +10,8 @@
 		<GlowingText text={getBrandName('extended')} />
 	</h1>
 	<h2>{getTranslation('homepage.title')}</h2>
-	<h3>{getTranslation('homepage.subTitle').replace('{BRAND}', getBrandName('short'))}</h3>
-	<section class="description">
-		{getTranslation('homepage.desc1')}<br />
-		{getTranslation('homepage.desc2')}<br />
-		{getTranslation('homepage.desc3')}<br />
-		{getTranslation('homepage.desc4')}<br />
-	</section>
+	<h3>{getTranslation('homepage.subTitle')}</h3>
+	<section class="description"></section>
 </header>
 
 <style>
@@ -49,5 +44,6 @@
 		text-align: center;
 		font-weight: bold;
 		line-height: 36px;
+		margin-bottom: 70px;
 	}
 </style>

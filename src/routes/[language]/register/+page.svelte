@@ -39,9 +39,6 @@
 			<h3>
 				{getTranslation('signUpForm.title2')}
 			</h3>
-			<h3>
-				{getTranslation('signUpForm.title3')}
-			</h3>
 		</header>
 
 		<div class="form-group">

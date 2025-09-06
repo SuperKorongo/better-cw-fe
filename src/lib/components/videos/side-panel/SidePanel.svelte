@@ -29,7 +29,7 @@
 			if (isMobileScreenFunc()) return;
 
 			const cutOffPxByPage: { [key: string]: number } = {
-				'/[language]': 500,
+				'/[language]': 250,
 				'/[language]/users/[name]': 120,
 				'/[language]/tags/[name]': 120,
 				'/[language]/models/[name]': 120

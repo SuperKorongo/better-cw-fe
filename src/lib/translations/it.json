@@ -1,5 +1,18 @@
 {
 	"aboutUs": {
+		"sharingFreeVideos": "Condivisione di contenuti gratuiti",
+		"sharingPaidVideos": "Condividi contenuti a pagamento e guadagna denaro",
+		"mainDescription1": "{BRAND} è il tuo sito per goderti i migliori contenuti di spettacoli privati con le tue webcam model preferite.",
+		"mainDescription2": "Su {BRAND} puoi condividere contenuti gratuitamente in modo pubblico (visibile a tutti) o privato (visibile solo ai tuoi amici).",
+		"mainDescription3": "Hai anche la possibilità di condividere contenuti a pagamento (i contenuti a pagamento sono sempre pubblici per tutti) e guadagnare in Bitcoin (puoi prelevare il tuo BTC in qualsiasi momento).",
+		"free": {
+			"t1": "Quando carichi un video, imposta un prezzo di $0.00 per condividerlo gratuitamente.",
+			"t2": "Dovrai scegliere la visibilità del tuo video: pubblico o privato.",
+			"t3": "Pubblico",
+			"t4": "Chiunque può vedere il tuo video.",
+			"t5": "Privato",
+			"t6": "Solo i tuoi amici possono vedere i tuoi contenuti."
+		},
 		"howCanIEarnMoney": {
 			"title": "💰 Come Posso Guadagnare Soldi?",
 			"t1": "È semplice!",
@@ -235,13 +248,13 @@
 		"loadMoreWithoutAdBlock": "Carica più video (e apri l'annuncio)",
 		"loadMoreAdDisclaimer": "Facendo clic su questo pulsante verranno visualizzati altri video e verrà aperto un collegamento sponsorizzato in una nuova scheda",
 		"userRating": "Valutazione del utente",
-		"title": "Compra e Vendi Video per Adulti – Alimentato da Bitcoin",
+		"title": "Le migliori clip delle tue modelle preferite",
 		"subTitle": "Benvenuto su {BRAND} – Il tuo marketplace n.1 per contenuti per adulti!",
 		"desc1": "🔒 Pagamenti sicuri - Transazioni 100% Bitcoin, con protezione per acquirente e venditore",
 		"desc2": "🕶️ Anonimo - Nessun dato personale richiesto",
 		"desc3": "⚡ Consegna veloce - Download immediato dopo l'acquisto",
 		"desc4": "🌍 Globale - Aperto a compratori e venditori in tutto il mondo",
-		"htmlTitle": "Il miglior marketplace di contenuti per adulti alimentato da Bitcoin | {BRAND}",
+		"htmlTitle": "{BRAND} | Spettacoli di sesso privati ​​gratuiti",
 		"metaDescription": "I migliori clip delle tue camgirl preferite. Show privati dai migliori siti come OnlyFans, LiveJasmin, Chaturbate, XLove, Cams.com e molti altri. Unisciti al principale marketplace di contenuti per adulti premium. Transazioni rapide, massima privacy e un'esperienza senza interruzioni. Acquista e vendi video per adulti in modo sicuro con Bitcoin. Completamente anonimo.",
 		"metaDescriptionUserPage": "Scopri i migliori clip condivisi da $USER.",
 		"metaDescriptionModelPage": "Esplora i migliori clip di $MODEL.",
@@ -373,7 +386,6 @@
 	"signInForm": {
 		"welcome": "Benvenuto!",
 		"title1": "Accedi a {BRAND}",
-		"title2": "{BRAND} - Dove Privacy, Contenuti e Transazioni Bitcoin Si Incontrano.",
 		"loginButtonLabel": "Accedi",
 		"email": "Email",
 		"password": "Password",
@@ -386,8 +398,7 @@
 	},
 	"signUpForm": {
 		"title1": "Unisciti a {BRAND} Oggi",
-		"title2": "Il Tuo Marketplace Privato di Contenuti Adulti - alimentato da Bitcoin.",
-		"title3": "Goditi la Privacy Completa e Pagamenti Bitcoin Senza Complicazioni.",
+		"title2": "Goditi e condividi i migliori contenuti privati ​​dei tuoi modelli preferiti",
 		"registerButtonLabel": "Registrati",
 		"username": "Nome utente",
 		"email": "Email",

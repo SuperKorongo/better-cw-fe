@@ -34,7 +34,6 @@
 					text={getTranslation('signInForm.title1').replace('{BRAND}', getBrandName('short'))}
 				/>
 			</h2>
-			<h3>{getTranslation('signInForm.title2').replace('{BRAND}', getBrandName('short'))}</h3>
 		</header>
 
 		<div class="form-group">
