@@ -4,6 +4,7 @@
 	import type { Video } from '$lib/models/Video';
 	import { getFriendRequest, sendFriendRequest } from '$lib/services/friends';
 	import { getDownloadLink } from '$lib/services/videos';
+	import { cacheInvalidation } from '$lib/stores/cache-invalidation/store';
 	import { loading } from '$lib/stores/loading/store';
 	import { user } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
@@ -66,6 +67,8 @@
 			const request = await sendFriendRequest(window.fetch, video.uploader.uuid);
 			friendRequest = request;
 			toasts.success(getTranslation('video.friendRequestSent'));
+			cacheInvalidation.refreshMe();
+			cacheInvalidation.refreshMyFriends();
 		} catch {
 			toasts.error(getTranslation('video.friendRequestError'));
 		} finally {
