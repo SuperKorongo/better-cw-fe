@@ -10,7 +10,7 @@
 		<GlowingText text={getBrandName('extended')} />
 	</h1>
 	<h2>{getTranslation('homepage.title')}</h2>
-	<h3>{getTranslation('homepage.subTitle')}</h3>
+	<h3>{getTranslation('homepage.subTitle').replace('{BRAND}', getBrandName('extended'))}</h3>
 	<section class="description"></section>
 </header>
 

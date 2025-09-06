@@ -20,7 +20,7 @@
 		{getTranslation('aboutUs.mainDescription2').replace('{BRAND}', getBrandName('short'))}
 	</h3>
 	<h3>
-		{getTranslation('aboutUs.mainDescription2')}
+		{getTranslation('aboutUs.mainDescription3')}
 	</h3>
 	<Accordion multiple>
 		<Panel open>
