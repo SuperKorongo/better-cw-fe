@@ -55,6 +55,7 @@ vps-initial-setup:
 	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "mkdir -p /root/.ssh"
 	scp -i ${SSH_KEY_FILE_PATH} ~/.ssh/github-better-cw/id_rsa ${SSH_USER}@${SERVER_IP}:/root/.ssh/id_rsa
 	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "mkdir -p ${REMOTE_FOLDER};"
+	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts"
 	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "cd ${REMOTE_FOLDER}; git init; git remote add origin git@github.com:SuperKorongo/better-cw-fe.git; git pull origin master;"
 # Setup initial config to run the containers
 	ssh -i ${SSH_KEY_FILE_PATH} ${SSH_USER}@${SERVER_IP} "cd ${REMOTE_FOLDER}; cp docker-compose.override.yml.dist docker-compose.override.yml; cp nginx/nginx.conf.dist nginx/nginx.conf;"
