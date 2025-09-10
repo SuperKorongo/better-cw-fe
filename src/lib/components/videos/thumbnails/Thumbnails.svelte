@@ -133,14 +133,9 @@
 					color="secondary"
 				>
 					<Label>
-						{getTranslation(hasAdBlock ? 'homepage.loadMore' : 'homepage.loadMoreWithoutAdBlock')}
+						{getTranslation('homepage.loadMore')}
 					</Label>
 				</Button>
-				<span id="loadMoreDisclaimer">
-					{#if !hasAdBlock}
-						{getTranslation('homepage.loadMoreAdDisclaimer')}
-					{/if}
-				</span>
 			{:else}
 				<span>{getTranslation('common.noMoreVideos')}</span>
 			{/if}
