@@ -7,6 +7,7 @@
 
 	import { afterNavigate } from '$app/navigation';
 	import {
+		PUBLIC_AD_POPUNDER_SRC,
 		PUBLIC_ANALYTICS_ID,
 		PUBLIC_ANALYTICS_SCRIPT_URL,
 		PUBLIC_DOMAIN
@@ -110,6 +111,7 @@
 			/>
 		{/if}
 	{/each}
+	<script type="text/javascript" src={PUBLIC_AD_POPUNDER_SRC}></script>
 </svelte:head>
 
 {#key mounted}
