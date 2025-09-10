@@ -126,12 +126,7 @@
 	<div class="load-more-container">
 		{#if mounted}
 			{#if shouldDisplayLoadMoreVideosButton && !noVideosFound}
-				<Button
-					aria-describedby="loadMoreDisclaimer"
-					onclick={() => onClickLoadMore(addNewVideos)}
-					variant="raised"
-					color="secondary"
-				>
+				<Button onclick={() => onClickLoadMore(addNewVideos)} variant="raised" color="secondary">
 					<Label>
 						{getTranslation('homepage.loadMore')}
 					</Label>
@@ -178,13 +173,6 @@
 		width: fit-content;
 		border-radius: 15px;
 		padding: 0px 10px;
-	}
-
-	#loadMoreDisclaimer {
-		display: block;
-		margin-top: 10px;
-		font-size: 13px;
-		color: #bbb;
 	}
 
 	.no-videos-found {
