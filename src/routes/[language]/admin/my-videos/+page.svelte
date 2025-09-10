@@ -12,7 +12,7 @@
 	import { user } from '$lib/stores/user/store';
 	import { filters } from '$lib/stores/video_filters/store';
 	import { getTranslation } from '$lib/translations';
-	import { handleApiError } from '$lib/utils/utils';
+	import { getHrefWithLanguage, handleApiError, onClickInternalLink } from '$lib/utils/utils';
 	import Textfield from '@smui/textfield';
 	import { get } from 'svelte/store';
 
@@ -59,6 +59,15 @@
 	{#if search.length === 0 && $user.data !== null && data !== null && data.data.length === 0}
 		<NoVideos />
 	{/if}
+	<a
+		class="my-videos-page-link"
+		onclick={onClickInternalLink}
+		data-sveltekit-preload-data="false"
+		href={getHrefWithLanguage(`/users/${$user.data?.slug}`)}
+	>
+		Go to my videos page
+	</a>
+	<span class="disclaimer">{getTranslation('upload.editDisclaimer')}</span>
 </section>
 
 <style>
@@ -71,5 +80,21 @@
 		display: block;
 		margin-bottom: 10px;
 		text-align: right;
+	}
+	.my-videos-page-link {
+		font-weight: bold;
+		font-size: 13px;
+		margin-top: 10px;
+		display: block;
+	}
+	.my-videos-page-link:hover {
+		color: blue;
+		text-decoration: underline;
+	}
+	.disclaimer {
+		font-size: 12px;
+		color: #888;
+		display: block;
+		margin-top: 5px;
 	}
 </style>

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import HeaderCell from '$lib/components/table/HeaderCell.svelte';
 	import Pagination from '$lib/components/table/Pagination.svelte';
+	import * as toasts from '$lib/components/toasts/toasts';
 	import {
 		type PaginatedResponse,
 		type Pagination as PaginationType
@@ -8,6 +9,7 @@
 	import type { AdminListVideo } from '$lib/models/Video';
 	import { patch } from '$lib/services/admin/videos';
 	import { user } from '$lib/stores/user/store';
+	import { getTranslation } from '$lib/translations';
 	import {
 		getFormattedDate,
 		getFormattedPrice,
@@ -31,9 +33,13 @@
 
 	const onToggleActive = async (video: AdminListVideo): Promise<void> => {
 		try {
-			await patch(video.uuid, { active: !video.active });
+			video.active = !video.active;
+			await patch(video.uuid, { active: video.active });
+			toasts.success(
+				getTranslation(`admin.myVideos.${video.active ? `videoActivated` : `videoDeactivated`}`)
+			);
 		} catch (e: unknown) {
-			handleApiError(e);
+			handleApiError(e); // todo: use handleApiError everywhere, there are other places where I am using toasts.error but I should use handleApiError
 		}
 	};
 </script>

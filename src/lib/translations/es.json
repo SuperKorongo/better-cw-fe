@@ -97,7 +97,9 @@
 				"title": "¡Empieza a ganar con tus videos!",
 				"description": "Aún no has subido ningún video. Empieza a compartir tu contenido y gana dinero en BTC por cada compra.",
 				"cta": "Sube tu primer video"
-			}
+			},
+			"videoActivated": "Video activado",
+			"videoDeactivated": "Video desactivado"
 		},
 		"balance": {
 			"label": "Saldo neto",
@@ -452,7 +454,7 @@
 		"disclaimer": "Videos nuevos pueden tardar hasta 1 hora en aparecer en la página principal y en los resultados de búsqueda",
 		"uploadButton": "Subir vídeo",
 		"editButton": "Editar vídeo",
-		"editDisclaimer": "Las modificaciones pueden tardar hasta 1 hora en ser aplicadas en la página principal y en los resultados de búsqueda",
+		"editDisclaimer": "Las modificaciones y nuevas subidas pueden tardar hasta 1 hora en ser aplicadas en la página principal y en los resultados de búsqueda",
 		"visibility": "Visibilidad",
 		"visibilityExplanation1": "Público significa que todos pueden verlo. Privado significa que solo tus amigos pueden verlo.",
 		"visibilityExplanation2": "Ten en cuenta que solo los videos gratuitos pueden tener visibilidad privada. Si estableces un precio, cualquiera puede pagar y descargar el video.",
