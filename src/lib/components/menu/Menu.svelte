@@ -4,7 +4,7 @@
 	import { user } from '$lib/stores/user/store';
 	import { getTranslation } from '$lib/translations';
 	import { getBrandName, getHrefWithLanguage, onClickInternalLink } from '$lib/utils/utils';
-	import { mdiAccount, mdiCart, mdiCash, mdiEmail, mdiHome, mdiInformation } from '@mdi/js';
+	import { mdiAccount, mdiCart, mdiEmail, mdiHome, mdiInformation, mdiUpload } from '@mdi/js';
 	import { onMount } from 'svelte';
 	import { swipe } from 'svelte-gestures';
 	import GlowingText from '../common/GlowingText.svelte';
@@ -115,7 +115,7 @@
 			<div>
 				<div>
 					<svg viewBox="0 0 24 24" width="24" height="24">
-						<path d={mdiCash} fill="currentColor" />
+						<path d={mdiUpload} fill="currentColor" />
 					</svg>
 				</div>
 				<a
