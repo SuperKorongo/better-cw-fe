@@ -65,7 +65,7 @@
 		data-sveltekit-preload-data="false"
 		href={getHrefWithLanguage(`/users/${$user.data?.slug}`)}
 	>
-		Go to my videos page
+		{getTranslation('admin.myVideos.gotoMyVideosPage')}
 	</a>
 	<span class="disclaimer">{getTranslation('upload.editDisclaimer')}</span>
 </section>

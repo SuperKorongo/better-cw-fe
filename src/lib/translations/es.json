@@ -94,12 +94,13 @@
 			"of": "de",
 			"editedSuccessfully": "Datos del video cambiados con éxito 🚀🚀",
 			"noVideos": {
-				"title": "¡Empieza a ganar con tus videos!",
-				"description": "Aún no has subido ningún video. Empieza a compartir tu contenido y gana dinero en BTC por cada compra.",
+				"title": "¡Empieza a compartir tus vídeos!",
+				"description": "Aún no has subido ningún video",
 				"cta": "Sube tu primer video"
 			},
 			"videoActivated": "Video activado",
-			"videoDeactivated": "Video desactivado"
+			"videoDeactivated": "Video desactivado",
+			"gotoMyVideosPage": "Ir a mi página de videos"
 		},
 		"balance": {
 			"label": "Saldo neto",

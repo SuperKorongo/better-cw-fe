@@ -94,12 +94,13 @@
 			"of": "of",
 			"editedSuccessfully": "Video data changed successfully 🚀🚀",
 			"noVideos": {
-				"title": "Start earning with your videos!",
-				"description": "You haven't uploaded any videos yet. Start sharing your content and earn money in BTC for every purchase.",
+				"title": "Start sharing your videos!",
+				"description": "You haven't uploaded any videos yet",
 				"cta": "Upload your first video"
 			},
 			"videoActivated": "Video activated",
-			"videoDeactivated": "Video deactivated"
+			"videoDeactivated": "Video deactivated",
+			"gotoMyVideosPage": "Go to my videos page"
 		},
 		"balance": {
 			"label": "Net balance",
@@ -456,7 +457,7 @@
 		"editButton": "Edit video",
 		"editDisclaimer": "Video modifications and new uploads can take up to 1 hour to be applied on main page and search results",
 		"visibility": "Visibility",
-		"visibilityExplanation1": "Public means everyone can watch it. Private means only your friend can watch it.",
+		"visibilityExplanation1": "Public means everyone can watch it. Private means only your friends can watch it.",
 		"visibilityExplanation2": "Please note that only free videos can be marked with private visibility. If you set a price then anyone can pay and download the video.",
 		"visibilityPublic": "Public",
 		"visibilityPrivate": "Private",
