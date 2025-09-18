@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { swipe } from 'svelte-gestures';
 
 	import type { Video } from '$lib/models/Video';
 	import { loading } from '$lib/stores/loading/store';
@@ -22,7 +21,7 @@
 	let modalImageUrl: string = $state('');
 	let container: HTMLElement;
 
-	const { onExit, onClose, onSwipe, onClickCarouselImage, onCloseImageModal } = events(
+	const { onExit, onClose, onClickCarouselImage, onCloseImageModal } = events(
 		() => container,
 		(url: string) => (modalImageUrl = url)
 	);
@@ -35,11 +34,7 @@
 
 <Overlay onClick={onClose} />
 
-<aside
-	use:swipe={() => ({ timeframe: 300, minSwipeDistance: 100, touchAction: 'pan-y' })}
-	onswipe={onSwipe}
-	bind:this={container}
->
+<aside bind:this={container}>
 	<CloseButton onClick={onClose} />
 	<main>
 		<h1>{video.model?.name}</h1>

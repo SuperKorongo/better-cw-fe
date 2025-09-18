@@ -1,5 +1,4 @@
 import { adminMenu } from '$lib/stores/menu/store';
-import type { SwipeCustomEvent } from 'svelte-gestures';
 import { get } from 'svelte/store';
 
 export const onClose = async () => {
@@ -24,11 +23,4 @@ export const onClose = async () => {
 
 	await hideAnimation();
 	adminMenu.setVisibility(false);
-};
-
-export const onSwipe = ({ detail: { direction } }: SwipeCustomEvent) => {
-	if (direction === 'left') {
-		onClose();
-		return;
-	}
 };

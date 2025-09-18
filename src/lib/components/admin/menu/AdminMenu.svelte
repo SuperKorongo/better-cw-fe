@@ -7,8 +7,7 @@
 	import { getTranslation } from '$lib/translations';
 	import { getHrefWithLanguage, isMobileScreen, onClickInternalLink } from '$lib/utils/utils';
 	import { onMount } from 'svelte';
-	import { swipe } from 'svelte-gestures';
-	import { onClose, onSwipe } from './events';
+	import { onClose } from './events';
 
 	let menuContainer: HTMLElement;
 
@@ -58,11 +57,7 @@
 	];
 </script>
 
-<aside
-	use:swipe={() => ({ timeframe: 300, minSwipeDistance: 100, touchAction: 'pan-y' })}
-	onswipe={onSwipe}
-	bind:this={menuContainer}
->
+<aside bind:this={menuContainer}>
 	<main>
 		{#if isMobileScreen()}
 			<CloseButton onClick={onClose} />

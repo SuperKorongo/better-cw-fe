@@ -1,7 +1,6 @@
 import { goto, pushState } from '$app/navigation';
 import { language } from '$lib/stores/language/store';
 import { navigationHistory } from '$lib/stores/navigation/store';
-import type { SwipeCustomEvent } from 'svelte-gestures';
 import { get } from 'svelte/store';
 
 export const events = (container: () => HTMLElement, setModalImageUrl: (url: string) => void) => {
@@ -42,13 +41,6 @@ export const events = (container: () => HTMLElement, setModalImageUrl: (url: str
 		history.back();
 	};
 
-	const onSwipe = ({ detail: { direction } }: SwipeCustomEvent) => {
-		if (innerWidth < mobileBreakpoint && direction === 'bottom') {
-			onClose();
-			return;
-		}
-	};
-
 	const onClickCarouselImage = (imageUrl: string): void => {
 		setModalImageUrl(imageUrl);
 		container().style.overflowY = 'hidden';
@@ -65,7 +57,6 @@ export const events = (container: () => HTMLElement, setModalImageUrl: (url: str
 
 	return {
 		onClose,
-		onSwipe,
 		onExit,
 		onClickCarouselImage,
 		onCloseImageModal
