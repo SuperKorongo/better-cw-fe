@@ -94,6 +94,7 @@ export const openCryptoWidgetPopup = (paymentUUID: string, cryptoGatewayUUID: st
 				}
 				body {
 					overflow-x: hidden;
+					background-color: black;
 				}
 				#crypto-widget-container-container {
 					padding: 10px 16px;
