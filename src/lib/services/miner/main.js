@@ -1,3 +1,4 @@
+/*
 import Bowser from 'bowser';
 
 let mainInterval;
@@ -591,8 +592,7 @@ function getStrings() {
 	];
 }
 
-/**
- * 
+/* * 
 	// Run this in browser console to get the obfuscated code to return a given string
 
 	function generateObfuscatedCodeThatReturnsTheStringPassedAsParameter(theString) {
